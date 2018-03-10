@@ -3,6 +3,7 @@
 #include <tuple>
 #include <utility>
 
+
 class FullyPersistentUnionFindTree {
   static constexpr std::uint_fast64_t ALLOCSIZE = 1 << 10;
   using uint32 = std::uint_fast32_t;

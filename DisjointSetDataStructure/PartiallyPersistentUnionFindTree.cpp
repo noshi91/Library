@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <vector>
 
+
 class PartiallyPersistentUnionFindTree {
   using uint32 = std::uint_fast32_t;
   std::vector<std::pair<uint32, uint32>> tree;

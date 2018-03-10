@@ -3,6 +3,7 @@
 #include <tuple>
 #include <utility>
 
+
 class FullyPersistentUnionFindTree {
   static constexpr std::uint_fast64_t ALLOCSIZE = 1 << 10;
   using int32 = std::int_fast32_t;
@@ -120,7 +121,7 @@ public:
   bool same(const uint32 &x, const uint32 &y) const {
     return find(x) == find(y);
   }
-  FullyPersistentUnionFindTree initialize(const uint32 size) {
+  static FullyPersistentUnionFindTree initialize(const uint32 size) {
     if (!size)
       return FullyPersistentUnionFindTree();
     uint32 L = 0;
