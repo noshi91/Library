@@ -2,7 +2,6 @@
 #include <utility>
 #include <vector>
 
-
 template <typename Abelian> class PotentializedUnionFindTree {
   using int32 = std::int_fast32_t;
   using uint32 = std::uint_fast32_t;
