@@ -4,7 +4,36 @@
 #include <cstdint>
 #include <utility>
 #include <vector>
+/*
 
+class RadixHeap64;
+
+RadixHeap64は64bit符号なし整数をキーとして、それに紐づけられた32bit符号なし整数を管理する最小ヒープ(優先度付きキュー)です
+追加される要素は直前に削除した値以上である必要があります
+空間計算量 O(N)
+
+
+メンバ関数
+-(constructor) ()
+ 空のヒープを構築します
+ 時間計算量 O(1)
+
+-pop (void)->std::pair<uint64, uint32>
+ 先頭の要素を削除し、その値を返します
+ 時間計算量 償却 O(logD)
+
+-push (std::pair<uint64, uint32> x)
+ x を要素としてヒープに追加します
+ 時間計算量 O(1)
+
+-empty ()->bool
+ ヒープが空かどうかを返します
+ 時間計算量 O(1)
+
+
+※D:キーの最大値
+
+*/
 
 class RadixHeap64 {
   using uint32 = std::uint_fast32_t;
