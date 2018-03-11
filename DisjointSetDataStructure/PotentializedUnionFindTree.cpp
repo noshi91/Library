@@ -17,7 +17,7 @@ PotentializedUnionFindTreeはポテンシャルが付いた要素からなる素
  単位元 ∃e; e + a = a
  逆元　 ∀a, ∃-a; a + (-a) = e
  以上の条件を満たす代数的構造 (アーベル群)
- 二項演算が operator+, 逆元が operator-(単項) で定義されている必要がある
+ 二項演算が operator+, 逆元が operator-(単項) で定義されている必要があります
 
 
 メンバ関数
