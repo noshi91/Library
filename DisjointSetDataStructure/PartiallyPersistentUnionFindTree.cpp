@@ -1,7 +1,44 @@
 #include <algorithm>
 #include <cstdint>
 #include <vector>
+/*
 
+class PartiallyPersistentUnionFindTree;
+
+PartiallyPersistentUnionFindTreeは素集合を管理する部分永続的データ構造です
+空間計算量 O(N)
+
+
+メンバ関数
+-(constructor) (uint32 size)
+ 独立した要素を size 個持つ状態で構築します
+ 時間計算量 O(N)
+
+-find (uint32 ver, uint32 x)->uint32
+ ver 回目の unite が終了した時点での x の根を返します
+ 時間計算量 O(logN)
+
+-unite (uint32 ver, uint32 x, uint32 y)->bool
+ x と y がそれぞれ含まれる集合を併合します
+ 併合に成功したか、すなわち x と y が違う集合に属していたかを返します
+ 時間計算量 O(logN)
+
+-same (uint32 ver, uint32 x, uint32 y)->bool
+ ver 回目の併合操作が終了した時点で x と y が同じ集合に属しているかを返します
+ 時間計算量 O(logN)
+
+-size (uint32 ver, uint32 x)->uint32
+ ver 回目の併合操作が終了した時点で x の含まれる集合に含まれる要素数を返します
+ 時間計算量 O(logN)
+
+-count (void)->uint32
+ 現在の操作回数を返します
+ 時間計算量 O(1)
+
+
+※N:全体の要素数
+
+*/
 
 class PartiallyPersistentUnionFindTree {
   using uint32 = std::uint_fast32_t;
