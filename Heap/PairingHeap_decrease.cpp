@@ -4,6 +4,8 @@
 #include <utility>
 /*
 
+※※有バグ※※
+
 template<typename T, bool P = false>
 class PairingHeap;
 
