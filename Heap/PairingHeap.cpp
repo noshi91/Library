@@ -4,7 +4,7 @@
 #include <utility>
 /*
 
-※※有バグ※※
+verify:https://beta.atcoder.jp/contests/apc001/submissions/2199437
 
 template<typename T, bool P = false>
 class PairingHeap;
@@ -44,6 +44,10 @@ PairingHeapは融合可能なヒープ(優先度付きキュー)です
  ヒープが空かどうかを返します
  時間計算量 O(1)
 
+-size ()->uint32
+ 要素数を返します
+ 時間計算量 O(1)
+
 -meld (ParingHeap<T, P> &other)
  other の持つ要素全てをヒープに追加します
  otherは空になります
@@ -62,6 +66,7 @@ template <typename T, bool P = false> class PairingHeap {
     node_t *left, *right;
   };
   node_t *root;
+  std::uint_fast32_t size_;
   static node_t *merge(node_t *x, node_t *y) {
     if (P ^ (x->data < y->data))
       std::swap(x, y);
@@ -71,13 +76,14 @@ template <typename T, bool P = false> class PairingHeap {
   }
 
 public:
-  PairingHeap() : root(nullptr) {}
+  PairingHeap() : root(nullptr), size_(0) {}
   const T &top() const {
     assert(root);
     return root->data;
   }
   const T &pop() {
     assert(root);
+    --size_;
     const T &ret = root->data;
     node_t *n = nullptr, *x = root->left, *y;
     while (x) {
@@ -115,9 +121,13 @@ public:
     top->data = data;
     top->left = nullptr;
     root = root ? merge(root, top) : top;
+    ++size_;
   }
-  bool empty() { return !root; }
+  bool empty() const { return !root; }
+  std::uint_fast32_t size() const { return size_; }
   void meld(PairingHeap<T, P> &other) {
+    size_ += other.size_;
+    other.size_ = 0;
     if (other.root) {
       root = root ? merge(root, other.root) : other.root;
       other.root = nullptr;

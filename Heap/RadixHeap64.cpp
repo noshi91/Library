@@ -6,11 +6,19 @@
 #include <vector>
 /*
 
+verify:https://beta.atcoder.jp/contests/abc035/submissions/2200291
+
+template<typename T>
 class RadixHeap64;
 
-RadixHeap64は64bit符号なし整数をキーとして、それに紐づけられた32bit符号なし整数を管理する最小ヒープ(優先度付きキュー)です
+RadixHeap64は64bit符号なし整数をキーとして、それと対応する値を管理する最小ヒープ(優先度付きキュー)です
 追加される要素は直前に削除した値以上である必要があります
 空間計算量 O(N)
+
+
+テンプレートパラメータ
+-typename T
+ キーに対応する値
 
 
 メンバ関数
@@ -18,11 +26,11 @@ RadixHeap64は64bit符号なし整数をキーとして、それに紐づけら�
  空のヒープを構築します
  時間計算量 O(1)
 
--pop (void)->std::pair<uint64, uint32>
+-pop (void)->std::pair<uint64, T>
  先頭の要素を削除し、その値を返します
  時間計算量 償却 O(logD)
 
--push (std::pair<uint64, uint32> x)
+-push (std::pair<uint64, T> x)
  x を要素としてヒープに追加します
  時間計算量 O(1)
 
@@ -35,10 +43,11 @@ RadixHeap64は64bit符号なし整数をキーとして、それに紐づけら�
 
 */
 
+template<typename T>
 class RadixHeap64 {
   using uint32 = std::uint_fast32_t;
   using uint64 = std::uint_fast64_t;
-  using P = std::pair<uint64, uint32>;
+  using P = std::pair<uint64, T>;
   uint32 bsr(const uint64 x) {
     if (!x)
       return 0;

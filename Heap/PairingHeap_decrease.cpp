@@ -4,7 +4,8 @@
 #include <utility>
 /*
 
-※※有バグ※※
+verify:https://beta.atcoder.jp/contests/apc001/submissions/2200117
+verify:https://beta.atcoder.jp/contests/abc035/submissions/2200107
 
 template<typename T, bool P = false>
 class PairingHeap;
@@ -130,7 +131,7 @@ public:
     root->right = nullptr;
     return ret;
   }
-  const node_t *push(const T &data) {
+  node_t *push(const T &data) {
     static node_t *pool = nullptr;
     static std::uint_fast64_t it = ALLOCSIZE;
     if (it == ALLOCSIZE) {
@@ -157,10 +158,9 @@ public:
   void decrease(node_t *const x, const T &data) {
     assert(x);
     assert(!(P ^ (x->data < data)));
-    if (!x->per) {
-      x->data = data;
+    x->data = data;
+    if (!x->per)
       return;
-    }
     if (x->right)
       x->right->per = x->per;
     if (x->per->right != x)
