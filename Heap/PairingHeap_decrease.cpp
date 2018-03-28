@@ -2,75 +2,6 @@
 #include <cstdint>
 #include <cstdlib>
 #include <utility>
-/*
-
-verify:https://beta.atcoder.jp/contests/apc001/submissions/2200117
-verify:https://beta.atcoder.jp/contests/abc035/submissions/2200107
-
-template<typename T, bool P = false>
-class PairingHeap;
-
-PairingHeapは融合可能なヒープ(優先度付きキュー)です
-空間計算量 O(N)
-
-
-テンプレートパラメータ
--typename T
- operator< によって大小が定義された構造体
- 要素の型になります
-
--bool P
- true を与えると最大ヒープになります
- デフォルトでは false で最小ヒープです
-
-
-メンバ関数
--(constructor) ()
- 空のヒープを構築します
- 時間計算量 O(1)
-
--top (void)->const T &
- 先頭の要素のconst参照を返します
- 時間計算量 O(1)
-
--pop (void)->const T &
- 先頭の要素を削除し、そのconst参照を返します
- 時間計算量 償却 O(logN)
-
--push (T data)->node_t *
- data を要素としてヒープに追加します
- 追加された要素へのポインタを返します
- 時間計算量 O(1)
-
--empty ()->bool
- ヒープが空かどうかを返します
- 時間計算量 O(1)
-
--size ()->uint32
- 要素数を返します
- 時間計算量 O(1)
-
--meld (ParingHeap<T, P> &other)
- other の持つ要素全てをヒープに追加します
- other は空になります
- 時間計算量 O(1)
-
--decrease (node_t *x, T data)
- x のキーの値を data に変更します
- data は変更前の値以下(P=true ならば以上)である必要があります
- 時間計算量 O(1)
-
-
-メンバ型
--node_t
- 要素を格納しているノードの型
- push の返り値として与えられ、decrease の際に使用する
-
-
-※N:要素数
-※T の比較に掛かる時間計算量を O(1) と仮定
-
-*/
 
 template <typename T, bool P = false> class PairingHeap {
   static constexpr std::uint_fast64_t ALLOCSIZE = (std::uint_fast64_t)1 << 10;
@@ -172,3 +103,73 @@ public:
     root = merge(root, x);
   }
 };
+
+/*
+
+verify:https://beta.atcoder.jp/contests/apc001/submissions/2200117
+verify:https://beta.atcoder.jp/contests/abc035/submissions/2200107
+
+template<typename T, bool P = false>
+class PairingHeap;
+
+PairingHeapは融合可能なヒープ(優先度付きキュー)です
+空間計算量 O(N)
+
+
+テンプレートパラメータ
+-typename T
+ operator< によって大小が定義された構造体
+ 要素の型になります
+
+-bool P
+ true を与えると最大ヒープになります
+ デフォルトでは false で最小ヒープです
+
+
+メンバ関数
+-(constructor) ()
+ 空のヒープを構築します
+ 時間計算量 O(1)
+
+-top (void)->const T &
+ 先頭の要素のconst参照を返します
+ 時間計算量 O(1)
+
+-pop (void)->const T &
+ 先頭の要素を削除し、そのconst参照を返します
+ 時間計算量 償却 O(logN)
+
+-push (T data)->node_t *
+ data を要素としてヒープに追加します
+ 追加された要素へのポインタを返します
+ 時間計算量 O(1)
+
+-empty ()->bool
+ ヒープが空かどうかを返します
+ 時間計算量 O(1)
+
+-size ()->uint32
+ 要素数を返します
+ 時間計算量 O(1)
+
+-meld (ParingHeap<T, P> &other)
+ other の持つ要素全てをヒープに追加します
+ other は空になります
+ 時間計算量 O(1)
+
+-decrease (node_t *x, T data)
+ x のキーの値を data に変更します
+ data は変更前の値以下(P=true ならば以上)である必要があります
+ 時間計算量 O(1)
+
+
+メンバ型
+-node_t
+ 要素を格納しているノードの型
+ push の返り値として与えられ、decrease の際に使用する
+
+
+※N:要素数
+※T の比較に掛かる時間計算量を O(1) と仮定
+
+*/

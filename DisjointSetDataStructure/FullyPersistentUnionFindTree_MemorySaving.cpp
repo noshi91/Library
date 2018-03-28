@@ -2,13 +2,6 @@
 #include <cstdlib>
 #include <tuple>
 #include <utility>
-/*
-
-説明は FullyPersistentUnionFindTree を参照してください
-GarbageCollectionを実装し、メモリ効率が良いですが定数倍が悪化しています
-クエリの数に対して実際に保持するデータの量が少ない場合に有効です
-
-*/
 
 class FullyPersistentUnionFindTree {
   static constexpr std::uint_fast64_t ALLOCSIZE = 1 << 10;
@@ -137,3 +130,11 @@ public:
 };
 typename FullyPersistentUnionFindTree::node_t
     *FullyPersistentUnionFindTree::node_t::pool = nullptr;
+
+/*
+
+説明は FullyPersistentUnionFindTree を参照してください
+GarbageCollectionを実装し、メモリ効率が良いですが定数倍が悪化しています
+クエリの数に対して実際に保持するデータの量が少ない場合に有効です
+
+*/

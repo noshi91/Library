@@ -2,41 +2,6 @@
 #include <cstdlib>
 #include <tuple>
 #include <utility>
-/*
-
-class FullyPersistentUnionFindTree;
-
-FullyPersistentUnionFindTreeは素集合を管理する全永続的データ構造です
-
-
-メンバ関数
--(constructor) (uint32 size = 0)
- 独立した要素を size 個持つ状態で構築します
- 時間計算量 O(log^2N/loglogN)
- 空間計算量 O(logN/loglogN)
-
--find (uint32 x)->uint32
- x の根を返します
- 時間計算量 O(log^2N/loglogN)
- 
--unite (uint32 x, uint32 y)->FullyPersistentUnionFindTree
- x と y がそれぞれ含まれる集合を併合します
- 時間/空間計算量 O(log^2N/loglogN)
-
--size (uint32 x)->uint32
- x の含まれる集合に含まれる要素数を返します
- 時間計算量 O(log^2N/loglogN)
-
--same(uint32 x, uint32 y)->bool
- x と y が同じ集合に含まれているかを返します
- 時間計算量 O(log^2N/loglogN)
-
-
-※N:全体の要素数
-※効率を最大化する場合 shiftsize を loglogN 程度に設定してください
-　初期状態は 3 です( N=10^5 程度を想定しています)
-
-*/
 
 class FullyPersistentUnionFindTree {
   static constexpr std::uint_fast64_t ALLOCSIZE = 1 << 10;
@@ -128,3 +93,39 @@ public:
   uint32 size(const uint32 x) const { return (uint32)(-find_(x).second); }
   bool same(const uint32 x, const uint32 y) const { return find(x) == find(y); }
 };
+
+/*
+
+class FullyPersistentUnionFindTree;
+
+FullyPersistentUnionFindTreeは素集合を管理する全永続的データ構造です
+
+
+メンバ関数
+-(constructor) (uint32 size = 0)
+ 独立した要素を size 個持つ状態で構築します
+ 時間計算量 O(log^2N/loglogN)
+ 空間計算量 O(logN/loglogN)
+
+-find (uint32 x)->uint32
+ x の根を返します
+ 時間計算量 O(log^2N/loglogN)
+ 
+-unite (uint32 x, uint32 y)->FullyPersistentUnionFindTree
+ x と y がそれぞれ含まれる集合を併合します
+ 時間/空間計算量 O(log^2N/loglogN)
+
+-size (uint32 x)->uint32
+ x の含まれる集合に含まれる要素数を返します
+ 時間計算量 O(log^2N/loglogN)
+
+-same(uint32 x, uint32 y)->bool
+ x と y が同じ集合に含まれているかを返します
+ 時間計算量 O(log^2N/loglogN)
+
+
+※N:全体の要素数
+※効率を最大化する場合 shiftsize を loglogN 程度に設定してください
+　初期状態は 3 です( N=10^5 程度を想定しています)
+
+*/

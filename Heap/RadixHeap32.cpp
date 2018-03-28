@@ -4,44 +4,6 @@
 #include <cstdint>
 #include <utility>
 #include <vector>
-/*
-
-verify:https://beta.atcoder.jp/contests/arc084/submissions/2200320
-
-template<typename T>
-class RadixHeap32;
-
-RadixHeap32は32bit符号なし整数をキーとして、それと対応する値を管理する最小ヒープ(優先度付きキュー)です
-追加される要素は直前に削除した値以上である必要があります
-空間計算量 O(N)
-
-
-テンプレートパラメータ
--typename T
- キーに対応する値
-
-
-メンバ関数
--(constructor) ()
- 空のヒープを構築します
- 時間計算量 O(1)
-
--pop (void)->std::pair<uint32, T>
- 先頭の要素を削除し、その値を返します
- 時間計算量 償却 O(logD)
-
--push (std::pair<uint32, T> x)
- x を要素としてヒープに追加します
- 時間計算量 O(1)
-
--empty ()->bool
- ヒープが空かどうかを返します
- 時間計算量 O(1)
-
-
-※D:キーの最大値
-
-*/
 
 template<typename T>
 class RadixHeap32 {
@@ -96,3 +58,42 @@ public:
   }
   bool empty() { return !size; }
 };
+
+/*
+
+verify:https://beta.atcoder.jp/contests/arc084/submissions/2200320
+
+template<typename T>
+class RadixHeap32;
+
+RadixHeap32は32bit符号なし整数をキーとして、それと対応する値を管理する最小ヒープ(優先度付きキュー)です
+追加される要素は直前に削除した値以上である必要があります
+空間計算量 O(N)
+
+
+テンプレートパラメータ
+-typename T
+ キーに対応する値
+
+
+メンバ関数
+-(constructor) ()
+ 空のヒープを構築します
+ 時間計算量 O(1)
+
+-pop (void)->std::pair<uint32, T>
+ 先頭の要素を削除し、その値を返します
+ 時間計算量 償却 O(logD)
+
+-push (std::pair<uint32, T> x)
+ x を要素としてヒープに追加します
+ 時間計算量 O(1)
+
+-empty ()->bool
+ ヒープが空かどうかを返します
+ 時間計算量 O(1)
+
+
+※D:キーの最大値
+
+*/
