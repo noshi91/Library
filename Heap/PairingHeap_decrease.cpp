@@ -52,7 +52,7 @@ PairingHeapは融合可能なヒープ(優先度付きキュー)です
 
 -meld (ParingHeap<T, P> &other)
  other の持つ要素全てをヒープに追加します
- otherは空になります
+ other は空になります
  時間計算量 O(1)
 
 -decrease (node_t *x, T data)
