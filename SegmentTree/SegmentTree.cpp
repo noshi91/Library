@@ -105,7 +105,7 @@ SegmentTreeはモノイドの区間和を高速に計算するデータ構造で
 -reference
  要素(value_type)への参照型 (value_type &)
 
--const_refernce
+-const_reference
  要素(value_type)へのconst参照型 (const value_type &)
 
 
