@@ -5,8 +5,8 @@
 class BitVector {
   using uintl32 = std::uint_least32_t;
   using uint32 = std::uint_fast32_t;
-  std::vector<uintl32> b, r, sh[2], sd[2];
   const uint32 size_;
+  std::vector<uintl32> b, r, sh[2], sd[2];
   static uint32 get(const uint32 size) { return (size >> 5) + 1; }
 #ifdef __GNUC__
   static uint32 popcount32(uint32 c) { return __builtin_popcount(c); }
@@ -50,10 +50,9 @@ class BitVector {
 
 public:
   BitVector(const uint32 size)
-      : b(get(size), 0),
-        r(get(size), 0), sd{std::vector<uintl32>(get(size), 0),
-                            std::vector<uintl32>(get(size), 0)},
-        size_(get(size)) {}
+      : size_(get(size)), b(size_, 0),
+        r(size_, 0), sd{std::vector<uintl32>(size_, 0),
+                        std::vector<uintl32>(size_, 0)} {}
   void set(const uint32 index) {
     assert(index < size_ << 5);
     b[index >> 5] |= (uintl32)1 << (index & 0x1f);

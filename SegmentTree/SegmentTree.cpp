@@ -5,11 +5,18 @@
 
 template <typename Monoid> class SegmentTree {
   using uint32 = std::uint_fast32_t;
-  using F = std::function<Monoid(const Monoid &, const Monoid &)>;
+
+public:
+  using value_type = Monoid;
+  using reference = value_type &;
+  using const_reference = const value_type &;
+
+private:
+  using F = std::function<value_type(const_reference, const_reference)>;
   const F f;
-  const Monoid neutral_;
+  const value_type neutral_;
   const uint32 size_;
-  std::vector<Monoid> tree;
+  std::vector<value_type> tree;
   static uint32 getsize(const uint32 size) {
     uint32 ret = 1;
     while (ret < size)
@@ -21,12 +28,13 @@ template <typename Monoid> class SegmentTree {
   }
 
 public:
-  SegmentTree(const uint32 size, const Monoid &neutral = Monoid(),
-              const F &f = std::plus<Monoid>())
+  SegmentTree(const uint32 size, const_reference neutral = value_type(),
+              const F &f = std::plus<value_type>())
       : f(f), neutral_(neutral), size_(getsize(size)),
         tree(size_ << 1, neutral_) {}
-  SegmentTree(const std::vector<Monoid> &arr, const Monoid &neutral = Monoid(),
-              const F &f = std::plus<Monoid>())
+  SegmentTree(const std::vector<value_type> &arr,
+              const_reference neutral = value_type(),
+              const F &f = std::plus<value_type>())
       : f(f), neutral_(neutral), size_(getsize(arr.size())),
         tree(size_ << 1, neutral_) {
     for (uint32 i = 0; i < arr.size(); ++i)
@@ -34,20 +42,20 @@ public:
     for (uint32 i = size_; --i;)
       recalc(i);
   }
-  void update(uint32 index, const std::function<void(Monoid &)> &g) {
+  void update(uint32 index, const std::function<void(reference)> &g) {
     assert(index < size_);
     g(tree[index += size_]);
     while (index >>= 1)
       recalc(index);
   }
-  void update(uint32 index, const Monoid &data) {
-    update(index, [&](Monoid &e) { e = data; });
+  void update(uint32 index, const_reference data) {
+    update(index, [&data](reference e) { e = data; });
   }
-  Monoid range(uint32 begin, uint32 end) const {
+  value_type range(uint32 begin, uint32 end) const {
     assert(begin <= end);
     assert(begin <= size_);
     assert(end <= size_);
-    Monoid retL = neutral_, retR = neutral_;
+    value_type retL = neutral_, retR = neutral_;
     for (begin += size_, end += size_; begin < end; begin >>= 1, end >>= 1) {
       if (begin & 1)
         retL = f(retL, tree[begin++]);
@@ -56,17 +64,17 @@ public:
     }
     return f(retL, retR);
   }
-  uint32 search(const std::function<bool(Monoid)> &b) const {
+  uint32 search(const std::function<bool(const_reference)> &b) const {
     if (!b(tree[1]))
       return size_;
-    Monoid acc = neutral_;
+    value_type acc = neutral_;
     uint32 i = 1;
     while (i < size_)
       if (!b(f(acc, tree[i <<= 1])))
         acc = f(acc, tree[i++]);
     return i - size_;
   }
-  const Monoid &operator[](const uint32 index) const {
+  const_reference operator[](const uint32 index) const {
     assert(index < size_);
     return tree[index + size_];
   }
@@ -74,7 +82,7 @@ public:
 
 /*
 
-verify:https://beta.atcoder.jp/contests/arc033/submissions/2273452
+verify:https://beta.atcoder.jp/contests/arc033/submissions/2275600
 
 template<typename Monoid>
 class SegmentTree;
@@ -90,39 +98,53 @@ SegmentTreeはモノイドの区間和を高速に計算するデータ構造で
  以上の条件を満たす代数的構造 (モノイド)
 
 
+メンバ型
+-value_type
+ 要素の型 (Monoid)
+
+-reference
+ 要素(value_type)への参照型 (value_type &)
+
+-const_refernce
+ 要素(value_type)へのconst参照型 (const value_type &)
+
+
 メンバ関数
--(constructor) (uint32 size, Monoid neutral = Monoid(),
-                std::function<Monoid(Monoid, Monoid)> f = std::plus<Monoid>())
+-(constructor) (uint32 size, const_reference neutral = value_type(),
+                std::function<value_type(const_reference,
+                const_reference)> f = std::plus<value_type>())
  大きさを size、単位元を neutral、演算を f として SegmentTree を構築します
  各要素は単位元で初期化されます
  時間計算量 O(N)
 
--(constructor) (std::vector<Monoid> arr, Monoid neutral = Monoid(),
-                std::function<Monoid(Monoid, Monoid)> f = std::plus<Monoid>())
+-(constructor) (std::vector<value_type> arr,
+                const_reference neutral = value_type(),
+                std::function<value_type(const_reference,const_reference)>
+                f = std::plus<value_type>())
  arr を要素とし、単位元を neutral、演算を f として SegmentTree を構築します
  時間計算量 O(N)
 
--update (uint32 index, Monoid data)
+-update (uint32 index, const_reference data)
  index で指定した要素を data に変更します
  時間計算量 O(logN)
 
--update (uint32 index, std::function<void(Monoid &)> g)
+-update (uint32 index, std::function<void(reference)> g)
  index で指定した要素に g を適用します
  時間計算量 O(logN)
 
--range (uint32 begin, uint32 end)->Monoid
+-range (uint32 begin, uint32 end)->value_type
  [begin, end)の和を返します
  begin == end のとき 単位元を返します
  時間計算量 O(logN)
 
--search (std::function<bool(Monoid)> b)->uint32
+-search (std::function<bool(const_reference)> b)->uint32
  b(range(0, i + 1)) が true を返すような i のうち最小の値を返します
  そのような i が存在しない場合 N 以上の値を返します
- b(range(0, 1   ~ i)) が false かつ
- b(range(0, i+1 ~ N)) が true  である必要があります
+ b(range(0, 1     ~ i)) が false かつ
+ b(range(0, i + 1 ~ N)) が true  である必要があります
  時間計算量 O(logN)
 
--operator[] (uint32 index)->const Monoid
+-operator[] (uint32 index)->const_reference
  index で指定した要素にアクセスします
  時間計算量 O(1)
 
