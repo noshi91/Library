@@ -1,24 +1,33 @@
 #include <algorithm>
+#include <cassert>
 #include <cstdint>
+#include <limits>
 #include <vector>
 
 class PartiallyPersistentUnionFindTree {
-  using uint32 = std::uint_fast32_t;
-  std::vector<std::pair<uint32, uint32>> tree;
-  std::vector<std::vector<std::pair<uint32, uint32>>> siz;
-  uint32 global_count;
+public:
+  using size_type = std::uint_fast32_t;
+
+private:
+  std::vector<std::pair<size_type, size_type>> tree;
+  std::vector<std::vector<std::pair<size_type, size_type>>> siz;
+  size_type global_count;
 
 public:
-  PartiallyPersistentUnionFindTree(const uint32 size)
-      : tree(size, {1, std::numeric_limits<uint32>::max()}),
-        siz(size, std::vector<std::pair<uint32, uint32>>(1, {0, 1})),
+  PartiallyPersistentUnionFindTree(const size_type size)
+      : tree(size, std::make_pair(1, std::numeric_limits<size_type>::max())),
+        siz(size, std::vector<std::pair<size_type, size_type>>(
+                      1, std::make_pair(0, 1))),
         global_count(0) {}
-  uint32 find(const uint32 ver, uint32 x) const {
+  size_type find(const size_type ver, size_type x) const {
+    assert(x < tree.size());
     while (tree[x].second <= ver)
       x = tree[x].first;
     return x;
   }
-  bool unite(uint32 x, uint32 y) {
+  bool unite(size_type x, size_type y) {
+    assert(x < tree.size());
+    assert(y < tree.size());
     ++global_count;
     x = find(global_count, x);
     y = find(global_count, y);
@@ -28,23 +37,29 @@ public:
       std::swap(x, y);
     tree[x].first += tree[y].first;
     siz[x].emplace_back(global_count, tree[x].first);
-    tree[y] = {x, global_count};
+    tree[y] = std::make_pair(x, global_count);
     return true;
   }
-  bool same(const uint32 ver, const uint32 x, const uint32 y) const {
+  bool same(const size_type ver, const size_type x, const size_type y) const {
+    assert(x < tree.size());
+    assert(y < tree.size());
     return find(ver, x) == find(ver, y);
   }
-  uint32 size(const uint32 ver, uint32 x) const {
+  size_type size(const size_type ver, size_type x) const {
+    assert(x < tree.size());
     x = find(ver, x);
-    return (std::lower_bound(siz[x].begin(), siz[x].end(),
-                             std::pair<uint32, uint32>(ver + 1, 0)) -
+    return (std::lower_bound(
+                siz[x].begin(), siz[x].end(),
+                std::make_pair(ver + 1, static_cast<size_type>(0))) -
             1)
         ->second;
   }
-  uint32 count(void) { return global_count; }
+  size_type count() const { return global_count; }
 };
 
 /*
+
+verify:https://beta.atcoder.jp/contests/code-thanks-festival-2017/submissions/2279624
 
 class PartiallyPersistentUnionFindTree;
 
@@ -52,29 +67,34 @@ PartiallyPersistentUnionFindTreeは素集合を管理する部分永続的デー
 空間計算量 O(N)
 
 
+メンバ型
+-size_type
+ 符号なし整数型 (std::uint_fast32_t)
+
 メンバ関数
--(constructor) (uint32 size)
+-(constructor) (size_type size)
  独立した要素を size 個持つ状態で構築します
  時間計算量 O(N)
 
--find (uint32 ver, uint32 x)->uint32
+-find (size_type ver, size_type x)->size_type
  ver 回目の unite が終了した時点での x の根を返します
  時間計算量 O(logN)
 
--unite (uint32 ver, uint32 x, uint32 y)->bool
+-unite (size_type ver, size_type x, size_type y)->bool
  x と y がそれぞれ含まれる集合を併合します
- 併合に成功したか、すなわち x と y が違う集合に属していたかを返します
+ 併合に成功したか、すなわち x と y が違う集合に属していたかを真偽値で返します
  時間計算量 O(logN)
 
--same (uint32 ver, uint32 x, uint32 y)->bool
- ver 回目の併合操作が終了した時点で x と y が同じ集合に属しているかを返します
+-same (size_type ver, size_type x, size_type y)->bool
+ ver 回目の併合操作が終了した時点で、
+ x と y が同じ集合に属しているかを真偽値で返します
  時間計算量 O(logN)
 
--size (uint32 ver, uint32 x)->uint32
+-size (size_type ver, size_type x)->size_type
  ver 回目の併合操作が終了した時点で x の含まれる集合に含まれる要素数を返します
  時間計算量 O(logN)
 
--count (void)->uint32
+-count ()->size_type
  現在の操作回数を返します
  時間計算量 O(1)
 

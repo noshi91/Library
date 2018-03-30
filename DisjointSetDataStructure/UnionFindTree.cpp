@@ -1,34 +1,51 @@
+#include <cassert>
 #include <cstdint>
+#include <utility>
 #include <vector>
 
 class UnionFindTree {
-  using int32 = std::int_fast32_t;
-  using uint32 = std::uint_fast32_t;
-  std::vector<int32> tree;
 
 public:
-  UnionFindTree(uint32 size) : tree(size, -1) {}
-  uint32 find(const uint32 x) {
-    if (tree[x] < 0)
+  using size_type = std::uint_fast32_t;
+
+private:
+  std::vector<std::pair<bool, size_type>> tree;
+
+public:
+  UnionFindTree(const size_type size) : tree(size, std::make_pair(1, 1)) {}
+  size_type find(const size_type x) {
+    assert(x < tree.size());
+    if (tree[x].first)
       return x;
-    return tree[x] = (int32)find((uint32)tree[x]);
+    return tree[x].second = find(tree[x].second);
   }
-  bool unite(uint32 x, uint32 y) {
+  bool unite(size_type x, size_type y) {
+    assert(x < tree.size());
+    assert(y < tree.size());
     x = find(x);
     y = find(y);
     if (x == y)
       return false;
-    if (tree[x] > tree[y])
+    if (tree[x].second < tree[y].second)
       std::swap(x, y);
-    tree[x] += tree[y];
-    tree[y] = (int32)x;
+    tree[x].second += tree[y].second;
+    tree[y] = std::make_pair(0, x);
     return true;
   }
-  uint32 size(const uint32 x) { return (uint32)(-tree[find(x)]); }
-  bool same(const uint32 x, const uint32 y) { return find(x) == find(y); }
+  bool same(const size_type x, const size_type y) {
+    assert(x < tree.size());
+    assert(y < tree.size());
+    return find(x) == find(y);
+  }
+  size_type size(const size_type x) {
+    assert(x < tree.size());
+    return tree[find(x)].second;
+  }
 };
 
 /*
+
+verify:https://beta.atcoder.jp/contests/atc001/submissions/2279506
 
 class UnionFindTree;
 
@@ -36,25 +53,30 @@ UnionFindTreeは素集合を管理するデータ構造です
 空間計算量 O(N)
 
 
+メンバ型
+-size_type
+ 符号なし整数型 (std::uint_fast32_t)
+
+
 メンバ関数
--(constructor) (uint32 size)
+-(constructor) (size_type size)
  独立した要素を size 個持つ状態で構築します
  時間計算量 O(N)
 
--find (uint32 x)->uint32
+-find (size_type x)->size_type
  x の根を返します
  時間計算量 償却 O(α(N))
 
--unite (uint32 x, uint32 y)->bool
+-unite (size_type x, size_type y)->bool
  x と y がそれぞれ含まれる集合を併合します
- 併合に成功したか、すなわち x と y が違う集合に属していたかを返します
+ 併合に成功したか、すなわち x と y が違う集合に属していたかを真偽値で返します
  時間計算量 償却 O(α(N))
 
--same (uint32 x, uint32 y)->bool
- x と y が同じ集合に属しているかを返します
+-same (size_type x, size_type y)->bool
+ x と y が同じ集合に属しているかを真偽値で返します
  時間計算量 償却 O(α(N))
 
--size (uint32 x)->uint32
+-size (size_type x)->size_type
  x の含まれる集合に含まれる要素数を返します
  時間計算量 償却 O(α(N))
 
