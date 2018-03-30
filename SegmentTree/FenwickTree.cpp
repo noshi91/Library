@@ -69,7 +69,7 @@ FenwickTreeは可換モノイドの区間和を高速に計算するデータ構
 -typename CommutativeMonoid
  結合律 a + (b + c) = (a + b) + c
  交換律 a + b = b + a
- 単位元 ∃e; e + a = a
+ 単位元 ∃e [∀a [e + a = a]]
  以上の条件を満たす代数的構造 (可換モノイド)
 
 
