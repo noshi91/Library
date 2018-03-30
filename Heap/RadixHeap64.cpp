@@ -1,74 +1,79 @@
 #include <algorithm>
 #include <cassert>
-#include <climits>
 #include <cstdint>
+#include <limits>
 #include <utility>
 #include <vector>
 
-template<typename T>
-class RadixHeap64 {
-  using uint32 = std::uint_fast32_t;
-  using uint64 = std::uint_fast64_t;
-  using P = std::pair<uint64, T>;
-  uint32 bsr(const uint64 x) {
+template <typename T> class RadixHeap64 {
+public:
+  using key_type = std::uint_fast64_t;
+  using value_type = std::pair<key_type, T>;
+  using reference = value_type &;
+  using const_reference = const value_type &;
+  using size_type = std::uint_fast32_t;
+
+private:
+  static size_type bsr(const key_type x) {
     if (!x)
       return 0;
 #ifdef __GNUC__
     return 64 - __builtin_clzll(x);
 #else
-    uint32 t = 32;
-    for (uint32 i = 4; ~i; --i) {
-      if (x & ~(((uint64)1 << t) - 1)) {
-        t += (uint64)1 << i;
-      } else {
-        t -= (uint64)1 << i;
-      }
+    size_type t = 32;
+    for (size_type i = 4; ~i; --i) {
+      if (x & ~(((key_type)1 << t) - 1))
+        t += (size_type)1 << i;
+      else
+        t -= (size_type)1 << i;
     }
-    if (x & ~(((uint64)1 << t) - 1))
+    if (x & ~(((key_type)1 << t) - 1))
       ++t;
     return t;
 #endif
   }
-  std::vector<P> v[65];
-  uint64 last;
-  uint32 size;
+  std::vector<value_type> v[65];
+  key_type last;
+  size_type size_;
 
 public:
-  RadixHeap64() : last(0), size(0) {}
-  P pop() {
-    assert(size);
-    --size;
+  RadixHeap64() : last(0), size_(0) {}
+  value_type pop() {
+    assert(size_);
+    --size_;
     if (v[0].empty()) {
-      uint32 i = 1;
+      size_type i = 1;
       while (v[i].empty())
         ++i;
-      last = std::numeric_limits<uint64>::max();
-      for (P &d : v[i])
+      last = std::numeric_limits<key_type>::max();
+      for (const auto &d : v[i])
         last = std::min(last, d.first);
-      for (P &d : v[i])
+      for (const auto &d : v[i])
         v[bsr(last ^ d.first)].push_back(d);
       v[i].clear();
     }
-    P ret = v[0].back();
+    value_type ret = v[0].back();
     v[0].pop_back();
     return ret;
   }
-  void push(const P &x) {
+  void push(const_reference x) {
     assert(last <= x.first);
-    ++size;
+    ++size_;
     v[bsr(x.first ^ last)].push_back(x);
   }
-  bool empty() { return !size; }
+  bool empty() const { return !size_; }
+  size_type size() const { return size_; }
 };
 
 /*
 
-verify:https://beta.atcoder.jp/contests/abc035/submissions/2200291
+verify:https://beta.atcoder.jp/contests/abc035/submissions/2280136
 
 template<typename T>
 class RadixHeap64;
 
-RadixHeap64は64bit符号なし整数をキーとして、それと対応する値を管理する最小ヒープ(優先度付きキュー)です
+RadixHeap64は64bit符号なし整数をキーとして、
+それと対応する値を管理する最小ヒープ(優先度付きキュー)です
 追加される要素は直前に削除した値以上である必要があります
 空間計算量 O(N)
 
@@ -78,21 +83,42 @@ RadixHeap64は64bit符号なし整数をキーとして、それと対応する�
  キーに対応する値
 
 
+メンバ型
+-key_type
+ キーになる64bit符号なし整数型 (std::uint_fast64_t)
+
+-value_type
+ 要素の型 (std::pair<key_type, T>)
+
+-reference
+ 要素(value_type)への参照型 (value_type &)
+
+-const_reference
+ 要素(value_type)へのconst参照型 (const value_type &)
+
+-size_type
+ 要素数を表す符号なし整数型 (std::uint_fast32_t)
+
+
 メンバ関数
 -(constructor) ()
  空のヒープを構築します
  時間計算量 O(1)
 
--pop (void)->std::pair<uint64, T>
+-pop (void)->value_type
  先頭の要素を削除し、その値を返します
  時間計算量 償却 O(logD)
 
--push (std::pair<uint64, T> x)
+-push (const_reference x)
  x を要素としてヒープに追加します
  時間計算量 O(1)
 
 -empty ()->bool
  ヒープが空かどうかを返します
+ 時間計算量 O(1)
+
+-size ()->size_type
+ 要素数を取得します
  時間計算量 O(1)
 
 
