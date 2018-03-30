@@ -83,6 +83,9 @@ FenwickTreeは可換モノイドの区間和を高速に計算するデータ構
 -const_reference
  要素(value_type)へのconst参照型 (const value_type &)
 
+-size_type
+ 符号なし整数型 (std::uint_fast32_t)
+
 
 メンバ関数
 -(constructor) (size_type size, const_reference neutral = value_type(),
