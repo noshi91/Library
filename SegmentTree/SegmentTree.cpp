@@ -3,19 +3,21 @@
 #include <functional>
 #include <vector>
 
-template <typename Monoid> class SegmentTree {
+template <typename Monoid, class Container = std::vector<Monoid>>
+class SegmentTree {
 public:
-  using value_type = Monoid;
-  using reference = value_type &;
-  using const_reference = const value_type &;
-  using size_type = std::uint_fast32_t;
+  using value_type = typename Container::value_type;
+  using reference = typename Container::reference;
+  using const_reference = typename Container::const_reference;
+  using size_type = typename Container::size_type;
+  using container_type = Container;
 
 private:
   using F = std::function<value_type(const_reference, const_reference)>;
   const F f;
   const value_type neutral_;
   const size_type size_;
-  std::vector<value_type> tree;
+  container_type tree;
   static size_type getsize(const size_type size) {
     size_type ret = 1;
     while (ret < size)
@@ -28,27 +30,19 @@ private:
 
 public:
   SegmentTree(const size_type size, const_reference neutral = value_type(),
-              const F &f = std::plus<value_type>())
-      : f(f), neutral_(neutral), size_(getsize(size)),
+              const F &addition = std::plus<value_type>())
+      : f(addition), neutral_(neutral), size_(getsize(size)),
         tree(size_ << 1, neutral_) {}
-  SegmentTree(const std::vector<value_type> &arr,
-              const_reference neutral = value_type(),
-              const F &f = std::plus<value_type>())
-      : f(f), neutral_(neutral), size_(getsize(arr.size())),
-        tree(size_ << 1, neutral_) {
-    for (size_type i = 0; i < arr.size(); ++i)
-      tree[size_ + i] = arr[i];
-    for (size_type i = size_; --i;)
-      recalc(i);
-  }
-  void update(size_type index, const std::function<void(reference)> &g) {
+  void update(size_type index,
+              const std::function<value_type(const_reference)> &g) {
     assert(index < size_);
-    g(tree[index += size_]);
+    index += size_;
+    tree[index] = g(tree[index]);
     while (index >>= 1)
       recalc(index);
   }
-  void update(size_type index, const_reference data) {
-    update(index, [&data](reference e) { e = data; });
+  void update(const size_type index, const_reference data) {
+    update(index, [&data](const_reference e) { return data; });
   }
   value_type range(size_type begin, size_type end) const {
     assert(begin <= end);
@@ -77,13 +71,14 @@ public:
     assert(index < size_);
     return tree[index + size_];
   }
+  size_type size() const { return size_; }
 };
 
 /*
 
-verify:https://beta.atcoder.jp/contests/arc033/submissions/2279677
+verify:https://beta.atcoder.jp/contests/arc033/submissions/2291069
 
-template<typename Monoid>
+template<typename Monoid, class Container = std::vector<Monoid>>
 class SegmentTree;
 
 SegmentTreeはモノイドの区間和を高速に計算するデータ構造です
@@ -93,45 +88,45 @@ SegmentTreeはモノイドの区間和を高速に計算するデータ構造で
 テンプレートパラメータ
 -typename Monoid
  結合律 a + (b + c) = (a + b) + c
- 単位元 ∃e [∀a [e + a = a]]
+ 単位元 ∃e [∀a [e + a = a + e = a]]
  以上の条件を満たす代数的構造 (モノイド)
+
+-class Container
+ 内部実装のコンテナクラス
+ デフォルトでは std::vector<Monoid>
 
 
 メンバ型
+-container_type
+ コンテナの型 (Container)
+
 -value_type
- 要素の型 (Monoid)
+ 要素の型 (Container::value_type)
 
 -reference
- 要素(value_type)への参照型 (value_type &)
+ 要素(value_type)への参照型 (Container::reference)
 
 -const_reference
- 要素(value_type)へのconst参照型 (const value_type &)
+ 要素(value_type)へのconst参照型 (Container::const_reference)
 
 -size_type
- 符号なし整数型 (std::uint_fast32_t)
+ 符号なし整数型 (Container::size_type)
 
 
 メンバ関数
 -(constructor) (size_type size, const_reference neutral = value_type(),
                 std::function<value_type(const_reference,
-                const_reference)> f = std::plus<value_type>())
- 大きさを size、単位元を neutral、演算を f として SegmentTree を構築します
+                const_reference)> addition = std::plus<value_type>())
+ 要素数 size、単位元を neutral、演算を addition として SegmentTree を構築します
  各要素は単位元で初期化されます
- 時間計算量 O(N)
-
--(constructor) (std::vector<value_type> arr,
-                const_reference neutral = value_type(),
-                std::function<value_type(const_reference,const_reference)>
-                f = std::plus<value_type>())
- arr を要素とし、単位元を neutral、演算を f として SegmentTree を構築します
  時間計算量 O(N)
 
 -update (size_type index, const_reference data)
  index で指定した要素を data に変更します
  時間計算量 O(logN)
 
--update (size_type index, std::function<void(reference)> g)
- index で指定した要素に g を適用します
+-update (size_type index, std::function<value_type(const_reference)> g)
+ index で指定した要素を g を適用した値で更新します
  時間計算量 O(logN)
 
 -range (size_type begin, size_type end)->value_type
@@ -150,6 +145,9 @@ SegmentTreeはモノイドの区間和を高速に計算するデータ構造で
  index で指定した要素にアクセスします
  時間計算量 O(1)
 
+-size ()->size_type
+ 要素数を返します　(コンストラクタで与えた size より大きい可能性があります)
+ 時間計算量 O(1)
 
 ※N:全体の要素数
 ※f() の時間計算量を O(1) と仮定
