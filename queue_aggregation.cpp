@@ -33,7 +33,7 @@ public:
 
   T fold_all() const { return Monoid::operate(fold_front(), fold_back); }
 
-  void push(const T &x) {
+  void push(const T x) {
     fold_back = Monoid::operate(fold_back, x);
     back_stack.push(x);
   }
