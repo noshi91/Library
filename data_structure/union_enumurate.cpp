@@ -9,6 +9,7 @@ class union_enumurate {
   std::vector<size_t> next;
 
 public:
+  union_enumurate() = default;
   union_enumurate(const size_t size) : next(size) {
     std::iota(next.begin(), next.end(), static_cast<size_t>(0));
   }
