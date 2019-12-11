@@ -21,10 +21,10 @@ template <class T> class persistent_forward_list {
 
   node_ptr root;
 
-  Self(const node_ptr root) : root(root) {}
+  persistent_forward_list(const node_ptr root) : root(root) {}
 
 public:
-  Self() = default;
+  persistent_forward_list() = default;
 
   bool empty() const { return !root; }
 

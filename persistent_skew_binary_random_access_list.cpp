@@ -85,10 +85,11 @@ class persistent_skew_binary_random_access_list {
 
   digit_ptr root;
 
-  Self(const digit_ptr root) : root(root) {}
+  persistent_skew_binary_random_access_list(const digit_ptr root)
+      : root(root) {}
 
 public:
-  Self() = default;
+  persistent_skew_binary_random_access_list() = default;
 
   bool empty() const { return !root; }
 
