@@ -25,7 +25,12 @@ public:
 
   time_type now() const { return list.cend(); }
 
-  T top() const { return front_itr->value; }
+  bool empty() const { return front_itr == list.end(); }
+
+  T front() const {
+    assert(!empty());
+    return front_itr->value;
+  }
 
   time_type insert_push(const time_type time, const T x) {
     const auto itr = list.insert(time, node_type(x));
@@ -47,7 +52,7 @@ public:
     list.erase(time);
   }
   void insert_pop() {
-    assert(front_itr != list.end());
+    assert(!empty());
     front_itr->in_queue = false;
     ++front_itr;
   }
