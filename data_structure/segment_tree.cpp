@@ -52,8 +52,7 @@ public:
     }
     return Monoid::operate(fold_l, fold_r);
   }
-  template <class F>
-  size_t search(size_t first, size_t last, const F f) const {
+  template <class F> size_t search(size_t first, size_t last, const F f) const {
     assert(first <= last);
     assert(first <= size());
     assert(last <= size());
@@ -65,9 +64,8 @@ public:
     while (first != last) {
       if (first % 2 != 0) {
         const T temp = Monoid::operate(fold_l, tree[first]);
-        if (!f(temp)) {
+        if (!f(temp))
           return search_subtree(first, f, fold_l);
-        }
         fold_l = temp;
         first += 1;
       }
@@ -81,19 +79,18 @@ public:
       if (last % 2 != 0) {
         last -= 1;
         const T temp = Monoid::operate(fold_l, tree[last]);
-        if (!f(temp)) {
+        if (!f(temp))
           return search_subtree(last, f, fold_l);
-        }
         fold_l = temp;
       }
     }
     return last_cp - size();
   }
 
-  template <class F> void update(size_t index, const F f) {
+  void update(size_t index, const T x) {
     assert(index < size());
     index += size();
-    tree[index] = f(tree[index]);
+    tree[index] = x;
     while (index != 1) {
       index /= 2;
       tree[index] = Monoid::operate(tree[index * 2], tree[index * 2 + 1]);
