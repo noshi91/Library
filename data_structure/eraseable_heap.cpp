@@ -15,7 +15,8 @@ private:
   Heap<W> erased;
 
   void normalize() {
-    while (!erased.empty() && equivalent(base.top(), erased.top())) {
+    while (!base.empty() && !erased.empty() &&
+           equivalent(base.top(), erased.top())) {
       base.pop();
       erased.pop();
     }
