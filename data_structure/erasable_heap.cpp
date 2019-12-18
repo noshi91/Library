@@ -1,6 +1,6 @@
 #include <cassert>
 
-template <class W, template <class> class Heap> class eraseable_heap {
+template <class W, template <class> class Heap> class erasable_heap {
   using T = typename W::value_type;
 
 public:
@@ -23,7 +23,7 @@ private:
   }
 
 public:
-  eraseable_heap() = default;
+  erasable_heap() = default;
 
   bool empty() const { return base.empty(); }
 
