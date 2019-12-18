@@ -31,17 +31,17 @@ public:
 
   bool empty() const { return front_stack.empty() && back_stack.empty(); }
 
-  T fold_all() const { return Monoid::operate(fold_front(), fold_back); }
+  T fold_all() const { return Monoid::operation(fold_front(), fold_back); }
 
   void push(const T x) {
-    fold_back = Monoid::operate(fold_back, x);
+    fold_back = Monoid::operation(fold_back, x);
     back_stack.push(x);
   }
   void pop() {
     assert(!empty());
     if (front_stack.empty()) {
       while (!back_stack.empty()) {
-        front_stack.push(Monoid::operate(back_stack.top(), fold_front()));
+        front_stack.push(Monoid::operation(back_stack.top(), fold_front()));
         back_stack.pop();
       }
       fold_back = Monoid::identity;

@@ -13,7 +13,7 @@ private:
   template <class F>
   size_t search_subtree(size_t index, const F f, T fold_l) const {
     while (index < size()) {
-      const T temp = Monoid::operate(fold_l, tree[index * 2]);
+      const T temp = Monoid::operation(fold_l, tree[index * 2]);
       if (!f(temp)) {
         index = index * 2;
       } else {
@@ -40,17 +40,17 @@ public:
     T fold_r = Monoid::identity;
     while (first != last) {
       if (first % 2 != 0) {
-        fold_l = Monoid::operate(fold_l, tree[first]);
+        fold_l = Monoid::operation(fold_l, tree[first]);
         first += 1;
       }
       first /= 2;
       if (last % 2 != 0) {
         last -= 1;
-        fold_r = Monoid::operate(tree[last], fold_r);
+        fold_r = Monoid::operation(tree[last], fold_r);
       }
       last /= 2;
     }
-    return Monoid::operate(fold_l, fold_r);
+    return Monoid::operation(fold_l, fold_r);
   }
   template <class F> size_t search(size_t first, size_t last, const F f) const {
     assert(first <= last);
@@ -63,7 +63,7 @@ public:
     T fold_l = Monoid::identity;
     while (first != last) {
       if (first % 2 != 0) {
-        const T temp = Monoid::operate(fold_l, tree[first]);
+        const T temp = Monoid::operation(fold_l, tree[first]);
         if (!f(temp))
           return search_subtree(first, f, fold_l);
         fold_l = temp;
@@ -78,7 +78,7 @@ public:
       last = last_cp >> shift;
       if (last % 2 != 0) {
         last -= 1;
-        const T temp = Monoid::operate(fold_l, tree[last]);
+        const T temp = Monoid::operation(fold_l, tree[last]);
         if (!f(temp))
           return search_subtree(last, f, fold_l);
         fold_l = temp;
@@ -93,7 +93,7 @@ public:
     tree[index] = x;
     while (index != 1) {
       index /= 2;
-      tree[index] = Monoid::operate(tree[index * 2], tree[index * 2 + 1]);
+      tree[index] = Monoid::operation(tree[index * 2], tree[index * 2 + 1]);
     }
   }
 };
