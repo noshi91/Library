@@ -32,7 +32,6 @@ public:
 
   T fold(size_t first, size_t last) const {
     assert(first <= last);
-    assert(first <= size());
     assert(last <= size());
     first += size();
     last += size();
@@ -54,7 +53,6 @@ public:
   }
   template <class F> size_t search(size_t first, size_t last, const F f) const {
     assert(first <= last);
-    assert(first <= size());
     assert(last <= size());
     first += size();
     last += size();
