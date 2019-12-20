@@ -3,18 +3,18 @@
 #include <utility>
 #include <vector>
 
-class union_enumurate {
+class union_enumerate {
   using size_t = std::size_t;
 
   std::vector<size_t> next;
 
 public:
-  union_enumurate() = default;
-  union_enumurate(const size_t size) : next(size) {
+  union_enumerate() = default;
+  union_enumerate(const size_t size) : next(size) {
     std::iota(next.begin(), next.end(), static_cast<size_t>(0));
   }
 
-  std::vector<size_t> enumurate(const size_t x) const {
+  std::vector<size_t> enumerate(const size_t x) const {
     std::vector<size_t> ret;
     size_t y = x;
     do {
