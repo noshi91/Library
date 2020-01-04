@@ -55,7 +55,7 @@ layout: default
 * :warning: <a href="library/data_structure/potentialized_union_find.cpp.html">data_structure/potentialized_union_find.cpp</a>
 * :heavy_check_mark: <a href="library/data_structure/queue_aggregation.cpp.html">data_structure/queue_aggregation.cpp</a>
 * :warning: <a href="library/data_structure/randomized_queue.cpp.html">data_structure/randomized_queue.cpp</a>
-* :warning: <a href="library/data_structure/segment_tree.cpp.html">data_structure/segment_tree.cpp</a>
+* :heavy_check_mark: <a href="library/data_structure/segment_tree.cpp.html">data_structure/segment_tree.cpp</a>
 * :warning: <a href="library/data_structure/union_enumerate.cpp.html">data_structure/union_enumerate.cpp</a>
 * :heavy_check_mark: <a href="library/data_structure/union_find.cpp.html">data_structure/union_find.cpp</a>
 * :warning: <a href="library/data_structure/wavelet_matrix.cpp.html">data_structure/wavelet_matrix.cpp</a>
@@ -104,6 +104,7 @@ layout: default
 ## Verify Files
 
 * :heavy_check_mark: <a href="verify/data_structure/queue_aggregation.yosupo.test.cpp.html">data_structure/queue_aggregation.yosupo.test.cpp</a>
+* :heavy_check_mark: <a href="verify/data_structure/segment_tree.yosupo.test.cpp.html">data_structure/segment_tree.yosupo.test.cpp</a>
 * :heavy_check_mark: <a href="verify/data_structure/union_find.yosupo.test.cpp.html">data_structure/union_find.yosupo.test.cpp</a>
 
 

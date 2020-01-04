@@ -39,6 +39,7 @@ layout: default
 ## Verified with
 
 * :heavy_check_mark: <a href="../../verify/data_structure/queue_aggregation.yosupo.test.cpp.html">data_structure/queue_aggregation.yosupo.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/data_structure/segment_tree.yosupo.test.cpp.html">data_structure/segment_tree.yosupo.test.cpp</a>
 
 
 ## Code
