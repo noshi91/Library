@@ -53,7 +53,7 @@ layout: default
 * :warning: <a href="library/data_structure/persistent_forward_list.cpp.html">data_structure/persistent_forward_list.cpp</a>
 * :warning: <a href="library/data_structure/persistent_skew_binary_random_access_list.cpp.html">data_structure/persistent_skew_binary_random_access_list.cpp</a>
 * :warning: <a href="library/data_structure/potentialized_union_find.cpp.html">data_structure/potentialized_union_find.cpp</a>
-* :warning: <a href="library/data_structure/queue_aggregation.cpp.html">data_structure/queue_aggregation.cpp</a>
+* :heavy_check_mark: <a href="library/data_structure/queue_aggregation.cpp.html">data_structure/queue_aggregation.cpp</a>
 * :warning: <a href="library/data_structure/randomized_queue.cpp.html">data_structure/randomized_queue.cpp</a>
 * :warning: <a href="library/data_structure/segment_tree.cpp.html">data_structure/segment_tree.cpp</a>
 * :warning: <a href="library/data_structure/union_enumerate.cpp.html">data_structure/union_enumerate.cpp</a>
@@ -93,8 +93,17 @@ layout: default
 * :warning: <a href="library/gomi/Heap/RadixHeap64.cpp.html">gomi/Heap/RadixHeap64.cpp</a>
 
 
+<div id="795f3202b17cb6bc3d4b771d8c6c9eaf"></div>
+
+### other
+
+* :heavy_check_mark: <a href="library/other/affine.cpp.html">other/affine.cpp</a>
+* :heavy_check_mark: <a href="library/other/modint.cpp.html">other/modint.cpp</a>
+
+
 ## Verify Files
 
+* :heavy_check_mark: <a href="verify/data_structure/queue_aggregation.yosupo.test.cpp.html">data_structure/queue_aggregation.yosupo.test.cpp</a>
 * :heavy_check_mark: <a href="verify/data_structure/union_find.yosupo.test.cpp.html">data_structure/union_find.yosupo.test.cpp</a>
 
 
