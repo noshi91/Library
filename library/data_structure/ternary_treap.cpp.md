@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/ternary_treap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-01-07 00:17:18+09:00
+    - Last commit date: 2020-01-07 00:19:08+09:00
 
 
 
@@ -41,6 +41,10 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
+/*
+reference: https://arxiv.org/abs/1606.04042
+*/
+
 #include <algorithm>
 #include <cstddef>
 #include <iterator>
@@ -203,6 +207,10 @@ public:
 {% raw %}
 ```cpp
 #line 1 "data_structure/ternary_treap.cpp"
+/*
+reference: https://arxiv.org/abs/1606.04042
+*/
+
 #include <algorithm>
 #include <cstddef>
 #include <iterator>
