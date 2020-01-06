@@ -1,3 +1,7 @@
+/*
+reference: https://arxiv.org/abs/1606.04042
+*/
+
 #include <algorithm>
 #include <cstddef>
 #include <iterator>
