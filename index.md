@@ -56,6 +56,7 @@ layout: default
 * :heavy_check_mark: <a href="library/data_structure/queue_aggregation.cpp.html">data_structure/queue_aggregation.cpp</a>
 * :warning: <a href="library/data_structure/randomized_queue.cpp.html">data_structure/randomized_queue.cpp</a>
 * :heavy_check_mark: <a href="library/data_structure/segment_tree.cpp.html">data_structure/segment_tree.cpp</a>
+* :warning: <a href="library/data_structure/ternary_treap.cpp.html">data_structure/ternary_treap.cpp</a>
 * :warning: <a href="library/data_structure/union_enumerate.cpp.html">data_structure/union_enumerate.cpp</a>
 * :heavy_check_mark: <a href="library/data_structure/union_find.cpp.html">data_structure/union_find.cpp</a>
 * :warning: <a href="library/data_structure/wavelet_matrix.cpp.html">data_structure/wavelet_matrix.cpp</a>
