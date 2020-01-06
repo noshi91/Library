@@ -1,3 +1,7 @@
+/*
+reference: https://min-25.hatenablog.com/entry/2017/08/20/171214
+*/
+
 #include <cassert>
 #include <cstdint>
 #include <limits>
