@@ -1,6 +1,5 @@
 #include <cassert>
 #include <cstddef>
-#include <stdexcept>
 #include <vector>
 
 class range_mode_query {
