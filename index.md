@@ -55,6 +55,7 @@ layout: default
 * :warning: <a href="library/data_structure/potentialized_union_find.cpp.html">data_structure/potentialized_union_find.cpp</a>
 * :heavy_check_mark: <a href="library/data_structure/queue_aggregation.cpp.html">data_structure/queue_aggregation.cpp</a>
 * :warning: <a href="library/data_structure/randomized_queue.cpp.html">data_structure/randomized_queue.cpp</a>
+* :warning: <a href="library/data_structure/range_mode_query.cpp.html">data_structure/range_mode_query.cpp</a>
 * :heavy_check_mark: <a href="library/data_structure/segment_tree.cpp.html">data_structure/segment_tree.cpp</a>
 * :warning: <a href="library/data_structure/ternary_treap.cpp.html">data_structure/ternary_treap.cpp</a>
 * :warning: <a href="library/data_structure/union_enumerate.cpp.html">data_structure/union_enumerate.cpp</a>
