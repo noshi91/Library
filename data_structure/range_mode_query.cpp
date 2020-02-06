@@ -1,3 +1,7 @@
+/*
+reference: https://arxiv.org/abs/1101.4068
+*/
+
 #include <cassert>
 #include <cstddef>
 #include <vector>
