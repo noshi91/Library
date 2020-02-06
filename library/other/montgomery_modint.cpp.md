@@ -214,6 +214,7 @@ public:
 typename montgomery_modint::u32 montgomery_modint::mod;
 typename montgomery_modint::u32 montgomery_modint::inv;
 typename montgomery_modint::u32 montgomery_modint::r2;
+
 ```
 {% endraw %}
 

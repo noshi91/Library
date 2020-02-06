@@ -376,6 +376,7 @@ public:
 template <class Key>
 constexpr typename wavelet_matrix<Key>::size_t
     wavelet_matrix<Key>::bit_vector::wordsize;
+
 ```
 {% endraw %}
 

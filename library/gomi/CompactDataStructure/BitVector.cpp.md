@@ -276,6 +276,7 @@ public:
     return (left << 5) + select32(bit ? b[left] : ~b[left], k - r[left]);
   }
 };
+
 ```
 {% endraw %}
 

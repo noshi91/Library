@@ -188,7 +188,8 @@ public:
       tree[index] = Monoid::operation(tree[index * 2], tree[index * 2 + 1]);
     }
   }
-};#line 1 "other/affine.cpp"
+};
+#line 1 "other/affine.cpp"
 template <class T> class affine {
 public:
   T a;
@@ -214,7 +215,8 @@ public:
   }
   static constexpr value_type identity{};
 };
-template <class T> constexpr affine<T> affine_composite_monoid<T>::identity;#line 1 "other/modint.cpp"
+template <class T> constexpr affine<T> affine_composite_monoid<T>::identity;
+#line 1 "other/modint.cpp"
 #include <cstdint>
 
 template <std::uint_fast64_t Modulus> class modint {
@@ -283,7 +285,8 @@ public:
   }
 };
 template <std::uint_fast64_t Modulus>
-constexpr typename modint<Modulus>::u64 modint<Modulus>::mod;#line 6 "data_structure/segment_tree.yosupo.test.cpp"
+constexpr typename modint<Modulus>::u64 modint<Modulus>::mod;
+#line 6 "data_structure/segment_tree.yosupo.test.cpp"
 
 #include <iostream>
 
@@ -313,6 +316,7 @@ int main() {
     }
   }
 }
+
 ```
 {% endraw %}
 

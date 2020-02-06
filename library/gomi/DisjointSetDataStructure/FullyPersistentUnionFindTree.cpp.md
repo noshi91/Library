@@ -310,6 +310,7 @@ FullyPersistentUnionFindTreeは素集合を管理する全永続的データ構�
 　初期状態は 3 です( N=10^5 程度を想定しています)
 
 */
+
 ```
 {% endraw %}
 

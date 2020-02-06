@@ -142,7 +142,8 @@ public:
     }
     front_stack.pop();
   }
-};#line 1 "other/affine.cpp"
+};
+#line 1 "other/affine.cpp"
 template <class T> class affine {
 public:
   T a;
@@ -168,7 +169,8 @@ public:
   }
   static constexpr value_type identity{};
 };
-template <class T> constexpr affine<T> affine_composite_monoid<T>::identity;#line 1 "other/modint.cpp"
+template <class T> constexpr affine<T> affine_composite_monoid<T>::identity;
+#line 1 "other/modint.cpp"
 #include <cstdint>
 
 template <std::uint_fast64_t Modulus> class modint {
@@ -237,7 +239,8 @@ public:
   }
 };
 template <std::uint_fast64_t Modulus>
-constexpr typename modint<Modulus>::u64 modint<Modulus>::mod;#line 6 "data_structure/queue_aggregation.yosupo.test.cpp"
+constexpr typename modint<Modulus>::u64 modint<Modulus>::mod;
+#line 6 "data_structure/queue_aggregation.yosupo.test.cpp"
 
 #include <iostream>
 
@@ -267,6 +270,7 @@ int main() {
     }
   }
 }
+
 ```
 {% endraw %}
 

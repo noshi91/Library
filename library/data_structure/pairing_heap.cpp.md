@@ -182,6 +182,7 @@ public:
     return pairing_heap(merge(std::move(x.root), std::move(y.root)));
   }
 };
+
 ```
 {% endraw %}
 

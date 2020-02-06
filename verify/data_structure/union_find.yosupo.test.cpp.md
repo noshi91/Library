@@ -130,7 +130,8 @@ public:
       tree[y].parent = x;
     }
   }
-};#line 4 "data_structure/union_find.yosupo.test.cpp"
+};
+#line 4 "data_structure/union_find.yosupo.test.cpp"
 using namespace std;
 
 int main() {

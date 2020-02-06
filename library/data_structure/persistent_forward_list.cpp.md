@@ -130,6 +130,7 @@ public:
     return Self(root->next);
   }
 };
+
 ```
 {% endraw %}
 

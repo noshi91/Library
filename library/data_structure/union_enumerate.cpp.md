@@ -104,6 +104,7 @@ public:
 
   void unite(const size_t x, const size_t y) { std::swap(next[x], next[y]); }
 };
+
 ```
 {% endraw %}
 

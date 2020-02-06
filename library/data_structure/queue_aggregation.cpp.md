@@ -155,6 +155,7 @@ public:
     front_stack.pop();
   }
 };
+
 ```
 {% endraw %}
 

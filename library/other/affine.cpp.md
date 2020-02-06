@@ -106,6 +106,7 @@ public:
   static constexpr value_type identity{};
 };
 template <class T> constexpr affine<T> affine_composite_monoid<T>::identity;
+
 ```
 {% endraw %}
 

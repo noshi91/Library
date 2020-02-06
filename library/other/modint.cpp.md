@@ -192,6 +192,7 @@ public:
 };
 template <std::uint_fast64_t Modulus>
 constexpr typename modint<Modulus>::u64 modint<Modulus>::mod;
+
 ```
 {% endraw %}
 

@@ -144,6 +144,7 @@ public:
     normalize();
   }
 };
+
 ```
 {% endraw %}
 

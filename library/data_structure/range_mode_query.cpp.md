@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/range_mode_query.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-01-14 18:25:17+09:00
+    - Last commit date: 2020-02-06 19:39:55+09:00
 
 
 
@@ -41,6 +41,10 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
+/*
+reference: https://arxiv.org/abs/1101.4068
+*/
+
 #include <cassert>
 #include <cstddef>
 #include <vector>
@@ -139,6 +143,10 @@ public:
 {% raw %}
 ```cpp
 #line 1 "data_structure/range_mode_query.cpp"
+/*
+reference: https://arxiv.org/abs/1101.4068
+*/
+
 #include <cassert>
 #include <cstddef>
 #include <vector>
@@ -230,6 +238,7 @@ public:
     return cur.mode;
   }
 };
+
 ```
 {% endraw %}
 
