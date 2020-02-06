@@ -48,6 +48,7 @@ layout: default
 * :warning: <a href="library/data_structure/dual_segment_tree.cpp.html">data_structure/dual_segment_tree.cpp</a>
 * :warning: <a href="library/data_structure/erasable_heap.cpp.html">data_structure/erasable_heap.cpp</a>
 * :heavy_check_mark: <a href="library/data_structure/fenwick_tree.cpp.html">data_structure/fenwick_tree.cpp</a>
+* :heavy_check_mark: <a href="library/data_structure/incremental_bridge_connected_components.cpp.html">data_structure/incremental_bridge_connected_components.cpp</a>
 * :warning: <a href="library/data_structure/pairing_heap.cpp.html">data_structure/pairing_heap.cpp</a>
 * :warning: <a href="library/data_structure/partially_persistent_union_find.cpp.html">data_structure/partially_persistent_union_find.cpp</a>
 * :warning: <a href="library/data_structure/partially_retroactive_queue.cpp.html">data_structure/partially_retroactive_queue.cpp</a>
@@ -109,6 +110,7 @@ layout: default
 ## Verify Files
 
 * :heavy_check_mark: <a href="verify/data_structure/fenwick_tree.yosupo.test.cpp.html">data_structure/fenwick_tree.yosupo.test.cpp</a>
+* :heavy_check_mark: <a href="verify/data_structure/incremental_bridge_connected_components.aoj.test.cpp.html">data_structure/incremental_bridge_connected_components.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="verify/data_structure/queue_aggregation.yosupo.test.cpp.html">data_structure/queue_aggregation.yosupo.test.cpp</a>
 * :heavy_check_mark: <a href="verify/data_structure/segment_tree.yosupo.test.cpp.html">data_structure/segment_tree.yosupo.test.cpp</a>
 * :heavy_check_mark: <a href="verify/data_structure/union_find.yosupo.test.cpp.html">data_structure/union_find.yosupo.test.cpp</a>
