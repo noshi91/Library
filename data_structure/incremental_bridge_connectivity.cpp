@@ -6,7 +6,7 @@
 #include <utility>
 #include <vector>
 
-class incremental_bridge_connected_components {
+class incremental_bridge_connectivity {
   using size_t = std::size_t;
 
   union_find cc;
@@ -52,9 +52,15 @@ class incremental_bridge_connected_components {
   }
 
 public:
-  incremental_bridge_connected_components() = default;
-  explicit incremental_bridge_connected_components(const size_t n)
+  incremental_bridge_connectivity() = default;
+  explicit incremental_bridge_connectivity(const size_t n)
       : cc(n), bcc(n), bbf(n, n) {}
+
+  bool bridge_connected(const size_t u, const size_t v) {
+    assert(u < size());
+    assert(v < size());
+    return bcc.same(u, v);
+  }
 
   void insert_edge(size_t u, size_t v) {
     assert(u < size());
@@ -71,9 +77,5 @@ public:
       link(u, v);
       cc.unite(u, v);
     }
-  }
-  size_t find_block(const size_t u) {
-    assert(u < size());
-    return bcc.find(u);
   }
 };
