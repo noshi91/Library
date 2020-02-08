@@ -3,8 +3,9 @@
 #include <utility>
 
 template <class W> class pairing_heap {
-public:
   using T = typename W::value_type;
+
+public:
   using value_type = T;
 
 private:
@@ -16,7 +17,7 @@ private:
     node_ptr head;
     node_ptr next;
 
-    node_type(const T value) : value(value) {}
+    node_type(const T value) : value(value), head(), next() {}
   };
 
   static node_ptr merge(node_ptr x, node_ptr y) {
@@ -47,7 +48,6 @@ public:
   pairing_heap() = default;
 
   bool empty() const { return !root; }
-
   T top() const {
     assert(!empty());
     return root->value;
