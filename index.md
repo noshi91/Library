@@ -92,7 +92,6 @@ layout: default
 
 ### gomi/Heap
 
-* :warning: <a href="library/gomi/Heap/PairingHeap_decrease.cpp.html">gomi/Heap/PairingHeap_decrease.cpp</a>
 * :warning: <a href="library/gomi/Heap/RadixHeap32.cpp.html">gomi/Heap/RadixHeap32.cpp</a>
 * :warning: <a href="library/gomi/Heap/RadixHeap64.cpp.html">gomi/Heap/RadixHeap64.cpp</a>
 
