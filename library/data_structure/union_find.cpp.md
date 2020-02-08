@@ -38,12 +38,12 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="incremental_bridge_connected_components.cpp.html">data_structure/incremental_bridge_connected_components.cpp</a>
+* :heavy_check_mark: <a href="incremental_bridge_connectivity.cpp.html">data_structure/incremental_bridge_connectivity.cpp</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/data_structure/incremental_bridge_connected_components.aoj.test.cpp.html">data_structure/incremental_bridge_connected_components.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/data_structure/incremental_bridge_connectivity.aoj.test.cpp.html">data_structure/incremental_bridge_connectivity.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/data_structure/union_find.yosupo.test.cpp.html">data_structure/union_find.yosupo.test.cpp</a>
 
 
