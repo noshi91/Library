@@ -25,12 +25,12 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: data_structure/incremental_bridge_connectivity.aoj.test.cpp
+# :heavy_check_mark: test/incremental_bridge_connectivity.aoj.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* <a href="{{ site.github.repository_url }}/blob/master/data_structure/incremental_bridge_connectivity.aoj.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-08 16:19:36+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/test/incremental_bridge_connectivity.aoj.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-02-08 22:56:08+09:00
 
 
 
@@ -79,9 +79,14 @@ int main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "data_structure/incremental_bridge_connectivity.aoj.test.cpp"
+#line 1 "test/incremental_bridge_connectivity.aoj.test.cpp"
 #define PROBLEM                                                                \
   "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B&lang=jp"
+
+#line 1 "data_structure/incremental_bridge_connectivity.cpp"
+/*
+reference: https://link.springer.com/article/10.1007/BF01758773
+*/
 
 #line 1 "data_structure/union_find.cpp"
 #include <cassert>
@@ -140,7 +145,7 @@ public:
     }
   }
 };
-#line 2 "data_structure/incremental_bridge_connectivity.cpp"
+#line 6 "data_structure/incremental_bridge_connectivity.cpp"
 
 #include <cassert>
 #include <cstddef>
@@ -221,7 +226,7 @@ public:
     }
   }
 };
-#line 5 "data_structure/incremental_bridge_connectivity.aoj.test.cpp"
+#line 5 "test/incremental_bridge_connectivity.aoj.test.cpp"
 
 #include <algorithm>
 #include <iostream>

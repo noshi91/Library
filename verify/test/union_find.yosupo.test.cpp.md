@@ -25,12 +25,12 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: data_structure/union_find.yosupo.test.cpp
+# :heavy_check_mark: test/union_find.yosupo.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* <a href="{{ site.github.repository_url }}/blob/master/data_structure/union_find.yosupo.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-18 23:20:53+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/test/union_find.yosupo.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-02-08 22:56:08+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/unionfind">https://judge.yosupo.jp/problem/unionfind</a>
@@ -71,7 +71,7 @@ int main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "data_structure/union_find.yosupo.test.cpp"
+#line 1 "test/union_find.yosupo.test.cpp"
 #define PROBLEM "https://judge.yosupo.jp/problem/unionfind"
 #include <iostream>
 #line 1 "data_structure/union_find.cpp"
@@ -131,7 +131,7 @@ public:
     }
   }
 };
-#line 4 "data_structure/union_find.yosupo.test.cpp"
+#line 4 "test/union_find.yosupo.test.cpp"
 using namespace std;
 
 int main() {

@@ -43,8 +43,8 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/data_structure/incremental_bridge_connectivity.aoj.test.cpp.html">data_structure/incremental_bridge_connectivity.aoj.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/data_structure/union_find.yosupo.test.cpp.html">data_structure/union_find.yosupo.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/incremental_bridge_connectivity.aoj.test.cpp.html">test/incremental_bridge_connectivity.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/union_find.yosupo.test.cpp.html">test/union_find.yosupo.test.cpp</a>
 
 
 ## Code

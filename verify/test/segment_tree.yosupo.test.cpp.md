@@ -25,12 +25,12 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: data_structure/segment_tree.yosupo.test.cpp
+# :heavy_check_mark: test/segment_tree.yosupo.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* <a href="{{ site.github.repository_url }}/blob/master/data_structure/segment_tree.yosupo.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-01-04 13:40:16+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/test/segment_tree.yosupo.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-02-08 22:56:08+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_set_range_composite">https://judge.yosupo.jp/problem/point_set_range_composite</a>
@@ -88,7 +88,7 @@ int main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "data_structure/segment_tree.yosupo.test.cpp"
+#line 1 "test/segment_tree.yosupo.test.cpp"
 #define PROBLEM "https://judge.yosupo.jp/problem/point_set_range_composite"
 
 #line 1 "data_structure/segment_tree.cpp"
@@ -286,7 +286,7 @@ public:
 };
 template <std::uint_fast64_t Modulus>
 constexpr typename modint<Modulus>::u64 modint<Modulus>::mod;
-#line 6 "data_structure/segment_tree.yosupo.test.cpp"
+#line 6 "test/segment_tree.yosupo.test.cpp"
 
 #include <iostream>
 

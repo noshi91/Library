@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :warning: data_structure/pairing_heap.cpp
+# :heavy_check_mark: data_structure/pairing_heap.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/pairing_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-17 00:25:31+09:00
+    - Last commit date: 2020-02-08 22:56:08+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../verify/test/pairing_heap.aoj.test.cpp.html">test/pairing_heap.aoj.test.cpp</a>
 
 
 ## Code
@@ -46,8 +51,9 @@ layout: default
 #include <utility>
 
 template <class W> class pairing_heap {
-public:
   using T = typename W::value_type;
+
+public:
   using value_type = T;
 
 private:
@@ -59,7 +65,7 @@ private:
     node_ptr head;
     node_ptr next;
 
-    node_type(const T value) : value(value) {}
+    node_type(const T value) : value(value), head(), next() {}
   };
 
   static node_ptr merge(node_ptr x, node_ptr y) {
@@ -90,7 +96,6 @@ public:
   pairing_heap() = default;
 
   bool empty() const { return !root; }
-
   T top() const {
     assert(!empty());
     return root->value;
@@ -120,8 +125,9 @@ public:
 #include <utility>
 
 template <class W> class pairing_heap {
-public:
   using T = typename W::value_type;
+
+public:
   using value_type = T;
 
 private:
@@ -133,7 +139,7 @@ private:
     node_ptr head;
     node_ptr next;
 
-    node_type(const T value) : value(value) {}
+    node_type(const T value) : value(value), head(), next() {}
   };
 
   static node_ptr merge(node_ptr x, node_ptr y) {
@@ -164,7 +170,6 @@ public:
   pairing_heap() = default;
 
   bool empty() const { return !root; }
-
   T top() const {
     assert(!empty());
     return root->value;

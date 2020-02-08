@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/incremental_bridge_connectivity.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-08 16:19:36+09:00
+    - Last commit date: 2020-02-08 22:56:08+09:00
 
 
 
@@ -43,7 +43,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/data_structure/incremental_bridge_connectivity.aoj.test.cpp.html">data_structure/incremental_bridge_connectivity.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/incremental_bridge_connectivity.aoj.test.cpp.html">test/incremental_bridge_connectivity.aoj.test.cpp</a>
 
 
 ## Code
@@ -51,6 +51,10 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
+/*
+reference: https://link.springer.com/article/10.1007/BF01758773
+*/
+
 #include "data_structure/union_find.cpp"
 
 #include <cassert>
@@ -138,6 +142,11 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 1 "data_structure/incremental_bridge_connectivity.cpp"
+/*
+reference: https://link.springer.com/article/10.1007/BF01758773
+*/
+
 #line 1 "data_structure/union_find.cpp"
 #include <cassert>
 #include <utility>
@@ -195,7 +204,7 @@ public:
     }
   }
 };
-#line 2 "data_structure/incremental_bridge_connectivity.cpp"
+#line 6 "data_structure/incremental_bridge_connectivity.cpp"
 
 #include <cassert>
 #include <cstddef>

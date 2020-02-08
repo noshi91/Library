@@ -25,12 +25,12 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: data_structure/fenwick_tree.yosupo.test.cpp
+# :heavy_check_mark: test/fenwick_tree.yosupo.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* <a href="{{ site.github.repository_url }}/blob/master/data_structure/fenwick_tree.yosupo.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-06 19:39:55+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/test/fenwick_tree.yosupo.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-02-08 22:56:08+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_add_range_sum">https://judge.yosupo.jp/problem/point_add_range_sum</a>
@@ -89,7 +89,7 @@ int main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "data_structure/fenwick_tree.yosupo.test.cpp"
+#line 1 "test/fenwick_tree.yosupo.test.cpp"
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 
 #line 1 "data_structure/fenwick_tree.cpp"
@@ -140,7 +140,7 @@ public:
   static constexpr T identity = 0;
 };
 template <class T> constexpr T plus_monoid<T>::identity;
-#line 5 "data_structure/fenwick_tree.yosupo.test.cpp"
+#line 5 "test/fenwick_tree.yosupo.test.cpp"
 
 #include <iostream>
 

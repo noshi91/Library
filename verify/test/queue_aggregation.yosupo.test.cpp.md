@@ -25,12 +25,12 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: data_structure/queue_aggregation.yosupo.test.cpp
+# :heavy_check_mark: test/queue_aggregation.yosupo.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* <a href="{{ site.github.repository_url }}/blob/master/data_structure/queue_aggregation.yosupo.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-01-04 13:27:55+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/test/queue_aggregation.yosupo.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-02-08 22:56:08+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/queue_operate_all_composite">https://judge.yosupo.jp/problem/queue_operate_all_composite</a>
@@ -88,7 +88,7 @@ int main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "data_structure/queue_aggregation.yosupo.test.cpp"
+#line 1 "test/queue_aggregation.yosupo.test.cpp"
 #define PROBLEM "https://judge.yosupo.jp/problem/queue_operate_all_composite"
 
 #line 1 "data_structure/queue_aggregation.cpp"
@@ -240,7 +240,7 @@ public:
 };
 template <std::uint_fast64_t Modulus>
 constexpr typename modint<Modulus>::u64 modint<Modulus>::mod;
-#line 6 "data_structure/queue_aggregation.yosupo.test.cpp"
+#line 6 "test/queue_aggregation.yosupo.test.cpp"
 
 #include <iostream>
 

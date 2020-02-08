@@ -38,7 +38,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/data_structure/fenwick_tree.yosupo.test.cpp.html">data_structure/fenwick_tree.yosupo.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/fenwick_tree.yosupo.test.cpp.html">test/fenwick_tree.yosupo.test.cpp</a>
 
 
 ## Code

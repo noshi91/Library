@@ -1,0 +1,288 @@
+---
+layout: default
+---
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: { equationNumbers: { autoNumber: "AMS" }},
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { matchFontHeight: false },
+    displayAlign: "left",
+    displayIndent: "2em"
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-balloon-js@1.1.2/jquery.balloon.min.js" integrity="sha256-ZEYs9VrgAeNuPvs15E39OsyOJaIkXEEt10fzxJ20+2I=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../assets/js/copy-button.js"></script>
+<link rel="stylesheet" href="../../assets/css/copy-button.css" />
+
+
+# :heavy_check_mark: test/pairing_heap.aoj.test.cpp
+
+<a href="../../index.html">Back to top page</a>
+
+* <a href="{{ site.github.repository_url }}/blob/master/test/pairing_heap.aoj.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-02-08 22:56:08+09:00
+
+
+
+
+## Depends on
+
+* :heavy_check_mark: <a href="../../library/data_structure/pairing_heap.cpp.html">data_structure/pairing_heap.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/greater_equal_ordered_set.cpp.html">other/greater_equal_ordered_set.cpp</a>
+
+
+## Code
+
+<a id="unbundled"></a>
+{% raw %}
+```cpp
+#define PROBLEM                                                                \
+  "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2170&lang=en"
+
+#include "data_structure/pairing_heap.cpp"
+#include "other/greater_equal_ordered_set.cpp"
+
+#include <algorithm>
+#include <iostream>
+#include <stack>
+#include <utility>
+#include <vector>
+
+void solve(const int n, const int q) {
+  using heap_type = pairing_heap<greater_equal_ordered_set<int>>;
+
+  std::vector<int> p(n), deg(n, 0);
+  for (int i = 1; i != n; i += 1) {
+    std::cin >> p[i];
+    p[i] -= 1;
+    deg[p[i]] += 1;
+  }
+  std::vector<heap_type> ph(n);
+  std::vector<int> time(n, q);
+  time[0] = -1;
+  for (int i = 0; i != q; i += 1) {
+    char c;
+    std::cin >> c;
+    switch (c) {
+    case 'M': {
+      int v;
+      std::cin >> v;
+      v -= 1;
+      time[v] = std::min(time[v], i);
+    } break;
+    case 'Q': {
+      int v;
+      std::cin >> v;
+      v -= 1;
+      ph[v].push(i);
+    } break;
+    }
+  }
+  std::stack<int> st;
+  for (int i = 0; i != n; i += 1) {
+    if (deg[i] == 0)
+      st.push(i);
+  }
+  long long ans = 0;
+  while (!st.empty()) {
+    const int v = st.top();
+    st.pop();
+    auto &pv = ph[v];
+    while (!pv.empty() && time[v] < pv.top()) {
+      pv.pop();
+      ans += v + 1;
+    }
+    if (v == 0)
+      continue;
+    ph[p[v]] = heap_type::meld(std::move(ph[p[v]]), std::move(pv));
+    deg[p[v]] -= 1;
+    if (deg[p[v]] == 0)
+      st.push(p[v]);
+  }
+  std::cout << ans << std::endl;
+}
+
+int main() {
+  while (true) {
+    int n, q;
+    std::cin >> n >> q;
+    if (n == 0 && q == 0)
+      break;
+    solve(n, q);
+  }
+  return 0;
+}
+```
+{% endraw %}
+
+<a id="bundled"></a>
+{% raw %}
+```cpp
+#line 1 "test/pairing_heap.aoj.test.cpp"
+#define PROBLEM                                                                \
+  "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2170&lang=en"
+
+#line 1 "data_structure/pairing_heap.cpp"
+#include <cassert>
+#include <memory>
+#include <utility>
+
+template <class W> class pairing_heap {
+  using T = typename W::value_type;
+
+public:
+  using value_type = T;
+
+private:
+  class node_type;
+  using node_ptr = std::unique_ptr<node_type>;
+  class node_type {
+  public:
+    T value;
+    node_ptr head;
+    node_ptr next;
+
+    node_type(const T value) : value(value), head(), next() {}
+  };
+
+  static node_ptr merge(node_ptr x, node_ptr y) {
+    if (!x)
+      return y;
+    if (!y)
+      return x;
+    if (!W::compare(x->value, y->value))
+      std::swap(x, y);
+    y->next = std::move(x->head);
+    x->head = std::move(y);
+    return x;
+  }
+  static node_ptr merge_list(node_ptr list) {
+    if (!list || !list->next)
+      return list;
+    node_ptr next = std::move(list->next);
+    node_ptr rem = std::move(next->next);
+    return merge(merge(std::move(list), std::move(next)),
+                 merge_list(std::move(rem)));
+  }
+
+  node_ptr root;
+
+  pairing_heap(node_ptr root) : root(std::move(root)) {}
+
+public:
+  pairing_heap() = default;
+
+  bool empty() const { return !root; }
+  T top() const {
+    assert(!empty());
+    return root->value;
+  }
+
+  void push(const T x) {
+    root = merge(std::move(root), std::make_unique<node_type>(x));
+  }
+  void pop() {
+    assert(!empty());
+    root = merge_list(std::move(root->head));
+  }
+
+  static pairing_heap meld(pairing_heap x, pairing_heap y) {
+    return pairing_heap(merge(std::move(x.root), std::move(y.root)));
+  }
+};
+#line 1 "other/greater_equal_ordered_set.cpp"
+template <class T> class greater_equal_ordered_set {
+public:
+  using value_type = T;
+  static constexpr bool compare(const T &x, const T &y) noexcept {
+    return x >= y;
+  }
+};
+#line 6 "test/pairing_heap.aoj.test.cpp"
+
+#include <algorithm>
+#include <iostream>
+#include <stack>
+#include <utility>
+#include <vector>
+
+void solve(const int n, const int q) {
+  using heap_type = pairing_heap<greater_equal_ordered_set<int>>;
+
+  std::vector<int> p(n), deg(n, 0);
+  for (int i = 1; i != n; i += 1) {
+    std::cin >> p[i];
+    p[i] -= 1;
+    deg[p[i]] += 1;
+  }
+  std::vector<heap_type> ph(n);
+  std::vector<int> time(n, q);
+  time[0] = -1;
+  for (int i = 0; i != q; i += 1) {
+    char c;
+    std::cin >> c;
+    switch (c) {
+    case 'M': {
+      int v;
+      std::cin >> v;
+      v -= 1;
+      time[v] = std::min(time[v], i);
+    } break;
+    case 'Q': {
+      int v;
+      std::cin >> v;
+      v -= 1;
+      ph[v].push(i);
+    } break;
+    }
+  }
+  std::stack<int> st;
+  for (int i = 0; i != n; i += 1) {
+    if (deg[i] == 0)
+      st.push(i);
+  }
+  long long ans = 0;
+  while (!st.empty()) {
+    const int v = st.top();
+    st.pop();
+    auto &pv = ph[v];
+    while (!pv.empty() && time[v] < pv.top()) {
+      pv.pop();
+      ans += v + 1;
+    }
+    if (v == 0)
+      continue;
+    ph[p[v]] = heap_type::meld(std::move(ph[p[v]]), std::move(pv));
+    deg[p[v]] -= 1;
+    if (deg[p[v]] == 0)
+      st.push(p[v]);
+  }
+  std::cout << ans << std::endl;
+}
+
+int main() {
+  while (true) {
+    int n, q;
+    std::cin >> n >> q;
+    if (n == 0 && q == 0)
+      break;
+    solve(n, q);
+  }
+  return 0;
+}
+
+```
+{% endraw %}
+
+<a href="../../index.html">Back to top page</a>
+

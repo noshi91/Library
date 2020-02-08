@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: other/plus_monoid.cpp
+# :heavy_check_mark: other/greater_equal_ordered_set.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#795f3202b17cb6bc3d4b771d8c6c9eaf">other</a>
-* <a href="{{ site.github.repository_url }}/blob/master/other/plus_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-06 19:39:55+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/other/greater_equal_ordered_set.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-02-08 22:56:08+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/fenwick_tree.yosupo.test.cpp.html">test/fenwick_tree.yosupo.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/pairing_heap.aoj.test.cpp.html">test/pairing_heap.aoj.test.cpp</a>
 
 
 ## Code
@@ -46,27 +46,27 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-template <class T> class plus_monoid {
+template <class T> class greater_equal_ordered_set {
 public:
   using value_type = T;
-  static T operation(const T l, const T r) { return l + r; }
-  static constexpr T identity = 0;
+  static constexpr bool compare(const T &x, const T &y) noexcept {
+    return x >= y;
+  }
 };
-template <class T> constexpr T plus_monoid<T>::identity;
 ```
 {% endraw %}
 
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "other/plus_monoid.cpp"
-template <class T> class plus_monoid {
+#line 1 "other/greater_equal_ordered_set.cpp"
+template <class T> class greater_equal_ordered_set {
 public:
   using value_type = T;
-  static T operation(const T l, const T r) { return l + r; }
-  static constexpr T identity = 0;
+  static constexpr bool compare(const T &x, const T &y) noexcept {
+    return x >= y;
+  }
 };
-template <class T> constexpr T plus_monoid<T>::identity;
 
 ```
 {% endraw %}
