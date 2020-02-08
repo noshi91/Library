@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/queue_aggregation.yosupo.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-08 22:56:08+09:00
+    - Last commit date: 2020-02-09 00:25:15+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/queue_operate_all_composite">https://judge.yosupo.jp/problem/queue_operate_all_composite</a>
@@ -169,7 +169,6 @@ public:
   }
   static constexpr value_type identity{};
 };
-template <class T> constexpr affine<T> affine_composite_monoid<T>::identity;
 #line 1 "other/modint.cpp"
 #include <cstdint>
 

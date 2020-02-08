@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#795f3202b17cb6bc3d4b771d8c6c9eaf">other</a>
 * <a href="{{ site.github.repository_url }}/blob/master/other/affine.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-01-04 13:23:11+09:00
+    - Last commit date: 2020-02-09 00:25:15+09:00
 
 
 
@@ -72,7 +72,6 @@ public:
   }
   static constexpr value_type identity{};
 };
-template <class T> constexpr affine<T> affine_composite_monoid<T>::identity;
 ```
 {% endraw %}
 
@@ -105,7 +104,6 @@ public:
   }
   static constexpr value_type identity{};
 };
-template <class T> constexpr affine<T> affine_composite_monoid<T>::identity;
 
 ```
 {% endraw %}

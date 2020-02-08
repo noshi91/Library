@@ -25,12 +25,12 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: other/plus_monoid.cpp
+# :heavy_check_mark: other/semigroup_to_monoid.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#795f3202b17cb6bc3d4b771d8c6c9eaf">other</a>
-* <a href="{{ site.github.repository_url }}/blob/master/other/plus_monoid.cpp">View this file on GitHub</a>
+* <a href="{{ site.github.repository_url }}/blob/master/other/semigroup_to_monoid.cpp">View this file on GitHub</a>
     - Last commit date: 2020-02-09 00:25:15+09:00
 
 
@@ -38,7 +38,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/fenwick_tree.yosupo.test.cpp.html">test/fenwick_tree.yosupo.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/dual_segment_tree.aoj.test.cpp.html">test/dual_segment_tree.aoj.test.cpp</a>
 
 
 ## Code
@@ -46,11 +46,22 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-template <class T> class plus_monoid {
+#include <optional>
+#include <utility>
+
+template <class S> class semigroup_to_monoid {
+  using T = std::optional<typename S::value_type>;
+
 public:
   using value_type = T;
-  static T operation(const T l, const T r) { return l + r; }
-  static constexpr T identity = 0;
+  static constexpr T operation(const T &l, const T &r) noexcept {
+    if (!l)
+      return r;
+    if (!r)
+      return l;
+    return T(std::in_place, S::operation(*l, *r));
+  }
+  static constexpr T identity{std::nullopt};
 };
 ```
 {% endraw %}
@@ -58,12 +69,23 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "other/plus_monoid.cpp"
-template <class T> class plus_monoid {
+#line 1 "other/semigroup_to_monoid.cpp"
+#include <optional>
+#include <utility>
+
+template <class S> class semigroup_to_monoid {
+  using T = std::optional<typename S::value_type>;
+
 public:
   using value_type = T;
-  static T operation(const T l, const T r) { return l + r; }
-  static constexpr T identity = 0;
+  static constexpr T operation(const T &l, const T &r) noexcept {
+    if (!l)
+      return r;
+    if (!r)
+      return l;
+    return T(std::in_place, S::operation(*l, *r));
+  }
+  static constexpr T identity{std::nullopt};
 };
 
 ```

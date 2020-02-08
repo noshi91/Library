@@ -25,20 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: data_structure/dual_segment_tree.cpp
+# :heavy_check_mark: test/dual_segment_tree.aoj.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
-* <a href="{{ site.github.repository_url }}/blob/master/data_structure/dual_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-19 16:46:57+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/test/dual_segment_tree.aoj.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-02-09 00:25:15+09:00
 
 
 
 
-## Verified with
+## Depends on
 
-* :heavy_check_mark: <a href="../../verify/test/dual_segment_tree.aoj.test.cpp.html">test/dual_segment_tree.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/dual_segment_tree.cpp.html">data_structure/dual_segment_tree.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/right_zero_semigroup.cpp.html">other/right_zero_semigroup.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/semigroup_to_monoid.cpp.html">other/semigroup_to_monoid.cpp</a>
 
 
 ## Code
@@ -46,82 +47,47 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#include <cassert>
-#include <cstddef>
-#include <vector>
+#define PROBLEM                                                                \
+  "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D&lang=ja"
 
-template <class Monoid> class dual_segment_tree {
-  using size_t = std::size_t;
-  using T = typename Monoid::value_type;
+#include "data_structure/dual_segment_tree.cpp"
+#include "other/right_zero_semigroup.cpp"
+#include "other/semigroup_to_monoid.cpp"
 
-public:
-  using value_type = T;
-  using size_type = size_t;
+#include <iostream>
 
-private:
-  static size_t lsb(const size_t x) { return __builtin_ctz(x); }
-  static size_t msb(const size_t x) { return 31 - __builtin_clz(x); }
-  static void add(T &x, const T y) { x = Monoid::operation(x, y); }
-
-  std::vector<T> tree;
-
-  void push(const size_t index) {
-    add(tree[index * 2], tree[index]);
-    add(tree[index * 2 + 1], tree[index]);
-    tree[index] = Monoid::identity;
-  }
-  void propagate(const size_t index) {
-    if (index == 0)
-      return;
-    const size_t lsb_ = lsb(index);
-    for (size_t h = msb(index); h != lsb_; h -= 1)
-      push(index >> h);
-  }
-
-public:
-  dual_segment_tree() = default;
-  explicit dual_segment_tree(const size_t n) : tree(n * 2, Monoid::identity) {}
-
-  size_t size() const noexcept { return tree.size() / 2; }
-
-  T fold(size_t index) const {
-    assert(index < size());
-    index += size();
-    T ret = tree[index];
-    while (index != 1) {
-      index /= 2;
-      add(ret, tree[index]);
-    }
-    return ret;
-  }
-
-  void update(size_t first, size_t last, const T x) {
-    assert(first <= last);
-    assert(last <= size());
-    first += size();
-    last += size();
-    propagate(first);
-    propagate(last);
-    while (first != last) {
-      if (first % 2 != 0) {
-        add(tree[first], x);
-        first += 1;
-      }
-      first /= 2;
-      if (last % 2 != 0) {
-        last -= 1;
-        add(tree[last], x);
-      }
-      last /= 2;
+int main() {
+  int n, q;
+  std::cin >> n >> q;
+  dual_segment_tree<semigroup_to_monoid<right_zero_semigroup<int>>> dst(n);
+  dst.update(0, n, 2147483647);
+  for (int i = 0; i != q; i += 1) {
+    int c;
+    std::cin >> c;
+    switch (c) {
+    case 0: {
+      int s, t, x;
+      std::cin >> s >> t >> x;
+      dst.update(s, t + 1, x);
+    } break;
+    case 1: {
+      int i;
+      std::cin >> i;
+      std::cout << dst.fold(i).value() << std::endl;
+    } break;
     }
   }
-};
+}
 ```
 {% endraw %}
 
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 1 "test/dual_segment_tree.aoj.test.cpp"
+#define PROBLEM                                                                \
+  "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D&lang=ja"
+
 #line 1 "data_structure/dual_segment_tree.cpp"
 #include <cassert>
 #include <cstddef>
@@ -193,6 +159,56 @@ public:
     }
   }
 };
+#line 1 "other/right_zero_semigroup.cpp"
+template <class T> class right_zero_semigroup {
+public:
+  using value_type = T;
+  static constexpr T operation(const T &, const T &r) noexcept { return r; }
+};
+#line 1 "other/semigroup_to_monoid.cpp"
+#include <optional>
+#include <utility>
+
+template <class S> class semigroup_to_monoid {
+  using T = std::optional<typename S::value_type>;
+
+public:
+  using value_type = T;
+  static constexpr T operation(const T &l, const T &r) noexcept {
+    if (!l)
+      return r;
+    if (!r)
+      return l;
+    return T(std::in_place, S::operation(*l, *r));
+  }
+  static constexpr T identity{std::nullopt};
+};
+#line 7 "test/dual_segment_tree.aoj.test.cpp"
+
+#include <iostream>
+
+int main() {
+  int n, q;
+  std::cin >> n >> q;
+  dual_segment_tree<semigroup_to_monoid<right_zero_semigroup<int>>> dst(n);
+  dst.update(0, n, 2147483647);
+  for (int i = 0; i != q; i += 1) {
+    int c;
+    std::cin >> c;
+    switch (c) {
+    case 0: {
+      int s, t, x;
+      std::cin >> s >> t >> x;
+      dst.update(s, t + 1, x);
+    } break;
+    case 1: {
+      int i;
+      std::cin >> i;
+      std::cout << dst.fold(i).value() << std::endl;
+    } break;
+    }
+  }
+}
 
 ```
 {% endraw %}
