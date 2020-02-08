@@ -1,8 +1,9 @@
 {
-"test/fenwick_tree.yosupo.test.cpp": "2020-02-08 22:56:08 +0900",
+"test/dual_segment_tree.aoj.test.cpp": "2020-02-09 00:25:15 +0900",
+"test/fenwick_tree.yosupo.test.cpp": "2020-02-09 00:25:15 +0900",
 "test/incremental_bridge_connectivity.aoj.test.cpp": "2020-02-08 22:56:08 +0900",
 "test/pairing_heap.aoj.test.cpp": "2020-02-08 22:56:08 +0900",
-"test/queue_aggregation.yosupo.test.cpp": "2020-02-08 22:56:08 +0900",
-"test/segment_tree.yosupo.test.cpp": "2020-02-08 22:56:08 +0900",
+"test/queue_aggregation.yosupo.test.cpp": "2020-02-09 00:25:15 +0900",
+"test/segment_tree.yosupo.test.cpp": "2020-02-09 00:25:15 +0900",
 "test/union_find.yosupo.test.cpp": "2020-02-08 22:56:08 +0900"
 }
