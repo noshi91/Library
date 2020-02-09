@@ -27,7 +27,7 @@ int main() {
     case 2: {
       int x;
       std::cin >> x;
-      std::cout << qa.fold_all().evaluate(x).value() << std::endl;
+      std::cout << qa.fold().evaluate(x).value() << std::endl;
     } break;
     }
   }

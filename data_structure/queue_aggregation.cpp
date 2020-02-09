@@ -1,51 +1,32 @@
-/*
+#include "data_structure/stack_aggregation.cpp"
+#include "other/dual_monoid.cpp"
 
-アルゴリズムの一部は https://twitter.com/259_Momone/status/1199559095243530240
-に影響を受けたものです
+template <class M> class queue_aggregation {
+  using T = typename M::value_type;
 
-*/
-
-#include <cassert>
-#include <stack>
-
-template <class Monoid> class queue_aggregation {
-public:
-  using T = typename Monoid::value_type;
-
-private:
-  std::stack<T> front_stack;
-  std::stack<T> back_stack;
-  T fold_back;
-
-  T fold_front() const {
-    if (!front_stack.empty()) {
-      return front_stack.top();
-    } else {
-      return Monoid::identity;
-    }
-  }
+  stack_aggregation<dual_monoid<M>> front_st;
+  stack_aggregation<M> back_st;
 
 public:
-  queue_aggregation()
-      : front_stack(), back_stack(), fold_back(Monoid::identity) {}
+  queue_aggregation() = default;
 
-  bool empty() const { return front_stack.empty() && back_stack.empty(); }
-
-  T fold_all() const { return Monoid::operation(fold_front(), fold_back); }
+  bool empty() const { return front_st.empty(); }
+  T fold() const { return M::operation(front_st.fold(), back_st.fold()); }
 
   void push(const T x) {
-    fold_back = Monoid::operation(fold_back, x);
-    back_stack.push(x);
+    if (empty())
+      front_st.push(x);
+    else
+      back_st.push(x);
   }
   void pop() {
     assert(!empty());
-    if (front_stack.empty()) {
-      while (!back_stack.empty()) {
-        front_stack.push(Monoid::operation(back_stack.top(), fold_front()));
-        back_stack.pop();
+    front_st.pop();
+    if (front_st.empty()) {
+      while (!back_st.empty()) {
+        front_st.push(back_st.top());
+        back_st.pop();
       }
-      fold_back = Monoid::identity;
     }
-    front_stack.pop();
   }
 };
