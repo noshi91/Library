@@ -59,6 +59,7 @@ layout: default
 * :warning: <a href="library/data_structure/randomized_queue.cpp.html">data_structure/randomized_queue.cpp</a>
 * :warning: <a href="library/data_structure/range_mode_query.cpp.html">data_structure/range_mode_query.cpp</a>
 * :heavy_check_mark: <a href="library/data_structure/segment_tree.cpp.html">data_structure/segment_tree.cpp</a>
+* :heavy_check_mark: <a href="library/data_structure/stack_aggregation.cpp.html">data_structure/stack_aggregation.cpp</a>
 * :warning: <a href="library/data_structure/ternary_treap.cpp.html">data_structure/ternary_treap.cpp</a>
 * :warning: <a href="library/data_structure/union_enumerate.cpp.html">data_structure/union_enumerate.cpp</a>
 * :heavy_check_mark: <a href="library/data_structure/union_find.cpp.html">data_structure/union_find.cpp</a>
@@ -101,6 +102,7 @@ layout: default
 ### other
 
 * :heavy_check_mark: <a href="library/other/affine.cpp.html">other/affine.cpp</a>
+* :heavy_check_mark: <a href="library/other/dual_monoid.cpp.html">other/dual_monoid.cpp</a>
 * :heavy_check_mark: <a href="library/other/greater_equal_ordered_set.cpp.html">other/greater_equal_ordered_set.cpp</a>
 * :heavy_check_mark: <a href="library/other/modint.cpp.html">other/modint.cpp</a>
 * :warning: <a href="library/other/montgomery_modint.cpp.html">other/montgomery_modint.cpp</a>

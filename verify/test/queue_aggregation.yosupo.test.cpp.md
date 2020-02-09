@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/queue_aggregation.yosupo.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-09 00:25:15+09:00
+    - Last commit date: 2020-02-09 23:37:46+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/queue_operate_all_composite">https://judge.yosupo.jp/problem/queue_operate_all_composite</a>
@@ -39,7 +39,9 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../library/data_structure/queue_aggregation.cpp.html">data_structure/queue_aggregation.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/stack_aggregation.cpp.html">data_structure/stack_aggregation.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/affine.cpp.html">other/affine.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/dual_monoid.cpp.html">other/dual_monoid.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/modint.cpp.html">other/modint.cpp</a>
 
 
@@ -77,7 +79,7 @@ int main() {
     case 2: {
       int x;
       std::cin >> x;
-      std::cout << qa.fold_all().evaluate(x).value() << std::endl;
+      std::cout << qa.fold().evaluate(x).value() << std::endl;
     } break;
     }
   }
@@ -91,56 +93,79 @@ int main() {
 #line 1 "test/queue_aggregation.yosupo.test.cpp"
 #define PROBLEM "https://judge.yosupo.jp/problem/queue_operate_all_composite"
 
-#line 1 "data_structure/queue_aggregation.cpp"
-/*
-
-アルゴリズムの一部は https://twitter.com/259_Momone/status/1199559095243530240
-に影響を受けたものです
-
-*/
-
+#line 1 "data_structure/stack_aggregation.cpp"
 #include <cassert>
 #include <stack>
 
-template <class Monoid> class queue_aggregation {
+template <class M> class stack_aggregation {
+  using T = typename M::value_type;
+
+  class node_type {
+  public:
+    T value;
+    T fold;
+
+    node_type(const T value, const T fold) : value(value), fold(fold) {}
+  };
+
+  std::stack<node_type> st;
+
 public:
-  using T = typename Monoid::value_type;
+  stack_aggregation() = default;
 
-private:
-  std::stack<T> front_stack;
-  std::stack<T> back_stack;
-  T fold_back;
-
-  T fold_front() const {
-    if (!front_stack.empty()) {
-      return front_stack.top();
-    } else {
-      return Monoid::identity;
-    }
+  bool empty() const { return st.empty(); }
+  T top() const {
+    assert(!empty());
+    return st.top().value;
   }
+  T fold() const { return st.empty() ? M::identity : st.top().fold; }
+
+  void push(const T x) { st.push(node_type(x, M::operation(fold(), x))); }
+  void pop() {
+    assert(!empty());
+    st.pop();
+  }
+};
+#line 1 "other/dual_monoid.cpp"
+template <class M> class dual_monoid {
+  using T = typename M::value_type;
 
 public:
-  queue_aggregation()
-      : front_stack(), back_stack(), fold_back(Monoid::identity) {}
+  using value_type = T;
+  static constexpr T operation(const T &l, const T &r) noexcept {
+    return M::operation(r, l);
+  }
+  static constexpr T identity = M::identity;
+};
+#line 3 "data_structure/queue_aggregation.cpp"
 
-  bool empty() const { return front_stack.empty() && back_stack.empty(); }
+template <class M> class queue_aggregation {
+  using T = typename M::value_type;
 
-  T fold_all() const { return Monoid::operation(fold_front(), fold_back); }
+  stack_aggregation<dual_monoid<M>> front_st;
+  stack_aggregation<M> back_st;
+
+public:
+  queue_aggregation() = default;
+
+  bool empty() const { return front_st.empty(); }
+  T fold() const { return M::operation(front_st.fold(), back_st.fold()); }
 
   void push(const T x) {
-    fold_back = Monoid::operation(fold_back, x);
-    back_stack.push(x);
+    if (empty())
+      front_st.push(x);
+    else
+      back_st.push(x);
   }
   void pop() {
     assert(!empty());
-    if (front_stack.empty()) {
-      while (!back_stack.empty()) {
-        front_stack.push(Monoid::operation(back_stack.top(), fold_front()));
-        back_stack.pop();
+    front_st.pop();
+    if (front_st.empty()) {
+      while (!back_st.empty()) {
+        front_st.push(back_st.top());
+        back_st.pop();
       }
-      fold_back = Monoid::identity;
     }
-    front_stack.pop();
   }
 };
 #line 1 "other/affine.cpp"
@@ -264,7 +289,7 @@ int main() {
     case 2: {
       int x;
       std::cin >> x;
-      std::cout << qa.fold_all().evaluate(x).value() << std::endl;
+      std::cout << qa.fold().evaluate(x).value() << std::endl;
     } break;
     }
   }
