@@ -1,10 +1,10 @@
 #include "data_structure/stack_aggregation.cpp"
-#include "other/dual_monoid.cpp"
+#include "other/opposite_monoid.cpp"
 
 template <class M> class queue_aggregation {
   using T = typename M::value_type;
 
-  stack_aggregation<dual_monoid<M>> front_st;
+  stack_aggregation<opposite_monoid<M>> front_st;
   stack_aggregation<M> back_st;
 
 public:

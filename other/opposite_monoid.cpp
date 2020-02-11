@@ -1,4 +1,4 @@
-template <class M> class dual_monoid {
+template <class M> class opposite_monoid {
   using T = typename M::value_type;
 
 public:
