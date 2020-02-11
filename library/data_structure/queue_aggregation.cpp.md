@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/queue_aggregation.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-09 23:37:46+09:00
+    - Last commit date: 2020-02-11 11:45:48+09:00
 
 
 
@@ -39,7 +39,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="stack_aggregation.cpp.html">data_structure/stack_aggregation.cpp</a>
-* :heavy_check_mark: <a href="../other/dual_monoid.cpp.html">other/dual_monoid.cpp</a>
+* :heavy_check_mark: <a href="../other/opposite_monoid.cpp.html">other/opposite_monoid.cpp</a>
 
 
 ## Verified with
@@ -53,12 +53,12 @@ layout: default
 {% raw %}
 ```cpp
 #include "data_structure/stack_aggregation.cpp"
-#include "other/dual_monoid.cpp"
+#include "other/opposite_monoid.cpp"
 
 template <class M> class queue_aggregation {
   using T = typename M::value_type;
 
-  stack_aggregation<dual_monoid<M>> front_st;
+  stack_aggregation<opposite_monoid<M>> front_st;
   stack_aggregation<M> back_st;
 
 public:
@@ -123,8 +123,8 @@ public:
     st.pop();
   }
 };
-#line 1 "other/dual_monoid.cpp"
-template <class M> class dual_monoid {
+#line 1 "other/opposite_monoid.cpp"
+template <class M> class opposite_monoid {
   using T = typename M::value_type;
 
 public:
@@ -139,7 +139,7 @@ public:
 template <class M> class queue_aggregation {
   using T = typename M::value_type;
 
-  stack_aggregation<dual_monoid<M>> front_st;
+  stack_aggregation<opposite_monoid<M>> front_st;
   stack_aggregation<M> back_st;
 
 public:

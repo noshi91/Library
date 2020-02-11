@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: other/dual_monoid.cpp
+# :heavy_check_mark: other/opposite_monoid.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#795f3202b17cb6bc3d4b771d8c6c9eaf">other</a>
-* <a href="{{ site.github.repository_url }}/blob/master/other/dual_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-09 23:37:46+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/other/opposite_monoid.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-02-11 11:45:48+09:00
 
 
 
@@ -51,7 +51,7 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-template <class M> class dual_monoid {
+template <class M> class opposite_monoid {
   using T = typename M::value_type;
 
 public:
@@ -67,8 +67,8 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "other/dual_monoid.cpp"
-template <class M> class dual_monoid {
+#line 1 "other/opposite_monoid.cpp"
+template <class M> class opposite_monoid {
   using T = typename M::value_type;
 
 public:

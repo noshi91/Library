@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/queue_aggregation.yosupo.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-09 23:37:46+09:00
+    - Last commit date: 2020-02-11 11:45:48+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/queue_operate_all_composite">https://judge.yosupo.jp/problem/queue_operate_all_composite</a>
@@ -41,8 +41,8 @@ layout: default
 * :heavy_check_mark: <a href="../../library/data_structure/queue_aggregation.cpp.html">data_structure/queue_aggregation.cpp</a>
 * :heavy_check_mark: <a href="../../library/data_structure/stack_aggregation.cpp.html">data_structure/stack_aggregation.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/affine.cpp.html">other/affine.cpp</a>
-* :heavy_check_mark: <a href="../../library/other/dual_monoid.cpp.html">other/dual_monoid.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/modint.cpp.html">other/modint.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/opposite_monoid.cpp.html">other/opposite_monoid.cpp</a>
 
 
 ## Code
@@ -126,8 +126,8 @@ public:
     st.pop();
   }
 };
-#line 1 "other/dual_monoid.cpp"
-template <class M> class dual_monoid {
+#line 1 "other/opposite_monoid.cpp"
+template <class M> class opposite_monoid {
   using T = typename M::value_type;
 
 public:
@@ -142,7 +142,7 @@ public:
 template <class M> class queue_aggregation {
   using T = typename M::value_type;
 
-  stack_aggregation<dual_monoid<M>> front_st;
+  stack_aggregation<opposite_monoid<M>> front_st;
   stack_aggregation<M> back_st;
 
 public:

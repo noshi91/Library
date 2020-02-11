@@ -102,10 +102,10 @@ layout: default
 ### other
 
 * :heavy_check_mark: <a href="library/other/affine.cpp.html">other/affine.cpp</a>
-* :heavy_check_mark: <a href="library/other/dual_monoid.cpp.html">other/dual_monoid.cpp</a>
 * :heavy_check_mark: <a href="library/other/greater_equal_ordered_set.cpp.html">other/greater_equal_ordered_set.cpp</a>
 * :heavy_check_mark: <a href="library/other/modint.cpp.html">other/modint.cpp</a>
 * :warning: <a href="library/other/montgomery_modint.cpp.html">other/montgomery_modint.cpp</a>
+* :heavy_check_mark: <a href="library/other/opposite_monoid.cpp.html">other/opposite_monoid.cpp</a>
 * :heavy_check_mark: <a href="library/other/plus_group.cpp.html">other/plus_group.cpp</a>
 * :heavy_check_mark: <a href="library/other/plus_monoid.cpp.html">other/plus_monoid.cpp</a>
 * :heavy_check_mark: <a href="library/other/right_zero_semigroup.cpp.html">other/right_zero_semigroup.cpp</a>
