@@ -103,6 +103,7 @@ layout: default
 ### other
 
 * :heavy_check_mark: <a href="library/other/affine.cpp.html">other/affine.cpp</a>
+* :heavy_check_mark: <a href="library/other/cartesian_product_monoid.cpp.html">other/cartesian_product_monoid.cpp</a>
 * :heavy_check_mark: <a href="library/other/greater_equal_ordered_set.cpp.html">other/greater_equal_ordered_set.cpp</a>
 * :heavy_check_mark: <a href="library/other/less_equal_ordered_set.cpp.html">other/less_equal_ordered_set.cpp</a>
 * :heavy_check_mark: <a href="library/other/min_assign_action.cpp.html">other/min_assign_action.cpp</a>
@@ -114,6 +115,7 @@ layout: default
 * :heavy_check_mark: <a href="library/other/plus_monoid.cpp.html">other/plus_monoid.cpp</a>
 * :heavy_check_mark: <a href="library/other/right_zero_semigroup.cpp.html">other/right_zero_semigroup.cpp</a>
 * :heavy_check_mark: <a href="library/other/semigroup_to_monoid.cpp.html">other/semigroup_to_monoid.cpp</a>
+* :heavy_check_mark: <a href="library/other/sum_affine_action.cpp.html">other/sum_affine_action.cpp</a>
 
 
 ## Verify Files
@@ -122,6 +124,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/fenwick_tree.yosupo.test.cpp.html">test/fenwick_tree.yosupo.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/incremental_bridge_connectivity.aoj.test.cpp.html">test/incremental_bridge_connectivity.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/lazy_segment_tree.aoj.test.cpp.html">test/lazy_segment_tree.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/lazy_segment_tree.yosupo.test.cpp.html">test/lazy_segment_tree.yosupo.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/pairing_heap.aoj.test.cpp.html">test/pairing_heap.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/potentialized_union_find.aoj.test.cpp.html">test/potentialized_union_find.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/queue_aggregation.yosupo.test.cpp.html">test/queue_aggregation.yosupo.test.cpp</a>
