@@ -25,25 +25,19 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: other/semigroup_to_monoid.cpp
+# :heavy_check_mark: other/less_equal_ordered_set.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#795f3202b17cb6bc3d4b771d8c6c9eaf">other</a>
-* <a href="{{ site.github.repository_url }}/blob/master/other/semigroup_to_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-09 00:25:15+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/other/less_equal_ordered_set.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-02-14 16:53:57+09:00
 
 
-
-
-## Required by
-
-* :heavy_check_mark: <a href="min_assign_action.cpp.html">other/min_assign_action.cpp</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/dual_segment_tree.aoj.test.cpp.html">test/dual_segment_tree.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/lazy_segment_tree.aoj.test.cpp.html">test/lazy_segment_tree.aoj.test.cpp</a>
 
 
@@ -52,22 +46,12 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#include <optional>
-#include <utility>
-
-template <class S> class semigroup_to_monoid {
-  using T = std::optional<typename S::value_type>;
-
+template <class T> class less_equal_ordered_set {
 public:
   using value_type = T;
-  static constexpr T operation(const T &l, const T &r) noexcept {
-    if (!l)
-      return r;
-    if (!r)
-      return l;
-    return T(std::in_place, S::operation(*l, *r));
+  static constexpr bool compare(const T &x, const T &y) noexcept {
+    return x <= y;
   }
-  static constexpr T identity{std::nullopt};
 };
 ```
 {% endraw %}
@@ -75,23 +59,13 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "other/semigroup_to_monoid.cpp"
-#include <optional>
-#include <utility>
-
-template <class S> class semigroup_to_monoid {
-  using T = std::optional<typename S::value_type>;
-
+#line 1 "other/less_equal_ordered_set.cpp"
+template <class T> class less_equal_ordered_set {
 public:
   using value_type = T;
-  static constexpr T operation(const T &l, const T &r) noexcept {
-    if (!l)
-      return r;
-    if (!r)
-      return l;
-    return T(std::in_place, S::operation(*l, *r));
+  static constexpr bool compare(const T &x, const T &y) noexcept {
+    return x <= y;
   }
-  static constexpr T identity{std::nullopt};
 };
 
 ```

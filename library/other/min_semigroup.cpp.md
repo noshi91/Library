@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: other/semigroup_to_monoid.cpp
+# :heavy_check_mark: other/min_semigroup.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#795f3202b17cb6bc3d4b771d8c6c9eaf">other</a>
-* <a href="{{ site.github.repository_url }}/blob/master/other/semigroup_to_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-09 00:25:15+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/other/min_semigroup.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-02-14 16:53:57+09:00
 
 
 
@@ -43,7 +43,6 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/dual_segment_tree.aoj.test.cpp.html">test/dual_segment_tree.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/lazy_segment_tree.aoj.test.cpp.html">test/lazy_segment_tree.aoj.test.cpp</a>
 
 
@@ -52,22 +51,14 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#include <optional>
-#include <utility>
-
-template <class S> class semigroup_to_monoid {
-  using T = std::optional<typename S::value_type>;
+template <class W> class min_semigroup {
+  using T = typename W::value_type;
 
 public:
   using value_type = T;
   static constexpr T operation(const T &l, const T &r) noexcept {
-    if (!l)
-      return r;
-    if (!r)
-      return l;
-    return T(std::in_place, S::operation(*l, *r));
+    return W::compare(l, r) ? l : r;
   }
-  static constexpr T identity{std::nullopt};
 };
 ```
 {% endraw %}
@@ -75,23 +66,15 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "other/semigroup_to_monoid.cpp"
-#include <optional>
-#include <utility>
-
-template <class S> class semigroup_to_monoid {
-  using T = std::optional<typename S::value_type>;
+#line 1 "other/min_semigroup.cpp"
+template <class W> class min_semigroup {
+  using T = typename W::value_type;
 
 public:
   using value_type = T;
   static constexpr T operation(const T &l, const T &r) noexcept {
-    if (!l)
-      return r;
-    if (!r)
-      return l;
-    return T(std::in_place, S::operation(*l, *r));
+    return W::compare(l, r) ? l : r;
   }
-  static constexpr T identity{std::nullopt};
 };
 
 ```
