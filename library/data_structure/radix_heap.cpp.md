@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :x: data_structure/radix_heap.cpp
+# :heavy_check_mark: data_structure/radix_heap.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/radix_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-16 01:31:24+09:00
+    - Last commit date: 2020-02-16 02:33:53+09:00
 
 
 
 
 ## Verified with
 
-* :x: <a href="../../verify/test/radix_heap.aoj.test.cpp.html">test/radix_heap.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/radix_heap.aoj.test.cpp.html">test/radix_heap.aoj.test.cpp</a>
 
 
 ## Code
@@ -76,15 +76,15 @@ private:
   u64 last;
 
 public:
-  radix_heap() = default;
-  explicit radix_heap(const size_t bit_length) : u(bit_length + 1), last(0) {
-    assert(bit_length <= 64);
-  }
+  radix_heap() : u(), last(0) {}
 
   void push(const V x) {
     assert(last <= x.first);
 
-    u[log2p1(x.first - last)].push_back(x);
+    const size_t i = log2p1(x.first ^ last);
+    if (u.size() <= i)
+      u.resize(i + 1);
+    u[i].push_back(x);
   }
   V pop() {
     if (u[0].empty()) {
@@ -95,7 +95,7 @@ public:
       for (const V &e : u[i])
         last = std::min(last, e.first);
       for (const V &e : u[i])
-        u[log2p1(e.first - last)].push_back(e);
+        u[log2p1(e.first ^ last)].push_back(e);
       u[i].clear();
     }
     V ret = u[0].back();
@@ -140,15 +140,15 @@ private:
   u64 last;
 
 public:
-  radix_heap() = default;
-  explicit radix_heap(const size_t bit_length) : u(bit_length + 1), last(0) {
-    assert(bit_length <= 64);
-  }
+  radix_heap() : u(), last(0) {}
 
   void push(const V x) {
     assert(last <= x.first);
 
-    u[log2p1(x.first - last)].push_back(x);
+    const size_t i = log2p1(x.first ^ last);
+    if (u.size() <= i)
+      u.resize(i + 1);
+    u[i].push_back(x);
   }
   V pop() {
     if (u[0].empty()) {
@@ -159,7 +159,7 @@ public:
       for (const V &e : u[i])
         last = std::min(last, e.first);
       for (const V &e : u[i])
-        u[log2p1(e.first - last)].push_back(e);
+        u[log2p1(e.first ^ last)].push_back(e);
       u[i].clear();
     }
     V ret = u[0].back();

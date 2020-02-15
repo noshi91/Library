@@ -58,7 +58,7 @@ layout: default
 * :warning: <a href="library/data_structure/persistent_skew_binary_random_access_list.cpp.html">data_structure/persistent_skew_binary_random_access_list.cpp</a>
 * :heavy_check_mark: <a href="library/data_structure/potentialized_union_find.cpp.html">data_structure/potentialized_union_find.cpp</a>
 * :heavy_check_mark: <a href="library/data_structure/queue_aggregation.cpp.html">data_structure/queue_aggregation.cpp</a>
-* :x: <a href="library/data_structure/radix_heap.cpp.html">data_structure/radix_heap.cpp</a>
+* :heavy_check_mark: <a href="library/data_structure/radix_heap.cpp.html">data_structure/radix_heap.cpp</a>
 * :warning: <a href="library/data_structure/randomized_queue.cpp.html">data_structure/randomized_queue.cpp</a>
 * :warning: <a href="library/data_structure/range_mode_query.cpp.html">data_structure/range_mode_query.cpp</a>
 * :heavy_check_mark: <a href="library/data_structure/segment_tree.cpp.html">data_structure/segment_tree.cpp</a>
@@ -117,7 +117,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/pairing_heap.aoj.test.cpp.html">test/pairing_heap.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/potentialized_union_find.aoj.test.cpp.html">test/potentialized_union_find.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/queue_aggregation.yosupo.test.cpp.html">test/queue_aggregation.yosupo.test.cpp</a>
-* :x: <a href="verify/test/radix_heap.aoj.test.cpp.html">test/radix_heap.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/radix_heap.aoj.test.cpp.html">test/radix_heap.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/segment_tree.yosupo.test.cpp.html">test/segment_tree.yosupo.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/union_find.yosupo.test.cpp.html">test/union_find.yosupo.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/wavelet_matrix.aoj.test.cpp.html">test/wavelet_matrix.aoj.test.cpp</a>

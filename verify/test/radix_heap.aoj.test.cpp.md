@@ -25,19 +25,19 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :x: test/radix_heap.aoj.test.cpp
+# :heavy_check_mark: test/radix_heap.aoj.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/radix_heap.aoj.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-16 01:31:24+09:00
+    - Last commit date: 2020-02-16 02:33:53+09:00
 
 
 
 
 ## Depends on
 
-* :x: <a href="../../library/data_structure/radix_heap.cpp.html">data_structure/radix_heap.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/radix_heap.cpp.html">data_structure/radix_heap.cpp</a>
 
 
 ## Code
@@ -67,7 +67,7 @@ int main() {
   constexpr int Inf = std::numeric_limits<int>::max();
   std::vector<int> dist(n, Inf);
   dist[r] = 0;
-  radix_heap<int> heap(30);
+  radix_heap<int> heap;
   int size = 0;
   heap.push({0, r});
   size += 1;
@@ -134,15 +134,15 @@ private:
   u64 last;
 
 public:
-  radix_heap() = default;
-  explicit radix_heap(const size_t bit_length) : u(bit_length + 1), last(0) {
-    assert(bit_length <= 64);
-  }
+  radix_heap() : u(), last(0) {}
 
   void push(const V x) {
     assert(last <= x.first);
 
-    u[log2p1(x.first - last)].push_back(x);
+    const size_t i = log2p1(x.first ^ last);
+    if (u.size() <= i)
+      u.resize(i + 1);
+    u[i].push_back(x);
   }
   V pop() {
     if (u[0].empty()) {
@@ -153,7 +153,7 @@ public:
       for (const V &e : u[i])
         last = std::min(last, e.first);
       for (const V &e : u[i])
-        u[log2p1(e.first - last)].push_back(e);
+        u[log2p1(e.first ^ last)].push_back(e);
       u[i].clear();
     }
     V ret = u[0].back();
@@ -180,7 +180,7 @@ int main() {
   constexpr int Inf = std::numeric_limits<int>::max();
   std::vector<int> dist(n, Inf);
   dist[r] = 0;
-  radix_heap<int> heap(30);
+  radix_heap<int> heap;
   int size = 0;
   heap.push({0, r});
   size += 1;
