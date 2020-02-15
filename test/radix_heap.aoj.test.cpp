@@ -20,7 +20,7 @@ int main() {
   constexpr int Inf = std::numeric_limits<int>::max();
   std::vector<int> dist(n, Inf);
   dist[r] = 0;
-  radix_heap<int> heap(30);
+  radix_heap<int> heap;
   int size = 0;
   heap.push({0, r});
   size += 1;

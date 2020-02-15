@@ -28,15 +28,15 @@ private:
   u64 last;
 
 public:
-  radix_heap() = default;
-  explicit radix_heap(const size_t bit_length) : u(bit_length + 1), last(0) {
-    assert(bit_length <= 64);
-  }
+  radix_heap() : u(), last(0) {}
 
   void push(const V x) {
     assert(last <= x.first);
 
-    u[log2p1(x.first - last)].push_back(x);
+    const size_t i = log2p1(x.first ^ last);
+    if (u.size() <= i)
+      u.resize(i + 1);
+    u[i].push_back(x);
   }
   V pop() {
     if (u[0].empty()) {
@@ -47,7 +47,7 @@ public:
       for (const V &e : u[i])
         last = std::min(last, e.first);
       for (const V &e : u[i])
-        u[log2p1(e.first - last)].push_back(e);
+        u[log2p1(e.first ^ last)].push_back(e);
       u[i].clear();
     }
     V ret = u[0].back();
