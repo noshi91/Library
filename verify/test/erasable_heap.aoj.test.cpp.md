@@ -25,11 +25,11 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/pairing_heap.aoj.test.cpp
+# :heavy_check_mark: test/erasable_heap.aoj.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* <a href="{{ site.github.repository_url }}/blob/master/test/pairing_heap.aoj.test.cpp">View this file on GitHub</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/erasable_heap.aoj.test.cpp">View this file on GitHub</a>
     - Last commit date: 2020-02-16 01:11:55+09:00
 
 
@@ -37,9 +37,9 @@ layout: default
 
 ## Depends on
 
+* :heavy_check_mark: <a href="../../library/data_structure/erasable_heap.cpp.html">data_structure/erasable_heap.cpp</a>
 * :heavy_check_mark: <a href="../../library/data_structure/pairing_heap.cpp.html">data_structure/pairing_heap.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/less_equal_ordered_set.cpp.html">other/less_equal_ordered_set.cpp</a>
-* :heavy_check_mark: <a href="../../library/other/opposite_ordered_set.cpp.html">other/opposite_ordered_set.cpp</a>
 
 
 ## Code
@@ -48,82 +48,50 @@ layout: default
 {% raw %}
 ```cpp
 #define PROBLEM                                                                \
-  "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2170&lang=en"
+  "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja"
 
+#include "data_structure/erasable_heap.cpp"
 #include "data_structure/pairing_heap.cpp"
 #include "other/less_equal_ordered_set.cpp"
-#include "other/opposite_ordered_set.cpp"
 
-#include <algorithm>
 #include <iostream>
-#include <stack>
+#include <limits>
 #include <utility>
 #include <vector>
 
-void solve(const int n, const int q) {
-  using heap_type =
-      pairing_heap<opposite_ordered_set<less_equal_ordered_set<int>>>;
-
-  std::vector<int> p(n), deg(n, 0);
-  for (int i = 1; i != n; i += 1) {
-    std::cin >> p[i];
-    p[i] -= 1;
-    deg[p[i]] += 1;
-  }
-  std::vector<heap_type> ph(n);
-  std::vector<int> time(n, q);
-  time[0] = -1;
-  for (int i = 0; i != q; i += 1) {
-    char c;
-    std::cin >> c;
-    switch (c) {
-    case 'M': {
-      int v;
-      std::cin >> v;
-      v -= 1;
-      time[v] = std::min(time[v], i);
-    } break;
-    case 'Q': {
-      int v;
-      std::cin >> v;
-      v -= 1;
-      ph[v].push(i);
-    } break;
-    }
-  }
-  std::stack<int> st;
-  for (int i = 0; i != n; i += 1) {
-    if (deg[i] == 0)
-      st.push(i);
-  }
-  long long ans = 0;
-  while (!st.empty()) {
-    const int v = st.top();
-    st.pop();
-    auto &pv = ph[v];
-    while (!pv.empty() && time[v] < pv.top()) {
-      pv.pop();
-      ans += v + 1;
-    }
-    if (v == 0)
-      continue;
-    ph[p[v]] = heap_type::meld(std::move(ph[p[v]]), std::move(pv));
-    deg[p[v]] -= 1;
-    if (deg[p[v]] == 0)
-      st.push(p[v]);
-  }
-  std::cout << ans << std::endl;
-}
-
 int main() {
-  while (true) {
-    int n, q;
-    std::cin >> n >> q;
-    if (n == 0 && q == 0)
-      break;
-    solve(n, q);
+  int n, m, r;
+  std::cin >> n >> m >> r;
+  std::vector<std::vector<std::pair<int, int>>> g(n);
+  for (int i = 0; i != m; i += 1) {
+    int s, t, d;
+    std::cin >> s >> t >> d;
+    g[s].emplace_back(d, t);
   }
-  return 0;
+  constexpr int Inf = std::numeric_limits<int>::max();
+  std::vector<int> dist(n, Inf);
+  dist[r] = 0;
+  erasable_heap<pairing_heap<less_equal_ordered_set<std::pair<int, int>>>> heap;
+  heap.push({0, r});
+  while (!heap.empty()) {
+    const auto [c, v] = heap.top();
+    heap.pop();
+    for (const auto &[d, u] : g[v]) {
+      if (c + d < dist[u]) {
+        if (dist[u] != Inf)
+          heap.erase({dist[u], u});
+        dist[u] = c + d;
+        heap.push({dist[u], u});
+      }
+    }
+  }
+  for (int i = 0; i != n; i += 1) {
+    if (dist[i] < Inf)
+      std::cout << dist[i];
+    else
+      std::cout << "INF";
+    std::cout << std::endl;
+  }
 }
 ```
 {% endraw %}
@@ -131,10 +99,60 @@ int main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/pairing_heap.aoj.test.cpp"
+#line 1 "test/erasable_heap.aoj.test.cpp"
 #define PROBLEM                                                                \
-  "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2170&lang=en"
+  "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja"
 
+#line 1 "data_structure/erasable_heap.cpp"
+#include <cassert>
+
+template <class Heap> class erasable_heap {
+  using W = typename Heap::value_compare;
+  using T = typename W::value_type;
+
+public:
+  using value_compare = W;
+
+private:
+  static bool equivalent(const T x, const T y) {
+    return W::compare(x, y) && W::compare(y, x);
+  }
+
+  Heap base;
+  Heap erased;
+
+  void normalize() {
+    while (!base.empty() && !erased.empty() &&
+           equivalent(base.top(), erased.top())) {
+      base.pop();
+      erased.pop();
+    }
+  }
+
+public:
+  erasable_heap() = default;
+
+  bool empty() const { return base.empty(); }
+
+  T top() const {
+    assert(!empty());
+    return base.top();
+  }
+
+  void push(const T x) {
+    base.push(x);
+    normalize();
+  }
+  void pop() {
+    assert(!empty());
+    base.pop();
+    normalize();
+  }
+  void erase(const T x) {
+    erased.push(x);
+    normalize();
+  }
+};
 #line 1 "data_structure/pairing_heap.cpp"
 #include <cassert>
 #include <memory>
@@ -211,88 +229,46 @@ public:
     return x <= y;
   }
 };
-#line 1 "other/opposite_ordered_set.cpp"
-template <class W> class opposite_ordered_set {
-  using T = typename W::value_type;
+#line 7 "test/erasable_heap.aoj.test.cpp"
 
-public:
-  using value_type = T;
-  static constexpr bool compare(const T &l, const T &r) noexcept {
-    return W::compare(r, l);
-  }
-};
-#line 7 "test/pairing_heap.aoj.test.cpp"
-
-#include <algorithm>
 #include <iostream>
-#include <stack>
+#include <limits>
 #include <utility>
 #include <vector>
 
-void solve(const int n, const int q) {
-  using heap_type =
-      pairing_heap<opposite_ordered_set<less_equal_ordered_set<int>>>;
-
-  std::vector<int> p(n), deg(n, 0);
-  for (int i = 1; i != n; i += 1) {
-    std::cin >> p[i];
-    p[i] -= 1;
-    deg[p[i]] += 1;
-  }
-  std::vector<heap_type> ph(n);
-  std::vector<int> time(n, q);
-  time[0] = -1;
-  for (int i = 0; i != q; i += 1) {
-    char c;
-    std::cin >> c;
-    switch (c) {
-    case 'M': {
-      int v;
-      std::cin >> v;
-      v -= 1;
-      time[v] = std::min(time[v], i);
-    } break;
-    case 'Q': {
-      int v;
-      std::cin >> v;
-      v -= 1;
-      ph[v].push(i);
-    } break;
-    }
-  }
-  std::stack<int> st;
-  for (int i = 0; i != n; i += 1) {
-    if (deg[i] == 0)
-      st.push(i);
-  }
-  long long ans = 0;
-  while (!st.empty()) {
-    const int v = st.top();
-    st.pop();
-    auto &pv = ph[v];
-    while (!pv.empty() && time[v] < pv.top()) {
-      pv.pop();
-      ans += v + 1;
-    }
-    if (v == 0)
-      continue;
-    ph[p[v]] = heap_type::meld(std::move(ph[p[v]]), std::move(pv));
-    deg[p[v]] -= 1;
-    if (deg[p[v]] == 0)
-      st.push(p[v]);
-  }
-  std::cout << ans << std::endl;
-}
-
 int main() {
-  while (true) {
-    int n, q;
-    std::cin >> n >> q;
-    if (n == 0 && q == 0)
-      break;
-    solve(n, q);
+  int n, m, r;
+  std::cin >> n >> m >> r;
+  std::vector<std::vector<std::pair<int, int>>> g(n);
+  for (int i = 0; i != m; i += 1) {
+    int s, t, d;
+    std::cin >> s >> t >> d;
+    g[s].emplace_back(d, t);
   }
-  return 0;
+  constexpr int Inf = std::numeric_limits<int>::max();
+  std::vector<int> dist(n, Inf);
+  dist[r] = 0;
+  erasable_heap<pairing_heap<less_equal_ordered_set<std::pair<int, int>>>> heap;
+  heap.push({0, r});
+  while (!heap.empty()) {
+    const auto [c, v] = heap.top();
+    heap.pop();
+    for (const auto &[d, u] : g[v]) {
+      if (c + d < dist[u]) {
+        if (dist[u] != Inf)
+          heap.erase({dist[u], u});
+        dist[u] = c + d;
+        heap.push({dist[u], u});
+      }
+    }
+  }
+  for (int i = 0; i != n; i += 1) {
+    if (dist[i] < Inf)
+      std::cout << dist[i];
+    else
+      std::cout << "INF";
+    std::cout << std::endl;
+  }
 }
 
 ```

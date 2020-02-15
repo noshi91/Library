@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :warning: data_structure/erasable_heap.cpp
+# :heavy_check_mark: data_structure/erasable_heap.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/erasable_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-18 15:05:35+09:00
+    - Last commit date: 2020-02-16 01:11:55+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../verify/test/erasable_heap.aoj.test.cpp.html">test/erasable_heap.aoj.test.cpp</a>
 
 
 ## Code
@@ -43,19 +48,20 @@ layout: default
 ```cpp
 #include <cassert>
 
-template <class W, template <class> class Heap> class erasable_heap {
+template <class Heap> class erasable_heap {
+  using W = typename Heap::value_compare;
   using T = typename W::value_type;
 
 public:
-  using value_type = T;
+  using value_compare = W;
 
 private:
   static bool equivalent(const T x, const T y) {
     return W::compare(x, y) && W::compare(y, x);
   }
 
-  Heap<W> base;
-  Heap<W> erased;
+  Heap base;
+  Heap erased;
 
   void normalize() {
     while (!base.empty() && !erased.empty() &&
@@ -98,19 +104,20 @@ public:
 #line 1 "data_structure/erasable_heap.cpp"
 #include <cassert>
 
-template <class W, template <class> class Heap> class erasable_heap {
+template <class Heap> class erasable_heap {
+  using W = typename Heap::value_compare;
   using T = typename W::value_type;
 
 public:
-  using value_type = T;
+  using value_compare = W;
 
 private:
   static bool equivalent(const T x, const T y) {
     return W::compare(x, y) && W::compare(y, x);
   }
 
-  Heap<W> base;
-  Heap<W> erased;
+  Heap base;
+  Heap erased;
 
   void normalize() {
     while (!base.empty() && !erased.empty() &&
