@@ -85,14 +85,6 @@ layout: default
 * :warning: <a href="library/gomi/DisjointSetDataStructure/FullyPersistentUnionFindTree_MemorySaving.cpp.html">gomi/DisjointSetDataStructure/FullyPersistentUnionFindTree_MemorySaving.cpp</a>
 
 
-<div id="129e783b40af8d9f118607f8172136f7"></div>
-
-### gomi/Heap
-
-* :warning: <a href="library/gomi/Heap/RadixHeap32.cpp.html">gomi/Heap/RadixHeap32.cpp</a>
-* :warning: <a href="library/gomi/Heap/RadixHeap64.cpp.html">gomi/Heap/RadixHeap64.cpp</a>
-
-
 <div id="795f3202b17cb6bc3d4b771d8c6c9eaf"></div>
 
 ### other
