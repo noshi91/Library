@@ -2,7 +2,8 @@
   "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2170&lang=en"
 
 #include "data_structure/pairing_heap.cpp"
-#include "other/greater_equal_ordered_set.cpp"
+#include "other/less_equal_ordered_set.cpp"
+#include "other/opposite_ordered_set.cpp"
 
 #include <algorithm>
 #include <iostream>
@@ -11,7 +12,8 @@
 #include <vector>
 
 void solve(const int n, const int q) {
-  using heap_type = pairing_heap<greater_equal_ordered_set<int>>;
+  using heap_type =
+      pairing_heap<opposite_ordered_set<less_equal_ordered_set<int>>>;
 
   std::vector<int> p(n), deg(n, 0);
   for (int i = 1; i != n; i += 1) {
