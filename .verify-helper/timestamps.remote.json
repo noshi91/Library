@@ -8,6 +8,7 @@
 "test/pairing_heap.aoj.test.cpp": "2020-02-16 01:11:55 +0900",
 "test/potentialized_union_find.aoj.test.cpp": "2020-02-09 00:38:19 +0900",
 "test/queue_aggregation.yosupo.test.cpp": "2020-02-11 11:45:48 +0900",
+"test/radix_heap.aoj.test.cpp": "2020-02-16 02:33:53 +0900",
 "test/segment_tree.yosupo.test.cpp": "2020-02-09 00:25:15 +0900",
 "test/union_find.yosupo.test.cpp": "2020-02-08 22:56:08 +0900",
 "test/wavelet_matrix.aoj.test.cpp": "2020-02-15 22:44:53 +0900"
