@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :warning: other/greater_equal_ordered_set.cpp
+# :heavy_check_mark: other/opposite_ordered_set.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#795f3202b17cb6bc3d4b771d8c6c9eaf">other</a>
-* <a href="{{ site.github.repository_url }}/blob/master/other/greater_equal_ordered_set.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-08 22:56:08+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/other/opposite_ordered_set.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-02-15 23:51:29+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../verify/test/pairing_heap.aoj.test.cpp.html">test/pairing_heap.aoj.test.cpp</a>
 
 
 ## Code
@@ -41,11 +46,13 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-template <class T> class greater_equal_ordered_set {
+template <class W> class opposite_ordered_set {
+  using T = typename W::value_type;
+
 public:
   using value_type = T;
-  static constexpr bool compare(const T &x, const T &y) noexcept {
-    return x >= y;
+  static constexpr bool compare(const T &l, const T &r) noexcept {
+    return W::compare(r, l);
   }
 };
 ```
@@ -54,12 +61,14 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "other/greater_equal_ordered_set.cpp"
-template <class T> class greater_equal_ordered_set {
+#line 1 "other/opposite_ordered_set.cpp"
+template <class W> class opposite_ordered_set {
+  using T = typename W::value_type;
+
 public:
   using value_type = T;
-  static constexpr bool compare(const T &x, const T &y) noexcept {
-    return x >= y;
+  static constexpr bool compare(const T &l, const T &r) noexcept {
+    return W::compare(r, l);
   }
 };
 

@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/pairing_heap.aoj.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-08 22:56:08+09:00
+    - Last commit date: 2020-02-15 23:51:29+09:00
 
 
 
@@ -38,7 +38,8 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../library/data_structure/pairing_heap.cpp.html">data_structure/pairing_heap.cpp</a>
-* :heavy_check_mark: <a href="../../library/other/greater_equal_ordered_set.cpp.html">other/greater_equal_ordered_set.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/less_equal_ordered_set.cpp.html">other/less_equal_ordered_set.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/opposite_ordered_set.cpp.html">other/opposite_ordered_set.cpp</a>
 
 
 ## Code
@@ -50,7 +51,8 @@ layout: default
   "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2170&lang=en"
 
 #include "data_structure/pairing_heap.cpp"
-#include "other/greater_equal_ordered_set.cpp"
+#include "other/less_equal_ordered_set.cpp"
+#include "other/opposite_ordered_set.cpp"
 
 #include <algorithm>
 #include <iostream>
@@ -59,7 +61,8 @@ layout: default
 #include <vector>
 
 void solve(const int n, const int q) {
-  using heap_type = pairing_heap<greater_equal_ordered_set<int>>;
+  using heap_type =
+      pairing_heap<opposite_ordered_set<less_equal_ordered_set<int>>>;
 
   std::vector<int> p(n), deg(n, 0);
   for (int i = 1; i != n; i += 1) {
@@ -200,15 +203,25 @@ public:
     return pairing_heap(merge(std::move(x.root), std::move(y.root)));
   }
 };
-#line 1 "other/greater_equal_ordered_set.cpp"
-template <class T> class greater_equal_ordered_set {
+#line 1 "other/less_equal_ordered_set.cpp"
+template <class T> class less_equal_ordered_set {
 public:
   using value_type = T;
   static constexpr bool compare(const T &x, const T &y) noexcept {
-    return x >= y;
+    return x <= y;
   }
 };
-#line 6 "test/pairing_heap.aoj.test.cpp"
+#line 1 "other/opposite_ordered_set.cpp"
+template <class W> class opposite_ordered_set {
+  using T = typename W::value_type;
+
+public:
+  using value_type = T;
+  static constexpr bool compare(const T &l, const T &r) noexcept {
+    return W::compare(r, l);
+  }
+};
+#line 7 "test/pairing_heap.aoj.test.cpp"
 
 #include <algorithm>
 #include <iostream>
@@ -217,7 +230,8 @@ public:
 #include <vector>
 
 void solve(const int n, const int q) {
-  using heap_type = pairing_heap<greater_equal_ordered_set<int>>;
+  using heap_type =
+      pairing_heap<opposite_ordered_set<less_equal_ordered_set<int>>>;
 
   std::vector<int> p(n), deg(n, 0);
   for (int i = 1; i != n; i += 1) {

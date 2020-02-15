@@ -76,13 +76,6 @@ layout: default
 * :warning: <a href="library/gomi/treap.cpp.html">gomi/treap.cpp</a>
 
 
-<div id="a55307e5cbe2b6bd3e0de2bb8cae60d9"></div>
-
-### gomi/CompactDataStructure
-
-* :warning: <a href="library/gomi/CompactDataStructure/BitVector.cpp.html">gomi/CompactDataStructure/BitVector.cpp</a>
-
-
 <div id="301aab639dc0109d372b43caadb8fe30"></div>
 
 ### gomi/DisjointSetDataStructure
@@ -105,13 +98,14 @@ layout: default
 
 * :heavy_check_mark: <a href="library/other/affine.cpp.html">other/affine.cpp</a>
 * :heavy_check_mark: <a href="library/other/cartesian_product_monoid.cpp.html">other/cartesian_product_monoid.cpp</a>
-* :heavy_check_mark: <a href="library/other/greater_equal_ordered_set.cpp.html">other/greater_equal_ordered_set.cpp</a>
+* :warning: <a href="library/other/greater_equal_ordered_set.cpp.html">other/greater_equal_ordered_set.cpp</a>
 * :heavy_check_mark: <a href="library/other/less_equal_ordered_set.cpp.html">other/less_equal_ordered_set.cpp</a>
 * :heavy_check_mark: <a href="library/other/min_assign_action.cpp.html">other/min_assign_action.cpp</a>
 * :heavy_check_mark: <a href="library/other/min_semigroup.cpp.html">other/min_semigroup.cpp</a>
 * :heavy_check_mark: <a href="library/other/modint.cpp.html">other/modint.cpp</a>
 * :warning: <a href="library/other/montgomery_modint.cpp.html">other/montgomery_modint.cpp</a>
 * :heavy_check_mark: <a href="library/other/opposite_monoid.cpp.html">other/opposite_monoid.cpp</a>
+* :heavy_check_mark: <a href="library/other/opposite_ordered_set.cpp.html">other/opposite_ordered_set.cpp</a>
 * :heavy_check_mark: <a href="library/other/plus_group.cpp.html">other/plus_group.cpp</a>
 * :heavy_check_mark: <a href="library/other/plus_monoid.cpp.html">other/plus_monoid.cpp</a>
 * :heavy_check_mark: <a href="library/other/right_zero_semigroup.cpp.html">other/right_zero_semigroup.cpp</a>
