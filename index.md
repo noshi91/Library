@@ -45,6 +45,7 @@ layout: default
 
 ### data_structure
 
+* :heavy_check_mark: <a href="library/data_structure/bit_vector.cpp.html">data_structure/bit_vector.cpp</a>
 * :heavy_check_mark: <a href="library/data_structure/dual_segment_tree.cpp.html">data_structure/dual_segment_tree.cpp</a>
 * :warning: <a href="library/data_structure/erasable_heap.cpp.html">data_structure/erasable_heap.cpp</a>
 * :heavy_check_mark: <a href="library/data_structure/fenwick_tree.cpp.html">data_structure/fenwick_tree.cpp</a>
@@ -64,7 +65,7 @@ layout: default
 * :warning: <a href="library/data_structure/ternary_treap.cpp.html">data_structure/ternary_treap.cpp</a>
 * :warning: <a href="library/data_structure/union_enumerate.cpp.html">data_structure/union_enumerate.cpp</a>
 * :heavy_check_mark: <a href="library/data_structure/union_find.cpp.html">data_structure/union_find.cpp</a>
-* :warning: <a href="library/data_structure/wavelet_matrix.cpp.html">data_structure/wavelet_matrix.cpp</a>
+* :heavy_check_mark: <a href="library/data_structure/wavelet_matrix.cpp.html">data_structure/wavelet_matrix.cpp</a>
 
 
 <div id="c25e426f9a94f83968c77e7d5480c159"></div>
@@ -130,5 +131,6 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/queue_aggregation.yosupo.test.cpp.html">test/queue_aggregation.yosupo.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/segment_tree.yosupo.test.cpp.html">test/segment_tree.yosupo.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/union_find.yosupo.test.cpp.html">test/union_find.yosupo.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/wavelet_matrix.aoj.test.cpp.html">test/wavelet_matrix.aoj.test.cpp</a>
 
 
