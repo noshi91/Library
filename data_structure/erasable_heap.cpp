@@ -1,18 +1,19 @@
 #include <cassert>
 
-template <class W, template <class> class Heap> class erasable_heap {
+template <class Heap> class erasable_heap {
+  using W = typename Heap::value_compare;
   using T = typename W::value_type;
 
 public:
-  using value_type = T;
+  using value_compare = W;
 
 private:
   static bool equivalent(const T x, const T y) {
     return W::compare(x, y) && W::compare(y, x);
   }
 
-  Heap<W> base;
-  Heap<W> erased;
+  Heap base;
+  Heap erased;
 
   void normalize() {
     while (!base.empty() && !erased.empty() &&

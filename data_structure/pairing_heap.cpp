@@ -6,7 +6,7 @@ template <class W> class pairing_heap {
   using T = typename W::value_type;
 
 public:
-  using value_type = T;
+  using value_compare = W;
 
 private:
   class node_type;
