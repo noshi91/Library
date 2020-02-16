@@ -77,21 +77,12 @@ layout: default
 * :warning: <a href="library/gomi/treap.cpp.html">gomi/treap.cpp</a>
 
 
-<div id="301aab639dc0109d372b43caadb8fe30"></div>
-
-### gomi/DisjointSetDataStructure
-
-* :warning: <a href="library/gomi/DisjointSetDataStructure/FullyPersistentUnionFindTree.cpp.html">gomi/DisjointSetDataStructure/FullyPersistentUnionFindTree.cpp</a>
-* :warning: <a href="library/gomi/DisjointSetDataStructure/FullyPersistentUnionFindTree_MemorySaving.cpp.html">gomi/DisjointSetDataStructure/FullyPersistentUnionFindTree_MemorySaving.cpp</a>
-
-
 <div id="795f3202b17cb6bc3d4b771d8c6c9eaf"></div>
 
 ### other
 
 * :heavy_check_mark: <a href="library/other/affine.cpp.html">other/affine.cpp</a>
 * :heavy_check_mark: <a href="library/other/cartesian_product_monoid.cpp.html">other/cartesian_product_monoid.cpp</a>
-* :warning: <a href="library/other/greater_equal_ordered_set.cpp.html">other/greater_equal_ordered_set.cpp</a>
 * :heavy_check_mark: <a href="library/other/less_equal_ordered_set.cpp.html">other/less_equal_ordered_set.cpp</a>
 * :heavy_check_mark: <a href="library/other/min_assign_action.cpp.html">other/min_assign_action.cpp</a>
 * :heavy_check_mark: <a href="library/other/min_semigroup.cpp.html">other/min_semigroup.cpp</a>
