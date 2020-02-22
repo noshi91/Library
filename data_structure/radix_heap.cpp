@@ -1,3 +1,5 @@
+#include "other/log2p164.cpp"
+
 #include <algorithm>
 #include <cassert>
 #include <cstddef>
@@ -17,13 +19,6 @@ public:
   using value_type = V;
 
 private:
-  static size_t log2p1(const u64 x) {
-    if (x == 0)
-      return 0;
-    else
-      return 64 - __builtin_clzll(x);
-  }
-
   std::vector<std::vector<V>> u;
   u64 last;
 
@@ -33,7 +28,7 @@ public:
   void push(const V x) {
     assert(last <= x.first);
 
-    const size_t i = log2p1(x.first ^ last);
+    const size_t i = log2p164(x.first ^ last);
     if (u.size() <= i)
       u.resize(i + 1);
     u[i].push_back(x);
@@ -47,7 +42,7 @@ public:
       for (const V &e : u[i])
         last = std::min(last, e.first);
       for (const V &e : u[i])
-        u[log2p1(e.first ^ last)].push_back(e);
+        u[log2p164(e.first ^ last)].push_back(e);
       u[i].clear();
     }
     V ret = u[0].back();
