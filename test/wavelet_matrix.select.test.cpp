@@ -1,3 +1,6 @@
+#define PROBLEM                                                                \
+  "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
+
 #include "data_structure/wavelet_matrix.cpp"
 #include "other/random_integer.cpp"
 
@@ -19,4 +22,6 @@ int main() {
     assert(wm.select(e, count[e]) == i);
     count[e] += 1;
   }
+
+  std::cout << "Hello World" << std::endl;
 }
