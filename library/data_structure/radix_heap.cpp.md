@@ -31,9 +31,15 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/radix_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-16 02:33:53+09:00
+    - Last commit date: 2020-02-22 20:51:34+09:00
 
 
+
+
+## Depends on
+
+* :heavy_check_mark: <a href="../other/countl_zero64.cpp.html">other/countl_zero64.cpp</a>
+* :heavy_check_mark: <a href="../other/log2p164.cpp.html">other/log2p164.cpp</a>
 
 
 ## Verified with
@@ -46,6 +52,8 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
+#include "other/log2p164.cpp"
+
 #include <algorithm>
 #include <cassert>
 #include <cstddef>
@@ -65,13 +73,6 @@ public:
   using value_type = V;
 
 private:
-  static size_t log2p1(const u64 x) {
-    if (x == 0)
-      return 0;
-    else
-      return 64 - __builtin_clzll(x);
-  }
-
   std::vector<std::vector<V>> u;
   u64 last;
 
@@ -81,7 +82,7 @@ public:
   void push(const V x) {
     assert(last <= x.first);
 
-    const size_t i = log2p1(x.first ^ last);
+    const size_t i = log2p164(x.first ^ last);
     if (u.size() <= i)
       u.resize(i + 1);
     u[i].push_back(x);
@@ -95,7 +96,7 @@ public:
       for (const V &e : u[i])
         last = std::min(last, e.first);
       for (const V &e : u[i])
-        u[log2p1(e.first ^ last)].push_back(e);
+        u[log2p164(e.first ^ last)].push_back(e);
       u[i].clear();
     }
     V ret = u[0].back();
@@ -109,7 +110,55 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "data_structure/radix_heap.cpp"
+#line 1 "other/countl_zero64.cpp"
+#include <array>
+#include <cstddef>
+#include <cstdint>
+
+std::size_t countl_zero64(std::uint_fast64_t x) {
+#ifdef __GNUC__
+  return x == 0 ? 64 : __builtin_clzll(x);
+#else
+  if (x == 0)
+    return 64;
+  std::size_t ret = 0;
+  if ((x & 0xFFFFFFFF00000000) != 0)
+    x >>= 32;
+  else
+    ret += 32;
+  if ((x & 0xFFFF0000) != 0)
+    x >>= 16;
+  else
+    ret += 16;
+  if ((x & 0xFF00) != 0)
+    x >>= 8;
+  else
+    ret += 8;
+  if ((x & 0xF0) != 0)
+    x >>= 4;
+  else
+    ret += 4;
+  if ((x & 0xC) != 0)
+    x >>= 2;
+  else
+    ret += 2;
+  if ((x & 0x2) != 0)
+    x >>= 1;
+  else
+    ret += 1;
+  return ret;
+#endif
+}
+#line 2 "other/log2p164.cpp"
+
+#include <cstddef>
+#include <cstdint>
+
+std::size_t log2p164(const std::uint_fast64_t x) {
+  return 64 - countl_zero64(x);
+}
+#line 2 "data_structure/radix_heap.cpp"
+
 #include <algorithm>
 #include <cassert>
 #include <cstddef>
@@ -129,13 +178,6 @@ public:
   using value_type = V;
 
 private:
-  static size_t log2p1(const u64 x) {
-    if (x == 0)
-      return 0;
-    else
-      return 64 - __builtin_clzll(x);
-  }
-
   std::vector<std::vector<V>> u;
   u64 last;
 
@@ -145,7 +187,7 @@ public:
   void push(const V x) {
     assert(last <= x.first);
 
-    const size_t i = log2p1(x.first ^ last);
+    const size_t i = log2p164(x.first ^ last);
     if (u.size() <= i)
       u.resize(i + 1);
     u[i].push_back(x);
@@ -159,7 +201,7 @@ public:
       for (const V &e : u[i])
         last = std::min(last, e.first);
       for (const V &e : u[i])
-        u[log2p1(e.first ^ last)].push_back(e);
+        u[log2p164(e.first ^ last)].push_back(e);
       u[i].clear();
     }
     V ret = u[0].back();
