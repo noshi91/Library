@@ -1,3 +1,5 @@
+#include "other/random_integer.cpp"
+
 #include <cassert>
 #include <cstddef>
 #include <random>
@@ -13,11 +15,7 @@ private:
   std::vector<T> c;
 
   void select() {
-    static std::default_random_engine drg(91);
-
-    const size_t index =
-        std::uniform_int_distribution<size_t>(0, c.size() - 1)(drg);
-    std::swap(c.back(), c[index]);
+    std::swap(c.back(), c[random_integer<size_t>(0, c.size() - 1)]);
   }
 
 public:

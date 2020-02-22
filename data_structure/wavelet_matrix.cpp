@@ -97,4 +97,24 @@ public:
     }
     return ret;
   }
+  size_t select(const key_type key, const size_t k) const {
+    size_t index = 0;
+    for (size_t p = mat.size(); p != 0;) {
+      p -= 1;
+      const bit_vector &v = mat[p];
+      if (!test(key, p))
+        index = v.rank0(index);
+      else
+        index = v.rank0(size()) + v.rank1(index);
+    }
+    index += k;
+    for (size_t p = 0; p != mat.size(); p += 1) {
+      const bit_vector &v = mat[p];
+      if (!test(key, p))
+        index = v.select0(index);
+      else
+        index = v.select1(index - v.rank0(size()));
+    }
+    return index;
+  }
 };
