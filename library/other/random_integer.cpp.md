@@ -31,18 +31,19 @@ layout: default
 
 * category: <a href="../../index.html#795f3202b17cb6bc3d4b771d8c6c9eaf">other</a>
 * <a href="{{ site.github.repository_url }}/blob/master/other/random_integer.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-22 11:33:14+09:00
+    - Last commit date: 2020-02-23 00:45:19+09:00
 
 
 
 
 ## Required by
 
-* :warning: <a href="../data_structure/randomized_queue.cpp.html">data_structure/randomized_queue.cpp</a>
+* :heavy_check_mark: <a href="../data_structure/randomized_queue.cpp.html">data_structure/randomized_queue.cpp</a>
 
 
 ## Verified with
 
+* :heavy_check_mark: <a href="../../verify/test/randomized_queue.test.cpp.html">test/randomized_queue.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/wavelet_matrix.select.test.cpp.html">test/wavelet_matrix.select.test.cpp</a>
 
 
@@ -51,6 +52,8 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
+#pragma once
+
 #include <random>
 #include <type_traits>
 
@@ -71,7 +74,8 @@ IntType random_integer(const IntType a, const IntType b) {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "other/random_integer.cpp"
+#line 2 "other/random_integer.cpp"
+
 #include <random>
 #include <type_traits>
 

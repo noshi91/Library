@@ -25,12 +25,11 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: data_structure/randomized_queue.cpp
+# :heavy_check_mark: test/randomized_queue.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
-* <a href="{{ site.github.repository_url }}/blob/master/data_structure/randomized_queue.cpp">View this file on GitHub</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/randomized_queue.test.cpp">View this file on GitHub</a>
     - Last commit date: 2020-02-23 00:45:19+09:00
 
 
@@ -38,12 +37,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../other/random_integer.cpp.html">other/random_integer.cpp</a>
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../verify/test/randomized_queue.test.cpp.html">test/randomized_queue.test.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/randomized_queue.cpp.html">data_structure/randomized_queue.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/random_integer.cpp.html">other/random_integer.cpp</a>
 
 
 ## Code
@@ -51,52 +46,55 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
+#define PROBLEM                                                                \
+  "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
+
+#include "data_structure/randomized_queue.cpp"
 #include "other/random_integer.cpp"
 
+#include <algorithm>
 #include <cassert>
-#include <cstddef>
-#include <random>
+#include <iostream>
 #include <vector>
 
-template <class T> class randomized_queue {
-  using size_t = std::size_t;
+int main() {
+  const int n = 1 << 20;
 
-public:
-  using value_type = T;
+  std::vector<int> a(n);
+  for (int &e : a)
+    e = random_integer(std::numeric_limits<int>::lowest(),
+                       std::numeric_limits<int>::max());
 
-private:
-  std::vector<T> c;
+  randomized_queue<int> rq;
+  for (const int e : a)
+    rq.push(e);
 
-  void select() {
-    std::swap(c.back(), c[random_integer<size_t>(0, c.size() - 1)]);
-  }
+  assert(!rq.empty());
 
-public:
-  randomized_queue() = default;
+  std::vector<int> b(n);
+  for (int &e : b)
+    e = rq.pop();
 
-  bool empty() const { return c.empty(); }
+  assert(rq.empty());
+  assert(a != b);
+  std::reverse(b.begin(), b.end());
+  assert(a != b);
+  std::sort(a.begin(), a.end());
+  std::sort(b.begin(), b.end());
+  assert(a == b);
 
-  T front() {
-    assert(!empty());
-    select();
-    return c.back();
-  }
-
-  void push(const T x) { c.push_back(x); }
-  T pop() {
-    assert(!empty());
-    select();
-    const T ret = c.back();
-    c.pop_back();
-    return ret;
-  }
-};
+  std::cout << "Hello World" << std::endl;
+}
 ```
 {% endraw %}
 
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 1 "test/randomized_queue.test.cpp"
+#define PROBLEM                                                                \
+  "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
+
 #line 2 "other/random_integer.cpp"
 
 #include <random>
@@ -153,6 +151,41 @@ public:
     return ret;
   }
 };
+#line 6 "test/randomized_queue.test.cpp"
+
+#include <algorithm>
+#include <cassert>
+#include <iostream>
+#include <vector>
+
+int main() {
+  const int n = 1 << 20;
+
+  std::vector<int> a(n);
+  for (int &e : a)
+    e = random_integer(std::numeric_limits<int>::lowest(),
+                       std::numeric_limits<int>::max());
+
+  randomized_queue<int> rq;
+  for (const int e : a)
+    rq.push(e);
+
+  assert(!rq.empty());
+
+  std::vector<int> b(n);
+  for (int &e : b)
+    e = rq.pop();
+
+  assert(rq.empty());
+  assert(a != b);
+  std::reverse(b.begin(), b.end());
+  assert(a != b);
+  std::sort(a.begin(), a.end());
+  std::sort(b.begin(), b.end());
+  assert(a == b);
+
+  std::cout << "Hello World" << std::endl;
+}
 
 ```
 {% endraw %}
