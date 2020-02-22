@@ -25,20 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :warning: data_structure/randomized_queue.cpp
+# :x: other/random_integer.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
-* <a href="{{ site.github.repository_url }}/blob/master/data_structure/randomized_queue.cpp">View this file on GitHub</a>
+* category: <a href="../../index.html#795f3202b17cb6bc3d4b771d8c6c9eaf">other</a>
+* <a href="{{ site.github.repository_url }}/blob/master/other/random_integer.cpp">View this file on GitHub</a>
     - Last commit date: 2020-02-22 11:33:14+09:00
 
 
 
 
-## Depends on
+## Required by
 
-* :x: <a href="../other/random_integer.cpp.html">other/random_integer.cpp</a>
+* :warning: <a href="../data_structure/randomized_queue.cpp.html">data_structure/randomized_queue.cpp</a>
+
+
+## Verified with
+
+* :x: <a href="../../verify/test/wavelet_matrix.select.test.cpp.html">test/wavelet_matrix.select.test.cpp</a>
 
 
 ## Code
@@ -46,46 +51,20 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#include "other/random_integer.cpp"
-
-#include <cassert>
-#include <cstddef>
 #include <random>
-#include <vector>
+#include <type_traits>
 
-template <class T> class randomized_queue {
-  using size_t = std::size_t;
+template <class T, class... Args>
+using any_of_is_same = std::disjunction<std::is_same<T, Args>...>;
 
-public:
-  using value_type = T;
-
-private:
-  std::vector<T> c;
-
-  void select() {
-    std::swap(c.back(), c[random_integer<size_t>(0, c.size() - 1)]);
-  }
-
-public:
-  randomized_queue() = default;
-
-  bool empty() const { return c.empty(); }
-
-  T front() {
-    assert(!empty());
-    select();
-    return c.back();
-  }
-
-  void push(const T x) { c.push_back(x); }
-  T pop() {
-    assert(!empty());
-    select();
-    const T ret = c.back();
-    c.pop_back();
-    return ret;
-  }
-};
+template <class IntType = int>
+IntType random_integer(const IntType a, const IntType b) {
+  static_assert(
+      any_of_is_same<IntType, short, int, long, long long, unsigned short,
+                     unsigned int, unsigned long, unsigned long long>::value);
+  static std::default_random_engine g(91);
+  return std::uniform_int_distribution<IntType>(a, b)(g);
+}
 ```
 {% endraw %}
 
@@ -107,46 +86,6 @@ IntType random_integer(const IntType a, const IntType b) {
   static std::default_random_engine g(91);
   return std::uniform_int_distribution<IntType>(a, b)(g);
 }
-#line 2 "data_structure/randomized_queue.cpp"
-
-#include <cassert>
-#include <cstddef>
-#include <random>
-#include <vector>
-
-template <class T> class randomized_queue {
-  using size_t = std::size_t;
-
-public:
-  using value_type = T;
-
-private:
-  std::vector<T> c;
-
-  void select() {
-    std::swap(c.back(), c[random_integer<size_t>(0, c.size() - 1)]);
-  }
-
-public:
-  randomized_queue() = default;
-
-  bool empty() const { return c.empty(); }
-
-  T front() {
-    assert(!empty());
-    select();
-    return c.back();
-  }
-
-  void push(const T x) { c.push_back(x); }
-  T pop() {
-    assert(!empty());
-    select();
-    const T ret = c.back();
-    c.pop_back();
-    return ret;
-  }
-};
 
 ```
 {% endraw %}
