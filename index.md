@@ -93,7 +93,7 @@ layout: default
 * :heavy_check_mark: <a href="library/other/plus_group.cpp.html">other/plus_group.cpp</a>
 * :heavy_check_mark: <a href="library/other/plus_monoid.cpp.html">other/plus_monoid.cpp</a>
 * :heavy_check_mark: <a href="library/other/popcount64.cpp.html">other/popcount64.cpp</a>
-* :x: <a href="library/other/random_integer.cpp.html">other/random_integer.cpp</a>
+* :heavy_check_mark: <a href="library/other/random_integer.cpp.html">other/random_integer.cpp</a>
 * :heavy_check_mark: <a href="library/other/right_zero_semigroup.cpp.html">other/right_zero_semigroup.cpp</a>
 * :heavy_check_mark: <a href="library/other/select64.cpp.html">other/select64.cpp</a>
 * :heavy_check_mark: <a href="library/other/semigroup_to_monoid.cpp.html">other/semigroup_to_monoid.cpp</a>
@@ -115,6 +115,6 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/segment_tree.yosupo.test.cpp.html">test/segment_tree.yosupo.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/union_find.yosupo.test.cpp.html">test/union_find.yosupo.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/wavelet_matrix.aoj.test.cpp.html">test/wavelet_matrix.aoj.test.cpp</a>
-* :x: <a href="verify/test/wavelet_matrix.select.test.cpp.html">test/wavelet_matrix.select.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/wavelet_matrix.select.test.cpp.html">test/wavelet_matrix.select.test.cpp</a>
 
 

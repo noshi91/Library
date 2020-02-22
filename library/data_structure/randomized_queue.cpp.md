@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../other/random_integer.cpp.html">other/random_integer.cpp</a>
+* :heavy_check_mark: <a href="../other/random_integer.cpp.html">other/random_integer.cpp</a>
 
 
 ## Code

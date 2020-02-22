@@ -25,12 +25,12 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :x: test/wavelet_matrix.select.test.cpp
+# :heavy_check_mark: test/wavelet_matrix.select.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/wavelet_matrix.select.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-22 11:33:14+09:00
+    - Last commit date: 2020-02-22 12:01:43+09:00
 
 
 
@@ -40,7 +40,7 @@ layout: default
 * :heavy_check_mark: <a href="../../library/data_structure/bit_vector.cpp.html">data_structure/bit_vector.cpp</a>
 * :heavy_check_mark: <a href="../../library/data_structure/wavelet_matrix.cpp.html">data_structure/wavelet_matrix.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/popcount64.cpp.html">other/popcount64.cpp</a>
-* :x: <a href="../../library/other/random_integer.cpp.html">other/random_integer.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/random_integer.cpp.html">other/random_integer.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/select64.cpp.html">other/select64.cpp</a>
 
 
@@ -49,6 +49,9 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
+#define PROBLEM                                                                \
+  "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
+
 #include "data_structure/wavelet_matrix.cpp"
 #include "other/random_integer.cpp"
 
@@ -70,6 +73,8 @@ int main() {
     assert(wm.select(e, count[e]) == i);
     count[e] += 1;
   }
+
+  std::cout << "Hello World" << std::endl;
 }
 ```
 {% endraw %}
@@ -77,6 +82,10 @@ int main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 1 "test/wavelet_matrix.select.test.cpp"
+#define PROBLEM                                                                \
+  "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
+
 #line 1 "other/popcount64.cpp"
 #include <cstddef>
 #include <cstdint>
@@ -343,7 +352,7 @@ IntType random_integer(const IntType a, const IntType b) {
   static std::default_random_engine g(91);
   return std::uniform_int_distribution<IntType>(a, b)(g);
 }
-#line 3 "test/wavelet_matrix.select.test.cpp"
+#line 6 "test/wavelet_matrix.select.test.cpp"
 
 #include <cassert>
 #include <iostream>
@@ -363,6 +372,8 @@ int main() {
     assert(wm.select(e, count[e]) == i);
     count[e] += 1;
   }
+
+  std::cout << "Hello World" << std::endl;
 }
 
 ```
