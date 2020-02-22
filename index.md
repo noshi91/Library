@@ -38,7 +38,7 @@ layout: default
 
 ### algorithm
 
-* :warning: <a href="library/algorithm/zeta_transform.cpp.html">algorithm/zeta_transform.cpp</a>
+* :heavy_check_mark: <a href="library/algorithm/zeta_transform.cpp.html">algorithm/zeta_transform.cpp</a>
 
 
 <div id="c8f6850ec2ec3fb32f203c1f4e3c2fd2"></div>
@@ -90,6 +90,7 @@ layout: default
 * :heavy_check_mark: <a href="library/other/min_semigroup.cpp.html">other/min_semigroup.cpp</a>
 * :heavy_check_mark: <a href="library/other/modint.cpp.html">other/modint.cpp</a>
 * :warning: <a href="library/other/montgomery_modint.cpp.html">other/montgomery_modint.cpp</a>
+* :heavy_check_mark: <a href="library/other/multiplies_monoid.cpp.html">other/multiplies_monoid.cpp</a>
 * :heavy_check_mark: <a href="library/other/opposite_monoid.cpp.html">other/opposite_monoid.cpp</a>
 * :heavy_check_mark: <a href="library/other/opposite_ordered_set.cpp.html">other/opposite_ordered_set.cpp</a>
 * :heavy_check_mark: <a href="library/other/plus_group.cpp.html">other/plus_group.cpp</a>
@@ -118,5 +119,6 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/union_find.yosupo.test.cpp.html">test/union_find.yosupo.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/wavelet_matrix.aoj.test.cpp.html">test/wavelet_matrix.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/wavelet_matrix.select.test.cpp.html">test/wavelet_matrix.select.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/zeta_transform.aoj.test.cpp.html">test/zeta_transform.aoj.test.cpp</a>
 
 

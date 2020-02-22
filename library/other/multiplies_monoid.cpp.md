@@ -25,20 +25,19 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: other/plus_group.cpp
+# :heavy_check_mark: other/multiplies_monoid.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#795f3202b17cb6bc3d4b771d8c6c9eaf">other</a>
-* <a href="{{ site.github.repository_url }}/blob/master/other/plus_group.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-09 00:38:19+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/other/multiplies_monoid.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-02-23 00:23:42+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/potentialized_union_find.aoj.test.cpp.html">test/potentialized_union_find.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/zeta_transform.aoj.test.cpp.html">test/zeta_transform.aoj.test.cpp</a>
 
 
@@ -47,14 +46,13 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-template <class T> class plus_group {
+template <class T> class multiplies_monoid {
 public:
   using value_type = T;
   static constexpr T operation(const T &l, const T &r) noexcept {
-    return l + r;
+    return l * r;
   }
-  static constexpr T identity = 0;
-  static constexpr T inverse(const T &x) noexcept { return -x; }
+  static constexpr T identity = 1;
 };
 ```
 {% endraw %}
@@ -62,15 +60,14 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "other/plus_group.cpp"
-template <class T> class plus_group {
+#line 1 "other/multiplies_monoid.cpp"
+template <class T> class multiplies_monoid {
 public:
   using value_type = T;
   static constexpr T operation(const T &l, const T &r) noexcept {
-    return l + r;
+    return l * r;
   }
-  static constexpr T identity = 0;
-  static constexpr T inverse(const T &x) noexcept { return -x; }
+  static constexpr T identity = 1;
 };
 
 ```
