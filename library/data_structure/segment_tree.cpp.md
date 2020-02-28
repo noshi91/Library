@@ -25,15 +25,35 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: data_structure/segment_tree.cpp
+# :heavy_check_mark: Segment Tree <small>(data_structure/segment_tree.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-19 16:46:57+09:00
+    - Last commit date: 2020-02-22 23:58:44+09:00
 
 
+* see: <a href="https://scrapbox.io/data-structures/Segment_Tree">https://scrapbox.io/data-structures/Segment_Tree</a>
+
+
+## Operations
+
+モノイド$M$の列$(a_1, a_2, \dots, a_n)$を扱う.
+空間計算量$\Theta(n)$
+
+-   $\mathtt{new}()$
+    -   列の項がすべて$M$の単位元であるSegment Treeを作成する.
+    -   時間計算量[$ \Theta(n)$]
+-   $\mathtt{build}(a_1, a_2, \dots, a_n)$
+    -   与えられた列を表現するSegment Treeを作成する.
+    -   時間計算量$\Theta(n)$
+-   $\mathtt{set}(i, x)$
+    -   $a_i$に$x$を代入する.
+    -   時間計算量$O(\log n)$
+-   $\mathtt{fold}(l, r)$
+    -   $a_l \cdot a_{l+1} \cdot \dots \cdot a_r$を計算する.
+    -   時間計算量$O(\log n)$
 
 
 ## Verified with
@@ -50,6 +70,11 @@ layout: default
 #include <cstddef>
 #include <vector>
 
+/**
+ * @brief Segment Tree
+ * @docs docs/segment_tree.md
+ * @see https://scrapbox.io/data-structures/Segment_Tree
+ */
 template <class Monoid> class segment_tree {
 public:
   using T = typename Monoid::value_type;
@@ -154,6 +179,11 @@ public:
 #include <cstddef>
 #include <vector>
 
+/**
+ * @brief Segment Tree
+ * @docs docs/segment_tree.md
+ * @see https://scrapbox.io/data-structures/Segment_Tree
+ */
 template <class Monoid> class segment_tree {
 public:
   using T = typename Monoid::value_type;

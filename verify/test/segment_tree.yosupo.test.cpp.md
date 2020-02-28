@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/segment_tree.yosupo.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-09 00:25:15+09:00
+    - Last commit date: 2020-02-22 23:58:44+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_set_range_composite">https://judge.yosupo.jp/problem/point_set_range_composite</a>
@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/data_structure/segment_tree.cpp.html">data_structure/segment_tree.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/segment_tree.cpp.html">Segment Tree <small>(data_structure/segment_tree.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/other/affine.cpp.html">other/affine.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/modint.cpp.html">other/modint.cpp</a>
 
@@ -96,6 +96,11 @@ int main() {
 #include <cstddef>
 #include <vector>
 
+/**
+ * @brief Segment Tree
+ * @docs docs/segment_tree.md
+ * @see https://scrapbox.io/data-structures/Segment_Tree
+ */
 template <class Monoid> class segment_tree {
 public:
   using T = typename Monoid::value_type;
