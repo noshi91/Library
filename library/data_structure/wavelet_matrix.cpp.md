@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/wavelet_matrix.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 11:25:56+09:00
+    - Last commit date: 2020-02-28 13:46:10+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="bit_vector.cpp.html">data_structure/bit_vector.cpp</a>
+* :heavy_check_mark: <a href="bit_vector.cpp.html">Bit Vector <small>(data_structure/bit_vector.cpp)</small></a>
 * :heavy_check_mark: <a href="../other/popcount64.cpp.html">other/popcount64.cpp</a>
 * :heavy_check_mark: <a href="../other/select64.cpp.html">other/select64.cpp</a>
 
@@ -313,6 +313,11 @@ public:
     return i * wordsize + select64(v[i].bit, k - v[i].sum);
   }
 };
+
+/*
+ * @brief Bit Vector
+ */
+ 
 #line 2 "data_structure/wavelet_matrix.cpp"
 
 #include <algorithm>

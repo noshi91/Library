@@ -30,14 +30,14 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/wavelet_matrix.select.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 11:25:56+09:00
+    - Last commit date: 2020-02-28 13:46:10+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/data_structure/bit_vector.cpp.html">data_structure/bit_vector.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/bit_vector.cpp.html">Bit Vector <small>(data_structure/bit_vector.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/data_structure/wavelet_matrix.cpp.html">data_structure/wavelet_matrix.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/popcount64.cpp.html">other/popcount64.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/random_integer.cpp.html">other/random_integer.cpp</a>
@@ -217,6 +217,11 @@ public:
     return i * wordsize + select64(v[i].bit, k - v[i].sum);
   }
 };
+
+/*
+ * @brief Bit Vector
+ */
+ 
 #line 2 "data_structure/wavelet_matrix.cpp"
 
 #include <algorithm>

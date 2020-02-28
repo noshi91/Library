@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: data_structure/bit_vector.cpp
+# :heavy_check_mark: Bit Vector <small>(data_structure/bit_vector.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/bit_vector.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-22 11:33:14+09:00
+    - Last commit date: 2020-02-28 13:46:10+09:00
 
 
 
@@ -130,6 +130,11 @@ public:
     return i * wordsize + select64(v[i].bit, k - v[i].sum);
   }
 };
+
+/*
+ * @brief Bit Vector
+ */
+ 
 ```
 {% endraw %}
 
@@ -267,6 +272,11 @@ public:
     return i * wordsize + select64(v[i].bit, k - v[i].sum);
   }
 };
+
+/*
+ * @brief Bit Vector
+ */
+ 
 
 ```
 {% endraw %}

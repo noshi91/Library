@@ -38,7 +38,7 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="../data_structure/bit_vector.cpp.html">data_structure/bit_vector.cpp</a>
+* :heavy_check_mark: <a href="../data_structure/bit_vector.cpp.html">Bit Vector <small>(data_structure/bit_vector.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/wavelet_matrix.cpp.html">data_structure/wavelet_matrix.cpp</a>
 
 

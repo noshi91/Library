@@ -45,7 +45,7 @@ layout: default
 
 ### data_structure
 
-* :heavy_check_mark: <a href="library/data_structure/bit_vector.cpp.html">data_structure/bit_vector.cpp</a>
+* :heavy_check_mark: <a href="library/data_structure/bit_vector.cpp.html">Bit Vector <small>(data_structure/bit_vector.cpp)</small></a>
 * :heavy_check_mark: <a href="library/data_structure/dual_segment_tree.cpp.html">data_structure/dual_segment_tree.cpp</a>
 * :heavy_check_mark: <a href="library/data_structure/erasable_heap.cpp.html">data_structure/erasable_heap.cpp</a>
 * :heavy_check_mark: <a href="library/data_structure/fenwick_tree.cpp.html">data_structure/fenwick_tree.cpp</a>
