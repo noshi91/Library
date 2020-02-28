@@ -2,6 +2,11 @@
 #include <cstddef>
 #include <vector>
 
+/**
+ * @brief Segment Tree
+ * @docs docs/segment_tree.md
+ * @see https://scrapbox.io/data-structures/Segment_Tree
+ */
 template <class Monoid> class segment_tree {
 public:
   using T = typename Monoid::value_type;
