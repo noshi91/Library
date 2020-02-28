@@ -38,7 +38,7 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="../data_structure/radix_heap.cpp.html">data_structure/radix_heap.cpp</a>
+* :heavy_check_mark: <a href="../data_structure/radix_heap.cpp.html">Radix Heap <small>(data_structure/radix_heap.cpp)</small></a>
 * :heavy_check_mark: <a href="log2p164.cpp.html">other/log2p164.cpp</a>
 
 

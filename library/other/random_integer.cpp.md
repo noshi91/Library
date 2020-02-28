@@ -38,7 +38,7 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="../data_structure/randomized_queue.cpp.html">data_structure/randomized_queue.cpp</a>
+* :heavy_check_mark: <a href="../data_structure/randomized_queue.cpp.html">Randomized Queue <small>(data_structure/randomized_queue.cpp)</small></a>
 
 
 ## Verified with

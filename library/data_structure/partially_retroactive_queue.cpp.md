@@ -25,15 +25,16 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :warning: data_structure/partially_retroactive_queue.cpp
+# :warning: Partially Retroactive Queue <small>(data_structure/partially_retroactive_queue.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/partially_retroactive_queue.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-17 00:25:31+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
+* see: <a href="https://erikdemaine.org/papers/Retroactive_TALG/paper.pdf">https://erikdemaine.org/papers/Retroactive_TALG/paper.pdf</a>
 
 
 ## Code
@@ -105,6 +106,12 @@ public:
     front_itr->in_queue = true;
   }
 };
+
+/**
+ * @brief Partially Retroactive Queue
+ * @see https://erikdemaine.org/papers/Retroactive_TALG/paper.pdf
+ */
+
 ```
 {% endraw %}
 
@@ -176,6 +183,11 @@ public:
     front_itr->in_queue = true;
   }
 };
+
+/**
+ * @brief Partially Retroactive Queue
+ * @see https://erikdemaine.org/papers/Retroactive_TALG/paper.pdf
+ */
 
 ```
 {% endraw %}

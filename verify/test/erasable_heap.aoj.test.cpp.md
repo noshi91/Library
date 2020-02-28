@@ -30,15 +30,15 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/erasable_heap.aoj.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-16 01:11:55+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/data_structure/erasable_heap.cpp.html">data_structure/erasable_heap.cpp</a>
-* :heavy_check_mark: <a href="../../library/data_structure/pairing_heap.cpp.html">data_structure/pairing_heap.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/erasable_heap.cpp.html">Erasable Heap <small>(data_structure/erasable_heap.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/data_structure/pairing_heap.cpp.html">Pairing Heap <small>(data_structure/pairing_heap.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/other/less_equal_ordered_set.cpp.html">other/less_equal_ordered_set.cpp</a>
 
 
@@ -153,6 +153,10 @@ public:
     normalize();
   }
 };
+
+/**
+ * @brief Erasable Heap
+ */
 #line 1 "data_structure/pairing_heap.cpp"
 #include <cassert>
 #include <memory>
@@ -221,6 +225,10 @@ public:
     return pairing_heap(merge(std::move(x.root), std::move(y.root)));
   }
 };
+
+/**
+ * @brief Pairing Heap
+ */
 #line 1 "other/less_equal_ordered_set.cpp"
 template <class T> class less_equal_ordered_set {
 public:

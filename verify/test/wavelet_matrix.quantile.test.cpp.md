@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/wavelet_matrix.quantile.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 13:52:23+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_kth_smallest">https://judge.yosupo.jp/problem/range_kth_smallest</a>
@@ -39,7 +39,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../library/data_structure/bit_vector.cpp.html">Bit Vector <small>(data_structure/bit_vector.cpp)</small></a>
-* :heavy_check_mark: <a href="../../library/data_structure/wavelet_matrix.cpp.html">data_structure/wavelet_matrix.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/wavelet_matrix.cpp.html">Wavelet Matrix <small>(data_structure/wavelet_matrix.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/other/popcount64.cpp.html">other/popcount64.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/select64.cpp.html">other/select64.cpp</a>
 
@@ -340,6 +340,10 @@ public:
     return index;
   }
 };
+
+/**
+ * @brief Wavelet Matrix
+ */
 #line 4 "test/wavelet_matrix.quantile.test.cpp"
 
 #include <iostream>

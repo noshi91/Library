@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/union_find.yosupo.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-08 22:56:08+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/unionfind">https://judge.yosupo.jp/problem/unionfind</a>
@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/data_structure/union_find.cpp.html">data_structure/union_find.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/union_find.cpp.html">Union Find <small>(data_structure/union_find.cpp)</small></a>
 
 
 ## Code
@@ -131,6 +131,11 @@ public:
     }
   }
 };
+
+/**
+ * @brief Union Find
+ * @see https://scrapbox.io/data-structures/Union_Find
+ */
 #line 4 "test/union_find.yosupo.test.cpp"
 using namespace std;
 

@@ -25,15 +25,16 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :warning: data_structure/range_mode_query.cpp
+# :warning: Range Mode Query <small>(data_structure/range_mode_query.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/range_mode_query.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-06 19:39:55+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
+* see: <a href="https://scrapbox.io/data-structures/Range_Mode_Query">https://scrapbox.io/data-structures/Range_Mode_Query</a>
 
 
 ## Code
@@ -41,10 +42,6 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-/*
-reference: https://arxiv.org/abs/1101.4068
-*/
-
 #include <cassert>
 #include <cstddef>
 #include <vector>
@@ -136,6 +133,12 @@ public:
     return cur.mode;
   }
 };
+
+/**
+ * @brief Range Mode Query
+ * @see https://scrapbox.io/data-structures/Range_Mode_Query
+ */
+
 ```
 {% endraw %}
 
@@ -143,10 +146,6 @@ public:
 {% raw %}
 ```cpp
 #line 1 "data_structure/range_mode_query.cpp"
-/*
-reference: https://arxiv.org/abs/1101.4068
-*/
-
 #include <cassert>
 #include <cstddef>
 #include <vector>
@@ -238,6 +237,11 @@ public:
     return cur.mode;
   }
 };
+
+/**
+ * @brief Range Mode Query
+ * @see https://scrapbox.io/data-structures/Range_Mode_Query
+ */
 
 ```
 {% endraw %}

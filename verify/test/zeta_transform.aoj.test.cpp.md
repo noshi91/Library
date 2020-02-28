@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/zeta_transform.aoj.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-23 00:23:42+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119</a>
@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/algorithm/zeta_transform.cpp.html">algorithm/zeta_transform.cpp</a>
+* :heavy_check_mark: <a href="../../library/algorithm/zeta_transform.cpp.html">Zeta Transform <small>(algorithm/zeta_transform.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/other/modint.cpp.html">other/modint.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/multiplies_monoid.cpp.html">other/multiplies_monoid.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/plus_group.cpp.html">other/plus_group.cpp</a>
@@ -148,6 +148,10 @@ void superset_mobius_transform(std::vector<typename G::value_type> &a) {
     }
   }
 }
+
+/**
+ * @brief Zeta Transform
+ */
 #line 1 "other/modint.cpp"
 #include <cstdint>
 

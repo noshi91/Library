@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/lazy_segment_tree.yosupo.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-14 17:46:13+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_affine_range_sum">https://judge.yosupo.jp/problem/range_affine_range_sum</a>
@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/data_structure/lazy_segment_tree.cpp.html">data_structure/lazy_segment_tree.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/lazy_segment_tree.cpp.html">Lazy Segment Tree <small>(data_structure/lazy_segment_tree.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/other/affine.cpp.html">other/affine.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/cartesian_product_monoid.cpp.html">other/cartesian_product_monoid.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/modint.cpp.html">other/modint.cpp</a>
@@ -219,6 +219,11 @@ public:
     }
   }
 };
+
+/**
+ * @brief Lazy Segment Tree
+ * @see https://scrapbox.io/data-structures/Lazy_Segment_Tree
+ */
 #line 1 "other/modint.cpp"
 #include <cstdint>
 

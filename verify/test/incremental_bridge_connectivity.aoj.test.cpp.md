@@ -30,15 +30,15 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/incremental_bridge_connectivity.aoj.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-08 22:56:08+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/data_structure/incremental_bridge_connectivity.cpp.html">data_structure/incremental_bridge_connectivity.cpp</a>
-* :heavy_check_mark: <a href="../../library/data_structure/union_find.cpp.html">data_structure/union_find.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/incremental_bridge_connectivity.cpp.html">Incremental Bridge-Connectivity <small>(data_structure/incremental_bridge_connectivity.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/data_structure/union_find.cpp.html">Union Find <small>(data_structure/union_find.cpp)</small></a>
 
 
 ## Code
@@ -82,11 +82,6 @@ int main() {
 #line 1 "test/incremental_bridge_connectivity.aoj.test.cpp"
 #define PROBLEM                                                                \
   "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B&lang=jp"
-
-#line 1 "data_structure/incremental_bridge_connectivity.cpp"
-/*
-reference: https://link.springer.com/article/10.1007/BF01758773
-*/
 
 #line 1 "data_structure/union_find.cpp"
 #include <cassert>
@@ -145,7 +140,12 @@ public:
     }
   }
 };
-#line 6 "data_structure/incremental_bridge_connectivity.cpp"
+
+/**
+ * @brief Union Find
+ * @see https://scrapbox.io/data-structures/Union_Find
+ */
+#line 2 "data_structure/incremental_bridge_connectivity.cpp"
 
 #include <cassert>
 #include <cstddef>
@@ -226,6 +226,11 @@ public:
     }
   }
 };
+
+/**
+ * @brief Incremental Bridge-Connectivity
+ * @see https://scrapbox.io/data-structures/Incremental_Bridge-Connectivity
+ */
 #line 5 "test/incremental_bridge_connectivity.aoj.test.cpp"
 
 #include <algorithm>

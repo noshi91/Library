@@ -30,14 +30,14 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/lazy_segment_tree.aoj.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-14 16:53:57+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/data_structure/lazy_segment_tree.cpp.html">data_structure/lazy_segment_tree.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/lazy_segment_tree.cpp.html">Lazy Segment Tree <small>(data_structure/lazy_segment_tree.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/other/less_equal_ordered_set.cpp.html">other/less_equal_ordered_set.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/min_assign_action.cpp.html">other/min_assign_action.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/min_semigroup.cpp.html">other/min_semigroup.cpp</a>
@@ -216,6 +216,11 @@ public:
     }
   }
 };
+
+/**
+ * @brief Lazy Segment Tree
+ * @see https://scrapbox.io/data-structures/Lazy_Segment_Tree
+ */
 #line 1 "other/less_equal_ordered_set.cpp"
 template <class T> class less_equal_ordered_set {
 public:

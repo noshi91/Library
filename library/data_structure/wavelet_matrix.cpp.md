@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: data_structure/wavelet_matrix.cpp
+# :heavy_check_mark: Wavelet Matrix <small>(data_structure/wavelet_matrix.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/wavelet_matrix.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 13:52:23+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
 
@@ -176,6 +176,11 @@ public:
     return index;
   }
 };
+
+/**
+ * @brief Wavelet Matrix
+ */
+
 ```
 {% endraw %}
 
@@ -439,6 +444,10 @@ public:
     return index;
   }
 };
+
+/**
+ * @brief Wavelet Matrix
+ */
 
 ```
 {% endraw %}

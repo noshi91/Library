@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: algorithm/zeta_transform.cpp
+# :heavy_check_mark: Zeta Transform <small>(algorithm/zeta_transform.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#ed469618898d75b149e5c7c4b6a1c415">algorithm</a>
 * <a href="{{ site.github.repository_url }}/blob/master/algorithm/zeta_transform.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-30 01:00:01+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
 
@@ -108,6 +108,11 @@ void superset_mobius_transform(std::vector<typename G::value_type> &a) {
     }
   }
 }
+
+/**
+ * @brief Zeta Transform
+ */
+
 ```
 {% endraw %}
 
@@ -177,6 +182,10 @@ void superset_mobius_transform(std::vector<typename G::value_type> &a) {
     }
   }
 }
+
+/**
+ * @brief Zeta Transform
+ */
 
 ```
 {% endraw %}

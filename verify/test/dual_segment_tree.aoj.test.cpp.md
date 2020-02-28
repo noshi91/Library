@@ -30,14 +30,14 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/dual_segment_tree.aoj.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-09 00:25:15+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/data_structure/dual_segment_tree.cpp.html">data_structure/dual_segment_tree.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/dual_segment_tree.cpp.html">Dual Segment Tree <small>(data_structure/dual_segment_tree.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/other/right_zero_semigroup.cpp.html">other/right_zero_semigroup.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/semigroup_to_monoid.cpp.html">other/semigroup_to_monoid.cpp</a>
 
@@ -159,6 +159,11 @@ public:
     }
   }
 };
+
+/**
+ * @brief Dual Segment Tree
+ * @see https://kimiyuki.net/blog/2019/02/21/dual-segment-tree/
+ */
 #line 1 "other/right_zero_semigroup.cpp"
 template <class T> class right_zero_semigroup {
 public:

@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/fenwick_tree.yosupo.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-09 00:25:15+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_add_range_sum">https://judge.yosupo.jp/problem/point_add_range_sum</a>
@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/data_structure/fenwick_tree.cpp.html">data_structure/fenwick_tree.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/fenwick_tree.cpp.html">Fenwick Tree <small>(data_structure/fenwick_tree.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/other/plus_monoid.cpp.html">other/plus_monoid.cpp</a>
 
 
@@ -132,6 +132,11 @@ public:
     }
   }
 };
+
+/**
+ * @brief Fenwick Tree
+ * @see https://scrapbox.io/data-structures/Fenwick_Tree
+ */
 #line 1 "other/plus_monoid.cpp"
 template <class T> class plus_monoid {
 public:

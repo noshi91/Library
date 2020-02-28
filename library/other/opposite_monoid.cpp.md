@@ -38,7 +38,7 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="../data_structure/queue_aggregation.cpp.html">data_structure/queue_aggregation.cpp</a>
+* :heavy_check_mark: <a href="../data_structure/queue_aggregation.cpp.html">Queue Aggregation <small>(data_structure/queue_aggregation.cpp)</small></a>
 
 
 ## Verified with

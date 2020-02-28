@@ -30,14 +30,14 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/radix_heap.aoj.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-22 20:51:34+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/data_structure/radix_heap.cpp.html">data_structure/radix_heap.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/radix_heap.cpp.html">Radix Heap <small>(data_structure/radix_heap.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/other/countl_zero64.cpp.html">other/countl_zero64.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/log2p164.cpp.html">other/log2p164.cpp</a>
 
@@ -204,6 +204,11 @@ public:
     return ret;
   }
 };
+
+/**
+ * @brief Radix Heap
+ * @see https://yosupo.hatenablog.com/entry/2015/04/03/224649
+ */
 #line 5 "test/radix_heap.aoj.test.cpp"
 
 #include <iostream>

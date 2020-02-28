@@ -38,7 +38,7 @@ layout: default
 
 ### algorithm
 
-* :heavy_check_mark: <a href="library/algorithm/zeta_transform.cpp.html">algorithm/zeta_transform.cpp</a>
+* :heavy_check_mark: <a href="library/algorithm/zeta_transform.cpp.html">Zeta Transform <small>(algorithm/zeta_transform.cpp)</small></a>
 
 
 <div id="c8f6850ec2ec3fb32f203c1f4e3c2fd2"></div>
@@ -46,27 +46,27 @@ layout: default
 ### data_structure
 
 * :heavy_check_mark: <a href="library/data_structure/bit_vector.cpp.html">Bit Vector <small>(data_structure/bit_vector.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/dual_segment_tree.cpp.html">data_structure/dual_segment_tree.cpp</a>
-* :heavy_check_mark: <a href="library/data_structure/erasable_heap.cpp.html">data_structure/erasable_heap.cpp</a>
-* :heavy_check_mark: <a href="library/data_structure/fenwick_tree.cpp.html">data_structure/fenwick_tree.cpp</a>
-* :heavy_check_mark: <a href="library/data_structure/incremental_bridge_connectivity.cpp.html">data_structure/incremental_bridge_connectivity.cpp</a>
-* :heavy_check_mark: <a href="library/data_structure/lazy_segment_tree.cpp.html">data_structure/lazy_segment_tree.cpp</a>
-* :heavy_check_mark: <a href="library/data_structure/pairing_heap.cpp.html">data_structure/pairing_heap.cpp</a>
-* :warning: <a href="library/data_structure/partially_persistent_union_find.cpp.html">data_structure/partially_persistent_union_find.cpp</a>
-* :warning: <a href="library/data_structure/partially_retroactive_queue.cpp.html">data_structure/partially_retroactive_queue.cpp</a>
-* :warning: <a href="library/data_structure/persistent_forward_list.cpp.html">data_structure/persistent_forward_list.cpp</a>
-* :warning: <a href="library/data_structure/persistent_skew_binary_random_access_list.cpp.html">data_structure/persistent_skew_binary_random_access_list.cpp</a>
-* :heavy_check_mark: <a href="library/data_structure/potentialized_union_find.cpp.html">data_structure/potentialized_union_find.cpp</a>
-* :heavy_check_mark: <a href="library/data_structure/queue_aggregation.cpp.html">data_structure/queue_aggregation.cpp</a>
-* :heavy_check_mark: <a href="library/data_structure/radix_heap.cpp.html">data_structure/radix_heap.cpp</a>
-* :heavy_check_mark: <a href="library/data_structure/randomized_queue.cpp.html">data_structure/randomized_queue.cpp</a>
-* :warning: <a href="library/data_structure/range_mode_query.cpp.html">data_structure/range_mode_query.cpp</a>
+* :heavy_check_mark: <a href="library/data_structure/dual_segment_tree.cpp.html">Dual Segment Tree <small>(data_structure/dual_segment_tree.cpp)</small></a>
+* :heavy_check_mark: <a href="library/data_structure/erasable_heap.cpp.html">Erasable Heap <small>(data_structure/erasable_heap.cpp)</small></a>
+* :heavy_check_mark: <a href="library/data_structure/fenwick_tree.cpp.html">Fenwick Tree <small>(data_structure/fenwick_tree.cpp)</small></a>
+* :heavy_check_mark: <a href="library/data_structure/incremental_bridge_connectivity.cpp.html">Incremental Bridge-Connectivity <small>(data_structure/incremental_bridge_connectivity.cpp)</small></a>
+* :heavy_check_mark: <a href="library/data_structure/lazy_segment_tree.cpp.html">Lazy Segment Tree <small>(data_structure/lazy_segment_tree.cpp)</small></a>
+* :heavy_check_mark: <a href="library/data_structure/pairing_heap.cpp.html">Pairing Heap <small>(data_structure/pairing_heap.cpp)</small></a>
+* :warning: <a href="library/data_structure/partially_persistent_union_find.cpp.html">Partially Persistent Union Find <small>(data_structure/partially_persistent_union_find.cpp)</small></a>
+* :warning: <a href="library/data_structure/partially_retroactive_queue.cpp.html">Partially Retroactive Queue <small>(data_structure/partially_retroactive_queue.cpp)</small></a>
+* :warning: <a href="library/data_structure/persistent_forward_list.cpp.html">Persistent Forward List <small>(data_structure/persistent_forward_list.cpp)</small></a>
+* :warning: <a href="library/data_structure/persistent_skew_binary_random_access_list.cpp.html">Persistent Skew Binary Random Access List <small>(data_structure/persistent_skew_binary_random_access_list.cpp)</small></a>
+* :heavy_check_mark: <a href="library/data_structure/potentialized_union_find.cpp.html">Potentialized Union Find <small>(data_structure/potentialized_union_find.cpp)</small></a>
+* :heavy_check_mark: <a href="library/data_structure/queue_aggregation.cpp.html">Queue Aggregation <small>(data_structure/queue_aggregation.cpp)</small></a>
+* :heavy_check_mark: <a href="library/data_structure/radix_heap.cpp.html">Radix Heap <small>(data_structure/radix_heap.cpp)</small></a>
+* :heavy_check_mark: <a href="library/data_structure/randomized_queue.cpp.html">Randomized Queue <small>(data_structure/randomized_queue.cpp)</small></a>
+* :warning: <a href="library/data_structure/range_mode_query.cpp.html">Range Mode Query <small>(data_structure/range_mode_query.cpp)</small></a>
 * :heavy_check_mark: <a href="library/data_structure/segment_tree.cpp.html">Segment Tree <small>(data_structure/segment_tree.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/stack_aggregation.cpp.html">data_structure/stack_aggregation.cpp</a>
-* :warning: <a href="library/data_structure/ternary_treap.cpp.html">data_structure/ternary_treap.cpp</a>
-* :warning: <a href="library/data_structure/union_enumerate.cpp.html">data_structure/union_enumerate.cpp</a>
-* :heavy_check_mark: <a href="library/data_structure/union_find.cpp.html">data_structure/union_find.cpp</a>
-* :heavy_check_mark: <a href="library/data_structure/wavelet_matrix.cpp.html">data_structure/wavelet_matrix.cpp</a>
+* :heavy_check_mark: <a href="library/data_structure/stack_aggregation.cpp.html">Stack Aggregation <small>(data_structure/stack_aggregation.cpp)</small></a>
+* :warning: <a href="library/data_structure/ternary_treap.cpp.html">Ternary Treap <small>(data_structure/ternary_treap.cpp)</small></a>
+* :warning: <a href="library/data_structure/union_enumerate.cpp.html">Union Enumerate <small>(data_structure/union_enumerate.cpp)</small></a>
+* :heavy_check_mark: <a href="library/data_structure/union_find.cpp.html">Union Find <small>(data_structure/union_find.cpp)</small></a>
+* :heavy_check_mark: <a href="library/data_structure/wavelet_matrix.cpp.html">Wavelet Matrix <small>(data_structure/wavelet_matrix.cpp)</small></a>
 
 
 <div id="c25e426f9a94f83968c77e7d5480c159"></div>

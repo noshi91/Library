@@ -25,15 +25,16 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :warning: data_structure/union_enumerate.cpp
+# :warning: Union Enumerate <small>(data_structure/union_enumerate.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/union_enumerate.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-21 00:19:47+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
+* see: <a href="http://noshi91.hatenablog.com/entry/2019/07/19/180606">http://noshi91.hatenablog.com/entry/2019/07/19/180606</a>
 
 
 ## Code
@@ -69,6 +70,12 @@ public:
 
   void unite(const size_t x, const size_t y) { std::swap(next[x], next[y]); }
 };
+
+/**
+ * @brief Union Enumerate
+ * @see http://noshi91.hatenablog.com/entry/2019/07/19/180606
+ */
+
 ```
 {% endraw %}
 
@@ -104,6 +111,11 @@ public:
 
   void unite(const size_t x, const size_t y) { std::swap(next[x], next[y]); }
 };
+
+/**
+ * @brief Union Enumerate
+ * @see http://noshi91.hatenablog.com/entry/2019/07/19/180606
+ */
 
 ```
 {% endraw %}

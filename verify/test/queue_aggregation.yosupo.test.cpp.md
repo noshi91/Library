@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/queue_aggregation.yosupo.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-11 11:45:48+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/queue_operate_all_composite">https://judge.yosupo.jp/problem/queue_operate_all_composite</a>
@@ -38,8 +38,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/data_structure/queue_aggregation.cpp.html">data_structure/queue_aggregation.cpp</a>
-* :heavy_check_mark: <a href="../../library/data_structure/stack_aggregation.cpp.html">data_structure/stack_aggregation.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/queue_aggregation.cpp.html">Queue Aggregation <small>(data_structure/queue_aggregation.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/data_structure/stack_aggregation.cpp.html">Stack Aggregation <small>(data_structure/stack_aggregation.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/other/affine.cpp.html">other/affine.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/modint.cpp.html">other/modint.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/opposite_monoid.cpp.html">other/opposite_monoid.cpp</a>
@@ -126,6 +126,11 @@ public:
     st.pop();
   }
 };
+
+/**
+ * @brief Stack Aggregation
+ * @see https://scrapbox.io/data-structures/Sliding_Window_Aggregation
+ */
 #line 1 "other/opposite_monoid.cpp"
 template <class M> class opposite_monoid {
   using T = typename M::value_type;
@@ -168,6 +173,11 @@ public:
     }
   }
 };
+
+/**
+ * @brief Queue Aggregation
+ * @see https://scrapbox.io/data-structures/Sliding_Window_Aggregation
+ */
 #line 1 "other/affine.cpp"
 template <class T> class affine {
 public:

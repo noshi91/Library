@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-22 23:58:44+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
 * see: <a href="https://scrapbox.io/data-structures/Segment_Tree">https://scrapbox.io/data-structures/Segment_Tree</a>
@@ -70,11 +70,6 @@ layout: default
 #include <cstddef>
 #include <vector>
 
-/**
- * @brief Segment Tree
- * @docs docs/segment_tree.md
- * @see https://scrapbox.io/data-structures/Segment_Tree
- */
 template <class Monoid> class segment_tree {
 public:
   using T = typename Monoid::value_type;
@@ -168,6 +163,13 @@ public:
     }
   }
 };
+
+/**
+ * @brief Segment Tree
+ * @docs docs/segment_tree.md
+ * @see https://scrapbox.io/data-structures/Segment_Tree
+ */
+
 ```
 {% endraw %}
 
@@ -179,11 +181,6 @@ public:
 #include <cstddef>
 #include <vector>
 
-/**
- * @brief Segment Tree
- * @docs docs/segment_tree.md
- * @see https://scrapbox.io/data-structures/Segment_Tree
- */
 template <class Monoid> class segment_tree {
 public:
   using T = typename Monoid::value_type;
@@ -277,6 +274,12 @@ public:
     }
   }
 };
+
+/**
+ * @brief Segment Tree
+ * @docs docs/segment_tree.md
+ * @see https://scrapbox.io/data-structures/Segment_Tree
+ */
 
 ```
 {% endraw %}

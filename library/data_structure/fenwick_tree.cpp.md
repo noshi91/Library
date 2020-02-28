@@ -25,15 +25,16 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: data_structure/fenwick_tree.cpp
+# :heavy_check_mark: Fenwick Tree <small>(data_structure/fenwick_tree.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/fenwick_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-06 19:39:55+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
+* see: <a href="https://scrapbox.io/data-structures/Fenwick_Tree">https://scrapbox.io/data-structures/Fenwick_Tree</a>
 
 
 ## Verified with
@@ -85,6 +86,12 @@ public:
     }
   }
 };
+
+/**
+ * @brief Fenwick Tree
+ * @see https://scrapbox.io/data-structures/Fenwick_Tree
+ */
+
 ```
 {% endraw %}
 
@@ -131,6 +138,11 @@ public:
     }
   }
 };
+
+/**
+ * @brief Fenwick Tree
+ * @see https://scrapbox.io/data-structures/Fenwick_Tree
+ */
 
 ```
 {% endraw %}

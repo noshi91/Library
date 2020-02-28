@@ -25,15 +25,16 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: data_structure/radix_heap.cpp
+# :heavy_check_mark: Radix Heap <small>(data_structure/radix_heap.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/radix_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-22 20:51:34+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
+* see: <a href="https://yosupo.hatenablog.com/entry/2015/04/03/224649">https://yosupo.hatenablog.com/entry/2015/04/03/224649</a>
 
 
 ## Depends on
@@ -104,6 +105,12 @@ public:
     return ret;
   }
 };
+
+/**
+ * @brief Radix Heap
+ * @see https://yosupo.hatenablog.com/entry/2015/04/03/224649
+ */
+
 ```
 {% endraw %}
 
@@ -209,6 +216,11 @@ public:
     return ret;
   }
 };
+
+/**
+ * @brief Radix Heap
+ * @see https://yosupo.hatenablog.com/entry/2015/04/03/224649
+ */
 
 ```
 {% endraw %}

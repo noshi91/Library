@@ -25,20 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: data_structure/incremental_bridge_connectivity.cpp
+# :heavy_check_mark: Incremental Bridge-Connectivity <small>(data_structure/incremental_bridge_connectivity.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/incremental_bridge_connectivity.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-08 22:56:08+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
+* see: <a href="https://scrapbox.io/data-structures/Incremental_Bridge-Connectivity">https://scrapbox.io/data-structures/Incremental_Bridge-Connectivity</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="union_find.cpp.html">data_structure/union_find.cpp</a>
+* :heavy_check_mark: <a href="union_find.cpp.html">Union Find <small>(data_structure/union_find.cpp)</small></a>
 
 
 ## Verified with
@@ -51,10 +52,6 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-/*
-reference: https://link.springer.com/article/10.1007/BF01758773
-*/
-
 #include "data_structure/union_find.cpp"
 
 #include <cassert>
@@ -136,17 +133,18 @@ public:
     }
   }
 };
+
+/**
+ * @brief Incremental Bridge-Connectivity
+ * @see https://scrapbox.io/data-structures/Incremental_Bridge-Connectivity
+ */
+
 ```
 {% endraw %}
 
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "data_structure/incremental_bridge_connectivity.cpp"
-/*
-reference: https://link.springer.com/article/10.1007/BF01758773
-*/
-
 #line 1 "data_structure/union_find.cpp"
 #include <cassert>
 #include <utility>
@@ -204,7 +202,12 @@ public:
     }
   }
 };
-#line 6 "data_structure/incremental_bridge_connectivity.cpp"
+
+/**
+ * @brief Union Find
+ * @see https://scrapbox.io/data-structures/Union_Find
+ */
+#line 2 "data_structure/incremental_bridge_connectivity.cpp"
 
 #include <cassert>
 #include <cstddef>
@@ -285,6 +288,11 @@ public:
     }
   }
 };
+
+/**
+ * @brief Incremental Bridge-Connectivity
+ * @see https://scrapbox.io/data-structures/Incremental_Bridge-Connectivity
+ */
 
 ```
 {% endraw %}

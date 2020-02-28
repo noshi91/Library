@@ -25,15 +25,16 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :warning: data_structure/ternary_treap.cpp
+# :warning: Ternary Treap <small>(data_structure/ternary_treap.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/ternary_treap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-01-07 00:19:08+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
+* see: <a href="https://scrapbox.io/data-structures/Ternary_Search_Tree">https://scrapbox.io/data-structures/Ternary_Search_Tree</a>
 
 
 ## Code
@@ -41,10 +42,6 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-/*
-reference: https://arxiv.org/abs/1606.04042
-*/
-
 #include <algorithm>
 #include <cstddef>
 #include <iterator>
@@ -200,6 +197,12 @@ public:
   void insert(const std::vector<T> x) { insert(root, x.cbegin(), x.cend()); }
   void erase(const std::vector<T> x) { erase(root, x.cbegin(), x.cend()); }
 };
+
+/**
+ * @brief Ternary Treap
+ * @see https://scrapbox.io/data-structures/Ternary_Search_Tree
+ */
+
 ```
 {% endraw %}
 
@@ -207,10 +210,6 @@ public:
 {% raw %}
 ```cpp
 #line 1 "data_structure/ternary_treap.cpp"
-/*
-reference: https://arxiv.org/abs/1606.04042
-*/
-
 #include <algorithm>
 #include <cstddef>
 #include <iterator>
@@ -366,6 +365,11 @@ public:
   void insert(const std::vector<T> x) { insert(root, x.cbegin(), x.cend()); }
   void erase(const std::vector<T> x) { erase(root, x.cbegin(), x.cend()); }
 };
+
+/**
+ * @brief Ternary Treap
+ * @see https://scrapbox.io/data-structures/Ternary_Search_Tree
+ */
 
 ```
 {% endraw %}

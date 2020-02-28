@@ -30,14 +30,14 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/randomized_queue.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-23 00:45:19+09:00
+    - Last commit date: 2020-02-28 14:18:18+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/data_structure/randomized_queue.cpp.html">data_structure/randomized_queue.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/randomized_queue.cpp.html">Randomized Queue <small>(data_structure/randomized_queue.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/other/random_integer.cpp.html">other/random_integer.cpp</a>
 
 
@@ -151,6 +151,10 @@ public:
     return ret;
   }
 };
+
+/**
+ * @brief Randomized Queue
+ */
 #line 6 "test/randomized_queue.test.cpp"
 
 #include <algorithm>
