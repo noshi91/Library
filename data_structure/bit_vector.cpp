@@ -69,3 +69,8 @@ public:
     return i * wordsize + select64(v[i].bit, k - v[i].sum);
   }
 };
+
+/*
+ * @brief Bit Vector
+ */
+ 
