@@ -120,3 +120,8 @@ public:
     }
   }
 };
+
+/**
+ * @brief Lazy Segment Tree
+ * @see https://scrapbox.io/data-structures/Lazy_Segment_Tree
+ */

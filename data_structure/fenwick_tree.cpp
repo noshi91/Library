@@ -37,3 +37,8 @@ public:
     }
   }
 };
+
+/**
+ * @brief Fenwick Tree
+ * @see https://scrapbox.io/data-structures/Fenwick_Tree
+ */

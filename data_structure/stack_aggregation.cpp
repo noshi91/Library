@@ -30,3 +30,8 @@ public:
     st.pop();
   }
 };
+
+/**
+ * @brief Stack Aggregation
+ * @see https://scrapbox.io/data-structures/Sliding_Window_Aggregation
+ */

@@ -1,7 +1,3 @@
-/*
-reference: https://arxiv.org/abs/1606.04042
-*/
-
 #include <algorithm>
 #include <cstddef>
 #include <iterator>
@@ -157,3 +153,8 @@ public:
   void insert(const std::vector<T> x) { insert(root, x.cbegin(), x.cend()); }
   void erase(const std::vector<T> x) { erase(root, x.cbegin(), x.cend()); }
 };
+
+/**
+ * @brief Ternary Treap
+ * @see https://scrapbox.io/data-structures/Ternary_Search_Tree
+ */

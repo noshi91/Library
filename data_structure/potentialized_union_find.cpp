@@ -79,3 +79,7 @@ public:
     tree[y].value = d;
   }
 };
+
+/**
+ * @brief Potentialized Union Find
+ */

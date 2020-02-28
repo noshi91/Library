@@ -38,3 +38,7 @@ public:
     return ret;
   }
 };
+
+/**
+ * @brief Randomized Queue
+ */

@@ -62,3 +62,8 @@ public:
     front_itr->in_queue = true;
   }
 };
+
+/**
+ * @brief Partially Retroactive Queue
+ * @see https://erikdemaine.org/papers/Retroactive_TALG/paper.pdf
+ */

@@ -119,3 +119,8 @@ public:
     }
   }
 };
+
+/**
+ * @brief Persistent Skew Binary Random Access List
+ * @see https://scrapbox.io/data-structures/Skew_Binary_List
+ */

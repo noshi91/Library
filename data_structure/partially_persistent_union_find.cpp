@@ -85,3 +85,7 @@ public:
     return time_count - 1;
   }
 };
+
+/**
+ * @brief Partially Persistent Union Find
+ */

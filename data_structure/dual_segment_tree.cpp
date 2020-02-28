@@ -68,3 +68,8 @@ public:
     }
   }
 };
+
+/**
+ * @brief Dual Segment Tree
+ * @see https://kimiyuki.net/blog/2019/02/21/dual-segment-tree/
+ */

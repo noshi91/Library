@@ -39,3 +39,7 @@ public:
     return Self(root->next);
   }
 };
+
+/**
+ * @brief Persistent Forward List
+ */

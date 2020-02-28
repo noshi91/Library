@@ -47,3 +47,7 @@ public:
     normalize();
   }
 };
+
+/**
+ * @brief Erasable Heap
+ */

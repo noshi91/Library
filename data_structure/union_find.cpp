@@ -54,3 +54,8 @@ public:
     }
   }
 };
+
+/**
+ * @brief Union Find
+ * @see https://scrapbox.io/data-structures/Union_Find
+ */

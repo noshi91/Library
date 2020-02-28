@@ -30,3 +30,8 @@ public:
     }
   }
 };
+
+/**
+ * @brief Queue Aggregation
+ * @see https://scrapbox.io/data-structures/Sliding_Window_Aggregation
+ */

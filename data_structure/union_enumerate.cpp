@@ -26,3 +26,8 @@ public:
 
   void unite(const size_t x, const size_t y) { std::swap(next[x], next[y]); }
 };
+
+/**
+ * @brief Union Enumerate
+ * @see http://noshi91.hatenablog.com/entry/2019/07/19/180606
+ */

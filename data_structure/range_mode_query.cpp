@@ -1,7 +1,3 @@
-/*
-reference: https://arxiv.org/abs/1101.4068
-*/
-
 #include <cassert>
 #include <cstddef>
 #include <vector>
@@ -93,3 +89,8 @@ public:
     return cur.mode;
   }
 };
+
+/**
+ * @brief Range Mode Query
+ * @see https://scrapbox.io/data-structures/Range_Mode_Query
+ */

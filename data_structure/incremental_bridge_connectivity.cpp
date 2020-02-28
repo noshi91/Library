@@ -1,7 +1,3 @@
-/*
-reference: https://link.springer.com/article/10.1007/BF01758773
-*/
-
 #include "data_structure/union_find.cpp"
 
 #include <cassert>
@@ -83,3 +79,8 @@ public:
     }
   }
 };
+
+/**
+ * @brief Incremental Bridge-Connectivity
+ * @see https://scrapbox.io/data-structures/Incremental_Bridge-Connectivity
+ */

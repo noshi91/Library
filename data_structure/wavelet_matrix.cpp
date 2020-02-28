@@ -119,3 +119,7 @@ public:
     return index;
   }
 };
+
+/**
+ * @brief Wavelet Matrix
+ */
