@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/wavelet_matrix.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-22 11:33:14+09:00
+    - Last commit date: 2020-02-28 11:25:56+09:00
 
 
 
@@ -145,6 +145,7 @@ public:
         first = v.rank0(first);
         last = v.rank0(last);
       } else {
+        set(ret, p);
         k -= z;
         const size_t b = v.rank0(size());
         first = b + v.rank1(first);
@@ -402,6 +403,7 @@ public:
         first = v.rank0(first);
         last = v.rank0(last);
       } else {
+        set(ret, p);
         k -= z;
         const size_t b = v.rank0(size());
         first = b + v.rank1(first);

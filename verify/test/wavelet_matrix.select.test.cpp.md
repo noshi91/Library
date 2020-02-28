@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/wavelet_matrix.select.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-23 00:45:19+09:00
+    - Last commit date: 2020-02-28 11:25:56+09:00
 
 
 
@@ -308,6 +308,7 @@ public:
         first = v.rank0(first);
         last = v.rank0(last);
       } else {
+        set(ret, p);
         k -= z;
         const size_t b = v.rank0(size());
         first = b + v.rank1(first);
