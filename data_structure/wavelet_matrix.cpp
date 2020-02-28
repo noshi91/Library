@@ -89,6 +89,7 @@ public:
         first = v.rank0(first);
         last = v.rank0(last);
       } else {
+        set(ret, p);
         k -= z;
         const size_t b = v.rank0(size());
         first = b + v.rank1(first);
