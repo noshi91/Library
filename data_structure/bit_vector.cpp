@@ -70,7 +70,7 @@ public:
   }
 };
 
-/*
+/**
  * @brief Bit Vector
  */
  
