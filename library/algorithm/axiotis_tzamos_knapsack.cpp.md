@@ -25,12 +25,12 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Concave Max Plus Convlution <small>(algorithm/concave_max_plus_convolution.cpp)</small>
+# :heavy_check_mark: Axiotis-Tzamos Knapsack <small>(algorithm/axiotis_tzamos_knapsack.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#ed469618898d75b149e5c7c4b6a1c415">algorithm</a>
-* <a href="{{ site.github.repository_url }}/blob/master/algorithm/concave_max_plus_convolution.cpp">View this file on GitHub</a>
+* <a href="{{ site.github.repository_url }}/blob/master/algorithm/axiotis_tzamos_knapsack.cpp">View this file on GitHub</a>
     - Last commit date: 2020-03-02 16:21:18+09:00
 
 
@@ -39,13 +39,10 @@ layout: default
 
 ## Depends on
 
+* :heavy_check_mark: <a href="concave_max_plus_convolution.cpp.html">Concave Max Plus Convlution <small>(algorithm/concave_max_plus_convolution.cpp)</small></a>
 * :heavy_check_mark: <a href="smawk.cpp.html">SMAWK Algorithm <small>(algorithm/smawk.cpp)</small></a>
+* :heavy_check_mark: <a href="../other/ceildiv.cpp.html">other/ceildiv.cpp</a>
 * :heavy_check_mark: <a href="../other/int_alias.cpp.html">other/int_alias.cpp</a>
-
-
-## Required by
-
-* :heavy_check_mark: <a href="axiotis_tzamos_knapsack.cpp.html">Axiotis-Tzamos Knapsack <small>(algorithm/axiotis_tzamos_knapsack.cpp)</small></a>
 
 
 ## Verified with
@@ -58,35 +55,56 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#include "algorithm/smawk.cpp"
+#include "algorithm/concave_max_plus_convolution.cpp"
+#include "other/ceildiv.cpp"
 #include "other/int_alias.cpp"
 
+#include <algorithm>
+#include <cassert>
+#include <functional>
+#include <utility>
 #include <vector>
 
-template <class T>
-std::vector<T> concave_max_plus_convolution(const std::vector<T> &a,
-                                            const std::vector<T> &b) {
-  const usize n = a.size();
-  const usize m = b.size();
-  const auto get = [&](const usize i, const usize j) {
-    return a[j] + b[i - j];
-  };
-  const auto select = [&](const usize i, const usize j, const usize k) {
-    if (i < k)
-      return false;
-    if (i - j >= m)
-      return true;
-    return get(i, j) <= get(i, k);
-  };
-  const std::vector<usize> amax = smawk(n + m - 1, n, select);
-  std::vector<T> c(n + m - 1);
-  for (usize i = 0; i != n + m - 1; i += 1)
-    c[i] = get(i, amax[i]);
-  return c;
+template <class I>
+u64 axiotis_tzamos_knapsack(const usize t, const std::vector<I> &item) {
+  assert(t > 0);
+
+  std::vector<std::vector<i64>> bucket(t);
+  for (const I &e : item) {
+    assert(e.w > 0);
+    assert(e.v >= 0);
+
+    if (e.w < t)
+      bucket[e.w].push_back(e.v);
+  }
+
+  std::vector<i64> dp(t, std::numeric_limits<i64>::lowest());
+  dp[0] = 0;
+  for (usize w = 1; w != t; w += 1) {
+    std::vector<i64> &list = bucket[w];
+    if (list.empty())
+      continue;
+    std::sort(list.begin(), list.end(), std::greater<i64>());
+    const usize m = std::min(list.size(), ceildiv(t, w));
+    std::vector<i64> sum(m + 1);
+    sum[0] = 0;
+    for (usize i = 0; i != m; i += 1)
+      sum[i + 1] = sum[i] + list[i];
+    for (usize k = 0; k != w; k += 1) {
+      const usize n = ceildiv(t - k, w);
+      std::vector<i64> v(n);
+      for (usize i = 0; i != n; i += 1)
+        v[i] = dp[i * w + k];
+      const std::vector<i64> res = concave_max_plus_convolution(v, sum);
+      for (usize i = 0; i != n; i += 1)
+        dp[i * w + k] = res[i];
+    }
+  }
+  return *std::max_element(dp.begin(), dp.end());
 }
 
 /**
- * @brief Concave Max Plus Convlution
+ * @brief Axiotis-Tzamos Knapsack
  * @see https://arxiv.org/abs/1802.06440
  */
 
@@ -188,6 +206,60 @@ std::vector<T> concave_max_plus_convolution(const std::vector<T> &a,
 
 /**
  * @brief Concave Max Plus Convlution
+ * @see https://arxiv.org/abs/1802.06440
+ */
+#line 1 "other/ceildiv.cpp"
+template <class T> T ceildiv(const T &n, const T &d) {
+  return n / d + (n % d != 0 ? 1 : 0);
+}
+#line 4 "algorithm/axiotis_tzamos_knapsack.cpp"
+
+#include <algorithm>
+#include <cassert>
+#include <functional>
+#include <utility>
+#include <vector>
+
+template <class I>
+u64 axiotis_tzamos_knapsack(const usize t, const std::vector<I> &item) {
+  assert(t > 0);
+
+  std::vector<std::vector<i64>> bucket(t);
+  for (const I &e : item) {
+    assert(e.w > 0);
+    assert(e.v >= 0);
+
+    if (e.w < t)
+      bucket[e.w].push_back(e.v);
+  }
+
+  std::vector<i64> dp(t, std::numeric_limits<i64>::lowest());
+  dp[0] = 0;
+  for (usize w = 1; w != t; w += 1) {
+    std::vector<i64> &list = bucket[w];
+    if (list.empty())
+      continue;
+    std::sort(list.begin(), list.end(), std::greater<i64>());
+    const usize m = std::min(list.size(), ceildiv(t, w));
+    std::vector<i64> sum(m + 1);
+    sum[0] = 0;
+    for (usize i = 0; i != m; i += 1)
+      sum[i + 1] = sum[i] + list[i];
+    for (usize k = 0; k != w; k += 1) {
+      const usize n = ceildiv(t - k, w);
+      std::vector<i64> v(n);
+      for (usize i = 0; i != n; i += 1)
+        v[i] = dp[i * w + k];
+      const std::vector<i64> res = concave_max_plus_convolution(v, sum);
+      for (usize i = 0; i != n; i += 1)
+        dp[i * w + k] = res[i];
+    }
+  }
+  return *std::max_element(dp.begin(), dp.end());
+}
+
+/**
+ * @brief Axiotis-Tzamos Knapsack
  * @see https://arxiv.org/abs/1802.06440
  */
 

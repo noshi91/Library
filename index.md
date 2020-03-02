@@ -38,8 +38,9 @@ layout: default
 
 ### algorithm
 
-* :warning: <a href="library/algorithm/concave_max_plus_convolution.cpp.html">Concave Max Plus Convlution <small>(algorithm/concave_max_plus_convolution.cpp)</small></a>
-* :warning: <a href="library/algorithm/smawk.cpp.html">SMAWK Algorithm <small>(algorithm/smawk.cpp)</small></a>
+* :heavy_check_mark: <a href="library/algorithm/axiotis_tzamos_knapsack.cpp.html">Axiotis-Tzamos Knapsack <small>(algorithm/axiotis_tzamos_knapsack.cpp)</small></a>
+* :heavy_check_mark: <a href="library/algorithm/concave_max_plus_convolution.cpp.html">Concave Max Plus Convlution <small>(algorithm/concave_max_plus_convolution.cpp)</small></a>
+* :heavy_check_mark: <a href="library/algorithm/smawk.cpp.html">SMAWK Algorithm <small>(algorithm/smawk.cpp)</small></a>
 * :heavy_check_mark: <a href="library/algorithm/zeta_transform.cpp.html">Zeta Transform <small>(algorithm/zeta_transform.cpp)</small></a>
 
 
@@ -85,7 +86,9 @@ layout: default
 
 * :heavy_check_mark: <a href="library/other/affine.cpp.html">other/affine.cpp</a>
 * :heavy_check_mark: <a href="library/other/cartesian_product_monoid.cpp.html">other/cartesian_product_monoid.cpp</a>
+* :heavy_check_mark: <a href="library/other/ceildiv.cpp.html">other/ceildiv.cpp</a>
 * :heavy_check_mark: <a href="library/other/countl_zero64.cpp.html">other/countl_zero64.cpp</a>
+* :heavy_check_mark: <a href="library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 * :heavy_check_mark: <a href="library/other/less_equal_ordered_set.cpp.html">other/less_equal_ordered_set.cpp</a>
 * :heavy_check_mark: <a href="library/other/log2p164.cpp.html">other/log2p164.cpp</a>
 * :heavy_check_mark: <a href="library/other/min_assign_action.cpp.html">other/min_assign_action.cpp</a>
@@ -107,6 +110,7 @@ layout: default
 
 ## Verify Files
 
+* :heavy_check_mark: <a href="verify/test/axiotis_tzamos_knapsack.test.cpp.html">test/axiotis_tzamos_knapsack.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/dual_segment_tree.aoj.test.cpp.html">test/dual_segment_tree.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/erasable_heap.aoj.test.cpp.html">test/erasable_heap.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/fenwick_tree.yosupo.test.cpp.html">test/fenwick_tree.yosupo.test.cpp</a>
