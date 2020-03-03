@@ -46,5 +46,5 @@ u64 axiotis_tzamos_knapsack(const usize t, const std::vector<I> &item) {
 
 /**
  * @brief Axiotis-Tzamos Knapsack
- * @see https://arxiv.org/abs/1802.06440
+ * @docs docs/axiotis_tzamos_knapsack.md
  */
