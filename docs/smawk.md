@@ -3,7 +3,7 @@ $N \times M$ 行列 $A$
 -   $A$ は totally monotone
 
 ## 出力
-$0 \le i \lt N$ について $\mathop {\rm arg \, max} \limits _ {0 \le j \lt M} A _ {i , j}$
+各 $i$ について $\mathop {\rm arg \, max} \limits _ j A _ {i , j}$
 
 ## 計算量
 -   時間計算量 $\Theta ( N + M )$
@@ -18,9 +18,9 @@ monotone 性から、飛ばした行の $\mathop {\rm arg \, max}$ を復元す�
 $\mathop {\rm arg \, min}$ による定義も存在するので注意。
 
 #### monotone
-$A$ が monotone でるとは、任意の $0 \le i \lt j \lt N$ に対して
+$A$ が monotone であるとは、任意の $i \lt j$ に対して
 
-$\mathop {\rm arg \, max} \limits _ {0 \le k \lt M} A _ {i , k} \le \mathop {\rm arg \, max} \limits _ {0 \le k \lt M} A _ {j , k}$
+$\mathop {\rm arg \, max} \limits _ k A _ {i , k} \le \mathop {\rm arg \, max} \limits _ k A _ {j , k}$
 
 が成立することを指す。
 ただし適切な tie-break により $\mathop {\rm arg \, max}$ は $1$ つに定まるとする。
@@ -30,15 +30,15 @@ $A$ が totally monotone であるとは、その任意の部分行列が monoto
 同値な定義に「$A$ の任意の $2 \times 2$ 部分行列が monotone」がある。
 
 ## 文献
--   [2012-09-23 - 週刊 spaghetti_source - TopCoder部](https://topcoder-g-hatena-ne-jp.jag-icpc.org/spaghetti_source/20120923/)
-    -   週刊 spaghetti_source
-    -   日本語
+-   [Totally Monotone Matrix Searching (SMAWK algorithm)](https://topcoder-g-hatena-ne-jp.jag-icpc.org/spaghetti_source/20120923/)
+    週刊 spaghetti_source
+    日本語
 
--   [The SMAWK Algorithm - UNLV](http://web.cs.unlv.edu/larmore/Courses/CSC477/monge.pdf)
-    -   具体例が図示されている
+-   [The SMAWK Algorithm (pdf)](http://web.cs.unlv.edu/larmore/Courses/CSC477/monge.pdf)
+    具体例が図示されている
 
--   [Geometric applications of a matrix-searching algorithm | SpringerLink](https://link.springer.com/article/10.1007%2FBF01840359)
-    -   SMAWK Algorithm が提案された論文
+-   [Geometric applications of a matrix-searching algorithm](https://link.springer.com/article/10.1007%2FBF01840359)
+    SMAWK Algorithm が提案された論文
 
 ## その他
 -   実装例の引数 $\rm select$ の定義
