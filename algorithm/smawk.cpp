@@ -49,5 +49,6 @@ std::vector<usize> smawk(const usize row_size, const usize col_size,
 
 /**
  * @brief SMAWK Algorithm
- * @see http://www.cs.ust.hk/mjg_lib/bibs/DPSu/DPSu.Files/p285-aggarwal.pdf
+ * @doc docs/smawk.md
+ * @see https://link.springer.com/article/10.1007/BF01840359
  */
