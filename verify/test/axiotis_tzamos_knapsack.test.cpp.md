@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/axiotis_tzamos_knapsack.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-03 22:52:31+09:00
+    - Last commit date: 2020-03-03 23:12:43+09:00
 
 
 
@@ -144,7 +144,6 @@ std::vector<usize> smawk(const usize row_size, const usize col_size,
 /**
  * @brief SMAWK Algorithm
  * @docs docs/smawk.md
- * @see https://link.springer.com/article/10.1007/BF01840359
  */
 #line 3 "algorithm/concave_max_plus_convolution.cpp"
 

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#ed469618898d75b149e5c7c4b6a1c415">algorithm</a>
 * <a href="{{ site.github.repository_url }}/blob/master/algorithm/concave_max_plus_convolution.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-03 22:52:31+09:00
+    - Last commit date: 2020-03-03 23:12:43+09:00
 
 
 
@@ -55,8 +55,8 @@ $( N + M ) \times M$ 行列 $X$ を以下のように定義する。
 
 $X _ {i , j} \mathrel := A _ {i - j} + B _ j$
 
-ただし $i \lt j$ あるいは $M \le j$ の場合は $- \infty$ とする。(詳細略、実装を参照)
-目的は $C _ i = \max \limits _ j X _ {i , j}$ を計算することである。
+ただし $i \lt j$ あるいは $M \le j$ の場合は $- \infty$ とする。(詳細略、実装を参照)  
+目的は $C _ i = \max \limits _ j X _ {i , j}$ を計算することである。  
 $B$ が上に凸であることから $X$ は monge であり、すなわち totally monotone。よって[SMAWK Algorithm](https://noshi91.github.io/Library/library/algorithm/smawk.cpp.html) を用いると $\Theta ( N + M )$ で計算可能。
 
 ## 文献
@@ -185,7 +185,6 @@ std::vector<usize> smawk(const usize row_size, const usize col_size,
 /**
  * @brief SMAWK Algorithm
  * @docs docs/smawk.md
- * @see https://link.springer.com/article/10.1007/BF01840359
  */
 #line 3 "algorithm/concave_max_plus_convolution.cpp"
 
