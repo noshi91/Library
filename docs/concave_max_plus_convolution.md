@@ -17,8 +17,8 @@ $( N + M ) \times M$ 行列 $X$ を以下のように定義する。
 
 $X _ {i , j} \mathrel := A _ {i - j} + B _ j$
 
-ただし $i \lt j$ あるいは $M \le j$ の場合は $- \infty$ とする。(詳細略、実装を参照)
-目的は $C _ i = \max \limits _ j X _ {i , j}$ を計算することである。
+ただし $i \lt j$ あるいは $M \le j$ の場合は $- \infty$ とする。(詳細略、実装を参照)  
+目的は $C _ i = \max \limits _ j X _ {i , j}$ を計算することである。  
 $B$ が上に凸であることから $X$ は monge であり、すなわち totally monotone。よって[SMAWK Algorithm](https://noshi91.github.io/Library/library/algorithm/smawk.cpp.html) を用いると $\Theta ( N + M )$ で計算可能。
 
 ## 文献
