@@ -1,7 +1,7 @@
 #define PROBLEM                                                                \
-  "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_B&lang=ja"
+  "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_C&lang=ja"
 
-#include "algorithm/axiotis_tzamos_knapsack.cpp"
+#include "algorithm/axiotis_tzamos_unbounded_knapsack.cpp"
 #include "other/int_alias.cpp"
 
 #include <iostream>
@@ -17,5 +17,5 @@ int main() {
   for (auto &e : is) {
     std::cin >> e.v >> e.w;
   }
-  std::cout << axiotis_tzamos_knapsack(w, is) << std::endl;
+  std::cout << axiotis_tzamos_unbounded_knapsack(w, is) << std::endl;
 }
