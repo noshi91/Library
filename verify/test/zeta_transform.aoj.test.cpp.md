@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/zeta_transform.aoj.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 14:18:18+09:00
+    - Last commit date: 2020-03-03 16:21:51+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119</a>
@@ -39,6 +39,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../library/algorithm/zeta_transform.cpp.html">Zeta Transform <small>(algorithm/zeta_transform.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/modint.cpp.html">other/modint.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/multiplies_monoid.cpp.html">other/multiplies_monoid.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/plus_group.cpp.html">other/plus_group.cpp</a>
@@ -85,17 +86,27 @@ int main() {
 #line 1 "test/zeta_transform.aoj.test.cpp"
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119"
 
-#line 1 "algorithm/zeta_transform.cpp"
+#line 2 "other/int_alias.cpp"
+
+#include <cstddef>
+#include <cstdint>
+
+using i32 = std::int32_t;
+using i64 = std::int64_t;
+using u32 = std::uint32_t;
+using u64 = std::uint64_t;
+using isize = std::ptrdiff_t;
+using usize = std::size_t;
+#line 2 "algorithm/zeta_transform.cpp"
+
 #include <cstddef>
 #include <vector>
 
 template <class S>
 void subset_zeta_transform(std::vector<typename S::value_type> &a) {
-  using size_t = std::size_t;
-
-  const size_t n = a.size();
-  for (size_t i = 1; i < n; i *= 2) {
-    for (size_t j = 0; j != n; j += 1) {
+  const usize n = a.size();
+  for (usize i = 1; i < n; i *= 2) {
+    for (usize j = 0; j != n; j += 1) {
       if ((j & i) != 0)
         a[j] = S::operation(a[j & ~i], a[j]);
     }
@@ -104,11 +115,9 @@ void subset_zeta_transform(std::vector<typename S::value_type> &a) {
 
 template <class S>
 void superset_zeta_transform(std::vector<typename S::value_type> &a) {
-  using size_t = std::size_t;
-
-  const size_t n = a.size();
-  for (size_t i = 1; i < n; i *= 2) {
-    for (size_t j = 0; j != n; j += 1) {
+  const usize n = a.size();
+  for (usize i = 1; i < n; i *= 2) {
+    for (usize j = 0; j != n; j += 1) {
       if ((j & i) != 0)
         a[j & ~i] = S::operation(a[j & ~i], a[j]);
     }
@@ -117,15 +126,13 @@ void superset_zeta_transform(std::vector<typename S::value_type> &a) {
 
 template <class G>
 void subset_mobius_transform(std::vector<typename G::value_type> &a) {
-  using size_t = std::size_t;
-
-  const size_t n = a.size();
-  size_t i = 1;
+  const usize n = a.size();
+  usize i = 1;
   while (i < n)
     i *= 2;
   while (i != 1) {
     i /= 2;
-    for (size_t j = 0; j != n; j += 1) {
+    for (usize j = 0; j != n; j += 1) {
       if ((j & i) != 0)
         a[j] = G::operation(G::inverse(a[j & ~i]), a[j]);
     }
@@ -134,15 +141,13 @@ void subset_mobius_transform(std::vector<typename G::value_type> &a) {
 
 template <class G>
 void superset_mobius_transform(std::vector<typename G::value_type> &a) {
-  using size_t = std::size_t;
-
-  const size_t n = a.size();
-  size_t i = 1;
+  const usize n = a.size();
+  usize i = 1;
   while (i < n)
     i *= 2;
   while (i != 1) {
     i /= 2;
-    for (size_t j = 0; j != n; j += 1) {
+    for (usize j = 0; j != n; j += 1) {
       if ((j & i) != 0)
         a[j & ~i] = G::operation(a[j & ~i], G::inverse(a[j]));
     }
