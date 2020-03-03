@@ -31,10 +31,10 @@ layout: default
 
 * category: <a href="../../index.html#ed469618898d75b149e5c7c4b6a1c415">algorithm</a>
 * <a href="{{ site.github.repository_url }}/blob/master/algorithm/smawk.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-02 16:21:18+09:00
+    - Last commit date: 2020-03-03 19:29:31+09:00
 
 
-* see: <a href="http://www.cs.ust.hk/mjg_lib/bibs/DPSu/DPSu.Files/p285-aggarwal.pdf">http://www.cs.ust.hk/mjg_lib/bibs/DPSu/DPSu.Files/p285-aggarwal.pdf</a>
+* see: <a href="https://link.springer.com/article/10.1007/BF01840359">https://link.springer.com/article/10.1007/BF01840359</a>
 
 
 ## Depends on
@@ -109,7 +109,8 @@ std::vector<usize> smawk(const usize row_size, const usize col_size,
 
 /**
  * @brief SMAWK Algorithm
- * @see http://www.cs.ust.hk/mjg_lib/bibs/DPSu/DPSu.Files/p285-aggarwal.pdf
+ * @doc docs/smawk.md
+ * @see https://link.springer.com/article/10.1007/BF01840359
  */
 
 ```
@@ -180,7 +181,8 @@ std::vector<usize> smawk(const usize row_size, const usize col_size,
 
 /**
  * @brief SMAWK Algorithm
- * @see http://www.cs.ust.hk/mjg_lib/bibs/DPSu/DPSu.Files/p285-aggarwal.pdf
+ * @doc docs/smawk.md
+ * @see https://link.springer.com/article/10.1007/BF01840359
  */
 
 ```
