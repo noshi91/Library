@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/axiotis_tzamos_knapsack.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-03 19:32:01+09:00
+    - Last commit date: 2020-03-03 22:52:31+09:00
 
 
 
@@ -174,7 +174,7 @@ std::vector<T> concave_max_plus_convolution(const std::vector<T> &a,
 
 /**
  * @brief Concave Max Plus Convlution
- * @see https://arxiv.org/abs/1802.06440
+ * @docs docs/concave_max_plus_convolution.md
  */
 #line 1 "other/ceildiv.cpp"
 template <class T> T ceildiv(const T &n, const T &d) {

@@ -31,10 +31,36 @@ layout: default
 
 * category: <a href="../../index.html#ed469618898d75b149e5c7c4b6a1c415">algorithm</a>
 * <a href="{{ site.github.repository_url }}/blob/master/algorithm/concave_max_plus_convolution.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-03 19:32:01+09:00
+    - Last commit date: 2020-03-03 22:52:31+09:00
 
 
-* see: <a href="https://arxiv.org/abs/1802.06440">https://arxiv.org/abs/1802.06440</a>
+
+
+## 入力
+長さ $N$ の列 $A$
+長さ $M$ の列 $B$
+-   $B$ は上に凸
+
+## 出力
+$C_i \mathrel := \max \limits _ j \lbrace A _ {i - j} + B _ j \rbrace$
+
+で定義される長さ $N + M - 1$ の列 $C$
+
+## 計算量
+-   時間計算量 $\Theta ( N + M )$
+-   空間計算量 $\Theta ( N + M )$
+
+## 説明
+$( N + M ) \times M$ 行列 $X$ を以下のように定義する。
+
+$X _ {i , j} \mathrel := A _ {i - j} + B _ j$
+
+ただし $i \lt j$ あるいは $M \le j$ の場合は $- \infty$ とする。(詳細略、実装を参照)
+目的は $C _ i = \max \limits _ j X _ {i , j}$ を計算することである。
+$B$ が上に凸であることから $X$ は monge であり、すなわち totally monotone。よって[SMAWK Algorithm](https://noshi91.github.io/Library/library/algorithm/smawk.cpp.html) を用いると $\Theta ( N + M )$ で計算可能。
+
+## 文献
+-   [Capacitated Dynamic Programming: Faster Knapsack and Graph Algorithms](https://arxiv.org/abs/1802.06440)
 
 
 ## Depends on
@@ -87,7 +113,7 @@ std::vector<T> concave_max_plus_convolution(const std::vector<T> &a,
 
 /**
  * @brief Concave Max Plus Convlution
- * @see https://arxiv.org/abs/1802.06440
+ * @docs docs/concave_max_plus_convolution.md
  */
 
 ```
@@ -189,7 +215,7 @@ std::vector<T> concave_max_plus_convolution(const std::vector<T> &a,
 
 /**
  * @brief Concave Max Plus Convlution
- * @see https://arxiv.org/abs/1802.06440
+ * @docs docs/concave_max_plus_convolution.md
  */
 
 ```
