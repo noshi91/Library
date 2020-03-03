@@ -64,11 +64,11 @@ ${\rm dp} \lbrack i \rbrack \mathrel := w$ の総和 $i$ で達成される $v$ 
 
 ${\rm dp} \lbrack i \rbrack = \begin{cases} 0 \  ( i = 0 ) \\ - \infty \  ( i \neq 0 ) \end{cases}$
 
-であり、各 $w '$ について $w _ j = w '$ となる $j$ でまとめて $\rm dp$ を更新していく。そのような $j$ について $v _ j$ を降順にソートした列を $v '$ とすると、$\rm dp$ の更新は以下のように表せる。
+であり、各 $w ^ \prime$ について $w _ j = w ^ \prime$ となる $j$ でまとめて $\rm dp$ を更新していく。そのような $j$ について $v _ j$ を降順にソートした列を $v ^ \prime$ とすると、$\rm dp$ の更新は以下のように表せる。
 
-$\displaystyle {\rm dp} \lbrack i \rbrack \leftarrow \max \limits _ k \lbrace {\rm dp} \lbrack i - k w ' \rbrack + \sum \limits _ {0 \le l \lt k} v ' _ l \rbrace$
+$\displaystyle {\rm dp} \lbrack i \rbrack \leftarrow \max \limits _ k \lbrace {\rm dp} \lbrack i - k w ^ \prime \rbrack + \sum \limits _ {0 \le l \lt k} v ^ \prime _ l \rbrace$
 
-これは $\rm dp$ を $w '$ 間隔で取り出した列に $v '$ の累積和を (max,+)-convolution する操作である。$v '$ が広義単調減少であるから、その累積和は上に凸である。よって [Concave Max Plus Convlution](https://noshi91.github.io/Library/library/algorithm/concave_max_plus_convolution.cpp.html) を用いて高速に計算することが出来る。  
+これは $\rm dp$ を $w ^ \prime$ 間隔で取り出した列に $v ^ \prime$ の累積和を (max,+)-convolution する操作である。$v ^ \prime$ が広義単調減少であるから、その累積和は上に凸である。よって [Concave Max Plus Convlution](https://noshi91.github.io/Library/library/algorithm/concave_max_plus_convolution.cpp.html) を用いて高速に計算することが出来る。  
 $1$ 回の更新につきソートと加えて $\Theta ( T )$ 掛かるため、全体では $\Theta ( N \log ( N ) + T D )$ となる。
 
 ## 文献
