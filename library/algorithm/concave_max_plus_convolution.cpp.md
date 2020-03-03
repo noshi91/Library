@@ -60,7 +60,8 @@ $X _ {i , j} \mathrel := A _ {i - j} + B _ j$
 $B$ が上に凸であることから $X$ は monge であり、すなわち totally monotone。よって[SMAWK Algorithm](https://noshi91.github.io/Library/library/algorithm/smawk.cpp.html) を用いると $\Theta ( N + M )$ で計算可能。
 
 ## 文献
--   [Capacitated Dynamic Programming: Faster Knapsack and Graph Algorithms](https://arxiv.org/abs/1802.06440)
+-   [Capacitated Dynamic Programming: Faster Knapsack and Graph Algorithms](https://arxiv.org/abs/1802.06440)  
+    [Axiotis-Tzamos Knapsack](https://noshi91.github.io/Library/library/algorithm/axiotis_tzamos_knapsack.cpp.html) で使用されている
 
 
 ## Depends on

@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/axiotis_tzamos_knapsack.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-03 23:12:43+09:00
+    - Last commit date: 2020-03-04 00:24:05+09:00
 
 
 
@@ -225,7 +225,7 @@ u64 axiotis_tzamos_knapsack(const usize t, const std::vector<I> &item) {
 
 /**
  * @brief Axiotis-Tzamos Knapsack
- * @see https://arxiv.org/abs/1802.06440
+ * @docs docs/axiotis_tzamos_knapsack.md
  */
 #line 6 "test/axiotis_tzamos_knapsack.test.cpp"
 
