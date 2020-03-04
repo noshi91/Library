@@ -88,7 +88,7 @@ layout: default
 
 * :heavy_check_mark: <a href="library/other/affine.cpp.html">other/affine.cpp</a>
 * :heavy_check_mark: <a href="library/other/cartesian_product_monoid.cpp.html">other/cartesian_product_monoid.cpp</a>
-* :heavy_check_mark: <a href="library/other/ceildiv.cpp.html">other/ceildiv.cpp</a>
+* :warning: <a href="library/other/ceildiv.cpp.html">other/ceildiv.cpp</a>
 * :heavy_check_mark: <a href="library/other/countl_zero64.cpp.html">other/countl_zero64.cpp</a>
 * :heavy_check_mark: <a href="library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 * :heavy_check_mark: <a href="library/other/less_equal_ordered_set.cpp.html">other/less_equal_ordered_set.cpp</a>

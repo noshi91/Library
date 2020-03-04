@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: other/ceildiv.cpp
+# :warning: other/ceildiv.cpp
 
 <a href="../../index.html">Back to top page</a>
 
@@ -34,16 +34,6 @@ layout: default
     - Last commit date: 2020-03-02 16:21:18+09:00
 
 
-
-
-## Required by
-
-* :heavy_check_mark: <a href="../algorithm/axiotis_tzamos_knapsack.cpp.html">Axiotis-Tzamos Knapsack <small>(algorithm/axiotis_tzamos_knapsack.cpp)</small></a>
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../verify/test/axiotis_tzamos_knapsack.test.cpp.html">test/axiotis_tzamos_knapsack.test.cpp</a>
 
 
 ## Code

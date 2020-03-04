@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/axiotis_tzamos_knapsack.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-04 00:24:05+09:00
+    - Last commit date: 2020-03-04 12:03:00+09:00
 
 
 
@@ -40,7 +40,6 @@ layout: default
 * :heavy_check_mark: <a href="../../library/algorithm/axiotis_tzamos_knapsack.cpp.html">Axiotis-Tzamos Knapsack <small>(algorithm/axiotis_tzamos_knapsack.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/algorithm/concave_max_plus_convolution.cpp.html">Concave Max Plus Convlution <small>(algorithm/concave_max_plus_convolution.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/algorithm/smawk.cpp.html">SMAWK Algorithm <small>(algorithm/smawk.cpp)</small></a>
-* :heavy_check_mark: <a href="../../library/other/ceildiv.cpp.html">other/ceildiv.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 
 
@@ -175,11 +174,7 @@ std::vector<T> concave_max_plus_convolution(const std::vector<T> &a,
  * @brief Concave Max Plus Convlution
  * @docs docs/concave_max_plus_convolution.md
  */
-#line 1 "other/ceildiv.cpp"
-template <class T> T ceildiv(const T &n, const T &d) {
-  return n / d + (n % d != 0 ? 1 : 0);
-}
-#line 4 "algorithm/axiotis_tzamos_knapsack.cpp"
+#line 3 "algorithm/axiotis_tzamos_knapsack.cpp"
 
 #include <algorithm>
 #include <cassert>
