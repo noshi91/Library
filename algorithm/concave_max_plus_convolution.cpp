@@ -26,6 +26,6 @@ std::vector<T> concave_max_plus_convolution(const std::vector<T> &a,
 }
 
 /**
- * @brief Concave Max Plus Convlution
+ * @brief Concave Max Plus Convolution
  * @docs docs/concave_max_plus_convolution.md
  */

@@ -30,7 +30,7 @@ ${\rm dp} \lbrack i \rbrack = \begin{cases} 0 & ( i = 0 ) \newline - \infty & ( 
 
 $\displaystyle {\rm dp} \lbrack i \rbrack \leftarrow \max \limits _ k \lbrace {\rm dp} \lbrack i - k w ^ \prime \rbrack + \sum \limits _ {0 \le l \lt k} v ^ \prime _ l \rbrace$
 
-これは $\rm dp$ を $w ^ \prime$ 間隔で取り出した列に $v ^ \prime$ の累積和を (max,+)-convolution する操作である。$v ^ \prime$ が広義単調減少であるから、その累積和は上に凸である。よって [Concave Max Plus Convlution](https://noshi91.github.io/Library/library/algorithm/concave_max_plus_convolution.cpp.html) を用いて高速に計算することが出来る。  
+これは $\rm dp$ を $w ^ \prime$ 間隔で取り出した列に $v ^ \prime$ の累積和を (max,+)-convolution する操作である。$v ^ \prime$ が広義単調減少であるから、その累積和は上に凸である。よって [Concave Max Plus Convolution](https://noshi91.github.io/Library/library/algorithm/concave_max_plus_convolution.cpp.html) を用いて高速に計算することが出来る。  
 $1$ 回の更新につきソートと加えて $\Theta ( T )$ 掛かるため、全体では $O ( N \log ( N ) + T D )$ となる。
 
 ## 文献
@@ -39,7 +39,7 @@ $1$ 回の更新につきソートと加えて $\Theta ( T )$ 掛かるため、
 
 ## 語
 #### (max,+)-convolution
-[Concave Max Plus Convlution](https://noshi91.github.io/Library/library/algorithm/concave_max_plus_convolution.cpp.html)
+[Concave Max Plus Convolution](https://noshi91.github.io/Library/library/algorithm/concave_max_plus_convolution.cpp.html)
 
 ## その他
 -   アルゴリズムの名前について  
