@@ -62,7 +62,7 @@ ${\rm dp} \lbrack i \rbrack \mathrel := w$ の総和 $i$ で達成される $v$ 
 
 最初
 
-${\rm dp} \lbrack i \rbrack = \begin{cases} 0 \  ( i = 0 ) , - \infty \  ( i \neq 0 ) \end{cases}$
+${\rm dp} \lbrack i \rbrack = \begin{cases} 0 & ( i = 0 ) \newline - \infty & ( i \neq 0 ) \end{cases}$
 
 であり、各 $w ^ \prime$ について $w _ j = w ^ \prime$ となる $j$ でまとめて $\rm dp$ を更新していく。そのような $j$ について $v _ j$ を降順にソートした列を $v ^ \prime$ とすると、$\rm dp$ の更新は以下のように表せる。
 
