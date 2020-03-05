@@ -90,7 +90,7 @@ $A$ が totally monotone であるとは、その任意の部分行列が monoto
 ## Required by
 
 * :heavy_check_mark: <a href="axiotis_tzamos_knapsack.cpp.html">Axiotis-Tzamos Knapsack <small>(algorithm/axiotis_tzamos_knapsack.cpp)</small></a>
-* :heavy_check_mark: <a href="concave_max_plus_convolution.cpp.html">Concave Max Plus Convlution <small>(algorithm/concave_max_plus_convolution.cpp)</small></a>
+* :heavy_check_mark: <a href="concave_max_plus_convolution.cpp.html">Concave Max Plus Convolution <small>(algorithm/concave_max_plus_convolution.cpp)</small></a>
 
 
 ## Verified with

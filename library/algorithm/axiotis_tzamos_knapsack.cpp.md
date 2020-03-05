@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#ed469618898d75b149e5c7c4b6a1c415">algorithm</a>
 * <a href="{{ site.github.repository_url }}/blob/master/algorithm/axiotis_tzamos_knapsack.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-04 12:03:00+09:00
+    - Last commit date: 2020-03-05 22:38:55+09:00
 
 
 
@@ -68,7 +68,7 @@ ${\rm dp} \lbrack i \rbrack = \begin{cases} 0 & ( i = 0 ) \newline - \infty & ( 
 
 $\displaystyle {\rm dp} \lbrack i \rbrack \leftarrow \max \limits _ k \lbrace {\rm dp} \lbrack i - k w ^ \prime \rbrack + \sum \limits _ {0 \le l \lt k} v ^ \prime _ l \rbrace$
 
-これは $\rm dp$ を $w ^ \prime$ 間隔で取り出した列に $v ^ \prime$ の累積和を (max,+)-convolution する操作である。$v ^ \prime$ が広義単調減少であるから、その累積和は上に凸である。よって [Concave Max Plus Convlution](https://noshi91.github.io/Library/library/algorithm/concave_max_plus_convolution.cpp.html) を用いて高速に計算することが出来る。  
+これは $\rm dp$ を $w ^ \prime$ 間隔で取り出した列に $v ^ \prime$ の累積和を (max,+)-convolution する操作である。$v ^ \prime$ が広義単調減少であるから、その累積和は上に凸である。よって [Concave Max Plus Convolution](https://noshi91.github.io/Library/library/algorithm/concave_max_plus_convolution.cpp.html) を用いて高速に計算することが出来る。  
 $1$ 回の更新につきソートと加えて $\Theta ( T )$ 掛かるため、全体では $O ( N \log ( N ) + T D )$ となる。
 
 ## 文献
@@ -77,7 +77,7 @@ $1$ 回の更新につきソートと加えて $\Theta ( T )$ 掛かるため、
 
 ## 語
 #### (max,+)-convolution
-[Concave Max Plus Convlution](https://noshi91.github.io/Library/library/algorithm/concave_max_plus_convolution.cpp.html)
+[Concave Max Plus Convolution](https://noshi91.github.io/Library/library/algorithm/concave_max_plus_convolution.cpp.html)
 
 ## その他
 -   アルゴリズムの名前について  
@@ -87,7 +87,7 @@ $1$ 回の更新につきソートと加えて $\Theta ( T )$ 掛かるため、
 
 ## Depends on
 
-* :heavy_check_mark: <a href="concave_max_plus_convolution.cpp.html">Concave Max Plus Convlution <small>(algorithm/concave_max_plus_convolution.cpp)</small></a>
+* :heavy_check_mark: <a href="concave_max_plus_convolution.cpp.html">Concave Max Plus Convolution <small>(algorithm/concave_max_plus_convolution.cpp)</small></a>
 * :heavy_check_mark: <a href="smawk.cpp.html">SMAWK Algorithm <small>(algorithm/smawk.cpp)</small></a>
 * :heavy_check_mark: <a href="../other/int_alias.cpp.html">other/int_alias.cpp</a>
 
@@ -249,7 +249,7 @@ std::vector<T> concave_max_plus_convolution(const std::vector<T> &a,
 }
 
 /**
- * @brief Concave Max Plus Convlution
+ * @brief Concave Max Plus Convolution
  * @docs docs/concave_max_plus_convolution.md
  */
 #line 3 "algorithm/axiotis_tzamos_knapsack.cpp"

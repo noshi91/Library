@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Concave Max Plus Convlution <small>(algorithm/concave_max_plus_convolution.cpp)</small>
+# :heavy_check_mark: Concave Max Plus Convolution <small>(algorithm/concave_max_plus_convolution.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#ed469618898d75b149e5c7c4b6a1c415">algorithm</a>
 * <a href="{{ site.github.repository_url }}/blob/master/algorithm/concave_max_plus_convolution.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-03 23:12:43+09:00
+    - Last commit date: 2020-03-05 22:38:55+09:00
 
 
 
@@ -113,7 +113,7 @@ std::vector<T> concave_max_plus_convolution(const std::vector<T> &a,
 }
 
 /**
- * @brief Concave Max Plus Convlution
+ * @brief Concave Max Plus Convolution
  * @docs docs/concave_max_plus_convolution.md
  */
 
@@ -214,7 +214,7 @@ std::vector<T> concave_max_plus_convolution(const std::vector<T> &a,
 }
 
 /**
- * @brief Concave Max Plus Convlution
+ * @brief Concave Max Plus Convolution
  * @docs docs/concave_max_plus_convolution.md
  */
 
