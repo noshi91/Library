@@ -7,7 +7,7 @@
 #include <vector>
 
 std::vector<std::vector<usize>> three_edge_connected_component_decomposition(
-    const std::vector<std::vector<usize>> g) {
+    const std::vector<std::vector<usize>> &g) {
   const usize n = g.size();
   std::vector<usize> in(n);
   std::vector<usize> out(n);
@@ -75,8 +75,8 @@ std::vector<std::vector<usize>> three_edge_connected_component_decomposition(
 
   for (usize i = 0; i != n; i += 1) {
     if (!visited[i])
-      dfs(i);
+      dfs(i, n);
   }
 
-  return tcc.get_list();
+  return tcc.get_all();
 }
