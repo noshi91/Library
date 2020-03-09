@@ -43,6 +43,7 @@ layout: default
 * :heavy_check_mark: <a href="library/algorithm/concave_max_plus_convolution.cpp.html">Concave Max Plus Convolution <small>(algorithm/concave_max_plus_convolution.cpp)</small></a>
 * :heavy_check_mark: <a href="library/algorithm/max_plus_convolution.cpp.html">Max Plus Convolution <small>(algorithm/max_plus_convolution.cpp)</small></a>
 * :heavy_check_mark: <a href="library/algorithm/smawk.cpp.html">SMAWK Algorithm <small>(algorithm/smawk.cpp)</small></a>
+* :heavy_check_mark: <a href="library/algorithm/three_edge_connected_component_decomposition.cpp.html">algorithm/three_edge_connected_component_decomposition.cpp</a>
 * :heavy_check_mark: <a href="library/algorithm/zeta_transform.cpp.html">Zeta Transform <small>(algorithm/zeta_transform.cpp)</small></a>
 
 
@@ -69,7 +70,7 @@ layout: default
 * :heavy_check_mark: <a href="library/data_structure/segment_tree.cpp.html">Segment Tree <small>(data_structure/segment_tree.cpp)</small></a>
 * :heavy_check_mark: <a href="library/data_structure/stack_aggregation.cpp.html">Stack Aggregation <small>(data_structure/stack_aggregation.cpp)</small></a>
 * :warning: <a href="library/data_structure/ternary_treap.cpp.html">Ternary Treap <small>(data_structure/ternary_treap.cpp)</small></a>
-* :warning: <a href="library/data_structure/union_enumerate.cpp.html">Union Enumerate <small>(data_structure/union_enumerate.cpp)</small></a>
+* :heavy_check_mark: <a href="library/data_structure/union_enumerate.cpp.html">Union Enumerate <small>(data_structure/union_enumerate.cpp)</small></a>
 * :heavy_check_mark: <a href="library/data_structure/union_find.cpp.html">Union Find <small>(data_structure/union_find.cpp)</small></a>
 * :heavy_check_mark: <a href="library/data_structure/wavelet_matrix.cpp.html">Wavelet Matrix <small>(data_structure/wavelet_matrix.cpp)</small></a>
 
@@ -126,6 +127,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/radix_heap.aoj.test.cpp.html">test/radix_heap.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/randomized_queue.test.cpp.html">test/randomized_queue.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/segment_tree.yosupo.test.cpp.html">test/segment_tree.yosupo.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/three_edge_connected_component_decomposition.test.cpp.html">test/three_edge_connected_component_decomposition.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/union_find.yosupo.test.cpp.html">test/union_find.yosupo.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/wavelet_matrix.aoj.test.cpp.html">test/wavelet_matrix.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/wavelet_matrix.quantile.test.cpp.html">test/wavelet_matrix.quantile.test.cpp</a>

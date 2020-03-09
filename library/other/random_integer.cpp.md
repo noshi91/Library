@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#795f3202b17cb6bc3d4b771d8c6c9eaf">other</a>
 * <a href="{{ site.github.repository_url }}/blob/master/other/random_integer.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-23 00:45:19+09:00
+    - Last commit date: 2020-03-09 21:14:06+09:00
 
 
 
@@ -68,6 +68,7 @@ IntType random_integer(const IntType a, const IntType b) {
   static std::default_random_engine g(91);
   return std::uniform_int_distribution<IntType>(a, b)(g);
 }
+
 ```
 {% endraw %}
 
