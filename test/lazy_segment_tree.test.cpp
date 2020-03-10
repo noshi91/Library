@@ -7,6 +7,8 @@
 #include <iostream>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   using mint = modint<998244353>;
 
   int n, q;
@@ -29,7 +31,7 @@ int main() {
     case 1: {
       int l, r;
       std::cin >> l >> r;
-      std::cout << lst.fold(l, r).first.value() << std::endl;
+      std::cout << lst.fold(l, r).first.value() << "\n";
     } break;
     }
   }

@@ -7,6 +7,8 @@
 #include <iostream>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   int n, q;
   std::cin >> n >> q;
   segment_tree<affine_composite_monoid<modint<998244353>>> st(n);
@@ -27,7 +29,7 @@ int main() {
     case 1: {
       int l, r, x;
       std::cin >> l >> r >> x;
-      std::cout << st.fold(l, r).evaluate(x).value() << std::endl;
+      std::cout << st.fold(l, r).evaluate(x).value() << "\n";
     } break;
     }
   }

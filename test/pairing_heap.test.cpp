@@ -63,10 +63,12 @@ void solve(const int n, const int q) {
     if (deg[p[v]] == 0)
       st.push(p[v]);
   }
-  std::cout << ans << std::endl;
+  std::cout << ans << "\n";
 }
 
 int main() {
+#include "other/fast_ios.cpp"
+
   while (true) {
     int n, q;
     std::cin >> n >> q;

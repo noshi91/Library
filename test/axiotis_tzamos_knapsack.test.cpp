@@ -8,6 +8,8 @@
 #include <vector>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   usize n, w;
   std::cin >> n >> w;
   struct item_t {
@@ -17,5 +19,5 @@ int main() {
   for (auto &e : is) {
     std::cin >> e.v >> e.w;
   }
-  std::cout << axiotis_tzamos_knapsack(w, is) << std::endl;
+  std::cout << axiotis_tzamos_knapsack(w, is) << "\n";
 }

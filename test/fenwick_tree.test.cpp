@@ -6,6 +6,8 @@
 #include <iostream>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   using i64 = long long;
 
   int n, q;
@@ -29,7 +31,7 @@ int main() {
     case 1: {
       int l, r;
       std::cin >> l >> r;
-      std::cout << -ft.fold_prefix(l) + ft.fold_prefix(r) << std::endl;
+      std::cout << -ft.fold_prefix(l) + ft.fold_prefix(r) << "\n";
     } break;
     }
   }

@@ -9,6 +9,8 @@
 #include <vector>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   int n, m;
   std::cin >> n >> m;
   incremental_bridge_connectivity ibc(n);
@@ -22,6 +24,6 @@ int main() {
   std::sort(es.begin(), es.end());
   for (const auto &[u, v] : es) {
     if (!ibc.bridge_connected(u, v))
-      std::cout << u << " " << v << std::endl;
+      std::cout << u << " " << v << "\n";
   }
 }

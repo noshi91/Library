@@ -9,6 +9,8 @@
 #include <vector>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   const int n = 1 << 18;
   const int b = 10;
 
@@ -23,5 +25,5 @@ int main() {
     count[e] += 1;
   }
 
-  std::cout << "Hello World" << std::endl;
+  std::cout << "Hello World\n";
 }

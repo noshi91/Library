@@ -6,6 +6,8 @@
 #include <vector>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   int n, q;
   std::cin >> n >> q;
 
@@ -19,6 +21,6 @@ int main() {
   for (int i = 0; i != q; i += 1) {
     int l, r, k;
     std::cin >> l >> r >> k;
-    std::cout << wm.quantile(l, r, k) << std::endl;
+    std::cout << wm.quantile(l, r, k) << "\n";
   }
 }

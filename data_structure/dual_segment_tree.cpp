@@ -5,23 +5,23 @@
 #include <cstddef>
 #include <vector>
 
-template <class Monoid> class dual_segment_tree {
+template <class M> class dual_segment_tree {
   using size_t = std::size_t;
-  using T = typename Monoid::value_type;
+  using T = typename M::value_type;
 
 public:
   using value_type = T;
   using size_type = size_t;
 
 private:
-  static void add(T &x, const T y) { x = Monoid::operation(x, y); }
+  static void add(T &x, const T y) { x = M::operation(x, y); }
 
   std::vector<T> tree;
 
   void push(const size_t index) {
     add(tree[index * 2], tree[index]);
     add(tree[index * 2 + 1], tree[index]);
-    tree[index] = Monoid::identity;
+    tree[index] = M::identity;
   }
   void propagate(const size_t index) {
     if (index == 0)
@@ -33,7 +33,7 @@ private:
 
 public:
   dual_segment_tree() = default;
-  explicit dual_segment_tree(const size_t n) : tree(n * 2, Monoid::identity) {}
+  explicit dual_segment_tree(const size_t n) : tree(n * 2, M::identity) {}
 
   size_t size() const noexcept { return tree.size() / 2; }
 

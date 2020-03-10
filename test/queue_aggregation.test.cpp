@@ -7,6 +7,8 @@
 #include <iostream>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   queue_aggregation<affine_composite_monoid<modint<998244353>>> qa;
 
   int q;
@@ -27,7 +29,7 @@ int main() {
     case 2: {
       int x;
       std::cin >> x;
-      std::cout << qa.fold().evaluate(x).value() << std::endl;
+      std::cout << qa.fold().evaluate(x).value() << "\n";
     } break;
     }
   }

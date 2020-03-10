@@ -10,6 +10,8 @@
 #include <vector>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   const int n = 1 << 20;
 
   std::vector<int> a(n);
@@ -35,5 +37,5 @@ int main() {
   std::sort(b.begin(), b.end());
   assert(a == b);
 
-  std::cout << "Hello World" << std::endl;
+  std::cout << "Hello World\n";
 }

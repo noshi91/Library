@@ -8,6 +8,8 @@
 #include <iostream>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   int n, q;
   std::cin >> n >> q;
   dual_segment_tree<semigroup_to_monoid<right_zero_semigroup<int>>> dst(n);
@@ -24,7 +26,7 @@ int main() {
     case 1: {
       int i;
       std::cin >> i;
-      std::cout << dst.fold(i).value() << std::endl;
+      std::cout << dst.fold(i).value() << "\n";
     } break;
     }
   }

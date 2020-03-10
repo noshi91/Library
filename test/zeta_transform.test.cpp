@@ -8,6 +8,8 @@
 #include <iostream>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   using mint = modint<1000000007>;
   constexpr int b = 20;
 
@@ -23,5 +25,5 @@ int main() {
   for (mint &e : v)
     e -= 1;
   superset_mobius_transform<plus_group<mint>>(v);
-  std::cout << v[0].value() << std::endl;
+  std::cout << v[0].value() << "\n";
 }

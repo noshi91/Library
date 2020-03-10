@@ -7,6 +7,8 @@
 #include <iostream>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   int n, q;
   std::cin >> n >> q;
   potentialized_union_find<plus_group<int>> puf(n);
@@ -17,15 +19,16 @@ int main() {
     case 0: {
       int x, y, z;
       std::cin >> x >> y >> z;
-      puf.unite(x, y, z);
+      if (!puf.same(x, y))
+        puf.unite(x, y, z);
     } break;
     case 1: {
       int x, y;
       std::cin >> x >> y;
       if (puf.same(x, y))
-        std::cout << puf.distance(x, y) << std::endl;
+        std::cout << puf.distance(x, y) << "\n";
       else
-        std::cout << "?" << std::endl;
+        std::cout << "?\n";
     } break;
     }
   }

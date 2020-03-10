@@ -4,6 +4,7 @@
 #include <cassert>
 #include <cstddef>
 #include <random>
+#include <utility>
 #include <vector>
 
 template <class T> class randomized_queue {
@@ -32,7 +33,7 @@ public:
   T pop() {
     assert(!empty());
     select();
-    const T ret = std::move(c.back());
+    T ret = std::move(c.back());
     c.pop_back();
     return ret;
   }

@@ -9,6 +9,8 @@
 #include <vector>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   constexpr int offset = 1000000000;
 
   int n, m;
@@ -34,6 +36,6 @@ int main() {
     x2 += 1;
     y2 += 1;
     std::cout << wm.rangefreq(idx(x1), idx(x2), offset + y1, offset + y2)
-              << std::endl;
+              << "\n";
   }
 }

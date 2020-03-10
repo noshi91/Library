@@ -8,6 +8,8 @@
 #include <vector>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   int n, m;
   std::cin >> n >> m;
   std::vector<std::vector<usize>> g(n);
@@ -18,11 +20,11 @@ int main() {
     g[b].push_back(a);
   }
   const auto ans = three_edge_connected_component_decomposition(g);
-  std::cout << ans.size() << std::endl;
+  std::cout << ans.size() << "\n";
   for (const auto &l : ans) {
     std::cout << l.size();
     for (const usize e : l)
       std::cout << " " << e;
-    std::cout << std::endl;
+    std::cout << "\n";
   }
 }

@@ -1,9 +1,7 @@
 #define PROBLEM                                                                \
   "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja"
 
-#include "data_structure/erasable_heap.cpp"
-#include "data_structure/pairing_heap.cpp"
-#include "other/less_equal_ordered_set.cpp"
+#include "data_structure/radix_heap.cpp"
 
 #include <iostream>
 #include <limits>
@@ -11,6 +9,8 @@
 #include <vector>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   int n, m, r;
   std::cin >> n >> m >> r;
   std::vector<std::vector<std::pair<int, int>>> g(n);
@@ -22,17 +22,21 @@ int main() {
   constexpr int Inf = std::numeric_limits<int>::max();
   std::vector<int> dist(n, Inf);
   dist[r] = 0;
-  erasable_heap<pairing_heap<less_equal_ordered_set<std::pair<int, int>>>> heap;
+  radix_heap<int> heap;
+  int size = 0;
   heap.push({0, r});
-  while (!heap.empty()) {
-    const auto [c, v] = heap.top();
-    heap.pop();
+  size += 1;
+  while (size != 0) {
+    const auto [c_, v] = heap.pop();
+    const int c = c_;
+    size -= 1;
+    if (dist[v] < c)
+      continue;
     for (const auto &[d, u] : g[v]) {
       if (c + d < dist[u]) {
-        if (dist[u] != Inf)
-          heap.erase({dist[u], u});
         dist[u] = c + d;
         heap.push({dist[u], u});
+        size += 1;
       }
     }
   }
@@ -41,6 +45,6 @@ int main() {
       std::cout << dist[i];
     else
       std::cout << "INF";
-    std::cout << std::endl;
+    std::cout << "\n";
   }
 }
