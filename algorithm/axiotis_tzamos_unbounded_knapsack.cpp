@@ -1,6 +1,6 @@
 #include "algorithm/max_plus_convolution.cpp"
+#include "other/bit_width.cpp"
 #include "other/int_alias.cpp"
-#include "other/log2p164.cpp"
 
 #include <algorithm>
 #include <cassert>
@@ -32,7 +32,7 @@ u64 axiotis_tzamos_unbounded_knapsack(const u64 t, const std::vector<I> &item) {
     dp.insert(dp.begin(), temp.begin(), temp.end());
   }
 
-  for (usize i = log2p164(t); i != 0; i -= 1) {
+  for (usize i = bit_width(t); i != 0; i -= 1) {
     dp = max_plus_convolution(dp, dp);
     auto itr = dp.begin() + 2 * m;
     if ((t >> i - 1) % 2 == 1)

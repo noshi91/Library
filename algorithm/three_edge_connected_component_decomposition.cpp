@@ -80,3 +80,8 @@ std::vector<std::vector<usize>> three_edge_connected_component_decomposition(
 
   return tcc.get_all();
 }
+
+/**
+ * @brief 3-Edge-Connected Component Decomposition
+ * @see https://www.sciencedirect.com/science/article/abs/pii/S0020019013002470
+ */

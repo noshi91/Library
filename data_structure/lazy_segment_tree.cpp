@@ -1,3 +1,6 @@
+#include "other/bit_width.cpp"
+#include "other/countr_zero.cpp"
+
 #include <cassert>
 #include <cstddef>
 #include <vector>
@@ -17,8 +20,6 @@ template <class A> class lazy_segment_tree {
     node_type(const T value, const E lazy) : value(value), lazy(lazy) {}
   };
 
-  static size_t lsb(const size_t x) { return __builtin_ctz(x); }
-  static size_t msb(const size_t x) { return 31 - __builtin_clz(x); }
   static T get(const node_type &x) { return A::operation(x.value, x.lazy); }
   static void add(E &x, const E y) { x = O::operation(x, y); }
 
@@ -32,8 +33,8 @@ template <class A> class lazy_segment_tree {
   void propagate_bound(const size_t index) {
     if (index == 0)
       return;
-    const size_t lsb_ = lsb(index);
-    for (size_t h = msb(index); h != lsb_; h -= 1)
+    const size_t crz = countr_zero(index);
+    for (size_t h = bit_width(index) - 1; h != crz; h -= 1)
       propagate(index >> h);
   }
   void recalc(const size_t index) {
@@ -43,7 +44,7 @@ template <class A> class lazy_segment_tree {
   void recalc_bound(size_t index) {
     if (index == 0)
       return;
-    index >>= lsb(index);
+    index >>= countr_zero(index);
     while (index != 1) {
       index /= 2;
       recalc(index);
@@ -111,7 +112,7 @@ public:
   void update_point(size_t index, const T x) {
     assert(index < size());
     index += size();
-    for (size_t h = msb(index); h != 0; h -= 1)
+    for (size_t h = bit_width(index) - 1; h != 0; h -= 1)
       propagate(index >> h);
     tree[index] = node_type(x, O::identity);
     while (index != 1) {

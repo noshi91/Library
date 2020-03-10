@@ -1,4 +1,4 @@
-#include "other/log2p164.cpp"
+#include "other/bit_width.cpp"
 
 #include <algorithm>
 #include <cassert>
@@ -28,7 +28,7 @@ public:
   void push(const V x) {
     assert(last <= x.first);
 
-    const size_t i = log2p164(x.first ^ last);
+    const size_t i = bit_width(x.first ^ last);
     if (u.size() <= i)
       u.resize(i + 1);
     u[i].push_back(x);
@@ -42,7 +42,7 @@ public:
       for (const V &e : u[i])
         last = std::min(last, e.first);
       for (const V &e : u[i])
-        u[log2p164(e.first ^ last)].push_back(e);
+        u[bit_width(e.first ^ last)].push_back(e);
       u[i].clear();
     }
     V ret = u[0].back();

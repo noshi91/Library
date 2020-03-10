@@ -1,7 +1,8 @@
-#include <cstddef>
-#include <cstdint>
+#pragma once
 
-std::size_t popcount64(std::uint_fast64_t x) {
+#include "other/int_alias.cpp"
+
+usize popcount(u64 x) {
 #ifdef __GNUC__
   return __builtin_popcountll(x);
 #else

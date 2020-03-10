@@ -1,4 +1,4 @@
-#include "other/popcount64.cpp"
+#include "other/popcount.cpp"
 #include "other/select64.cpp"
 
 #include <cstddef>
@@ -32,15 +32,15 @@ public:
     {
       const size_t s = v.size();
       for (size_t i = 1; i != s; i += 1)
-        v[i].sum = v[i - 1].sum + popcount64(v[i - 1].bit);
+        v[i].sum = v[i - 1].sum + popcount(v[i - 1].bit);
     }
   }
 
   size_t rank0(const size_t index) const { return index - rank1(index); }
   size_t rank1(const size_t index) const {
     return v[index / wordsize].sum +
-           popcount64(v[index / wordsize].bit &
-                      ~(~static_cast<size_t>(0) << index % wordsize));
+           popcount(v[index / wordsize].bit &
+                    ~(~static_cast<size_t>(0) << index % wordsize));
   }
   size_t select0(const size_t k) const {
     size_t l = 0;
@@ -73,4 +73,3 @@ public:
 /**
  * @brief Bit Vector
  */
- 

@@ -1,3 +1,6 @@
+#include "other/bit_width.cpp"
+#include "other/countr_zero.cpp"
+
 #include <cassert>
 #include <cstddef>
 #include <vector>
@@ -11,8 +14,6 @@ public:
   using size_type = size_t;
 
 private:
-  static size_t lsb(const size_t x) { return __builtin_ctz(x); }
-  static size_t msb(const size_t x) { return 31 - __builtin_clz(x); }
   static void add(T &x, const T y) { x = Monoid::operation(x, y); }
 
   std::vector<T> tree;
@@ -25,8 +26,8 @@ private:
   void propagate(const size_t index) {
     if (index == 0)
       return;
-    const size_t lsb_ = lsb(index);
-    for (size_t h = msb(index); h != lsb_; h -= 1)
+    const size_t crz = countr_zero(index);
+    for (size_t h = bit_width(index) - 1; h != crz; h -= 1)
       push(index >> h);
   }
 
