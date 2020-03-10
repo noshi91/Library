@@ -38,9 +38,8 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/erasable_heap.aoj.test.cpp.html">test/erasable_heap.aoj.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/test/lazy_segment_tree.aoj.test.cpp.html">test/lazy_segment_tree.aoj.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/test/pairing_heap.aoj.test.cpp.html">test/pairing_heap.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/erasable_heap.test.cpp.html">test/erasable_heap.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/pairing_heap.test.cpp.html">test/pairing_heap.test.cpp</a>
 
 
 ## Code

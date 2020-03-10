@@ -25,12 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/lazy_segment_tree.yosupo.test.cpp
+# :heavy_check_mark: test/lazy_segment_tree.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* <a href="{{ site.github.repository_url }}/blob/master/test/lazy_segment_tree.yosupo.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-10 16:21:51+09:00
+* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/lazy_segment_tree.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_affine_range_sum">https://judge.yosupo.jp/problem/range_affine_range_sum</a>
@@ -44,6 +45,7 @@ layout: default
 * :heavy_check_mark: <a href="../../library/other/cartesian_product_monoid.cpp.html">other/cartesian_product_monoid.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/countl_zero.cpp.html">other/countl_zero.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/countr_zero.cpp.html">other/countr_zero.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/modint.cpp.html">other/modint.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/plus_monoid.cpp.html">other/plus_monoid.cpp</a>
@@ -64,6 +66,8 @@ layout: default
 #include <iostream>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   using mint = modint<998244353>;
 
   int n, q;
@@ -86,7 +90,7 @@ int main() {
     case 1: {
       int l, r;
       std::cin >> l >> r;
-      std::cout << lst.fold(l, r).first.value() << std::endl;
+      std::cout << lst.fold(l, r).first.value() << "\n";
     } break;
     }
   }
@@ -97,7 +101,7 @@ int main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/lazy_segment_tree.yosupo.test.cpp"
+#line 1 "test/lazy_segment_tree.test.cpp"
 #define PROBLEM "https://judge.yosupo.jp/problem/range_affine_range_sum"
 
 #line 2 "other/bit_width.cpp"
@@ -156,7 +160,7 @@ usize bit_width(const u64 x) { return 64 - countl_zero(x); }
 #line 3 "data_structure/lazy_segment_tree.cpp"
 
 #include <cassert>
-#include <cstddef>
+#line 6 "data_structure/lazy_segment_tree.cpp"
 #include <vector>
 
 template <class A> class lazy_segment_tree {
@@ -280,8 +284,7 @@ public:
  * @brief Lazy Segment Tree
  * @see https://scrapbox.io/data-structures/Lazy_Segment_Tree
  */
-#line 1 "other/modint.cpp"
-#include <cstdint>
+#line 2 "other/modint.cpp"
 
 template <std::uint_fast64_t Modulus> class modint {
   using u64 = std::uint_fast64_t;
@@ -413,11 +416,16 @@ public:
     return U(l.first * r.a + l.second * r.b, l.second);
   }
 };
-#line 6 "test/lazy_segment_tree.yosupo.test.cpp"
+#line 6 "test/lazy_segment_tree.test.cpp"
 
 #include <iostream>
 
 int main() {
+#line 1 "other/fast_ios.cpp"
+std::ios::sync_with_stdio(false);
+std::cin.tie(nullptr);
+#line 11 "test/lazy_segment_tree.test.cpp"
+
   using mint = modint<998244353>;
 
   int n, q;
@@ -440,7 +448,7 @@ int main() {
     case 1: {
       int l, r;
       std::cin >> l >> r;
-      std::cout << lst.fold(l, r).first.value() << std::endl;
+      std::cout << lst.fold(l, r).first.value() << "\n";
     } break;
     }
   }

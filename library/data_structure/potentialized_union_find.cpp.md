@@ -31,14 +31,19 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/potentialized_union_find.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 14:18:18+09:00
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
+
+
+## Depends on
+
+* :heavy_check_mark: <a href="../other/int_alias.cpp.html">other/int_alias.cpp</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/potentialized_union_find.aoj.test.cpp.html">test/potentialized_union_find.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/potentialized_union_find.test.cpp.html">test/potentialized_union_find.test.cpp</a>
 
 
 ## Code
@@ -46,80 +51,90 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
+#include "other/int_alias.cpp"
+
 #include <cassert>
 #include <vector>
+#include<utility>
 
-template <class Group> class potentialized_union_find {
-public:
-  using T = typename Group::value_type;
-
-private:
-  using size_t = std::size_t;
+template <class G> class potentialized_union_find {
+  using T = typename G::value_type;
   class node_type {
-    friend potentialized_union_find;
-
+  public:
     T value;
-    size_t parent;
-    size_t size;
+    usize parent;
+    usize size;
 
-    node_type(const T value, const size_t parent, const size_t size)
+    node_type(const T value, const usize parent, const usize size)
         : value(value), parent(parent), size(size) {}
   };
 
   std::vector<node_type> tree;
 
-  size_t size() const { return tree.size(); }
-  void compress(const size_t x) {
-    const size_t p = tree[x].parent;
+  void compress(const usize x) {
+    const usize p = tree[x].parent;
     if (p == x)
       return;
     compress(p);
-    tree[x].value = Group::operation(tree[p].value, tree[x].value);
+    tree[x].value = G::operation(tree[p].value, tree[x].value);
     tree[x].parent = tree[p].parent;
   }
 
 public:
   potentialized_union_find() = default;
-  explicit potentialized_union_find(const size_t n)
-      : tree(n, node_type(Group::identity, 0, 1)) {
-    for (size_t i = 0; i != n; i += 1)
+
+  explicit potentialized_union_find(const usize n)
+      : tree(n, node_type(G::identity, 0, 1)) {
+    for (usize i = 0; i != n; i += 1)
       tree[i].parent = i;
   }
 
-  size_t find(const size_t x) {
+  usize size() const { return tree.size(); }
+
+  usize find(const usize x) {
     assert(x < size());
+
     compress(x);
     return tree[x].parent;
   }
-  T potential(const size_t x) {
+
+  T potential(const usize x) {
     assert(x < size());
+
     compress(x);
     return tree[x].value;
   }
-  bool same(const size_t x, const size_t y) {
+
+  bool same(const usize x, const usize y) {
     assert(x < size());
+
     compress(x);
     return find(x) == find(y);
   }
-  T distance(const size_t x, const size_t y) {
+
+  T distance(const usize x, const usize y) {
     assert(x < size());
     assert(y < size());
-    return Group::operation(Group::inverse(potential(x)), potential(y));
+
+    return G::operation(G::inverse(potential(x)), potential(y));
   }
-  size_t size(const size_t x) {
+
+  usize size(const usize x) {
     assert(x < size());
+
     return tree[find(x)].size;
   }
 
-  void unite(size_t x, size_t y, T d) {
-    if (same(x, y))
-      return;
+  void unite(usize x, usize y, T d) {
+    assert(x < size());
+    assert(y < size());
+    assert(!same(x, y));
+
     if (size(x) < size(y)) {
-      d = Group::inverse(d);
+      d = G::inverse(d);
       std::swap(x, y);
     }
-    d = Group::operation(Group::operation(potential(x), d),
-                         Group::inverse(potential(y)));
+    d = G::operation(G::operation(potential(x), d), G::inverse(potential(y)));
     x = find(x);
     y = find(y);
     tree[x].size += tree[y].size;
@@ -138,81 +153,101 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "data_structure/potentialized_union_find.cpp"
+#line 2 "other/int_alias.cpp"
+
+#include <cstddef>
+#include <cstdint>
+
+using i32 = std::int32_t;
+using i64 = std::int64_t;
+using u32 = std::uint32_t;
+using u64 = std::uint64_t;
+using isize = std::ptrdiff_t;
+using usize = std::size_t;
+#line 2 "data_structure/potentialized_union_find.cpp"
+
 #include <cassert>
 #include <vector>
+#include<utility>
 
-template <class Group> class potentialized_union_find {
-public:
-  using T = typename Group::value_type;
-
-private:
-  using size_t = std::size_t;
+template <class G> class potentialized_union_find {
+  using T = typename G::value_type;
   class node_type {
-    friend potentialized_union_find;
-
+  public:
     T value;
-    size_t parent;
-    size_t size;
+    usize parent;
+    usize size;
 
-    node_type(const T value, const size_t parent, const size_t size)
+    node_type(const T value, const usize parent, const usize size)
         : value(value), parent(parent), size(size) {}
   };
 
   std::vector<node_type> tree;
 
-  size_t size() const { return tree.size(); }
-  void compress(const size_t x) {
-    const size_t p = tree[x].parent;
+  void compress(const usize x) {
+    const usize p = tree[x].parent;
     if (p == x)
       return;
     compress(p);
-    tree[x].value = Group::operation(tree[p].value, tree[x].value);
+    tree[x].value = G::operation(tree[p].value, tree[x].value);
     tree[x].parent = tree[p].parent;
   }
 
 public:
   potentialized_union_find() = default;
-  explicit potentialized_union_find(const size_t n)
-      : tree(n, node_type(Group::identity, 0, 1)) {
-    for (size_t i = 0; i != n; i += 1)
+
+  explicit potentialized_union_find(const usize n)
+      : tree(n, node_type(G::identity, 0, 1)) {
+    for (usize i = 0; i != n; i += 1)
       tree[i].parent = i;
   }
 
-  size_t find(const size_t x) {
+  usize size() const { return tree.size(); }
+
+  usize find(const usize x) {
     assert(x < size());
+
     compress(x);
     return tree[x].parent;
   }
-  T potential(const size_t x) {
+
+  T potential(const usize x) {
     assert(x < size());
+
     compress(x);
     return tree[x].value;
   }
-  bool same(const size_t x, const size_t y) {
+
+  bool same(const usize x, const usize y) {
     assert(x < size());
+
     compress(x);
     return find(x) == find(y);
   }
-  T distance(const size_t x, const size_t y) {
+
+  T distance(const usize x, const usize y) {
     assert(x < size());
     assert(y < size());
-    return Group::operation(Group::inverse(potential(x)), potential(y));
+
+    return G::operation(G::inverse(potential(x)), potential(y));
   }
-  size_t size(const size_t x) {
+
+  usize size(const usize x) {
     assert(x < size());
+
     return tree[find(x)].size;
   }
 
-  void unite(size_t x, size_t y, T d) {
-    if (same(x, y))
-      return;
+  void unite(usize x, usize y, T d) {
+    assert(x < size());
+    assert(y < size());
+    assert(!same(x, y));
+
     if (size(x) < size(y)) {
-      d = Group::inverse(d);
+      d = G::inverse(d);
       std::swap(x, y);
     }
-    d = Group::operation(Group::operation(potential(x), d),
-                         Group::inverse(potential(y)));
+    d = G::operation(G::operation(potential(x), d), G::inverse(potential(y)));
     x = find(x);
     y = find(y);
     tree[x].size += tree[y].size;

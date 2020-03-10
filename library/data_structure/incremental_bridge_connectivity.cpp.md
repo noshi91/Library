@@ -44,7 +44,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/incremental_bridge_connectivity.aoj.test.cpp.html">test/incremental_bridge_connectivity.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/incremental_bridge_connectivity.test.cpp.html">test/incremental_bridge_connectivity.test.cpp</a>
 
 
 ## Code
@@ -209,11 +209,10 @@ public:
  */
 #line 2 "data_structure/incremental_bridge_connectivity.cpp"
 
-#include <cassert>
+#line 4 "data_structure/incremental_bridge_connectivity.cpp"
 #include <cstddef>
 #include <unordered_set>
-#include <utility>
-#include <vector>
+#line 8 "data_structure/incremental_bridge_connectivity.cpp"
 
 class incremental_bridge_connectivity {
   using size_t = std::size_t;

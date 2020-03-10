@@ -25,20 +25,23 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/incremental_bridge_connectivity.aoj.test.cpp
+# :heavy_check_mark: test/incremental_bridge_connectivity.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* <a href="{{ site.github.repository_url }}/blob/master/test/incremental_bridge_connectivity.aoj.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 14:18:18+09:00
+* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/incremental_bridge_connectivity.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B&lang=jp">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B&lang=jp</a>
 
 
 ## Depends on
 
 * :heavy_check_mark: <a href="../../library/data_structure/incremental_bridge_connectivity.cpp.html">Incremental Bridge-Connectivity <small>(data_structure/incremental_bridge_connectivity.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/data_structure/union_find.cpp.html">Union Find <small>(data_structure/union_find.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
 
 
 ## Code
@@ -57,6 +60,8 @@ layout: default
 #include <vector>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   int n, m;
   std::cin >> n >> m;
   incremental_bridge_connectivity ibc(n);
@@ -70,7 +75,7 @@ int main() {
   std::sort(es.begin(), es.end());
   for (const auto &[u, v] : es) {
     if (!ibc.bridge_connected(u, v))
-      std::cout << u << " " << v << std::endl;
+      std::cout << u << " " << v << "\n";
   }
 }
 ```
@@ -79,7 +84,7 @@ int main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/incremental_bridge_connectivity.aoj.test.cpp"
+#line 1 "test/incremental_bridge_connectivity.test.cpp"
 #define PROBLEM                                                                \
   "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B&lang=jp"
 
@@ -147,11 +152,10 @@ public:
  */
 #line 2 "data_structure/incremental_bridge_connectivity.cpp"
 
-#include <cassert>
+#line 4 "data_structure/incremental_bridge_connectivity.cpp"
 #include <cstddef>
 #include <unordered_set>
-#include <utility>
-#include <vector>
+#line 8 "data_structure/incremental_bridge_connectivity.cpp"
 
 class incremental_bridge_connectivity {
   using size_t = std::size_t;
@@ -231,14 +235,18 @@ public:
  * @brief Incremental Bridge-Connectivity
  * @see https://scrapbox.io/data-structures/Incremental_Bridge-Connectivity
  */
-#line 5 "test/incremental_bridge_connectivity.aoj.test.cpp"
+#line 5 "test/incremental_bridge_connectivity.test.cpp"
 
 #include <algorithm>
 #include <iostream>
-#include <utility>
-#include <vector>
+#line 10 "test/incremental_bridge_connectivity.test.cpp"
 
 int main() {
+#line 1 "other/fast_ios.cpp"
+std::ios::sync_with_stdio(false);
+std::cin.tie(nullptr);
+#line 13 "test/incremental_bridge_connectivity.test.cpp"
+
   int n, m;
   std::cin >> n >> m;
   incremental_bridge_connectivity ibc(n);
@@ -252,7 +260,7 @@ int main() {
   std::sort(es.begin(), es.end());
   for (const auto &[u, v] : es) {
     if (!ibc.bridge_connected(u, v))
-      std::cout << u << " " << v << std::endl;
+      std::cout << u << " " << v << "\n";
   }
 }
 

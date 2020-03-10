@@ -224,7 +224,7 @@ std::vector<usize> smawk(const usize row_size, const usize col_size,
  */
 #line 3 "algorithm/concave_max_plus_convolution.cpp"
 
-#include <vector>
+#line 5 "algorithm/concave_max_plus_convolution.cpp"
 
 template <class T>
 std::vector<T> concave_max_plus_convolution(const std::vector<T> &a,
@@ -256,9 +256,9 @@ std::vector<T> concave_max_plus_convolution(const std::vector<T> &a,
 
 #include <algorithm>
 #include <cassert>
-#include <functional>
+#line 7 "algorithm/axiotis_tzamos_knapsack.cpp"
 #include <utility>
-#include <vector>
+#line 9 "algorithm/axiotis_tzamos_knapsack.cpp"
 
 template <class I>
 u64 axiotis_tzamos_knapsack(const usize t, const std::vector<I> &item) {

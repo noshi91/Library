@@ -29,16 +29,19 @@ layout: default
 
 <a href="../../index.html">Back to top page</a>
 
+* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/three_edge_connected_component_decomposition.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-10 16:21:51+09:00
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
+* see: <a href="https://judge.yosupo.jp/problem/three_edge_connected_components">https://judge.yosupo.jp/problem/three_edge_connected_components</a>
 
 
 ## Depends on
 
 * :heavy_check_mark: <a href="../../library/algorithm/three_edge_connected_component_decomposition.cpp.html">3-Edge-Connected Component Decomposition <small>(algorithm/three_edge_connected_component_decomposition.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/data_structure/union_enumerate.cpp.html">Union Enumerate <small>(data_structure/union_enumerate.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 
 
@@ -57,6 +60,8 @@ layout: default
 #include <vector>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   int n, m;
   std::cin >> n >> m;
   std::vector<std::vector<usize>> g(n);
@@ -67,12 +72,12 @@ int main() {
     g[b].push_back(a);
   }
   const auto ans = three_edge_connected_component_decomposition(g);
-  std::cout << ans.size() << std::endl;
+  std::cout << ans.size() << "\n";
   for (const auto &l : ans) {
     std::cout << l.size();
     for (const usize e : l)
       std::cout << " " << e;
-    std::cout << std::endl;
+    std::cout << "\n";
   }
 }
 
@@ -100,7 +105,7 @@ using usize = std::size_t;
 #line 2 "data_structure/union_enumerate.cpp"
 
 #include <cassert>
-#include <cstddef>
+#line 5 "data_structure/union_enumerate.cpp"
 #include <numeric>
 #include <utility>
 #include <vector>
@@ -159,8 +164,7 @@ public:
 
 #include <algorithm>
 #include <functional>
-#include <utility>
-#include <vector>
+#line 8 "algorithm/three_edge_connected_component_decomposition.cpp"
 
 std::vector<std::vector<usize>> three_edge_connected_component_decomposition(
     const std::vector<std::vector<usize>> &g) {
@@ -244,9 +248,14 @@ std::vector<std::vector<usize>> three_edge_connected_component_decomposition(
 #line 6 "test/three_edge_connected_component_decomposition.test.cpp"
 
 #include <iostream>
-#include <vector>
+#line 9 "test/three_edge_connected_component_decomposition.test.cpp"
 
 int main() {
+#line 1 "other/fast_ios.cpp"
+std::ios::sync_with_stdio(false);
+std::cin.tie(nullptr);
+#line 12 "test/three_edge_connected_component_decomposition.test.cpp"
+
   int n, m;
   std::cin >> n >> m;
   std::vector<std::vector<usize>> g(n);
@@ -257,12 +266,12 @@ int main() {
     g[b].push_back(a);
   }
   const auto ans = three_edge_connected_component_decomposition(g);
-  std::cout << ans.size() << std::endl;
+  std::cout << ans.size() << "\n";
   for (const auto &l : ans) {
     std::cout << l.size();
     for (const usize e : l)
       std::cout << " " << e;
-    std::cout << std::endl;
+    std::cout << "\n";
   }
 }
 

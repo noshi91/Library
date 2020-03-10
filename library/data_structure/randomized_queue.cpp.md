@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/randomized_queue.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-09 21:14:06+09:00
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
 
@@ -58,6 +58,7 @@ layout: default
 #include <cassert>
 #include <cstddef>
 #include <random>
+#include <utility>
 #include <vector>
 
 template <class T> class randomized_queue {
@@ -86,7 +87,7 @@ public:
   T pop() {
     assert(!empty());
     select();
-    const T ret = std::move(c.back());
+    T ret = std::move(c.back());
     c.pop_back();
     return ret;
   }
@@ -132,8 +133,8 @@ IntType random_integer(const IntType a, const IntType b) {
 #line 3 "data_structure/randomized_queue.cpp"
 
 #include <cassert>
-#include <cstddef>
-#include <random>
+#line 7 "data_structure/randomized_queue.cpp"
+#include <utility>
 #include <vector>
 
 template <class T> class randomized_queue {
@@ -162,7 +163,7 @@ public:
   T pop() {
     assert(!empty());
     select();
-    const T ret = std::move(c.back());
+    T ret = std::move(c.back());
     c.pop_back();
     return ret;
   }

@@ -25,20 +25,23 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/wavelet_matrix.aoj.test.cpp
+# :heavy_check_mark: test/wavelet_matrix.rangefreq.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* <a href="{{ site.github.repository_url }}/blob/master/test/wavelet_matrix.aoj.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-10 16:21:51+09:00
+* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/wavelet_matrix.rangefreq.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2426&lang=ja">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2426&lang=ja</a>
 
 
 ## Depends on
 
 * :heavy_check_mark: <a href="../../library/data_structure/bit_vector.cpp.html">Bit Vector <small>(data_structure/bit_vector.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/data_structure/wavelet_matrix.cpp.html">Wavelet Matrix <small>(data_structure/wavelet_matrix.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/popcount.cpp.html">other/popcount.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/select64.cpp.html">other/select64.cpp</a>
@@ -60,6 +63,8 @@ layout: default
 #include <vector>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   constexpr int offset = 1000000000;
 
   int n, m;
@@ -85,7 +90,7 @@ int main() {
     x2 += 1;
     y2 += 1;
     std::cout << wm.rangefreq(idx(x1), idx(x2), offset + y1, offset + y2)
-              << std::endl;
+              << "\n";
   }
 }
 
@@ -95,7 +100,7 @@ int main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/wavelet_matrix.aoj.test.cpp"
+#line 1 "test/wavelet_matrix.rangefreq.test.cpp"
 #define PROBLEM                                                                \
   "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2426&lang=ja"
 
@@ -124,9 +129,7 @@ usize popcount(u64 x) {
   return x * 0x0101010101010101 >> 56 & 0x7f;
 #endif
 }
-#line 1 "other/select64.cpp"
-#include <cstddef>
-#include <cstdint>
+#line 3 "other/select64.cpp"
 
 std::size_t select64(const std::uint_fast64_t x0, size_t k) {
   using size_t = std::size_t;
@@ -173,7 +176,7 @@ std::size_t select64(const std::uint_fast64_t x0, size_t k) {
 }
 #line 3 "data_structure/bit_vector.cpp"
 
-#include <cstddef>
+#line 5 "data_structure/bit_vector.cpp"
 #include <limits>
 #include <vector>
 
@@ -249,8 +252,7 @@ public:
 
 #include <algorithm>
 #include <cassert>
-#include <cstddef>
-#include <vector>
+#line 7 "data_structure/wavelet_matrix.cpp"
 
 template <class Key> class wavelet_matrix {
   using size_t = std::size_t;
@@ -370,14 +372,19 @@ public:
 /**
  * @brief Wavelet Matrix
  */
-#line 5 "test/wavelet_matrix.aoj.test.cpp"
+#line 5 "test/wavelet_matrix.rangefreq.test.cpp"
 
-#include <algorithm>
+#line 7 "test/wavelet_matrix.rangefreq.test.cpp"
 #include <iostream>
 #include <utility>
-#include <vector>
+#line 10 "test/wavelet_matrix.rangefreq.test.cpp"
 
 int main() {
+#line 1 "other/fast_ios.cpp"
+std::ios::sync_with_stdio(false);
+std::cin.tie(nullptr);
+#line 13 "test/wavelet_matrix.rangefreq.test.cpp"
+
   constexpr int offset = 1000000000;
 
   int n, m;
@@ -403,7 +410,7 @@ int main() {
     x2 += 1;
     y2 += 1;
     std::cout << wm.rangefreq(idx(x1), idx(x2), offset + y1, offset + y2)
-              << std::endl;
+              << "\n";
   }
 }
 

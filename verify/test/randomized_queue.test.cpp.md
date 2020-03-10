@@ -29,15 +29,18 @@ layout: default
 
 <a href="../../index.html">Back to top page</a>
 
+* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/randomized_queue.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-09 21:14:06+09:00
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A</a>
 
 
 ## Depends on
 
 * :heavy_check_mark: <a href="../../library/data_structure/randomized_queue.cpp.html">Randomized Queue <small>(data_structure/randomized_queue.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/random_integer.cpp.html">other/random_integer.cpp</a>
 
@@ -59,6 +62,8 @@ layout: default
 #include <vector>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   const int n = 1 << 20;
 
   std::vector<int> a(n);
@@ -84,7 +89,7 @@ int main() {
   std::sort(b.begin(), b.end());
   assert(a == b);
 
-  std::cout << "Hello World" << std::endl;
+  std::cout << "Hello World\n";
 }
 ```
 {% endraw %}
@@ -126,8 +131,8 @@ IntType random_integer(const IntType a, const IntType b) {
 #line 3 "data_structure/randomized_queue.cpp"
 
 #include <cassert>
-#include <cstddef>
-#include <random>
+#line 7 "data_structure/randomized_queue.cpp"
+#include <utility>
 #include <vector>
 
 template <class T> class randomized_queue {
@@ -156,7 +161,7 @@ public:
   T pop() {
     assert(!empty());
     select();
-    const T ret = std::move(c.back());
+    T ret = std::move(c.back());
     c.pop_back();
     return ret;
   }
@@ -168,11 +173,16 @@ public:
 #line 6 "test/randomized_queue.test.cpp"
 
 #include <algorithm>
-#include <cassert>
+#line 9 "test/randomized_queue.test.cpp"
 #include <iostream>
-#include <vector>
+#line 11 "test/randomized_queue.test.cpp"
 
 int main() {
+#line 1 "other/fast_ios.cpp"
+std::ios::sync_with_stdio(false);
+std::cin.tie(nullptr);
+#line 14 "test/randomized_queue.test.cpp"
+
   const int n = 1 << 20;
 
   std::vector<int> a(n);
@@ -198,7 +208,7 @@ int main() {
   std::sort(b.begin(), b.end());
   assert(a == b);
 
-  std::cout << "Hello World" << std::endl;
+  std::cout << "Hello World\n";
 }
 
 ```

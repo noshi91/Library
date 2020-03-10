@@ -187,9 +187,9 @@ usize countl_zero(u64 x) {
 usize bit_width(const u64 x) { return 64 - countl_zero(x); }
 #line 4 "algorithm/axiotis_tzamos_unbounded_knapsack.cpp"
 
-#include <algorithm>
+#line 6 "algorithm/axiotis_tzamos_unbounded_knapsack.cpp"
 #include <cassert>
-#include <vector>
+#line 8 "algorithm/axiotis_tzamos_unbounded_knapsack.cpp"
 
 template <class I>
 u64 axiotis_tzamos_unbounded_knapsack(const u64 t, const std::vector<I> &item) {

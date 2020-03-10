@@ -44,8 +44,8 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/incremental_bridge_connectivity.aoj.test.cpp.html">test/incremental_bridge_connectivity.aoj.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/test/union_find.yosupo.test.cpp.html">test/union_find.yosupo.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/incremental_bridge_connectivity.test.cpp.html">test/incremental_bridge_connectivity.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/union_find.test.cpp.html">test/union_find.test.cpp</a>
 
 
 ## Code

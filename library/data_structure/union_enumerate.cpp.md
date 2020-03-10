@@ -136,7 +136,7 @@ using usize = std::size_t;
 #line 2 "data_structure/union_enumerate.cpp"
 
 #include <cassert>
-#include <cstddef>
+#line 5 "data_structure/union_enumerate.cpp"
 #include <numeric>
 #include <utility>
 #include <vector>

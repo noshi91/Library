@@ -47,8 +47,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/lazy_segment_tree.aoj.test.cpp.html">test/lazy_segment_tree.aoj.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/test/lazy_segment_tree.yosupo.test.cpp.html">test/lazy_segment_tree.yosupo.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/lazy_segment_tree.test.cpp.html">test/lazy_segment_tree.test.cpp</a>
 
 
 ## Code
@@ -247,7 +246,7 @@ usize bit_width(const u64 x) { return 64 - countl_zero(x); }
 #line 3 "data_structure/lazy_segment_tree.cpp"
 
 #include <cassert>
-#include <cstddef>
+#line 6 "data_structure/lazy_segment_tree.cpp"
 #include <vector>
 
 template <class A> class lazy_segment_tree {

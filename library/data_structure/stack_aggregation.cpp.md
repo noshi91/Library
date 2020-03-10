@@ -44,7 +44,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/queue_aggregation.yosupo.test.cpp.html">test/queue_aggregation.yosupo.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/queue_aggregation.test.cpp.html">test/queue_aggregation.test.cpp</a>
 
 
 ## Code

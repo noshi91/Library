@@ -29,8 +29,9 @@ layout: default
 
 <a href="../../index.html">Back to top page</a>
 
+* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/wavelet_matrix.quantile.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-10 16:21:51+09:00
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_kth_smallest">https://judge.yosupo.jp/problem/range_kth_smallest</a>
@@ -40,6 +41,7 @@ layout: default
 
 * :heavy_check_mark: <a href="../../library/data_structure/bit_vector.cpp.html">Bit Vector <small>(data_structure/bit_vector.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/data_structure/wavelet_matrix.cpp.html">Wavelet Matrix <small>(data_structure/wavelet_matrix.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/popcount.cpp.html">other/popcount.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/select64.cpp.html">other/select64.cpp</a>
@@ -58,6 +60,8 @@ layout: default
 #include <vector>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   int n, q;
   std::cin >> n >> q;
 
@@ -71,7 +75,7 @@ int main() {
   for (int i = 0; i != q; i += 1) {
     int l, r, k;
     std::cin >> l >> r >> k;
-    std::cout << wm.quantile(l, r, k) << std::endl;
+    std::cout << wm.quantile(l, r, k) << "\n";
   }
 }
 
@@ -109,9 +113,7 @@ usize popcount(u64 x) {
   return x * 0x0101010101010101 >> 56 & 0x7f;
 #endif
 }
-#line 1 "other/select64.cpp"
-#include <cstddef>
-#include <cstdint>
+#line 3 "other/select64.cpp"
 
 std::size_t select64(const std::uint_fast64_t x0, size_t k) {
   using size_t = std::size_t;
@@ -158,7 +160,7 @@ std::size_t select64(const std::uint_fast64_t x0, size_t k) {
 }
 #line 3 "data_structure/bit_vector.cpp"
 
-#include <cstddef>
+#line 5 "data_structure/bit_vector.cpp"
 #include <limits>
 #include <vector>
 
@@ -234,8 +236,7 @@ public:
 
 #include <algorithm>
 #include <cassert>
-#include <cstddef>
-#include <vector>
+#line 7 "data_structure/wavelet_matrix.cpp"
 
 template <class Key> class wavelet_matrix {
   using size_t = std::size_t;
@@ -358,9 +359,14 @@ public:
 #line 4 "test/wavelet_matrix.quantile.test.cpp"
 
 #include <iostream>
-#include <vector>
+#line 7 "test/wavelet_matrix.quantile.test.cpp"
 
 int main() {
+#line 1 "other/fast_ios.cpp"
+std::ios::sync_with_stdio(false);
+std::cin.tie(nullptr);
+#line 10 "test/wavelet_matrix.quantile.test.cpp"
+
   int n, q;
   std::cin >> n >> q;
 
@@ -374,7 +380,7 @@ int main() {
   for (int i = 0; i != q; i += 1) {
     int l, r, k;
     std::cin >> l >> r >> k;
-    std::cout << wm.quantile(l, r, k) << std::endl;
+    std::cout << wm.quantile(l, r, k) << "\n";
   }
 }
 

@@ -29,10 +29,12 @@ layout: default
 
 <a href="../../index.html">Back to top page</a>
 
+* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/axiotis_tzamos_unbounded_knapsack.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-10 16:21:51+09:00
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_C&lang=ja">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_C&lang=ja</a>
 
 
 ## Depends on
@@ -42,6 +44,7 @@ layout: default
 * :heavy_check_mark: <a href="../../library/other/bit_width.cpp.html">other/bit_width.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/countl_zero.cpp.html">other/countl_zero.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/countr_zero.cpp.html">other/countr_zero.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 
 
@@ -60,6 +63,8 @@ layout: default
 #include <vector>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   usize n, w;
   std::cin >> n >> w;
   struct item_t {
@@ -69,7 +74,7 @@ int main() {
   for (auto &e : is) {
     std::cin >> e.v >> e.w;
   }
-  std::cout << axiotis_tzamos_unbounded_knapsack(w, is) << std::endl;
+  std::cout << axiotis_tzamos_unbounded_knapsack(w, is) << "\n";
 }
 
 ```
@@ -158,9 +163,9 @@ usize countl_zero(u64 x) {
 usize bit_width(const u64 x) { return 64 - countl_zero(x); }
 #line 4 "algorithm/axiotis_tzamos_unbounded_knapsack.cpp"
 
-#include <algorithm>
+#line 6 "algorithm/axiotis_tzamos_unbounded_knapsack.cpp"
 #include <cassert>
-#include <vector>
+#line 8 "algorithm/axiotis_tzamos_unbounded_knapsack.cpp"
 
 template <class I>
 u64 axiotis_tzamos_unbounded_knapsack(const u64 t, const std::vector<I> &item) {
@@ -205,9 +210,14 @@ u64 axiotis_tzamos_unbounded_knapsack(const u64 t, const std::vector<I> &item) {
 #line 6 "test/axiotis_tzamos_unbounded_knapsack.test.cpp"
 
 #include <iostream>
-#include <vector>
+#line 9 "test/axiotis_tzamos_unbounded_knapsack.test.cpp"
 
 int main() {
+#line 1 "other/fast_ios.cpp"
+std::ios::sync_with_stdio(false);
+std::cin.tie(nullptr);
+#line 12 "test/axiotis_tzamos_unbounded_knapsack.test.cpp"
+
   usize n, w;
   std::cin >> n >> w;
   struct item_t {
@@ -217,7 +227,7 @@ int main() {
   for (auto &e : is) {
     std::cin >> e.v >> e.w;
   }
-  std::cout << axiotis_tzamos_unbounded_knapsack(w, is) << std::endl;
+  std::cout << axiotis_tzamos_unbounded_knapsack(w, is) << "\n";
 }
 
 ```

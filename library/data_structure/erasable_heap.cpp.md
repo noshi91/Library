@@ -38,7 +38,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/erasable_heap.aoj.test.cpp.html">test/erasable_heap.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/erasable_heap.test.cpp.html">test/erasable_heap.test.cpp</a>
 
 
 ## Code

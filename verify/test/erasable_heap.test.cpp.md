@@ -25,20 +25,23 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/erasable_heap.aoj.test.cpp
+# :heavy_check_mark: test/erasable_heap.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* <a href="{{ site.github.repository_url }}/blob/master/test/erasable_heap.aoj.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 14:18:18+09:00
+* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/erasable_heap.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja</a>
 
 
 ## Depends on
 
 * :heavy_check_mark: <a href="../../library/data_structure/erasable_heap.cpp.html">Erasable Heap <small>(data_structure/erasable_heap.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/data_structure/pairing_heap.cpp.html">Pairing Heap <small>(data_structure/pairing_heap.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/less_equal_ordered_set.cpp.html">other/less_equal_ordered_set.cpp</a>
 
 
@@ -60,6 +63,8 @@ layout: default
 #include <vector>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   int n, m, r;
   std::cin >> n >> m >> r;
   std::vector<std::vector<std::pair<int, int>>> g(n);
@@ -90,7 +95,7 @@ int main() {
       std::cout << dist[i];
     else
       std::cout << "INF";
-    std::cout << std::endl;
+    std::cout << "\n";
   }
 }
 ```
@@ -99,7 +104,7 @@ int main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/erasable_heap.aoj.test.cpp"
+#line 1 "test/erasable_heap.test.cpp"
 #define PROBLEM                                                                \
   "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja"
 
@@ -157,8 +162,7 @@ public:
 /**
  * @brief Erasable Heap
  */
-#line 1 "data_structure/pairing_heap.cpp"
-#include <cassert>
+#line 2 "data_structure/pairing_heap.cpp"
 #include <memory>
 #include <utility>
 
@@ -237,14 +241,19 @@ public:
     return x <= y;
   }
 };
-#line 7 "test/erasable_heap.aoj.test.cpp"
+#line 7 "test/erasable_heap.test.cpp"
 
 #include <iostream>
 #include <limits>
-#include <utility>
+#line 11 "test/erasable_heap.test.cpp"
 #include <vector>
 
 int main() {
+#line 1 "other/fast_ios.cpp"
+std::ios::sync_with_stdio(false);
+std::cin.tie(nullptr);
+#line 15 "test/erasable_heap.test.cpp"
+
   int n, m, r;
   std::cin >> n >> m >> r;
   std::vector<std::vector<std::pair<int, int>>> g(n);
@@ -275,7 +284,7 @@ int main() {
       std::cout << dist[i];
     else
       std::cout << "INF";
-    std::cout << std::endl;
+    std::cout << "\n";
   }
 }
 

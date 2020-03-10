@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/dual_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-10 16:21:51+09:00
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
 * see: <a href="https://kimiyuki.net/blog/2019/02/21/dual-segment-tree/">https://kimiyuki.net/blog/2019/02/21/dual-segment-tree/</a>
@@ -47,7 +47,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/dual_segment_tree.aoj.test.cpp.html">test/dual_segment_tree.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/dual_segment_tree.test.cpp.html">test/dual_segment_tree.test.cpp</a>
 
 
 ## Code
@@ -62,23 +62,23 @@ layout: default
 #include <cstddef>
 #include <vector>
 
-template <class Monoid> class dual_segment_tree {
+template <class M> class dual_segment_tree {
   using size_t = std::size_t;
-  using T = typename Monoid::value_type;
+  using T = typename M::value_type;
 
 public:
   using value_type = T;
   using size_type = size_t;
 
 private:
-  static void add(T &x, const T y) { x = Monoid::operation(x, y); }
+  static void add(T &x, const T y) { x = M::operation(x, y); }
 
   std::vector<T> tree;
 
   void push(const size_t index) {
     add(tree[index * 2], tree[index]);
     add(tree[index * 2 + 1], tree[index]);
-    tree[index] = Monoid::identity;
+    tree[index] = M::identity;
   }
   void propagate(const size_t index) {
     if (index == 0)
@@ -90,7 +90,7 @@ private:
 
 public:
   dual_segment_tree() = default;
-  explicit dual_segment_tree(const size_t n) : tree(n * 2, Monoid::identity) {}
+  explicit dual_segment_tree(const size_t n) : tree(n * 2, M::identity) {}
 
   size_t size() const noexcept { return tree.size() / 2; }
 
@@ -194,26 +194,26 @@ usize bit_width(const u64 x) { return 64 - countl_zero(x); }
 #line 3 "data_structure/dual_segment_tree.cpp"
 
 #include <cassert>
-#include <cstddef>
+#line 6 "data_structure/dual_segment_tree.cpp"
 #include <vector>
 
-template <class Monoid> class dual_segment_tree {
+template <class M> class dual_segment_tree {
   using size_t = std::size_t;
-  using T = typename Monoid::value_type;
+  using T = typename M::value_type;
 
 public:
   using value_type = T;
   using size_type = size_t;
 
 private:
-  static void add(T &x, const T y) { x = Monoid::operation(x, y); }
+  static void add(T &x, const T y) { x = M::operation(x, y); }
 
   std::vector<T> tree;
 
   void push(const size_t index) {
     add(tree[index * 2], tree[index]);
     add(tree[index * 2 + 1], tree[index]);
-    tree[index] = Monoid::identity;
+    tree[index] = M::identity;
   }
   void propagate(const size_t index) {
     if (index == 0)
@@ -225,7 +225,7 @@ private:
 
 public:
   dual_segment_tree() = default;
-  explicit dual_segment_tree(const size_t n) : tree(n * 2, Monoid::identity) {}
+  explicit dual_segment_tree(const size_t n) : tree(n * 2, M::identity) {}
 
   size_t size() const noexcept { return tree.size() / 2; }
 

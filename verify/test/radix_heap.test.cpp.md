@@ -25,14 +25,16 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/radix_heap.aoj.test.cpp
+# :heavy_check_mark: test/radix_heap.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* <a href="{{ site.github.repository_url }}/blob/master/test/radix_heap.aoj.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-10 16:21:51+09:00
+* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/radix_heap.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja</a>
 
 
 ## Depends on
@@ -41,6 +43,7 @@ layout: default
 * :heavy_check_mark: <a href="../../library/other/bit_width.cpp.html">other/bit_width.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/countl_zero.cpp.html">other/countl_zero.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/countr_zero.cpp.html">other/countr_zero.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 
 
@@ -60,6 +63,8 @@ layout: default
 #include <vector>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   int n, m, r;
   std::cin >> n >> m >> r;
   std::vector<std::vector<std::pair<int, int>>> g(n);
@@ -94,7 +99,7 @@ int main() {
       std::cout << dist[i];
     else
       std::cout << "INF";
-    std::cout << std::endl;
+    std::cout << "\n";
   }
 }
 ```
@@ -103,7 +108,7 @@ int main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/radix_heap.aoj.test.cpp"
+#line 1 "test/radix_heap.test.cpp"
 #define PROBLEM                                                                \
   "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja"
 
@@ -160,19 +165,15 @@ usize countl_zero(u64 x) {
 #line 5 "other/bit_width.cpp"
 
 usize bit_width(const u64 x) { return 64 - countl_zero(x); }
-#line 2 "data_structure/radix_heap.cpp"
+#line 3 "data_structure/radix_heap.cpp"
 
 #include <algorithm>
 #include <cassert>
-#include <cstddef>
-#include <cstdint>
 #include <limits>
 #include <utility>
 #include <vector>
 
 template <class T> class radix_heap {
-  using size_t = std::size_t;
-  using u64 = std::uint_fast64_t;
   using V = std::pair<u64, T>;
 
 public:
@@ -187,27 +188,30 @@ private:
 public:
   radix_heap() : u(), last(0) {}
 
-  void push(const V x) {
+  void push(V x) {
     assert(last <= x.first);
 
-    const size_t i = bit_width(x.first ^ last);
+    const usize i = bit_width(x.first ^ last);
     if (u.size() <= i)
       u.resize(i + 1);
-    u[i].push_back(x);
+    u[i].push_back(std::move(x));
   }
+
   V pop() {
     if (u[0].empty()) {
-      size_t i = 1;
+      usize i = 1;
       while (u[i].empty())
         i += 1;
       last = std::numeric_limits<u64>::max();
       for (const V &e : u[i])
         last = std::min(last, e.first);
-      for (const V &e : u[i])
-        u[bit_width(e.first ^ last)].push_back(e);
+      for (V &e : u[i]) {
+        const usize j = bit_width(e.first ^ last);
+        u[j].push_back(std::move(e));
+      }
       u[i].clear();
     }
-    V ret = u[0].back();
+    V ret = std::move(u[0].back());
     u[0].pop_back();
     return ret;
   }
@@ -217,14 +221,17 @@ public:
  * @brief Radix Heap
  * @see https://yosupo.hatenablog.com/entry/2015/04/03/224649
  */
-#line 5 "test/radix_heap.aoj.test.cpp"
+#line 5 "test/radix_heap.test.cpp"
 
 #include <iostream>
-#include <limits>
-#include <utility>
-#include <vector>
+#line 10 "test/radix_heap.test.cpp"
 
 int main() {
+#line 1 "other/fast_ios.cpp"
+std::ios::sync_with_stdio(false);
+std::cin.tie(nullptr);
+#line 13 "test/radix_heap.test.cpp"
+
   int n, m, r;
   std::cin >> n >> m >> r;
   std::vector<std::vector<std::pair<int, int>>> g(n);
@@ -259,7 +266,7 @@ int main() {
       std::cout << dist[i];
     else
       std::cout << "INF";
-    std::cout << std::endl;
+    std::cout << "\n";
   }
 }
 

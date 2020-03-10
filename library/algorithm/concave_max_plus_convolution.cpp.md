@@ -189,7 +189,7 @@ std::vector<usize> smawk(const usize row_size, const usize col_size,
  */
 #line 3 "algorithm/concave_max_plus_convolution.cpp"
 
-#include <vector>
+#line 5 "algorithm/concave_max_plus_convolution.cpp"
 
 template <class T>
 std::vector<T> concave_max_plus_convolution(const std::vector<T> &a,

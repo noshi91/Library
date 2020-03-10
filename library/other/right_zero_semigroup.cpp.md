@@ -38,13 +38,12 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="min_assign_action.cpp.html">other/min_assign_action.cpp</a>
+* :warning: <a href="min_assign_action.cpp.html">other/min_assign_action.cpp</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/dual_segment_tree.aoj.test.cpp.html">test/dual_segment_tree.aoj.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/test/lazy_segment_tree.aoj.test.cpp.html">test/lazy_segment_tree.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/dual_segment_tree.test.cpp.html">test/dual_segment_tree.test.cpp</a>
 
 
 ## Code

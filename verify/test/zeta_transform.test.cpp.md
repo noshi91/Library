@@ -25,12 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/zeta_transform.aoj.test.cpp
+# :heavy_check_mark: test/zeta_transform.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* <a href="{{ site.github.repository_url }}/blob/master/test/zeta_transform.aoj.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-03 16:21:51+09:00
+* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/zeta_transform.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119</a>
@@ -39,6 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../library/algorithm/zeta_transform.cpp.html">Zeta Transform <small>(algorithm/zeta_transform.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/modint.cpp.html">other/modint.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/multiplies_monoid.cpp.html">other/multiplies_monoid.cpp</a>
@@ -60,6 +62,8 @@ layout: default
 #include <iostream>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   using mint = modint<1000000007>;
   constexpr int b = 20;
 
@@ -75,7 +79,7 @@ int main() {
   for (mint &e : v)
     e -= 1;
   superset_mobius_transform<plus_group<mint>>(v);
-  std::cout << v[0].value() << std::endl;
+  std::cout << v[0].value() << "\n";
 }
 ```
 {% endraw %}
@@ -83,7 +87,7 @@ int main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/zeta_transform.aoj.test.cpp"
+#line 1 "test/zeta_transform.test.cpp"
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119"
 
 #line 2 "other/int_alias.cpp"
@@ -99,7 +103,7 @@ using isize = std::ptrdiff_t;
 using usize = std::size_t;
 #line 2 "algorithm/zeta_transform.cpp"
 
-#include <cstddef>
+#line 4 "algorithm/zeta_transform.cpp"
 #include <vector>
 
 template <class S>
@@ -157,8 +161,7 @@ void superset_mobius_transform(std::vector<typename G::value_type> &a) {
 /**
  * @brief Zeta Transform
  */
-#line 1 "other/modint.cpp"
-#include <cstdint>
+#line 2 "other/modint.cpp"
 
 template <std::uint_fast64_t Modulus> class modint {
   using u64 = std::uint_fast64_t;
@@ -246,11 +249,16 @@ public:
   static constexpr T identity = 0;
   static constexpr T inverse(const T &x) noexcept { return -x; }
 };
-#line 7 "test/zeta_transform.aoj.test.cpp"
+#line 7 "test/zeta_transform.test.cpp"
 
 #include <iostream>
 
 int main() {
+#line 1 "other/fast_ios.cpp"
+std::ios::sync_with_stdio(false);
+std::cin.tie(nullptr);
+#line 12 "test/zeta_transform.test.cpp"
+
   using mint = modint<1000000007>;
   constexpr int b = 20;
 
@@ -266,7 +274,7 @@ int main() {
   for (mint &e : v)
     e -= 1;
   superset_mobius_transform<plus_group<mint>>(v);
-  std::cout << v[0].value() << std::endl;
+  std::cout << v[0].value() << "\n";
 }
 
 ```

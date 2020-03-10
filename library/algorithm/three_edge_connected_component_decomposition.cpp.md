@@ -161,7 +161,7 @@ using usize = std::size_t;
 #line 2 "data_structure/union_enumerate.cpp"
 
 #include <cassert>
-#include <cstddef>
+#line 5 "data_structure/union_enumerate.cpp"
 #include <numeric>
 #include <utility>
 #include <vector>
@@ -220,8 +220,7 @@ public:
 
 #include <algorithm>
 #include <functional>
-#include <utility>
-#include <vector>
+#line 8 "algorithm/three_edge_connected_component_decomposition.cpp"
 
 std::vector<std::vector<usize>> three_edge_connected_component_decomposition(
     const std::vector<std::vector<usize>> &g) {

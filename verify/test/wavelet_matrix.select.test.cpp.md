@@ -29,16 +29,19 @@ layout: default
 
 <a href="../../index.html">Back to top page</a>
 
+* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/wavelet_matrix.select.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-10 16:21:51+09:00
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A</a>
 
 
 ## Depends on
 
 * :heavy_check_mark: <a href="../../library/data_structure/bit_vector.cpp.html">Bit Vector <small>(data_structure/bit_vector.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/data_structure/wavelet_matrix.cpp.html">Wavelet Matrix <small>(data_structure/wavelet_matrix.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/popcount.cpp.html">other/popcount.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/random_integer.cpp.html">other/random_integer.cpp</a>
@@ -61,6 +64,8 @@ layout: default
 #include <vector>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   const int n = 1 << 18;
   const int b = 10;
 
@@ -75,7 +80,7 @@ int main() {
     count[e] += 1;
   }
 
-  std::cout << "Hello World" << std::endl;
+  std::cout << "Hello World\n";
 }
 ```
 {% endraw %}
@@ -112,9 +117,7 @@ usize popcount(u64 x) {
   return x * 0x0101010101010101 >> 56 & 0x7f;
 #endif
 }
-#line 1 "other/select64.cpp"
-#include <cstddef>
-#include <cstdint>
+#line 3 "other/select64.cpp"
 
 std::size_t select64(const std::uint_fast64_t x0, size_t k) {
   using size_t = std::size_t;
@@ -161,7 +164,7 @@ std::size_t select64(const std::uint_fast64_t x0, size_t k) {
 }
 #line 3 "data_structure/bit_vector.cpp"
 
-#include <cstddef>
+#line 5 "data_structure/bit_vector.cpp"
 #include <limits>
 #include <vector>
 
@@ -237,8 +240,7 @@ public:
 
 #include <algorithm>
 #include <cassert>
-#include <cstddef>
-#include <vector>
+#line 7 "data_structure/wavelet_matrix.cpp"
 
 template <class Key> class wavelet_matrix {
   using size_t = std::size_t;
@@ -376,11 +378,16 @@ IntType random_integer(const IntType a, const IntType b) {
 }
 #line 6 "test/wavelet_matrix.select.test.cpp"
 
-#include <cassert>
+#line 8 "test/wavelet_matrix.select.test.cpp"
 #include <iostream>
-#include <vector>
+#line 10 "test/wavelet_matrix.select.test.cpp"
 
 int main() {
+#line 1 "other/fast_ios.cpp"
+std::ios::sync_with_stdio(false);
+std::cin.tie(nullptr);
+#line 13 "test/wavelet_matrix.select.test.cpp"
+
   const int n = 1 << 18;
   const int b = 10;
 
@@ -395,7 +402,7 @@ int main() {
     count[e] += 1;
   }
 
-  std::cout << "Hello World" << std::endl;
+  std::cout << "Hello World\n";
 }
 
 ```

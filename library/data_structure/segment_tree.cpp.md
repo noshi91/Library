@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 14:18:18+09:00
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
 * see: <a href="https://scrapbox.io/data-structures/Segment_Tree">https://scrapbox.io/data-structures/Segment_Tree</a>
@@ -58,7 +58,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/segment_tree.yosupo.test.cpp.html">test/segment_tree.yosupo.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/segment_tree.test.cpp.html">test/segment_tree.test.cpp</a>
 
 
 ## Code
@@ -70,9 +70,9 @@ layout: default
 #include <cstddef>
 #include <vector>
 
-template <class Monoid> class segment_tree {
+template <class M> class segment_tree {
 public:
-  using T = typename Monoid::value_type;
+  using T = typename M::value_type;
   using size_t = std::size_t;
 
 private:
@@ -81,7 +81,7 @@ private:
   template <class F>
   size_t search_subtree(size_t index, const F f, T fold_l) const {
     while (index < size()) {
-      const T temp = Monoid::operation(fold_l, tree[index * 2]);
+      const T temp = M::operation(fold_l, tree[index * 2]);
       if (!f(temp)) {
         index = index * 2;
       } else {
@@ -94,7 +94,7 @@ private:
 
 public:
   segment_tree() = default;
-  explicit segment_tree(const size_t n) : tree(n * 2, Monoid::identity) {}
+  explicit segment_tree(const size_t n) : tree(n * 2, M::identity) {}
 
   size_t size() const noexcept { return tree.size() / 2; }
 
@@ -103,21 +103,21 @@ public:
     assert(last <= size());
     first += size();
     last += size();
-    T fold_l = Monoid::identity;
-    T fold_r = Monoid::identity;
+    T fold_l = M::identity;
+    T fold_r = M::identity;
     while (first != last) {
       if (first % 2 != 0) {
-        fold_l = Monoid::operation(fold_l, tree[first]);
+        fold_l = M::operation(fold_l, tree[first]);
         first += 1;
       }
       first /= 2;
       if (last % 2 != 0) {
         last -= 1;
-        fold_r = Monoid::operation(tree[last], fold_r);
+        fold_r = M::operation(tree[last], fold_r);
       }
       last /= 2;
     }
-    return Monoid::operation(fold_l, fold_r);
+    return M::operation(fold_l, fold_r);
   }
   template <class F> size_t search(size_t first, size_t last, const F f) const {
     assert(first <= last);
@@ -126,10 +126,10 @@ public:
     last += size();
     const size_t last_cp = last;
     size_t shift = 0;
-    T fold_l = Monoid::identity;
+    T fold_l = M::identity;
     while (first != last) {
       if (first % 2 != 0) {
-        const T temp = Monoid::operation(fold_l, tree[first]);
+        const T temp = M::operation(fold_l, tree[first]);
         if (!f(temp))
           return search_subtree(first, f, fold_l);
         fold_l = temp;
@@ -144,7 +144,7 @@ public:
       last = last_cp >> shift;
       if (last % 2 != 0) {
         last -= 1;
-        const T temp = Monoid::operation(fold_l, tree[last]);
+        const T temp = M::operation(fold_l, tree[last]);
         if (!f(temp))
           return search_subtree(last, f, fold_l);
         fold_l = temp;
@@ -159,7 +159,7 @@ public:
     tree[index] = x;
     while (index != 1) {
       index /= 2;
-      tree[index] = Monoid::operation(tree[index * 2], tree[index * 2 + 1]);
+      tree[index] = M::operation(tree[index * 2], tree[index * 2 + 1]);
     }
   }
 };
@@ -181,9 +181,9 @@ public:
 #include <cstddef>
 #include <vector>
 
-template <class Monoid> class segment_tree {
+template <class M> class segment_tree {
 public:
-  using T = typename Monoid::value_type;
+  using T = typename M::value_type;
   using size_t = std::size_t;
 
 private:
@@ -192,7 +192,7 @@ private:
   template <class F>
   size_t search_subtree(size_t index, const F f, T fold_l) const {
     while (index < size()) {
-      const T temp = Monoid::operation(fold_l, tree[index * 2]);
+      const T temp = M::operation(fold_l, tree[index * 2]);
       if (!f(temp)) {
         index = index * 2;
       } else {
@@ -205,7 +205,7 @@ private:
 
 public:
   segment_tree() = default;
-  explicit segment_tree(const size_t n) : tree(n * 2, Monoid::identity) {}
+  explicit segment_tree(const size_t n) : tree(n * 2, M::identity) {}
 
   size_t size() const noexcept { return tree.size() / 2; }
 
@@ -214,21 +214,21 @@ public:
     assert(last <= size());
     first += size();
     last += size();
-    T fold_l = Monoid::identity;
-    T fold_r = Monoid::identity;
+    T fold_l = M::identity;
+    T fold_r = M::identity;
     while (first != last) {
       if (first % 2 != 0) {
-        fold_l = Monoid::operation(fold_l, tree[first]);
+        fold_l = M::operation(fold_l, tree[first]);
         first += 1;
       }
       first /= 2;
       if (last % 2 != 0) {
         last -= 1;
-        fold_r = Monoid::operation(tree[last], fold_r);
+        fold_r = M::operation(tree[last], fold_r);
       }
       last /= 2;
     }
-    return Monoid::operation(fold_l, fold_r);
+    return M::operation(fold_l, fold_r);
   }
   template <class F> size_t search(size_t first, size_t last, const F f) const {
     assert(first <= last);
@@ -237,10 +237,10 @@ public:
     last += size();
     const size_t last_cp = last;
     size_t shift = 0;
-    T fold_l = Monoid::identity;
+    T fold_l = M::identity;
     while (first != last) {
       if (first % 2 != 0) {
-        const T temp = Monoid::operation(fold_l, tree[first]);
+        const T temp = M::operation(fold_l, tree[first]);
         if (!f(temp))
           return search_subtree(first, f, fold_l);
         fold_l = temp;
@@ -255,7 +255,7 @@ public:
       last = last_cp >> shift;
       if (last % 2 != 0) {
         last -= 1;
-        const T temp = Monoid::operation(fold_l, tree[last]);
+        const T temp = M::operation(fold_l, tree[last]);
         if (!f(temp))
           return search_subtree(last, f, fold_l);
         fold_l = temp;
@@ -270,7 +270,7 @@ public:
     tree[index] = x;
     while (index != 1) {
       index /= 2;
-      tree[index] = Monoid::operation(tree[index * 2], tree[index * 2 + 1]);
+      tree[index] = M::operation(tree[index * 2], tree[index * 2 + 1]);
     }
   }
 };

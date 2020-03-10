@@ -25,22 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/segment_tree.yosupo.test.cpp
+# :heavy_check_mark: test/queue_aggregation.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* <a href="{{ site.github.repository_url }}/blob/master/test/segment_tree.yosupo.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 14:18:18+09:00
+* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/queue_aggregation.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
-* see: <a href="https://judge.yosupo.jp/problem/point_set_range_composite">https://judge.yosupo.jp/problem/point_set_range_composite</a>
+* see: <a href="https://judge.yosupo.jp/problem/queue_operate_all_composite">https://judge.yosupo.jp/problem/queue_operate_all_composite</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/data_structure/segment_tree.cpp.html">Segment Tree <small>(data_structure/segment_tree.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/data_structure/queue_aggregation.cpp.html">Queue Aggregation <small>(data_structure/queue_aggregation.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/data_structure/stack_aggregation.cpp.html">Stack Aggregation <small>(data_structure/stack_aggregation.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/other/affine.cpp.html">other/affine.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/modint.cpp.html">other/modint.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/opposite_monoid.cpp.html">other/opposite_monoid.cpp</a>
 
 
 ## Code
@@ -48,36 +52,38 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "https://judge.yosupo.jp/problem/point_set_range_composite"
+#define PROBLEM "https://judge.yosupo.jp/problem/queue_operate_all_composite"
 
-#include "data_structure/segment_tree.cpp"
+#include "data_structure/queue_aggregation.cpp"
 #include "other/affine.cpp"
 #include "other/modint.cpp"
 
 #include <iostream>
 
 int main() {
-  int n, q;
-  std::cin >> n >> q;
-  segment_tree<affine_composite_monoid<modint<998244353>>> st(n);
-  for (int i = 0; i != n; i += 1) {
-    int a, b;
-    std::cin >> a >> b;
-    st.update(i, {a, b});
-  }
+#include "other/fast_ios.cpp"
+
+  queue_aggregation<affine_composite_monoid<modint<998244353>>> qa;
+
+  int q;
+  std::cin >> q;
+
   for (int i = 0; i != q; i += 1) {
     int t;
     std::cin >> t;
     switch (t) {
     case 0: {
-      int p, c, d;
-      std::cin >> p >> c >> d;
-      st.update(p, {c, d});
+      int a, b;
+      std::cin >> a >> b;
+      qa.push({a, b});
     } break;
     case 1: {
-      int l, r, x;
-      std::cin >> l >> r >> x;
-      std::cout << st.fold(l, r).evaluate(x).value() << std::endl;
+      qa.pop();
+    } break;
+    case 2: {
+      int x;
+      std::cin >> x;
+      std::cout << qa.fold().evaluate(x).value() << "\n";
     } break;
     }
   }
@@ -88,112 +94,93 @@ int main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/segment_tree.yosupo.test.cpp"
-#define PROBLEM "https://judge.yosupo.jp/problem/point_set_range_composite"
+#line 1 "test/queue_aggregation.test.cpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/queue_operate_all_composite"
 
-#line 1 "data_structure/segment_tree.cpp"
+#line 1 "data_structure/stack_aggregation.cpp"
 #include <cassert>
-#include <cstddef>
-#include <vector>
+#include <stack>
 
-template <class Monoid> class segment_tree {
-public:
-  using T = typename Monoid::value_type;
-  using size_t = std::size_t;
+template <class M> class stack_aggregation {
+  using T = typename M::value_type;
 
-private:
-  std::vector<T> tree;
+  class node_type {
+  public:
+    T value;
+    T fold;
 
-  template <class F>
-  size_t search_subtree(size_t index, const F f, T fold_l) const {
-    while (index < size()) {
-      const T temp = Monoid::operation(fold_l, tree[index * 2]);
-      if (!f(temp)) {
-        index = index * 2;
-      } else {
-        fold_l = temp;
-        index = index * 2 + 1;
-      }
-    }
-    return index - size();
-  }
+    node_type(const T value, const T fold) : value(value), fold(fold) {}
+  };
+
+  std::stack<node_type> st;
 
 public:
-  segment_tree() = default;
-  explicit segment_tree(const size_t n) : tree(n * 2, Monoid::identity) {}
+  stack_aggregation() = default;
 
-  size_t size() const noexcept { return tree.size() / 2; }
-
-  T fold(size_t first, size_t last) const {
-    assert(first <= last);
-    assert(last <= size());
-    first += size();
-    last += size();
-    T fold_l = Monoid::identity;
-    T fold_r = Monoid::identity;
-    while (first != last) {
-      if (first % 2 != 0) {
-        fold_l = Monoid::operation(fold_l, tree[first]);
-        first += 1;
-      }
-      first /= 2;
-      if (last % 2 != 0) {
-        last -= 1;
-        fold_r = Monoid::operation(tree[last], fold_r);
-      }
-      last /= 2;
-    }
-    return Monoid::operation(fold_l, fold_r);
+  bool empty() const { return st.empty(); }
+  T top() const {
+    assert(!empty());
+    return st.top().value;
   }
-  template <class F> size_t search(size_t first, size_t last, const F f) const {
-    assert(first <= last);
-    assert(last <= size());
-    first += size();
-    last += size();
-    const size_t last_cp = last;
-    size_t shift = 0;
-    T fold_l = Monoid::identity;
-    while (first != last) {
-      if (first % 2 != 0) {
-        const T temp = Monoid::operation(fold_l, tree[first]);
-        if (!f(temp))
-          return search_subtree(first, f, fold_l);
-        fold_l = temp;
-        first += 1;
-      }
-      first /= 2;
-      last /= 2;
-      shift += 1;
-    }
-    while (shift != 0) {
-      shift -= 1;
-      last = last_cp >> shift;
-      if (last % 2 != 0) {
-        last -= 1;
-        const T temp = Monoid::operation(fold_l, tree[last]);
-        if (!f(temp))
-          return search_subtree(last, f, fold_l);
-        fold_l = temp;
-      }
-    }
-    return last_cp - size();
-  }
+  T fold() const { return st.empty() ? M::identity : st.top().fold; }
 
-  void update(size_t index, const T x) {
-    assert(index < size());
-    index += size();
-    tree[index] = x;
-    while (index != 1) {
-      index /= 2;
-      tree[index] = Monoid::operation(tree[index * 2], tree[index * 2 + 1]);
+  void push(const T x) { st.push(node_type(x, M::operation(fold(), x))); }
+  void pop() {
+    assert(!empty());
+    st.pop();
+  }
+};
+
+/**
+ * @brief Stack Aggregation
+ * @see https://scrapbox.io/data-structures/Sliding_Window_Aggregation
+ */
+#line 1 "other/opposite_monoid.cpp"
+template <class M> class opposite_monoid {
+  using T = typename M::value_type;
+
+public:
+  using value_type = T;
+  static constexpr T operation(const T &l, const T &r) noexcept {
+    return M::operation(r, l);
+  }
+  static constexpr T identity = M::identity;
+};
+#line 3 "data_structure/queue_aggregation.cpp"
+
+template <class M> class queue_aggregation {
+  using T = typename M::value_type;
+
+  stack_aggregation<opposite_monoid<M>> front_st;
+  stack_aggregation<M> back_st;
+
+public:
+  queue_aggregation() = default;
+
+  bool empty() const { return front_st.empty(); }
+  T fold() const { return M::operation(front_st.fold(), back_st.fold()); }
+
+  void push(const T x) {
+    if (empty())
+      front_st.push(x);
+    else
+      back_st.push(x);
+  }
+  void pop() {
+    assert(!empty());
+    front_st.pop();
+    if (front_st.empty()) {
+      while (!back_st.empty()) {
+        front_st.push(back_st.top());
+        back_st.pop();
+      }
     }
   }
 };
 
 /**
- * @brief Segment Tree
- * @docs docs/segment_tree.md
- * @see https://scrapbox.io/data-structures/Segment_Tree
+ * @brief Queue Aggregation
+ * @see https://scrapbox.io/data-structures/Sliding_Window_Aggregation
  */
 #line 1 "other/affine.cpp"
 template <class T> class affine {
@@ -291,32 +278,37 @@ public:
 };
 template <std::uint_fast64_t Modulus>
 constexpr typename modint<Modulus>::u64 modint<Modulus>::mod;
-#line 6 "test/segment_tree.yosupo.test.cpp"
+#line 6 "test/queue_aggregation.test.cpp"
 
 #include <iostream>
 
 int main() {
-  int n, q;
-  std::cin >> n >> q;
-  segment_tree<affine_composite_monoid<modint<998244353>>> st(n);
-  for (int i = 0; i != n; i += 1) {
-    int a, b;
-    std::cin >> a >> b;
-    st.update(i, {a, b});
-  }
+#line 1 "other/fast_ios.cpp"
+std::ios::sync_with_stdio(false);
+std::cin.tie(nullptr);
+#line 11 "test/queue_aggregation.test.cpp"
+
+  queue_aggregation<affine_composite_monoid<modint<998244353>>> qa;
+
+  int q;
+  std::cin >> q;
+
   for (int i = 0; i != q; i += 1) {
     int t;
     std::cin >> t;
     switch (t) {
     case 0: {
-      int p, c, d;
-      std::cin >> p >> c >> d;
-      st.update(p, {c, d});
+      int a, b;
+      std::cin >> a >> b;
+      qa.push({a, b});
     } break;
     case 1: {
-      int l, r, x;
-      std::cin >> l >> r >> x;
-      std::cout << st.fold(l, r).evaluate(x).value() << std::endl;
+      qa.pop();
+    } break;
+    case 2: {
+      int x;
+      std::cin >> x;
+      std::cout << qa.fold().evaluate(x).value() << "\n";
     } break;
     }
   }

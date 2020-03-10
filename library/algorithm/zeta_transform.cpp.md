@@ -43,7 +43,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/zeta_transform.aoj.test.cpp.html">test/zeta_transform.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/zeta_transform.test.cpp.html">test/zeta_transform.test.cpp</a>
 
 
 ## Code
@@ -131,7 +131,7 @@ using isize = std::ptrdiff_t;
 using usize = std::size_t;
 #line 2 "algorithm/zeta_transform.cpp"
 
-#include <cstddef>
+#line 4 "algorithm/zeta_transform.cpp"
 #include <vector>
 
 template <class S>

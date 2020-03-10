@@ -48,6 +48,7 @@ layout: default
 * :heavy_check_mark: <a href="../data_structure/bit_vector.cpp.html">Bit Vector <small>(data_structure/bit_vector.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/dual_segment_tree.cpp.html">Dual Segment Tree <small>(data_structure/dual_segment_tree.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/lazy_segment_tree.cpp.html">Lazy Segment Tree <small>(data_structure/lazy_segment_tree.cpp)</small></a>
+* :heavy_check_mark: <a href="../data_structure/potentialized_union_find.cpp.html">Potentialized Union Find <small>(data_structure/potentialized_union_find.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/radix_heap.cpp.html">Radix Heap <small>(data_structure/radix_heap.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/randomized_queue.cpp.html">Randomized Queue <small>(data_structure/randomized_queue.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/union_enumerate.cpp.html">Union Enumerate <small>(data_structure/union_enumerate.cpp)</small></a>
@@ -62,16 +63,16 @@ layout: default
 
 * :heavy_check_mark: <a href="../../verify/test/axiotis_tzamos_knapsack.test.cpp.html">test/axiotis_tzamos_knapsack.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/axiotis_tzamos_unbounded_knapsack.test.cpp.html">test/axiotis_tzamos_unbounded_knapsack.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/test/dual_segment_tree.aoj.test.cpp.html">test/dual_segment_tree.aoj.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/test/lazy_segment_tree.aoj.test.cpp.html">test/lazy_segment_tree.aoj.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/test/lazy_segment_tree.yosupo.test.cpp.html">test/lazy_segment_tree.yosupo.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/test/radix_heap.aoj.test.cpp.html">test/radix_heap.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/dual_segment_tree.test.cpp.html">test/dual_segment_tree.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/lazy_segment_tree.test.cpp.html">test/lazy_segment_tree.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/potentialized_union_find.test.cpp.html">test/potentialized_union_find.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/radix_heap.test.cpp.html">test/radix_heap.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/randomized_queue.test.cpp.html">test/randomized_queue.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/three_edge_connected_component_decomposition.test.cpp.html">test/three_edge_connected_component_decomposition.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/test/wavelet_matrix.aoj.test.cpp.html">test/wavelet_matrix.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/wavelet_matrix.quantile.test.cpp.html">test/wavelet_matrix.quantile.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/wavelet_matrix.rangefreq.test.cpp.html">test/wavelet_matrix.rangefreq.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/wavelet_matrix.select.test.cpp.html">test/wavelet_matrix.select.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/test/zeta_transform.aoj.test.cpp.html">test/zeta_transform.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/zeta_transform.test.cpp.html">test/zeta_transform.test.cpp</a>
 
 
 ## Code

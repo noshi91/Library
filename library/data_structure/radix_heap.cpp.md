@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/radix_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-10 16:21:51+09:00
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
 * see: <a href="https://yosupo.hatenablog.com/entry/2015/04/03/224649">https://yosupo.hatenablog.com/entry/2015/04/03/224649</a>
@@ -47,7 +47,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/radix_heap.aoj.test.cpp.html">test/radix_heap.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/radix_heap.test.cpp.html">test/radix_heap.test.cpp</a>
 
 
 ## Code
@@ -56,18 +56,15 @@ layout: default
 {% raw %}
 ```cpp
 #include "other/bit_width.cpp"
+#include "other/int_alias.cpp"
 
 #include <algorithm>
 #include <cassert>
-#include <cstddef>
-#include <cstdint>
 #include <limits>
 #include <utility>
 #include <vector>
 
 template <class T> class radix_heap {
-  using size_t = std::size_t;
-  using u64 = std::uint_fast64_t;
   using V = std::pair<u64, T>;
 
 public:
@@ -82,27 +79,30 @@ private:
 public:
   radix_heap() : u(), last(0) {}
 
-  void push(const V x) {
+  void push(V x) {
     assert(last <= x.first);
 
-    const size_t i = bit_width(x.first ^ last);
+    const usize i = bit_width(x.first ^ last);
     if (u.size() <= i)
       u.resize(i + 1);
-    u[i].push_back(x);
+    u[i].push_back(std::move(x));
   }
+
   V pop() {
     if (u[0].empty()) {
-      size_t i = 1;
+      usize i = 1;
       while (u[i].empty())
         i += 1;
       last = std::numeric_limits<u64>::max();
       for (const V &e : u[i])
         last = std::min(last, e.first);
-      for (const V &e : u[i])
-        u[bit_width(e.first ^ last)].push_back(e);
+      for (V &e : u[i]) {
+        const usize j = bit_width(e.first ^ last);
+        u[j].push_back(std::move(e));
+      }
       u[i].clear();
     }
-    V ret = u[0].back();
+    V ret = std::move(u[0].back());
     u[0].pop_back();
     return ret;
   }
@@ -172,19 +172,15 @@ usize countl_zero(u64 x) {
 #line 5 "other/bit_width.cpp"
 
 usize bit_width(const u64 x) { return 64 - countl_zero(x); }
-#line 2 "data_structure/radix_heap.cpp"
+#line 3 "data_structure/radix_heap.cpp"
 
 #include <algorithm>
 #include <cassert>
-#include <cstddef>
-#include <cstdint>
 #include <limits>
 #include <utility>
 #include <vector>
 
 template <class T> class radix_heap {
-  using size_t = std::size_t;
-  using u64 = std::uint_fast64_t;
   using V = std::pair<u64, T>;
 
 public:
@@ -199,27 +195,30 @@ private:
 public:
   radix_heap() : u(), last(0) {}
 
-  void push(const V x) {
+  void push(V x) {
     assert(last <= x.first);
 
-    const size_t i = bit_width(x.first ^ last);
+    const usize i = bit_width(x.first ^ last);
     if (u.size() <= i)
       u.resize(i + 1);
-    u[i].push_back(x);
+    u[i].push_back(std::move(x));
   }
+
   V pop() {
     if (u[0].empty()) {
-      size_t i = 1;
+      usize i = 1;
       while (u[i].empty())
         i += 1;
       last = std::numeric_limits<u64>::max();
       for (const V &e : u[i])
         last = std::min(last, e.first);
-      for (const V &e : u[i])
-        u[bit_width(e.first ^ last)].push_back(e);
+      for (V &e : u[i]) {
+        const usize j = bit_width(e.first ^ last);
+        u[j].push_back(std::move(e));
+      }
       u[i].clear();
     }
-    V ret = u[0].back();
+    V ret = std::move(u[0].back());
     u[0].pop_back();
     return ret;
   }

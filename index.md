@@ -93,10 +93,11 @@ layout: default
 * :warning: <a href="library/other/ceildiv.cpp.html">other/ceildiv.cpp</a>
 * :heavy_check_mark: <a href="library/other/countl_zero.cpp.html">other/countl_zero.cpp</a>
 * :heavy_check_mark: <a href="library/other/countr_zero.cpp.html">other/countr_zero.cpp</a>
+* :heavy_check_mark: <a href="library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
 * :heavy_check_mark: <a href="library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 * :heavy_check_mark: <a href="library/other/less_equal_ordered_set.cpp.html">other/less_equal_ordered_set.cpp</a>
-* :heavy_check_mark: <a href="library/other/min_assign_action.cpp.html">other/min_assign_action.cpp</a>
-* :heavy_check_mark: <a href="library/other/min_semigroup.cpp.html">other/min_semigroup.cpp</a>
+* :warning: <a href="library/other/min_assign_action.cpp.html">other/min_assign_action.cpp</a>
+* :warning: <a href="library/other/min_semigroup.cpp.html">other/min_semigroup.cpp</a>
 * :heavy_check_mark: <a href="library/other/modint.cpp.html">other/modint.cpp</a>
 * :warning: <a href="library/other/montgomery_modint.cpp.html">other/montgomery_modint.cpp</a>
 * :heavy_check_mark: <a href="library/other/multiplies_monoid.cpp.html">other/multiplies_monoid.cpp</a>
@@ -116,23 +117,22 @@ layout: default
 
 * :heavy_check_mark: <a href="verify/test/axiotis_tzamos_knapsack.test.cpp.html">test/axiotis_tzamos_knapsack.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/axiotis_tzamos_unbounded_knapsack.test.cpp.html">test/axiotis_tzamos_unbounded_knapsack.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/dual_segment_tree.aoj.test.cpp.html">test/dual_segment_tree.aoj.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/erasable_heap.aoj.test.cpp.html">test/erasable_heap.aoj.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/fenwick_tree.yosupo.test.cpp.html">test/fenwick_tree.yosupo.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/incremental_bridge_connectivity.aoj.test.cpp.html">test/incremental_bridge_connectivity.aoj.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/lazy_segment_tree.aoj.test.cpp.html">test/lazy_segment_tree.aoj.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/lazy_segment_tree.yosupo.test.cpp.html">test/lazy_segment_tree.yosupo.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/pairing_heap.aoj.test.cpp.html">test/pairing_heap.aoj.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/potentialized_union_find.aoj.test.cpp.html">test/potentialized_union_find.aoj.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/queue_aggregation.yosupo.test.cpp.html">test/queue_aggregation.yosupo.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/radix_heap.aoj.test.cpp.html">test/radix_heap.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/dual_segment_tree.test.cpp.html">test/dual_segment_tree.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/erasable_heap.test.cpp.html">test/erasable_heap.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/fenwick_tree.test.cpp.html">test/fenwick_tree.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/incremental_bridge_connectivity.test.cpp.html">test/incremental_bridge_connectivity.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/lazy_segment_tree.test.cpp.html">test/lazy_segment_tree.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/pairing_heap.test.cpp.html">test/pairing_heap.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/potentialized_union_find.test.cpp.html">test/potentialized_union_find.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/queue_aggregation.test.cpp.html">test/queue_aggregation.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/radix_heap.test.cpp.html">test/radix_heap.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/randomized_queue.test.cpp.html">test/randomized_queue.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/segment_tree.yosupo.test.cpp.html">test/segment_tree.yosupo.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/segment_tree.test.cpp.html">test/segment_tree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/three_edge_connected_component_decomposition.test.cpp.html">test/three_edge_connected_component_decomposition.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/union_find.yosupo.test.cpp.html">test/union_find.yosupo.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/wavelet_matrix.aoj.test.cpp.html">test/wavelet_matrix.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/union_find.test.cpp.html">test/union_find.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/wavelet_matrix.quantile.test.cpp.html">test/wavelet_matrix.quantile.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/wavelet_matrix.rangefreq.test.cpp.html">test/wavelet_matrix.rangefreq.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/wavelet_matrix.select.test.cpp.html">test/wavelet_matrix.select.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/zeta_transform.aoj.test.cpp.html">test/zeta_transform.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/zeta_transform.test.cpp.html">test/zeta_transform.test.cpp</a>
 
 

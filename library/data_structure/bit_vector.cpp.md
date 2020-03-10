@@ -50,8 +50,8 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/wavelet_matrix.aoj.test.cpp.html">test/wavelet_matrix.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/wavelet_matrix.quantile.test.cpp.html">test/wavelet_matrix.quantile.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/wavelet_matrix.rangefreq.test.cpp.html">test/wavelet_matrix.rangefreq.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/wavelet_matrix.select.test.cpp.html">test/wavelet_matrix.select.test.cpp</a>
 
 
@@ -167,9 +167,7 @@ usize popcount(u64 x) {
   return x * 0x0101010101010101 >> 56 & 0x7f;
 #endif
 }
-#line 1 "other/select64.cpp"
-#include <cstddef>
-#include <cstdint>
+#line 3 "other/select64.cpp"
 
 std::size_t select64(const std::uint_fast64_t x0, size_t k) {
   using size_t = std::size_t;
@@ -216,7 +214,7 @@ std::size_t select64(const std::uint_fast64_t x0, size_t k) {
 }
 #line 3 "data_structure/bit_vector.cpp"
 
-#include <cstddef>
+#line 5 "data_structure/bit_vector.cpp"
 #include <limits>
 #include <vector>
 

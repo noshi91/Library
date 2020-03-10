@@ -25,12 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/union_find.yosupo.test.cpp
+# :heavy_check_mark: test/union_find.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* <a href="{{ site.github.repository_url }}/blob/master/test/union_find.yosupo.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 14:18:18+09:00
+* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/union_find.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/unionfind">https://judge.yosupo.jp/problem/unionfind</a>
@@ -39,6 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../library/data_structure/union_find.cpp.html">Union Find <small>(data_structure/union_find.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
 
 
 ## Code
@@ -47,22 +49,29 @@ layout: default
 {% raw %}
 ```cpp
 #define PROBLEM "https://judge.yosupo.jp/problem/unionfind"
-#include <iostream>
+
 #include "data_structure/union_find.cpp"
-using namespace std;
+
+#include <iostream>
 
 int main() {
-    int n, q; cin >> n >> q;
-    union_find uft(n);
-    while (q --) {
-        int t, u, v; cin >> t >> u >> v;
-        if (t == 0) {
-            uft.unite(u, v);
-        } else if (t == 1) {
-            cout << uft.same(u, v) << endl;
-        }
+#include "other/fast_ios.cpp"
+
+  int n, q;
+  std::cin >> n >> q;
+  union_find uf(n);
+  for (int i = 0; i != q; i += 1) {
+    int t, u, v;
+    std::cin >> t >> u >> v;
+    switch (t) {
+    case 0: {
+      uf.unite(u, v);
+    } break;
+    case 1: {
+      std::cout << uf.same(u, v) << "\n";
+    } break;
     }
-    return 0;
+  }
 }
 
 ```
@@ -71,9 +80,9 @@ int main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/union_find.yosupo.test.cpp"
+#line 1 "test/union_find.test.cpp"
 #define PROBLEM "https://judge.yosupo.jp/problem/unionfind"
-#include <iostream>
+
 #line 1 "data_structure/union_find.cpp"
 #include <cassert>
 #include <utility>
@@ -136,21 +145,31 @@ public:
  * @brief Union Find
  * @see https://scrapbox.io/data-structures/Union_Find
  */
-#line 4 "test/union_find.yosupo.test.cpp"
-using namespace std;
+#line 4 "test/union_find.test.cpp"
+
+#include <iostream>
 
 int main() {
-    int n, q; cin >> n >> q;
-    union_find uft(n);
-    while (q --) {
-        int t, u, v; cin >> t >> u >> v;
-        if (t == 0) {
-            uft.unite(u, v);
-        } else if (t == 1) {
-            cout << uft.same(u, v) << endl;
-        }
+#line 1 "other/fast_ios.cpp"
+std::ios::sync_with_stdio(false);
+std::cin.tie(nullptr);
+#line 9 "test/union_find.test.cpp"
+
+  int n, q;
+  std::cin >> n >> q;
+  union_find uf(n);
+  for (int i = 0; i != q; i += 1) {
+    int t, u, v;
+    std::cin >> t >> u >> v;
+    switch (t) {
+    case 0: {
+      uf.unite(u, v);
+    } break;
+    case 1: {
+      std::cout << uf.same(u, v) << "\n";
+    } break;
     }
-    return 0;
+  }
 }
 
 ```

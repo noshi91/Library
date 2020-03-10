@@ -29,10 +29,12 @@ layout: default
 
 <a href="../../index.html">Back to top page</a>
 
+* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/axiotis_tzamos_knapsack.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-05 22:38:55+09:00
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_B&lang=ja">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_B&lang=ja</a>
 
 
 ## Depends on
@@ -40,6 +42,7 @@ layout: default
 * :heavy_check_mark: <a href="../../library/algorithm/axiotis_tzamos_knapsack.cpp.html">Axiotis-Tzamos Knapsack <small>(algorithm/axiotis_tzamos_knapsack.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/algorithm/concave_max_plus_convolution.cpp.html">Concave Max Plus Convolution <small>(algorithm/concave_max_plus_convolution.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/algorithm/smawk.cpp.html">SMAWK Algorithm <small>(algorithm/smawk.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 
 
@@ -58,6 +61,8 @@ layout: default
 #include <vector>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   usize n, w;
   std::cin >> n >> w;
   struct item_t {
@@ -67,7 +72,7 @@ int main() {
   for (auto &e : is) {
     std::cin >> e.v >> e.w;
   }
-  std::cout << axiotis_tzamos_knapsack(w, is) << std::endl;
+  std::cout << axiotis_tzamos_knapsack(w, is) << "\n";
 }
 
 ```
@@ -146,7 +151,7 @@ std::vector<usize> smawk(const usize row_size, const usize col_size,
  */
 #line 3 "algorithm/concave_max_plus_convolution.cpp"
 
-#include <vector>
+#line 5 "algorithm/concave_max_plus_convolution.cpp"
 
 template <class T>
 std::vector<T> concave_max_plus_convolution(const std::vector<T> &a,
@@ -178,9 +183,9 @@ std::vector<T> concave_max_plus_convolution(const std::vector<T> &a,
 
 #include <algorithm>
 #include <cassert>
-#include <functional>
+#line 7 "algorithm/axiotis_tzamos_knapsack.cpp"
 #include <utility>
-#include <vector>
+#line 9 "algorithm/axiotis_tzamos_knapsack.cpp"
 
 template <class I>
 u64 axiotis_tzamos_knapsack(const usize t, const std::vector<I> &item) {
@@ -225,9 +230,14 @@ u64 axiotis_tzamos_knapsack(const usize t, const std::vector<I> &item) {
 #line 6 "test/axiotis_tzamos_knapsack.test.cpp"
 
 #include <iostream>
-#include <vector>
+#line 9 "test/axiotis_tzamos_knapsack.test.cpp"
 
 int main() {
+#line 1 "other/fast_ios.cpp"
+std::ios::sync_with_stdio(false);
+std::cin.tie(nullptr);
+#line 12 "test/axiotis_tzamos_knapsack.test.cpp"
+
   usize n, w;
   std::cin >> n >> w;
   struct item_t {
@@ -237,7 +247,7 @@ int main() {
   for (auto &e : is) {
     std::cin >> e.v >> e.w;
   }
-  std::cout << axiotis_tzamos_knapsack(w, is) << std::endl;
+  std::cout << axiotis_tzamos_knapsack(w, is) << "\n";
 }
 
 ```

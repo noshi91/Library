@@ -38,8 +38,8 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/potentialized_union_find.aoj.test.cpp.html">test/potentialized_union_find.aoj.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/test/zeta_transform.aoj.test.cpp.html">test/zeta_transform.aoj.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/potentialized_union_find.test.cpp.html">test/potentialized_union_find.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/zeta_transform.test.cpp.html">test/zeta_transform.test.cpp</a>
 
 
 ## Code

@@ -25,14 +25,16 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/dual_segment_tree.aoj.test.cpp
+# :heavy_check_mark: test/dual_segment_tree.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* <a href="{{ site.github.repository_url }}/blob/master/test/dual_segment_tree.aoj.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-10 16:21:51+09:00
+* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/dual_segment_tree.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-11 00:35:25+09:00
 
 
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D&lang=ja">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D&lang=ja</a>
 
 
 ## Depends on
@@ -41,6 +43,7 @@ layout: default
 * :heavy_check_mark: <a href="../../library/other/bit_width.cpp.html">other/bit_width.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/countl_zero.cpp.html">other/countl_zero.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/countr_zero.cpp.html">other/countr_zero.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/right_zero_semigroup.cpp.html">other/right_zero_semigroup.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/semigroup_to_monoid.cpp.html">other/semigroup_to_monoid.cpp</a>
@@ -61,6 +64,8 @@ layout: default
 #include <iostream>
 
 int main() {
+#include "other/fast_ios.cpp"
+
   int n, q;
   std::cin >> n >> q;
   dual_segment_tree<semigroup_to_monoid<right_zero_semigroup<int>>> dst(n);
@@ -77,7 +82,7 @@ int main() {
     case 1: {
       int i;
       std::cin >> i;
-      std::cout << dst.fold(i).value() << std::endl;
+      std::cout << dst.fold(i).value() << "\n";
     } break;
     }
   }
@@ -88,7 +93,7 @@ int main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/dual_segment_tree.aoj.test.cpp"
+#line 1 "test/dual_segment_tree.test.cpp"
 #define PROBLEM                                                                \
   "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D&lang=ja"
 
@@ -148,26 +153,26 @@ usize bit_width(const u64 x) { return 64 - countl_zero(x); }
 #line 3 "data_structure/dual_segment_tree.cpp"
 
 #include <cassert>
-#include <cstddef>
+#line 6 "data_structure/dual_segment_tree.cpp"
 #include <vector>
 
-template <class Monoid> class dual_segment_tree {
+template <class M> class dual_segment_tree {
   using size_t = std::size_t;
-  using T = typename Monoid::value_type;
+  using T = typename M::value_type;
 
 public:
   using value_type = T;
   using size_type = size_t;
 
 private:
-  static void add(T &x, const T y) { x = Monoid::operation(x, y); }
+  static void add(T &x, const T y) { x = M::operation(x, y); }
 
   std::vector<T> tree;
 
   void push(const size_t index) {
     add(tree[index * 2], tree[index]);
     add(tree[index * 2 + 1], tree[index]);
-    tree[index] = Monoid::identity;
+    tree[index] = M::identity;
   }
   void propagate(const size_t index) {
     if (index == 0)
@@ -179,7 +184,7 @@ private:
 
 public:
   dual_segment_tree() = default;
-  explicit dual_segment_tree(const size_t n) : tree(n * 2, Monoid::identity) {}
+  explicit dual_segment_tree(const size_t n) : tree(n * 2, M::identity) {}
 
   size_t size() const noexcept { return tree.size() / 2; }
 
@@ -244,11 +249,16 @@ public:
   }
   static constexpr T identity{std::nullopt};
 };
-#line 7 "test/dual_segment_tree.aoj.test.cpp"
+#line 7 "test/dual_segment_tree.test.cpp"
 
 #include <iostream>
 
 int main() {
+#line 1 "other/fast_ios.cpp"
+std::ios::sync_with_stdio(false);
+std::cin.tie(nullptr);
+#line 12 "test/dual_segment_tree.test.cpp"
+
   int n, q;
   std::cin >> n >> q;
   dual_segment_tree<semigroup_to_monoid<right_zero_semigroup<int>>> dst(n);
@@ -265,7 +275,7 @@ int main() {
     case 1: {
       int i;
       std::cin >> i;
-      std::cout << dst.fold(i).value() << std::endl;
+      std::cout << dst.fold(i).value() << "\n";
     } break;
     }
   }
