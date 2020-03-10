@@ -25,15 +25,16 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: algorithm/three_edge_connected_component_decomposition.cpp
+# :heavy_check_mark: 3-Edge-Connected Component Decomposition <small>(algorithm/three_edge_connected_component_decomposition.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#ed469618898d75b149e5c7c4b6a1c415">algorithm</a>
 * <a href="{{ site.github.repository_url }}/blob/master/algorithm/three_edge_connected_component_decomposition.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-09 21:14:06+09:00
+    - Last commit date: 2020-03-10 16:21:51+09:00
 
 
+* see: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0020019013002470">https://www.sciencedirect.com/science/article/abs/pii/S0020019013002470</a>
 
 
 ## Depends on
@@ -134,6 +135,11 @@ std::vector<std::vector<usize>> three_edge_connected_component_decomposition(
 
   return tcc.get_all();
 }
+
+/**
+ * @brief 3-Edge-Connected Component Decomposition
+ * @see https://www.sciencedirect.com/science/article/abs/pii/S0020019013002470
+ */
 
 ```
 {% endraw %}
@@ -291,6 +297,11 @@ std::vector<std::vector<usize>> three_edge_connected_component_decomposition(
 
   return tcc.get_all();
 }
+
+/**
+ * @brief 3-Edge-Connected Component Decomposition
+ * @see https://www.sciencedirect.com/science/article/abs/pii/S0020019013002470
+ */
 
 ```
 {% endraw %}

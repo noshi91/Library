@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/wavelet_matrix.quantile.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 14:18:18+09:00
+    - Last commit date: 2020-03-10 16:21:51+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_kth_smallest">https://judge.yosupo.jp/problem/range_kth_smallest</a>
@@ -40,7 +40,8 @@ layout: default
 
 * :heavy_check_mark: <a href="../../library/data_structure/bit_vector.cpp.html">Bit Vector <small>(data_structure/bit_vector.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/data_structure/wavelet_matrix.cpp.html">Wavelet Matrix <small>(data_structure/wavelet_matrix.cpp)</small></a>
-* :heavy_check_mark: <a href="../../library/other/popcount64.cpp.html">other/popcount64.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/popcount.cpp.html">other/popcount.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/select64.cpp.html">other/select64.cpp</a>
 
 
@@ -83,11 +84,22 @@ int main() {
 #line 1 "test/wavelet_matrix.quantile.test.cpp"
 #define PROBLEM "https://judge.yosupo.jp/problem/range_kth_smallest"
 
-#line 1 "other/popcount64.cpp"
+#line 2 "other/popcount.cpp"
+
+#line 2 "other/int_alias.cpp"
+
 #include <cstddef>
 #include <cstdint>
 
-std::size_t popcount64(std::uint_fast64_t x) {
+using i32 = std::int32_t;
+using i64 = std::int64_t;
+using u32 = std::uint32_t;
+using u64 = std::uint64_t;
+using isize = std::ptrdiff_t;
+using usize = std::size_t;
+#line 4 "other/popcount.cpp"
+
+usize popcount(u64 x) {
 #ifdef __GNUC__
   return __builtin_popcountll(x);
 #else
@@ -177,15 +189,15 @@ public:
     {
       const size_t s = v.size();
       for (size_t i = 1; i != s; i += 1)
-        v[i].sum = v[i - 1].sum + popcount64(v[i - 1].bit);
+        v[i].sum = v[i - 1].sum + popcount(v[i - 1].bit);
     }
   }
 
   size_t rank0(const size_t index) const { return index - rank1(index); }
   size_t rank1(const size_t index) const {
     return v[index / wordsize].sum +
-           popcount64(v[index / wordsize].bit &
-                      ~(~static_cast<size_t>(0) << index % wordsize));
+           popcount(v[index / wordsize].bit &
+                    ~(~static_cast<size_t>(0) << index % wordsize));
   }
   size_t select0(const size_t k) const {
     size_t l = 0;
@@ -218,7 +230,6 @@ public:
 /**
  * @brief Bit Vector
  */
- 
 #line 2 "data_structure/wavelet_matrix.cpp"
 
 #include <algorithm>

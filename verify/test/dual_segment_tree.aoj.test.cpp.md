@@ -30,7 +30,7 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/dual_segment_tree.aoj.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 14:18:18+09:00
+    - Last commit date: 2020-03-10 16:21:51+09:00
 
 
 
@@ -38,6 +38,10 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../library/data_structure/dual_segment_tree.cpp.html">Dual Segment Tree <small>(data_structure/dual_segment_tree.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/other/bit_width.cpp.html">other/bit_width.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/countl_zero.cpp.html">other/countl_zero.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/countr_zero.cpp.html">other/countr_zero.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/right_zero_semigroup.cpp.html">other/right_zero_semigroup.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/semigroup_to_monoid.cpp.html">other/semigroup_to_monoid.cpp</a>
 
@@ -88,7 +92,61 @@ int main() {
 #define PROBLEM                                                                \
   "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D&lang=ja"
 
-#line 1 "data_structure/dual_segment_tree.cpp"
+#line 2 "other/bit_width.cpp"
+
+#line 2 "other/countl_zero.cpp"
+
+#line 2 "other/countr_zero.cpp"
+
+#line 2 "other/int_alias.cpp"
+
+#include <cstddef>
+#include <cstdint>
+
+using i32 = std::int32_t;
+using i64 = std::int64_t;
+using u32 = std::uint32_t;
+using u64 = std::uint64_t;
+using isize = std::ptrdiff_t;
+using usize = std::size_t;
+#line 4 "other/countr_zero.cpp"
+
+#include <array>
+
+usize countr_zero(u64 x) {
+  if (x == 0)
+    return 64;
+#ifdef __GNUC__
+  return __builtin_ctzll(x);
+#else
+  constexpr std::array<usize, 64> table = {
+      0,  1,  2,  7,  3,  13, 8,  27, 4,  33, 14, 36, 9,  49, 28, 19,
+      5,  25, 34, 17, 15, 53, 37, 55, 10, 46, 50, 39, 29, 42, 20, 57,
+      63, 6,  12, 26, 32, 35, 48, 18, 24, 16, 52, 54, 45, 38, 41, 56,
+      62, 11, 31, 47, 23, 51, 44, 40, 61, 30, 22, 43, 60, 21, 59, 58};
+  return table[(x & ~x + 1) * 0x218A7A392DD9ABF >> 58 & 0x3F];
+#endif
+}
+#line 5 "other/countl_zero.cpp"
+
+usize countl_zero(u64 x) {
+#ifdef __GNUC__
+  return x == 0 ? 64 : __builtin_clzll(x);
+#else
+  x |= x >> 1;
+  x |= x >> 2;
+  x |= x >> 4;
+  x |= x >> 8;
+  x |= x >> 16;
+  x |= x >> 32;
+  return 64 - countr_zero(x + 1);
+#endif
+}
+#line 5 "other/bit_width.cpp"
+
+usize bit_width(const u64 x) { return 64 - countl_zero(x); }
+#line 3 "data_structure/dual_segment_tree.cpp"
+
 #include <cassert>
 #include <cstddef>
 #include <vector>
@@ -102,8 +160,6 @@ public:
   using size_type = size_t;
 
 private:
-  static size_t lsb(const size_t x) { return __builtin_ctz(x); }
-  static size_t msb(const size_t x) { return 31 - __builtin_clz(x); }
   static void add(T &x, const T y) { x = Monoid::operation(x, y); }
 
   std::vector<T> tree;
@@ -116,8 +172,8 @@ private:
   void propagate(const size_t index) {
     if (index == 0)
       return;
-    const size_t lsb_ = lsb(index);
-    for (size_t h = msb(index); h != lsb_; h -= 1)
+    const size_t crz = countr_zero(index);
+    for (size_t h = bit_width(index) - 1; h != crz; h -= 1)
       push(index >> h);
   }
 

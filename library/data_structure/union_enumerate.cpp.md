@@ -44,7 +44,7 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="../algorithm/three_edge_connected_component_decomposition.cpp.html">algorithm/three_edge_connected_component_decomposition.cpp</a>
+* :heavy_check_mark: <a href="../algorithm/three_edge_connected_component_decomposition.cpp.html">3-Edge-Connected Component Decomposition <small>(algorithm/three_edge_connected_component_decomposition.cpp)</small></a>
 
 
 ## Verified with

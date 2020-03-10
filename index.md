@@ -43,7 +43,7 @@ layout: default
 * :heavy_check_mark: <a href="library/algorithm/concave_max_plus_convolution.cpp.html">Concave Max Plus Convolution <small>(algorithm/concave_max_plus_convolution.cpp)</small></a>
 * :heavy_check_mark: <a href="library/algorithm/max_plus_convolution.cpp.html">Max Plus Convolution <small>(algorithm/max_plus_convolution.cpp)</small></a>
 * :heavy_check_mark: <a href="library/algorithm/smawk.cpp.html">SMAWK Algorithm <small>(algorithm/smawk.cpp)</small></a>
-* :heavy_check_mark: <a href="library/algorithm/three_edge_connected_component_decomposition.cpp.html">algorithm/three_edge_connected_component_decomposition.cpp</a>
+* :heavy_check_mark: <a href="library/algorithm/three_edge_connected_component_decomposition.cpp.html">3-Edge-Connected Component Decomposition <small>(algorithm/three_edge_connected_component_decomposition.cpp)</small></a>
 * :heavy_check_mark: <a href="library/algorithm/zeta_transform.cpp.html">Zeta Transform <small>(algorithm/zeta_transform.cpp)</small></a>
 
 
@@ -88,12 +88,13 @@ layout: default
 ### other
 
 * :heavy_check_mark: <a href="library/other/affine.cpp.html">other/affine.cpp</a>
+* :heavy_check_mark: <a href="library/other/bit_width.cpp.html">other/bit_width.cpp</a>
 * :heavy_check_mark: <a href="library/other/cartesian_product_monoid.cpp.html">other/cartesian_product_monoid.cpp</a>
 * :warning: <a href="library/other/ceildiv.cpp.html">other/ceildiv.cpp</a>
-* :heavy_check_mark: <a href="library/other/countl_zero64.cpp.html">other/countl_zero64.cpp</a>
+* :heavy_check_mark: <a href="library/other/countl_zero.cpp.html">other/countl_zero.cpp</a>
+* :heavy_check_mark: <a href="library/other/countr_zero.cpp.html">other/countr_zero.cpp</a>
 * :heavy_check_mark: <a href="library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 * :heavy_check_mark: <a href="library/other/less_equal_ordered_set.cpp.html">other/less_equal_ordered_set.cpp</a>
-* :heavy_check_mark: <a href="library/other/log2p164.cpp.html">other/log2p164.cpp</a>
 * :heavy_check_mark: <a href="library/other/min_assign_action.cpp.html">other/min_assign_action.cpp</a>
 * :heavy_check_mark: <a href="library/other/min_semigroup.cpp.html">other/min_semigroup.cpp</a>
 * :heavy_check_mark: <a href="library/other/modint.cpp.html">other/modint.cpp</a>
@@ -103,7 +104,7 @@ layout: default
 * :heavy_check_mark: <a href="library/other/opposite_ordered_set.cpp.html">other/opposite_ordered_set.cpp</a>
 * :heavy_check_mark: <a href="library/other/plus_group.cpp.html">other/plus_group.cpp</a>
 * :heavy_check_mark: <a href="library/other/plus_monoid.cpp.html">other/plus_monoid.cpp</a>
-* :heavy_check_mark: <a href="library/other/popcount64.cpp.html">other/popcount64.cpp</a>
+* :heavy_check_mark: <a href="library/other/popcount.cpp.html">other/popcount.cpp</a>
 * :heavy_check_mark: <a href="library/other/random_integer.cpp.html">other/random_integer.cpp</a>
 * :heavy_check_mark: <a href="library/other/right_zero_semigroup.cpp.html">other/right_zero_semigroup.cpp</a>
 * :heavy_check_mark: <a href="library/other/select64.cpp.html">other/select64.cpp</a>

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#ed469618898d75b149e5c7c4b6a1c415">algorithm</a>
 * <a href="{{ site.github.repository_url }}/blob/master/algorithm/axiotis_tzamos_unbounded_knapsack.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-03 16:21:51+09:00
+    - Last commit date: 2020-03-10 16:21:51+09:00
 
 
 * see: <a href="https://arxiv.org/abs/1802.06440">https://arxiv.org/abs/1802.06440</a>
@@ -40,9 +40,10 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="max_plus_convolution.cpp.html">Max Plus Convolution <small>(algorithm/max_plus_convolution.cpp)</small></a>
-* :heavy_check_mark: <a href="../other/countl_zero64.cpp.html">other/countl_zero64.cpp</a>
+* :heavy_check_mark: <a href="../other/bit_width.cpp.html">other/bit_width.cpp</a>
+* :heavy_check_mark: <a href="../other/countl_zero.cpp.html">other/countl_zero.cpp</a>
+* :heavy_check_mark: <a href="../other/countr_zero.cpp.html">other/countr_zero.cpp</a>
 * :heavy_check_mark: <a href="../other/int_alias.cpp.html">other/int_alias.cpp</a>
-* :heavy_check_mark: <a href="../other/log2p164.cpp.html">other/log2p164.cpp</a>
 
 
 ## Verified with
@@ -56,8 +57,8 @@ layout: default
 {% raw %}
 ```cpp
 #include "algorithm/max_plus_convolution.cpp"
+#include "other/bit_width.cpp"
 #include "other/int_alias.cpp"
-#include "other/log2p164.cpp"
 
 #include <algorithm>
 #include <cassert>
@@ -89,7 +90,7 @@ u64 axiotis_tzamos_unbounded_knapsack(const u64 t, const std::vector<I> &item) {
     dp.insert(dp.begin(), temp.begin(), temp.end());
   }
 
-  for (usize i = log2p164(t); i != 0; i -= 1) {
+  for (usize i = bit_width(t); i != 0; i -= 1) {
     dp = max_plus_convolution(dp, dp);
     auto itr = dp.begin() + 2 * m;
     if ((t >> i - 1) % 2 == 1)
@@ -142,53 +143,48 @@ std::vector<T> max_plus_convolution(const std::vector<T> &a,
 /**
  * @brief Max Plus Convolution
  */
-#line 1 "other/countl_zero64.cpp"
-#include <array>
-#include <cstddef>
-#include <cstdint>
+#line 2 "other/bit_width.cpp"
 
-std::size_t countl_zero64(std::uint_fast64_t x) {
+#line 2 "other/countl_zero.cpp"
+
+#line 2 "other/countr_zero.cpp"
+
+#line 4 "other/countr_zero.cpp"
+
+#include <array>
+
+usize countr_zero(u64 x) {
+  if (x == 0)
+    return 64;
+#ifdef __GNUC__
+  return __builtin_ctzll(x);
+#else
+  constexpr std::array<usize, 64> table = {
+      0,  1,  2,  7,  3,  13, 8,  27, 4,  33, 14, 36, 9,  49, 28, 19,
+      5,  25, 34, 17, 15, 53, 37, 55, 10, 46, 50, 39, 29, 42, 20, 57,
+      63, 6,  12, 26, 32, 35, 48, 18, 24, 16, 52, 54, 45, 38, 41, 56,
+      62, 11, 31, 47, 23, 51, 44, 40, 61, 30, 22, 43, 60, 21, 59, 58};
+  return table[(x & ~x + 1) * 0x218A7A392DD9ABF >> 58 & 0x3F];
+#endif
+}
+#line 5 "other/countl_zero.cpp"
+
+usize countl_zero(u64 x) {
 #ifdef __GNUC__
   return x == 0 ? 64 : __builtin_clzll(x);
 #else
-  if (x == 0)
-    return 64;
-  std::size_t ret = 0;
-  if ((x & 0xFFFFFFFF00000000) != 0)
-    x >>= 32;
-  else
-    ret += 32;
-  if ((x & 0xFFFF0000) != 0)
-    x >>= 16;
-  else
-    ret += 16;
-  if ((x & 0xFF00) != 0)
-    x >>= 8;
-  else
-    ret += 8;
-  if ((x & 0xF0) != 0)
-    x >>= 4;
-  else
-    ret += 4;
-  if ((x & 0xC) != 0)
-    x >>= 2;
-  else
-    ret += 2;
-  if ((x & 0x2) != 0)
-    x >>= 1;
-  else
-    ret += 1;
-  return ret;
+  x |= x >> 1;
+  x |= x >> 2;
+  x |= x >> 4;
+  x |= x >> 8;
+  x |= x >> 16;
+  x |= x >> 32;
+  return 64 - countr_zero(x + 1);
 #endif
 }
-#line 2 "other/log2p164.cpp"
+#line 5 "other/bit_width.cpp"
 
-#include <cstddef>
-#include <cstdint>
-
-std::size_t log2p164(const std::uint_fast64_t x) {
-  return 64 - countl_zero64(x);
-}
+usize bit_width(const u64 x) { return 64 - countl_zero(x); }
 #line 4 "algorithm/axiotis_tzamos_unbounded_knapsack.cpp"
 
 #include <algorithm>
@@ -221,7 +217,7 @@ u64 axiotis_tzamos_unbounded_knapsack(const u64 t, const std::vector<I> &item) {
     dp.insert(dp.begin(), temp.begin(), temp.end());
   }
 
-  for (usize i = log2p164(t); i != 0; i -= 1) {
+  for (usize i = bit_width(t); i != 0; i -= 1) {
     dp = max_plus_convolution(dp, dp);
     auto itr = dp.begin() + 2 * m;
     if ((t >> i - 1) % 2 == 1)

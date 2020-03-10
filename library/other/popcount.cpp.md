@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: other/popcount64.cpp
+# :heavy_check_mark: other/popcount.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#795f3202b17cb6bc3d4b771d8c6c9eaf">other</a>
-* <a href="{{ site.github.repository_url }}/blob/master/other/popcount64.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-22 11:33:14+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/other/popcount.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-10 16:21:51+09:00
 
 
+
+
+## Depends on
+
+* :heavy_check_mark: <a href="int_alias.cpp.html">other/int_alias.cpp</a>
 
 
 ## Required by
@@ -54,10 +59,11 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#include <cstddef>
-#include <cstdint>
+#pragma once
 
-std::size_t popcount64(std::uint_fast64_t x) {
+#include "other/int_alias.cpp"
+
+usize popcount(u64 x) {
 #ifdef __GNUC__
   return __builtin_popcountll(x);
 #else
@@ -67,17 +73,29 @@ std::size_t popcount64(std::uint_fast64_t x) {
   return x * 0x0101010101010101 >> 56 & 0x7f;
 #endif
 }
+
 ```
 {% endraw %}
 
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "other/popcount64.cpp"
+#line 2 "other/popcount.cpp"
+
+#line 2 "other/int_alias.cpp"
+
 #include <cstddef>
 #include <cstdint>
 
-std::size_t popcount64(std::uint_fast64_t x) {
+using i32 = std::int32_t;
+using i64 = std::int64_t;
+using u32 = std::uint32_t;
+using u64 = std::uint64_t;
+using isize = std::ptrdiff_t;
+using usize = std::size_t;
+#line 4 "other/popcount.cpp"
+
+usize popcount(u64 x) {
 #ifdef __GNUC__
   return __builtin_popcountll(x);
 #else

@@ -25,53 +25,39 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: other/int_alias.cpp
+# :heavy_check_mark: other/countr_zero.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#795f3202b17cb6bc3d4b771d8c6c9eaf">other</a>
-* <a href="{{ site.github.repository_url }}/blob/master/other/int_alias.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-02 16:21:18+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/other/countr_zero.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-10 16:21:51+09:00
 
 
+
+
+## Depends on
+
+* :heavy_check_mark: <a href="int_alias.cpp.html">other/int_alias.cpp</a>
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="../algorithm/axiotis_tzamos_knapsack.cpp.html">Axiotis-Tzamos Knapsack <small>(algorithm/axiotis_tzamos_knapsack.cpp)</small></a>
 * :heavy_check_mark: <a href="../algorithm/axiotis_tzamos_unbounded_knapsack.cpp.html">Axiotis-Tzamos Unbounded Knapsack <small>(algorithm/axiotis_tzamos_unbounded_knapsack.cpp)</small></a>
-* :heavy_check_mark: <a href="../algorithm/concave_max_plus_convolution.cpp.html">Concave Max Plus Convolution <small>(algorithm/concave_max_plus_convolution.cpp)</small></a>
-* :heavy_check_mark: <a href="../algorithm/max_plus_convolution.cpp.html">Max Plus Convolution <small>(algorithm/max_plus_convolution.cpp)</small></a>
-* :heavy_check_mark: <a href="../algorithm/smawk.cpp.html">SMAWK Algorithm <small>(algorithm/smawk.cpp)</small></a>
-* :heavy_check_mark: <a href="../algorithm/three_edge_connected_component_decomposition.cpp.html">3-Edge-Connected Component Decomposition <small>(algorithm/three_edge_connected_component_decomposition.cpp)</small></a>
-* :heavy_check_mark: <a href="../algorithm/zeta_transform.cpp.html">Zeta Transform <small>(algorithm/zeta_transform.cpp)</small></a>
-* :heavy_check_mark: <a href="../data_structure/bit_vector.cpp.html">Bit Vector <small>(data_structure/bit_vector.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/dual_segment_tree.cpp.html">Dual Segment Tree <small>(data_structure/dual_segment_tree.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/lazy_segment_tree.cpp.html">Lazy Segment Tree <small>(data_structure/lazy_segment_tree.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/radix_heap.cpp.html">Radix Heap <small>(data_structure/radix_heap.cpp)</small></a>
-* :heavy_check_mark: <a href="../data_structure/randomized_queue.cpp.html">Randomized Queue <small>(data_structure/randomized_queue.cpp)</small></a>
-* :heavy_check_mark: <a href="../data_structure/union_enumerate.cpp.html">Union Enumerate <small>(data_structure/union_enumerate.cpp)</small></a>
-* :heavy_check_mark: <a href="../data_structure/wavelet_matrix.cpp.html">Wavelet Matrix <small>(data_structure/wavelet_matrix.cpp)</small></a>
 * :heavy_check_mark: <a href="bit_width.cpp.html">other/bit_width.cpp</a>
 * :heavy_check_mark: <a href="countl_zero.cpp.html">other/countl_zero.cpp</a>
-* :heavy_check_mark: <a href="countr_zero.cpp.html">other/countr_zero.cpp</a>
-* :heavy_check_mark: <a href="popcount.cpp.html">other/popcount.cpp</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/axiotis_tzamos_knapsack.test.cpp.html">test/axiotis_tzamos_knapsack.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/axiotis_tzamos_unbounded_knapsack.test.cpp.html">test/axiotis_tzamos_unbounded_knapsack.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/dual_segment_tree.aoj.test.cpp.html">test/dual_segment_tree.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/lazy_segment_tree.aoj.test.cpp.html">test/lazy_segment_tree.aoj.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/lazy_segment_tree.yosupo.test.cpp.html">test/lazy_segment_tree.yosupo.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/radix_heap.aoj.test.cpp.html">test/radix_heap.aoj.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/test/randomized_queue.test.cpp.html">test/randomized_queue.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/test/three_edge_connected_component_decomposition.test.cpp.html">test/three_edge_connected_component_decomposition.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/test/wavelet_matrix.aoj.test.cpp.html">test/wavelet_matrix.aoj.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/test/wavelet_matrix.quantile.test.cpp.html">test/wavelet_matrix.quantile.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/test/wavelet_matrix.select.test.cpp.html">test/wavelet_matrix.select.test.cpp</a>
-* :heavy_check_mark: <a href="../../verify/test/zeta_transform.aoj.test.cpp.html">test/zeta_transform.aoj.test.cpp</a>
 
 
 ## Code
@@ -81,15 +67,24 @@ layout: default
 ```cpp
 #pragma once
 
-#include <cstddef>
-#include <cstdint>
+#include "other/int_alias.cpp"
 
-using i32 = std::int32_t;
-using i64 = std::int64_t;
-using u32 = std::uint32_t;
-using u64 = std::uint64_t;
-using isize = std::ptrdiff_t;
-using usize = std::size_t;
+#include <array>
+
+usize countr_zero(u64 x) {
+  if (x == 0)
+    return 64;
+#ifdef __GNUC__
+  return __builtin_ctzll(x);
+#else
+  constexpr std::array<usize, 64> table = {
+      0,  1,  2,  7,  3,  13, 8,  27, 4,  33, 14, 36, 9,  49, 28, 19,
+      5,  25, 34, 17, 15, 53, 37, 55, 10, 46, 50, 39, 29, 42, 20, 57,
+      63, 6,  12, 26, 32, 35, 48, 18, 24, 16, 52, 54, 45, 38, 41, 56,
+      62, 11, 31, 47, 23, 51, 44, 40, 61, 30, 22, 43, 60, 21, 59, 58};
+  return table[(x & ~x + 1) * 0x218A7A392DD9ABF >> 58 & 0x3F];
+#endif
+}
 
 ```
 {% endraw %}
@@ -97,6 +92,8 @@ using usize = std::size_t;
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 2 "other/countr_zero.cpp"
+
 #line 2 "other/int_alias.cpp"
 
 #include <cstddef>
@@ -108,6 +105,24 @@ using u32 = std::uint32_t;
 using u64 = std::uint64_t;
 using isize = std::ptrdiff_t;
 using usize = std::size_t;
+#line 4 "other/countr_zero.cpp"
+
+#include <array>
+
+usize countr_zero(u64 x) {
+  if (x == 0)
+    return 64;
+#ifdef __GNUC__
+  return __builtin_ctzll(x);
+#else
+  constexpr std::array<usize, 64> table = {
+      0,  1,  2,  7,  3,  13, 8,  27, 4,  33, 14, 36, 9,  49, 28, 19,
+      5,  25, 34, 17, 15, 53, 37, 55, 10, 46, 50, 39, 29, 42, 20, 57,
+      63, 6,  12, 26, 32, 35, 48, 18, 24, 16, 52, 54, 45, 38, 41, 56,
+      62, 11, 31, 47, 23, 51, 44, 40, 61, 30, 22, 43, 60, 21, 59, 58};
+  return table[(x & ~x + 1) * 0x218A7A392DD9ABF >> 58 & 0x3F];
+#endif
+}
 
 ```
 {% endraw %}

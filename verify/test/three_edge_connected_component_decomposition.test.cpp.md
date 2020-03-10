@@ -30,14 +30,14 @@ layout: default
 <a href="../../index.html">Back to top page</a>
 
 * <a href="{{ site.github.repository_url }}/blob/master/test/three_edge_connected_component_decomposition.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-09 21:14:06+09:00
+    - Last commit date: 2020-03-10 16:21:51+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/algorithm/three_edge_connected_component_decomposition.cpp.html">algorithm/three_edge_connected_component_decomposition.cpp</a>
+* :heavy_check_mark: <a href="../../library/algorithm/three_edge_connected_component_decomposition.cpp.html">3-Edge-Connected Component Decomposition <small>(algorithm/three_edge_connected_component_decomposition.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/data_structure/union_enumerate.cpp.html">Union Enumerate <small>(data_structure/union_enumerate.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 
@@ -236,6 +236,11 @@ std::vector<std::vector<usize>> three_edge_connected_component_decomposition(
 
   return tcc.get_all();
 }
+
+/**
+ * @brief 3-Edge-Connected Component Decomposition
+ * @see https://www.sciencedirect.com/science/article/abs/pii/S0020019013002470
+ */
 #line 6 "test/three_edge_connected_component_decomposition.test.cpp"
 
 #include <iostream>
