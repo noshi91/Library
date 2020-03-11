@@ -36,6 +36,12 @@ layout: default
 
 
 
+## Required by
+
+* :warning: <a href="../algorithm/divisor_mobius_transform.cpp.html">Divisor Möbius Transform <small>(algorithm/divisor_mobius_transform.cpp)</small></a>
+* :warning: <a href="../algorithm/multiple_zeta_transform.cpp.html">Multiple Zeta Transform <small>(algorithm/multiple_zeta_transform.cpp)</small></a>
+
+
 ## Code
 
 <a id="unbundled"></a>

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/zeta_transform.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-11 00:35:25+09:00
+    - Last commit date: 2020-03-11 23:32:43+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119</a>
@@ -39,7 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/algorithm/zeta_transform.cpp.html">Zeta Transform <small>(algorithm/zeta_transform.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/algorithm/superset_mobius_transform.cpp.html">Superset Möbius Transform <small>(algorithm/superset_mobius_transform.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/algorithm/superset_zeta_transform.cpp.html">Superset Zeta Transform <small>(algorithm/superset_zeta_transform.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/modint.cpp.html">other/modint.cpp</a>
@@ -54,7 +55,8 @@ layout: default
 ```cpp
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119"
 
-#include "algorithm/zeta_transform.cpp"
+#include "algorithm/superset_mobius_transform.cpp"
+#include "algorithm/superset_zeta_transform.cpp"
 #include "other/modint.cpp"
 #include "other/multiplies_monoid.cpp"
 #include "other/plus_group.cpp"
@@ -101,47 +103,9 @@ using u32 = std::uint32_t;
 using u64 = std::uint64_t;
 using isize = std::ptrdiff_t;
 using usize = std::size_t;
-#line 2 "algorithm/zeta_transform.cpp"
+#line 2 "algorithm/superset_mobius_transform.cpp"
 
-#line 4 "algorithm/zeta_transform.cpp"
 #include <vector>
-
-template <class S>
-void subset_zeta_transform(std::vector<typename S::value_type> &a) {
-  const usize n = a.size();
-  for (usize i = 1; i < n; i *= 2) {
-    for (usize j = 0; j != n; j += 1) {
-      if ((j & i) != 0)
-        a[j] = S::operation(a[j & ~i], a[j]);
-    }
-  }
-}
-
-template <class S>
-void superset_zeta_transform(std::vector<typename S::value_type> &a) {
-  const usize n = a.size();
-  for (usize i = 1; i < n; i *= 2) {
-    for (usize j = 0; j != n; j += 1) {
-      if ((j & i) != 0)
-        a[j & ~i] = S::operation(a[j & ~i], a[j]);
-    }
-  }
-}
-
-template <class G>
-void subset_mobius_transform(std::vector<typename G::value_type> &a) {
-  const usize n = a.size();
-  usize i = 1;
-  while (i < n)
-    i *= 2;
-  while (i != 1) {
-    i /= 2;
-    for (usize j = 0; j != n; j += 1) {
-      if ((j & i) != 0)
-        a[j] = G::operation(G::inverse(a[j & ~i]), a[j]);
-    }
-  }
-}
 
 template <class G>
 void superset_mobius_transform(std::vector<typename G::value_type> &a) {
@@ -159,7 +123,25 @@ void superset_mobius_transform(std::vector<typename G::value_type> &a) {
 }
 
 /**
- * @brief Zeta Transform
+ * @brief Superset Möbius Transform
+ */
+#line 2 "algorithm/superset_zeta_transform.cpp"
+
+#line 4 "algorithm/superset_zeta_transform.cpp"
+
+template <class S>
+void superset_zeta_transform(std::vector<typename S::value_type> &a) {
+  const usize n = a.size();
+  for (usize i = 1; i < n; i *= 2) {
+    for (usize j = 0; j != n; j += 1) {
+      if ((j & i) != 0)
+        a[j & ~i] = S::operation(a[j & ~i], a[j]);
+    }
+  }
+}
+
+/**
+ * @brief Superset Zeta Transform
  */
 #line 2 "other/modint.cpp"
 
@@ -249,7 +231,7 @@ public:
   static constexpr T identity = 0;
   static constexpr T inverse(const T &x) noexcept { return -x; }
 };
-#line 7 "test/zeta_transform.test.cpp"
+#line 8 "test/zeta_transform.test.cpp"
 
 #include <iostream>
 
@@ -257,7 +239,7 @@ int main() {
 #line 1 "other/fast_ios.cpp"
 std::ios::sync_with_stdio(false);
 std::cin.tie(nullptr);
-#line 12 "test/zeta_transform.test.cpp"
+#line 13 "test/zeta_transform.test.cpp"
 
   using mint = modint<1000000007>;
   constexpr int b = 20;

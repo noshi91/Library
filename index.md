@@ -41,10 +41,17 @@ layout: default
 * :heavy_check_mark: <a href="library/algorithm/axiotis_tzamos_knapsack.cpp.html">Axiotis-Tzamos Knapsack <small>(algorithm/axiotis_tzamos_knapsack.cpp)</small></a>
 * :heavy_check_mark: <a href="library/algorithm/axiotis_tzamos_unbounded_knapsack.cpp.html">Axiotis-Tzamos Unbounded Knapsack <small>(algorithm/axiotis_tzamos_unbounded_knapsack.cpp)</small></a>
 * :heavy_check_mark: <a href="library/algorithm/concave_max_plus_convolution.cpp.html">Concave Max Plus Convolution <small>(algorithm/concave_max_plus_convolution.cpp)</small></a>
+* :warning: <a href="library/algorithm/divisor_mobius_transform.cpp.html">Divisor Möbius Transform <small>(algorithm/divisor_mobius_transform.cpp)</small></a>
+* :warning: <a href="library/algorithm/divisor_zeta_transform.cpp.html">Divisor Zeta Transform <small>(algorithm/divisor_zeta_transform.cpp)</small></a>
 * :heavy_check_mark: <a href="library/algorithm/max_plus_convolution.cpp.html">Max Plus Convolution <small>(algorithm/max_plus_convolution.cpp)</small></a>
+* :warning: <a href="library/algorithm/multiple_mobius_transform.cpp.html">Multiple Möbius Transform <small>(algorithm/multiple_mobius_transform.cpp)</small></a>
+* :warning: <a href="library/algorithm/multiple_zeta_transform.cpp.html">Multiple Zeta Transform <small>(algorithm/multiple_zeta_transform.cpp)</small></a>
 * :heavy_check_mark: <a href="library/algorithm/smawk.cpp.html">SMAWK Algorithm <small>(algorithm/smawk.cpp)</small></a>
+* :warning: <a href="library/algorithm/subset_mobius_transform.cpp.html">Subset Möbius Transform <small>(algorithm/subset_mobius_transform.cpp)</small></a>
+* :warning: <a href="library/algorithm/subset_zeta_transform.cpp.html">Subset Zeta Transform <small>(algorithm/subset_zeta_transform.cpp)</small></a>
+* :heavy_check_mark: <a href="library/algorithm/superset_mobius_transform.cpp.html">Superset Möbius Transform <small>(algorithm/superset_mobius_transform.cpp)</small></a>
+* :heavy_check_mark: <a href="library/algorithm/superset_zeta_transform.cpp.html">Superset Zeta Transform <small>(algorithm/superset_zeta_transform.cpp)</small></a>
 * :heavy_check_mark: <a href="library/algorithm/three_edge_connected_component_decomposition.cpp.html">3-Edge-Connected Component Decomposition <small>(algorithm/three_edge_connected_component_decomposition.cpp)</small></a>
-* :heavy_check_mark: <a href="library/algorithm/zeta_transform.cpp.html">Zeta Transform <small>(algorithm/zeta_transform.cpp)</small></a>
 
 
 <div id="c8f6850ec2ec3fb32f203c1f4e3c2fd2"></div>
