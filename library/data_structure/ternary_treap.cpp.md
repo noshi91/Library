@@ -31,10 +31,15 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/ternary_treap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 14:18:18+09:00
+    - Last commit date: 2020-03-11 22:58:19+09:00
 
 
 * see: <a href="https://scrapbox.io/data-structures/Ternary_Search_Tree">https://scrapbox.io/data-structures/Ternary_Search_Tree</a>
+
+
+## Depends on
+
+* :heavy_check_mark: <a href="../other/int_alias.cpp.html">other/int_alias.cpp</a>
 
 
 ## Code
@@ -42,6 +47,8 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
+#include "other/int_alias.cpp"
+
 #include <algorithm>
 #include <cstddef>
 #include <iterator>
@@ -52,7 +59,6 @@ layout: default
 #include <vector>
 
 template <class W> class ternary_treap {
-  using size_t = std::size_t;
   using T = typename W::value_type;
 
 public:
@@ -65,8 +71,8 @@ private:
   class mid_type {
     friend ternary_treap;
 
-    size_t prio_;
-    size_t key_prio;
+    usize prio_;
+    usize key_prio;
     node_ptr ptr;
 
     void fix() { prio_ = std::max(key_prio, prio(ptr)); }
@@ -82,19 +88,19 @@ private:
     mid_type mid;
     node_ptr right;
 
-    size_t prio() const { return mid.prio_; }
+    usize prio() const { return mid.prio_; }
 
   public:
     node_type(const T key) : key(key), left(), mid(), right() {}
   };
 
-  static size_t rand() {
+  static usize rand() {
     static std::default_random_engine rng(91);
-    static std::uniform_int_distribution<size_t> uid(
-        1, std::numeric_limits<size_t>::max());
+    static std::uniform_int_distribution<usize> uid(
+        1, std::numeric_limits<usize>::max());
     return uid(rng);
   }
-  static size_t prio(const node_ptr &ptr) { return ptr ? ptr->prio() : 0; }
+  static usize prio(const node_ptr &ptr) { return ptr ? ptr->prio() : 0; }
   static void rot_left(node_ptr &ptr) {
     node_ptr right = std::move(ptr->right);
     ptr->right = std::move(right->left);
@@ -209,9 +215,21 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "data_structure/ternary_treap.cpp"
-#include <algorithm>
+#line 2 "other/int_alias.cpp"
+
 #include <cstddef>
+#include <cstdint>
+
+using i32 = std::int32_t;
+using i64 = std::int64_t;
+using u32 = std::uint32_t;
+using u64 = std::uint64_t;
+using isize = std::ptrdiff_t;
+using usize = std::size_t;
+#line 2 "data_structure/ternary_treap.cpp"
+
+#include <algorithm>
+#line 5 "data_structure/ternary_treap.cpp"
 #include <iterator>
 #include <limits>
 #include <memory>
@@ -220,7 +238,6 @@ public:
 #include <vector>
 
 template <class W> class ternary_treap {
-  using size_t = std::size_t;
   using T = typename W::value_type;
 
 public:
@@ -233,8 +250,8 @@ private:
   class mid_type {
     friend ternary_treap;
 
-    size_t prio_;
-    size_t key_prio;
+    usize prio_;
+    usize key_prio;
     node_ptr ptr;
 
     void fix() { prio_ = std::max(key_prio, prio(ptr)); }
@@ -250,19 +267,19 @@ private:
     mid_type mid;
     node_ptr right;
 
-    size_t prio() const { return mid.prio_; }
+    usize prio() const { return mid.prio_; }
 
   public:
     node_type(const T key) : key(key), left(), mid(), right() {}
   };
 
-  static size_t rand() {
+  static usize rand() {
     static std::default_random_engine rng(91);
-    static std::uniform_int_distribution<size_t> uid(
-        1, std::numeric_limits<size_t>::max());
+    static std::uniform_int_distribution<usize> uid(
+        1, std::numeric_limits<usize>::max());
     return uid(rng);
   }
-  static size_t prio(const node_ptr &ptr) { return ptr ? ptr->prio() : 0; }
+  static usize prio(const node_ptr &ptr) { return ptr ? ptr->prio() : 0; }
   static void rot_left(node_ptr &ptr) {
     node_ptr right = std::move(ptr->right);
     ptr->right = std::move(right->left);

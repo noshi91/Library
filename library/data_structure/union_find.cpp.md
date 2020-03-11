@@ -31,10 +31,15 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/union_find.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 14:18:18+09:00
+    - Last commit date: 2020-03-11 22:58:19+09:00
 
 
 * see: <a href="https://scrapbox.io/data-structures/Union_Find">https://scrapbox.io/data-structures/Union_Find</a>
+
+
+## Depends on
+
+* :heavy_check_mark: <a href="../other/int_alias.cpp.html">other/int_alias.cpp</a>
 
 
 ## Required by
@@ -53,50 +58,53 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
+#include "other/int_alias.cpp"
+
 #include <cassert>
 #include <utility>
 #include <vector>
 
 class union_find {
 private:
-  using size_t = std::size_t;
-
   class node_type {
     friend union_find;
 
-    size_t parent;
-    size_t size;
+    usize parent;
+    usize size;
 
-    node_type(const size_t parent, const size_t size)
+    node_type(const usize parent, const usize size)
         : parent(parent), size(size) {}
   };
 
   std::vector<node_type> tree;
 
-  size_t size() const { return tree.size(); }
-
 public:
   union_find() = default;
-  explicit union_find(const size_t n) : tree(n, node_type(n, 1)) {}
 
-  size_t find(const size_t x) {
+  explicit union_find(const usize n) : tree(n, node_type(n, 1)) {}
+
+  usize size() const { return tree.size(); }
+
+  usize find(const usize x) {
     assert(x < size());
     if (tree[x].parent == size())
       return x;
     else
       return tree[x].parent = find(tree[x].parent);
   }
-  bool same(const size_t x, const size_t y) {
+
+  bool same(const usize x, const usize y) {
     assert(x < size());
     assert(y < size());
     return find(x) == find(y);
   }
-  size_t size(const size_t x) {
+
+  usize size(const usize x) {
     assert(x < size());
     return tree[find(x)].size;
   }
 
-  void unite(size_t x, size_t y) {
+  void unite(usize x, usize y) {
     assert(x < size());
     assert(y < size());
     x = find(x);
@@ -121,51 +129,64 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "data_structure/union_find.cpp"
+#line 2 "other/int_alias.cpp"
+
+#include <cstddef>
+#include <cstdint>
+
+using i32 = std::int32_t;
+using i64 = std::int64_t;
+using u32 = std::uint32_t;
+using u64 = std::uint64_t;
+using isize = std::ptrdiff_t;
+using usize = std::size_t;
+#line 2 "data_structure/union_find.cpp"
+
 #include <cassert>
 #include <utility>
 #include <vector>
 
 class union_find {
 private:
-  using size_t = std::size_t;
-
   class node_type {
     friend union_find;
 
-    size_t parent;
-    size_t size;
+    usize parent;
+    usize size;
 
-    node_type(const size_t parent, const size_t size)
+    node_type(const usize parent, const usize size)
         : parent(parent), size(size) {}
   };
 
   std::vector<node_type> tree;
 
-  size_t size() const { return tree.size(); }
-
 public:
   union_find() = default;
-  explicit union_find(const size_t n) : tree(n, node_type(n, 1)) {}
 
-  size_t find(const size_t x) {
+  explicit union_find(const usize n) : tree(n, node_type(n, 1)) {}
+
+  usize size() const { return tree.size(); }
+
+  usize find(const usize x) {
     assert(x < size());
     if (tree[x].parent == size())
       return x;
     else
       return tree[x].parent = find(tree[x].parent);
   }
-  bool same(const size_t x, const size_t y) {
+
+  bool same(const usize x, const usize y) {
     assert(x < size());
     assert(y < size());
     return find(x) == find(y);
   }
-  size_t size(const size_t x) {
+
+  usize size(const usize x) {
     assert(x < size());
     return tree[find(x)].size;
   }
 
-  void unite(size_t x, size_t y) {
+  void unite(usize x, usize y) {
     assert(x < size());
     assert(y < size());
     x = find(x);

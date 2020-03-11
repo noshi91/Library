@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/bit_vector.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-11 22:42:07+09:00
+    - Last commit date: 2020-03-11 22:58:19+09:00
 
 
 
@@ -165,19 +165,18 @@ usize popcount(u64 x) {
   return x * 0x0101010101010101 >> 56 & 0x7f;
 #endif
 }
-#line 3 "other/select64.cpp"
+#line 2 "other/select64.cpp"
 
-std::size_t select64(const std::uint_fast64_t x0, size_t k) {
-  using size_t = std::size_t;
-  using u64 = std::uint_fast64_t;
+#line 5 "other/select64.cpp"
 
+usize select64(const u64 x0, usize k) {
   const u64 x1 = (x0 & 0x5555555555555555) + (x0 >> 1 & 0x5555555555555555);
   const u64 x2 = (x1 & 0x3333333333333333) + (x1 >> 2 & 0x3333333333333333);
   const u64 x3 = (x2 & 0x0F0F0F0F0F0F0F0F) + (x2 >> 4 & 0x0F0F0F0F0F0F0F0F);
   const u64 x4 = (x3 & 0x00FF00FF00FF00FF) + (x3 >> 8 & 0x00FF00FF00FF00FF);
   const u64 x5 = (x4 & 0x0000FFFF0000FFFF) + (x4 >> 16 & 0x0000FFFF0000FFFF);
-  size_t ret = 0;
-  size_t t;
+  usize ret = 0;
+  usize t;
   t = x5 >> ret & 0xFFFFFFFF;
   if (t <= k) {
     k -= t;

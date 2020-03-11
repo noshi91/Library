@@ -31,9 +31,14 @@ layout: default
 
 * category: <a href="../../index.html#795f3202b17cb6bc3d4b771d8c6c9eaf">other</a>
 * <a href="{{ site.github.repository_url }}/blob/master/other/select64.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-22 11:33:14+09:00
+    - Last commit date: 2020-03-11 22:58:19+09:00
 
 
+
+
+## Depends on
+
+* :heavy_check_mark: <a href="int_alias.cpp.html">other/int_alias.cpp</a>
 
 
 ## Required by
@@ -54,20 +59,19 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
+#include "other/int_alias.cpp"
+
 #include <cstddef>
 #include <cstdint>
 
-std::size_t select64(const std::uint_fast64_t x0, size_t k) {
-  using size_t = std::size_t;
-  using u64 = std::uint_fast64_t;
-
+usize select64(const u64 x0, usize k) {
   const u64 x1 = (x0 & 0x5555555555555555) + (x0 >> 1 & 0x5555555555555555);
   const u64 x2 = (x1 & 0x3333333333333333) + (x1 >> 2 & 0x3333333333333333);
   const u64 x3 = (x2 & 0x0F0F0F0F0F0F0F0F) + (x2 >> 4 & 0x0F0F0F0F0F0F0F0F);
   const u64 x4 = (x3 & 0x00FF00FF00FF00FF) + (x3 >> 8 & 0x00FF00FF00FF00FF);
   const u64 x5 = (x4 & 0x0000FFFF0000FFFF) + (x4 >> 16 & 0x0000FFFF0000FFFF);
-  size_t ret = 0;
-  size_t t;
+  usize ret = 0;
+  usize t;
   t = x5 >> ret & 0xFFFFFFFF;
   if (t <= k) {
     k -= t;
@@ -100,27 +104,36 @@ std::size_t select64(const std::uint_fast64_t x0, size_t k) {
   }
   return ret;
 }
+
 ```
 {% endraw %}
 
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "other/select64.cpp"
+#line 2 "other/int_alias.cpp"
+
 #include <cstddef>
 #include <cstdint>
 
-std::size_t select64(const std::uint_fast64_t x0, size_t k) {
-  using size_t = std::size_t;
-  using u64 = std::uint_fast64_t;
+using i32 = std::int32_t;
+using i64 = std::int64_t;
+using u32 = std::uint32_t;
+using u64 = std::uint64_t;
+using isize = std::ptrdiff_t;
+using usize = std::size_t;
+#line 2 "other/select64.cpp"
 
+#line 5 "other/select64.cpp"
+
+usize select64(const u64 x0, usize k) {
   const u64 x1 = (x0 & 0x5555555555555555) + (x0 >> 1 & 0x5555555555555555);
   const u64 x2 = (x1 & 0x3333333333333333) + (x1 >> 2 & 0x3333333333333333);
   const u64 x3 = (x2 & 0x0F0F0F0F0F0F0F0F) + (x2 >> 4 & 0x0F0F0F0F0F0F0F0F);
   const u64 x4 = (x3 & 0x00FF00FF00FF00FF) + (x3 >> 8 & 0x00FF00FF00FF00FF);
   const u64 x5 = (x4 & 0x0000FFFF0000FFFF) + (x4 >> 16 & 0x0000FFFF0000FFFF);
-  size_t ret = 0;
-  size_t t;
+  usize ret = 0;
+  usize t;
   t = x5 >> ret & 0xFFFFFFFF;
   if (t <= k) {
     k -= t;

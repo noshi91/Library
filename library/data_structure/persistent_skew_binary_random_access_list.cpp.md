@@ -31,10 +31,15 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/persistent_skew_binary_random_access_list.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 14:18:18+09:00
+    - Last commit date: 2020-03-11 22:58:19+09:00
 
 
 * see: <a href="https://scrapbox.io/data-structures/Skew_Binary_List">https://scrapbox.io/data-structures/Skew_Binary_List</a>
+
+
+## Depends on
+
+* :heavy_check_mark: <a href="../other/int_alias.cpp.html">other/int_alias.cpp</a>
 
 
 ## Code
@@ -42,12 +47,14 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
+#include "other/int_alias.cpp"
+
 #include <cassert>
 #include <cstddef>
 #include <memory>
 #include <utility>
 
-template <class T, class Size = std::size_t>
+template <class T, class Size = usize>
 class persistent_skew_binary_random_access_list {
   using Self = persistent_skew_binary_random_access_list;
 
@@ -175,13 +182,25 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "data_structure/persistent_skew_binary_random_access_list.cpp"
-#include <cassert>
+#line 2 "other/int_alias.cpp"
+
 #include <cstddef>
+#include <cstdint>
+
+using i32 = std::int32_t;
+using i64 = std::int64_t;
+using u32 = std::uint32_t;
+using u64 = std::uint64_t;
+using isize = std::ptrdiff_t;
+using usize = std::size_t;
+#line 2 "data_structure/persistent_skew_binary_random_access_list.cpp"
+
+#include <cassert>
+#line 5 "data_structure/persistent_skew_binary_random_access_list.cpp"
 #include <memory>
 #include <utility>
 
-template <class T, class Size = std::size_t>
+template <class T, class Size = usize>
 class persistent_skew_binary_random_access_list {
   using Self = persistent_skew_binary_random_access_list;
 

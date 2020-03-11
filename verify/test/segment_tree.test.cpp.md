@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/segment_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-11 00:35:25+09:00
+    - Last commit date: 2020-03-11 22:58:19+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_set_range_composite">https://judge.yosupo.jp/problem/point_set_range_composite</a>
@@ -42,6 +42,7 @@ layout: default
 * :heavy_check_mark: <a href="../../library/data_structure/segment_tree.cpp.html">Segment Tree <small>(data_structure/segment_tree.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/other/affine.cpp.html">other/affine.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/modint.cpp.html">other/modint.cpp</a>
 
 
@@ -95,21 +96,34 @@ int main() {
 #line 1 "test/segment_tree.test.cpp"
 #define PROBLEM "https://judge.yosupo.jp/problem/point_set_range_composite"
 
-#line 1 "data_structure/segment_tree.cpp"
-#include <cassert>
+#line 2 "other/int_alias.cpp"
+
 #include <cstddef>
+#include <cstdint>
+
+using i32 = std::int32_t;
+using i64 = std::int64_t;
+using u32 = std::uint32_t;
+using u64 = std::uint64_t;
+using isize = std::ptrdiff_t;
+using usize = std::size_t;
+#line 2 "data_structure/segment_tree.cpp"
+
+#include <cassert>
+#line 5 "data_structure/segment_tree.cpp"
 #include <vector>
 
 template <class M> class segment_tree {
-public:
   using T = typename M::value_type;
-  using size_t = std::size_t;
+
+public:
+  using value_type = T;
 
 private:
   std::vector<T> tree;
 
   template <class F>
-  size_t search_subtree(size_t index, const F f, T fold_l) const {
+  usize search_subtree(usize index, const F f, T fold_l) const {
     while (index < size()) {
       const T temp = M::operation(fold_l, tree[index * 2]);
       if (!f(temp)) {
@@ -124,11 +138,12 @@ private:
 
 public:
   segment_tree() = default;
-  explicit segment_tree(const size_t n) : tree(n * 2, M::identity) {}
 
-  size_t size() const noexcept { return tree.size() / 2; }
+  explicit segment_tree(const usize n) : tree(n * 2, M::identity) {}
 
-  T fold(size_t first, size_t last) const {
+  usize size() const noexcept { return tree.size() / 2; }
+
+  T fold(usize first, usize last) const {
     assert(first <= last);
     assert(last <= size());
     first += size();
@@ -149,13 +164,14 @@ public:
     }
     return M::operation(fold_l, fold_r);
   }
-  template <class F> size_t search(size_t first, size_t last, const F f) const {
+  
+  template <class F> usize search(usize first, usize last, const F f) const {
     assert(first <= last);
     assert(last <= size());
     first += size();
     last += size();
-    const size_t last_cp = last;
-    size_t shift = 0;
+    const usize last_cp = last;
+    usize shift = 0;
     T fold_l = M::identity;
     while (first != last) {
       if (first % 2 != 0) {
@@ -183,7 +199,7 @@ public:
     return last_cp - size();
   }
 
-  void update(size_t index, const T x) {
+  void update(usize index, const T x) {
     assert(index < size());
     index += size();
     tree[index] = x;
@@ -225,8 +241,7 @@ public:
   }
   static constexpr value_type identity{};
 };
-#line 1 "other/modint.cpp"
-#include <cstdint>
+#line 2 "other/modint.cpp"
 
 template <std::uint_fast64_t Modulus> class modint {
   using u64 = std::uint_fast64_t;

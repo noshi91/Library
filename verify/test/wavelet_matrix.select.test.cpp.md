@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/wavelet_matrix.select.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-11 22:42:07+09:00
+    - Last commit date: 2020-03-11 22:58:19+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A</a>
@@ -117,19 +117,18 @@ usize popcount(u64 x) {
   return x * 0x0101010101010101 >> 56 & 0x7f;
 #endif
 }
-#line 3 "other/select64.cpp"
+#line 2 "other/select64.cpp"
 
-std::size_t select64(const std::uint_fast64_t x0, size_t k) {
-  using size_t = std::size_t;
-  using u64 = std::uint_fast64_t;
+#line 5 "other/select64.cpp"
 
+usize select64(const u64 x0, usize k) {
   const u64 x1 = (x0 & 0x5555555555555555) + (x0 >> 1 & 0x5555555555555555);
   const u64 x2 = (x1 & 0x3333333333333333) + (x1 >> 2 & 0x3333333333333333);
   const u64 x3 = (x2 & 0x0F0F0F0F0F0F0F0F) + (x2 >> 4 & 0x0F0F0F0F0F0F0F0F);
   const u64 x4 = (x3 & 0x00FF00FF00FF00FF) + (x3 >> 8 & 0x00FF00FF00FF00FF);
   const u64 x5 = (x4 & 0x0000FFFF0000FFFF) + (x4 >> 16 & 0x0000FFFF0000FFFF);
-  size_t ret = 0;
-  size_t t;
+  usize ret = 0;
+  usize t;
   t = x5 >> ret & 0xFFFFFFFF;
   if (t <= k) {
     k -= t;
@@ -233,34 +232,31 @@ public:
 /**
  * @brief Bit Vector
  */
-#line 2 "data_structure/wavelet_matrix.cpp"
+#line 3 "data_structure/wavelet_matrix.cpp"
 
 #include <algorithm>
 #include <cassert>
-#line 7 "data_structure/wavelet_matrix.cpp"
+#line 8 "data_structure/wavelet_matrix.cpp"
 
 template <class Key> class wavelet_matrix {
-  using size_t = std::size_t;
-
 public:
   using key_type = Key;
   using value_type = Key;
-  using size_type = size_t;
 
 private:
-  static bool test(const key_type x, const size_t k) {
+  static bool test(const key_type x, const usize k) {
     return (x & static_cast<key_type>(1) << k) != 0;
   }
-  static void set(key_type &x, const size_t k) {
+  static void set(key_type &x, const usize k) {
     x |= static_cast<key_type>(1) << k;
   }
 
-  size_t size_;
+  usize size_;
   std::vector<bit_vector> mat;
 
-  size_t less(size_t first, size_t last, const key_type key) const {
-    size_t ret = 0;
-    for (size_t p = mat.size(); p != 0;) {
+  usize less(usize first, usize last, const key_type key) const {
+    usize ret = 0;
+    for (usize p = mat.size(); p != 0;) {
       p -= 1;
       const bit_vector &v = mat[p];
       if (!test(key, p)) {
@@ -268,7 +264,7 @@ private:
         last = v.rank0(last);
       } else {
         ret += v.rank0(last) - v.rank0(first);
-        const size_t b = v.rank0(size());
+        const usize b = v.rank0(size());
         first = b + v.rank1(first);
         last = b + v.rank1(last);
       }
@@ -278,20 +274,20 @@ private:
 
 public:
   wavelet_matrix() = default;
-  explicit wavelet_matrix(const size_t bit_length, std::vector<key_type> a)
+  explicit wavelet_matrix(const usize bit_length, std::vector<key_type> a)
       : size_(a.size()), mat(bit_length, bit_vector()) {
-    const size_t s = size();
-    for (size_t p = bit_length; p != 0;) {
+    const usize s = size();
+    for (usize p = bit_length; p != 0;) {
       p -= 1;
       {
         std::vector<bool> t(s);
-        for (size_t i = 0; i != s; i += 1)
+        for (usize i = 0; i != s; i += 1)
           t[i] = test(a[i], p);
         mat[p] = bit_vector(t);
       }
       {
         std::vector<key_type> v0, v1;
-        for (const size_t e : a)
+        for (const usize e : a)
           (test(e, p) ? v1 : v0).push_back(e);
         const auto itr = std::copy(v0.cbegin(), v0.cend(), a.begin());
         std::copy(v1.cbegin(), v1.cend(), itr);
@@ -299,42 +295,42 @@ public:
     }
   }
 
-  size_t size() const { return size_; }
+  usize size() const { return size_; }
 
-  size_t rangefreq(const size_t first, const size_t last, const key_type lower,
-                   const key_type upper) const {
+  usize rangefreq(const usize first, const usize last, const key_type lower,
+                  const key_type upper) const {
     assert(first <= last);
     assert(last <= size());
     assert(lower <= upper);
 
     return less(first, last, upper) - less(first, last, lower);
   }
-  key_type quantile(size_t first, size_t last, size_t k) const {
+  key_type quantile(usize first, usize last, usize k) const {
     assert(first <= last);
     assert(last <= size());
     assert(k < last - first);
 
     key_type ret = 0;
-    for (size_t p = mat.size(); p != 0;) {
+    for (usize p = mat.size(); p != 0;) {
       p -= 1;
       const bit_vector &v = mat[p];
-      const size_t z = v.rank0(last) - v.rank0(first);
+      const usize z = v.rank0(last) - v.rank0(first);
       if (k < z) {
         first = v.rank0(first);
         last = v.rank0(last);
       } else {
         set(ret, p);
         k -= z;
-        const size_t b = v.rank0(size());
+        const usize b = v.rank0(size());
         first = b + v.rank1(first);
         last = b + v.rank1(last);
       }
     }
     return ret;
   }
-  size_t select(const key_type key, const size_t k) const {
-    size_t index = 0;
-    for (size_t p = mat.size(); p != 0;) {
+  usize select(const key_type key, const usize k) const {
+    usize index = 0;
+    for (usize p = mat.size(); p != 0;) {
       p -= 1;
       const bit_vector &v = mat[p];
       if (!test(key, p))
@@ -343,7 +339,7 @@ public:
         index = v.rank0(size()) + v.rank1(index);
     }
     index += k;
-    for (size_t p = 0; p != mat.size(); p += 1) {
+    for (usize p = 0; p != mat.size(); p += 1) {
       const bit_vector &v = mat[p];
       if (!test(key, p))
         index = v.select0(index);

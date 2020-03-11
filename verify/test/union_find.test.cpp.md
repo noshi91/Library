@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/union_find.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-11 00:35:25+09:00
+    - Last commit date: 2020-03-11 22:58:19+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/unionfind">https://judge.yosupo.jp/problem/unionfind</a>
@@ -41,6 +41,7 @@ layout: default
 
 * :heavy_check_mark: <a href="../../library/data_structure/union_find.cpp.html">Union Find <small>(data_structure/union_find.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 
 
 ## Code
@@ -83,51 +84,64 @@ int main() {
 #line 1 "test/union_find.test.cpp"
 #define PROBLEM "https://judge.yosupo.jp/problem/unionfind"
 
-#line 1 "data_structure/union_find.cpp"
+#line 2 "other/int_alias.cpp"
+
+#include <cstddef>
+#include <cstdint>
+
+using i32 = std::int32_t;
+using i64 = std::int64_t;
+using u32 = std::uint32_t;
+using u64 = std::uint64_t;
+using isize = std::ptrdiff_t;
+using usize = std::size_t;
+#line 2 "data_structure/union_find.cpp"
+
 #include <cassert>
 #include <utility>
 #include <vector>
 
 class union_find {
 private:
-  using size_t = std::size_t;
-
   class node_type {
     friend union_find;
 
-    size_t parent;
-    size_t size;
+    usize parent;
+    usize size;
 
-    node_type(const size_t parent, const size_t size)
+    node_type(const usize parent, const usize size)
         : parent(parent), size(size) {}
   };
 
   std::vector<node_type> tree;
 
-  size_t size() const { return tree.size(); }
-
 public:
   union_find() = default;
-  explicit union_find(const size_t n) : tree(n, node_type(n, 1)) {}
 
-  size_t find(const size_t x) {
+  explicit union_find(const usize n) : tree(n, node_type(n, 1)) {}
+
+  usize size() const { return tree.size(); }
+
+  usize find(const usize x) {
     assert(x < size());
     if (tree[x].parent == size())
       return x;
     else
       return tree[x].parent = find(tree[x].parent);
   }
-  bool same(const size_t x, const size_t y) {
+
+  bool same(const usize x, const usize y) {
     assert(x < size());
     assert(y < size());
     return find(x) == find(y);
   }
-  size_t size(const size_t x) {
+
+  usize size(const usize x) {
     assert(x < size());
     return tree[find(x)].size;
   }
 
-  void unite(size_t x, size_t y) {
+  void unite(usize x, usize y) {
     assert(x < size());
     assert(y < size());
     x = find(x);
