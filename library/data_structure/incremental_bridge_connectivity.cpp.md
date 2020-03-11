@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/incremental_bridge_connectivity.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 14:18:18+09:00
+    - Last commit date: 2020-03-11 22:42:07+09:00
 
 
 * see: <a href="https://scrapbox.io/data-structures/Incremental_Bridge-Connectivity">https://scrapbox.io/data-structures/Incremental_Bridge-Connectivity</a>
@@ -40,6 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="union_find.cpp.html">Union Find <small>(data_structure/union_find.cpp)</small></a>
+* :heavy_check_mark: <a href="../other/int_alias.cpp.html">other/int_alias.cpp</a>
 
 
 ## Verified with
@@ -53,6 +54,7 @@ layout: default
 {% raw %}
 ```cpp
 #include "data_structure/union_find.cpp"
+#include "other/int_alias.cpp"
 
 #include <cassert>
 #include <cstddef>
@@ -61,23 +63,23 @@ layout: default
 #include <vector>
 
 class incremental_bridge_connectivity {
-  using size_t = std::size_t;
-
   union_find cc;
   union_find bcc;
-  std::vector<size_t> bbf;
+  std::vector<usize> bbf;
 
-  size_t size() const { return bbf.size(); }
-  size_t nil() const { return size(); }
+  usize size() const { return bbf.size(); }
 
-  size_t parent(const size_t v) {
+  usize nil() const { return size(); }
+
+  usize parent(const usize v) {
     if (bbf[v] == nil())
       return nil();
     else
       return bcc.find(bbf[v]);
   }
-  size_t lca(size_t u, size_t v) {
-    std::unordered_set<size_t> reached;
+
+  usize lca(usize u, usize v) {
+    std::unordered_set<usize> reached;
     while (true) {
       if (u != nil()) {
         if (!reached.insert(u).second)
@@ -87,18 +89,20 @@ class incremental_bridge_connectivity {
       std::swap(u, v);
     }
   }
-  void condense_path(size_t u, const size_t v) {
+
+  void condense_path(usize u, const usize v) {
     while (!bcc.same(u, v)) {
-      const size_t next = parent(u);
+      const usize next = parent(u);
       bbf[u] = bbf[v];
       bcc.unite(u, v);
       u = next;
     }
   }
-  void link(const size_t x, const size_t y) {
-    size_t v = x, prev = y;
+
+  void link(const usize x, const usize y) {
+    usize v = x, prev = y;
     while (v != nil()) {
-      const size_t next = bbf[v];
+      const usize next = bbf[v];
       bbf[v] = prev;
       prev = v;
       v = next;
@@ -107,22 +111,23 @@ class incremental_bridge_connectivity {
 
 public:
   incremental_bridge_connectivity() = default;
-  explicit incremental_bridge_connectivity(const size_t n)
+
+  explicit incremental_bridge_connectivity(const usize n)
       : cc(n), bcc(n), bbf(n, n) {}
 
-  bool bridge_connected(const size_t u, const size_t v) {
+  bool bridge_connected(const usize u, const usize v) {
     assert(u < size());
     assert(v < size());
     return bcc.same(u, v);
   }
 
-  void insert_edge(size_t u, size_t v) {
+  void insert_edge(usize u, usize v) {
     assert(u < size());
     assert(v < size());
     u = bcc.find(u);
     v = bcc.find(v);
     if (cc.same(u, v)) {
-      const size_t w = lca(u, v);
+      const usize w = lca(u, v);
       condense_path(u, w);
       condense_path(v, w);
     } else {
@@ -207,31 +212,41 @@ public:
  * @brief Union Find
  * @see https://scrapbox.io/data-structures/Union_Find
  */
-#line 2 "data_structure/incremental_bridge_connectivity.cpp"
+#line 2 "other/int_alias.cpp"
 
-#line 4 "data_structure/incremental_bridge_connectivity.cpp"
 #include <cstddef>
+#include <cstdint>
+
+using i32 = std::int32_t;
+using i64 = std::int64_t;
+using u32 = std::uint32_t;
+using u64 = std::uint64_t;
+using isize = std::ptrdiff_t;
+using usize = std::size_t;
+#line 3 "data_structure/incremental_bridge_connectivity.cpp"
+
+#line 6 "data_structure/incremental_bridge_connectivity.cpp"
 #include <unordered_set>
-#line 8 "data_structure/incremental_bridge_connectivity.cpp"
+#line 9 "data_structure/incremental_bridge_connectivity.cpp"
 
 class incremental_bridge_connectivity {
-  using size_t = std::size_t;
-
   union_find cc;
   union_find bcc;
-  std::vector<size_t> bbf;
+  std::vector<usize> bbf;
 
-  size_t size() const { return bbf.size(); }
-  size_t nil() const { return size(); }
+  usize size() const { return bbf.size(); }
 
-  size_t parent(const size_t v) {
+  usize nil() const { return size(); }
+
+  usize parent(const usize v) {
     if (bbf[v] == nil())
       return nil();
     else
       return bcc.find(bbf[v]);
   }
-  size_t lca(size_t u, size_t v) {
-    std::unordered_set<size_t> reached;
+
+  usize lca(usize u, usize v) {
+    std::unordered_set<usize> reached;
     while (true) {
       if (u != nil()) {
         if (!reached.insert(u).second)
@@ -241,18 +256,20 @@ class incremental_bridge_connectivity {
       std::swap(u, v);
     }
   }
-  void condense_path(size_t u, const size_t v) {
+
+  void condense_path(usize u, const usize v) {
     while (!bcc.same(u, v)) {
-      const size_t next = parent(u);
+      const usize next = parent(u);
       bbf[u] = bbf[v];
       bcc.unite(u, v);
       u = next;
     }
   }
-  void link(const size_t x, const size_t y) {
-    size_t v = x, prev = y;
+
+  void link(const usize x, const usize y) {
+    usize v = x, prev = y;
     while (v != nil()) {
-      const size_t next = bbf[v];
+      const usize next = bbf[v];
       bbf[v] = prev;
       prev = v;
       v = next;
@@ -261,22 +278,23 @@ class incremental_bridge_connectivity {
 
 public:
   incremental_bridge_connectivity() = default;
-  explicit incremental_bridge_connectivity(const size_t n)
+
+  explicit incremental_bridge_connectivity(const usize n)
       : cc(n), bcc(n), bbf(n, n) {}
 
-  bool bridge_connected(const size_t u, const size_t v) {
+  bool bridge_connected(const usize u, const usize v) {
     assert(u < size());
     assert(v < size());
     return bcc.same(u, v);
   }
 
-  void insert_edge(size_t u, size_t v) {
+  void insert_edge(usize u, usize v) {
     assert(u < size());
     assert(v < size());
     u = bcc.find(u);
     v = bcc.find(v);
     if (cc.same(u, v)) {
-      const size_t w = lca(u, v);
+      const usize w = lca(u, v);
       condense_path(u, w);
       condense_path(v, w);
     } else {

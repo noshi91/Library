@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/fenwick_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-11 00:35:25+09:00
+    - Last commit date: 2020-03-11 22:42:07+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_add_range_sum">https://judge.yosupo.jp/problem/point_add_range_sum</a>
@@ -41,6 +41,7 @@ layout: default
 
 * :heavy_check_mark: <a href="../../library/data_structure/fenwick_tree.cpp.html">Fenwick Tree <small>(data_structure/fenwick_tree.cpp)</small></a>
 * :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
 * :heavy_check_mark: <a href="../../library/other/plus_monoid.cpp.html">other/plus_monoid.cpp</a>
 
 
@@ -96,28 +97,42 @@ int main() {
 #line 1 "test/fenwick_tree.test.cpp"
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 
-#line 1 "data_structure/fenwick_tree.cpp"
-#include <cassert>
+#line 2 "other/int_alias.cpp"
+
 #include <cstddef>
+#include <cstdint>
+
+using i32 = std::int32_t;
+using i64 = std::int64_t;
+using u32 = std::uint32_t;
+using u64 = std::uint64_t;
+using isize = std::ptrdiff_t;
+using usize = std::size_t;
+#line 2 "data_structure/fenwick_tree.cpp"
+
+#include <cassert>
+#line 5 "data_structure/fenwick_tree.cpp"
 #include <vector>
 
 template <class M> class fenwick_tree {
-  using size_t = std::size_t;
+  using T = typename M::value_type;
 
 public:
-  using T = typename M::value_type;
+  using value_type = T;
 
 private:
   std::vector<T> tree;
 
 public:
   fenwick_tree() = default;
-  explicit fenwick_tree(const size_t size) : tree(size + 1, M::identity) {}
+
+  explicit fenwick_tree(const usize size) : tree(size + 1, M::identity) {}
 
   bool empty() const { return size() == 0; }
-  size_t size() const { return tree.size() - 1; }
+  
+  usize size() const { return tree.size() - 1; }
 
-  T fold_prefix(size_t last) const {
+  T fold_prefix(usize last) const {
     assert(last <= size());
     T ret = M::identity;
     while (last != 0) {
@@ -127,7 +142,7 @@ public:
     return ret;
   }
 
-  void add(size_t index, const T value) {
+  void add(usize index, const T value) {
     assert(index < size());
     index += 1;
     while (index < tree.size()) {

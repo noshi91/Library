@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/dual_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-11 00:35:25+09:00
+    - Last commit date: 2020-03-11 22:42:07+09:00
 
 
 * see: <a href="https://kimiyuki.net/blog/2019/02/21/dual-segment-tree/">https://kimiyuki.net/blog/2019/02/21/dual-segment-tree/</a>
@@ -57,44 +57,43 @@ layout: default
 ```cpp
 #include "other/bit_width.cpp"
 #include "other/countr_zero.cpp"
+#include "other/int_alias.cpp"
 
 #include <cassert>
 #include <cstddef>
 #include <vector>
 
 template <class M> class dual_segment_tree {
-  using size_t = std::size_t;
   using T = typename M::value_type;
 
 public:
   using value_type = T;
-  using size_type = size_t;
 
 private:
   static void add(T &x, const T y) { x = M::operation(x, y); }
 
   std::vector<T> tree;
 
-  void push(const size_t index) {
+  void push(const usize index) {
     add(tree[index * 2], tree[index]);
     add(tree[index * 2 + 1], tree[index]);
     tree[index] = M::identity;
   }
-  void propagate(const size_t index) {
+  void propagate(const usize index) {
     if (index == 0)
       return;
-    const size_t crz = countr_zero(index);
-    for (size_t h = bit_width(index) - 1; h != crz; h -= 1)
+    const usize crz = countr_zero(index);
+    for (usize h = bit_width(index) - 1; h != crz; h -= 1)
       push(index >> h);
   }
 
 public:
   dual_segment_tree() = default;
-  explicit dual_segment_tree(const size_t n) : tree(n * 2, M::identity) {}
+  explicit dual_segment_tree(const usize n) : tree(n * 2, M::identity) {}
 
-  size_t size() const noexcept { return tree.size() / 2; }
+  usize size() const noexcept { return tree.size() / 2; }
 
-  T fold(size_t index) const {
+  T fold(usize index) const {
     assert(index < size());
     index += size();
     T ret = tree[index];
@@ -105,7 +104,7 @@ public:
     return ret;
   }
 
-  void update(size_t first, size_t last, const T x) {
+  void update(usize first, usize last, const T x) {
     assert(first <= last);
     assert(last <= size());
     first += size();
@@ -185,51 +184,49 @@ usize countl_zero(u64 x) {
   x |= x >> 8;
   x |= x >> 16;
   x |= x >> 32;
-  return 64 - countr_zero(x + 1);
+  return 64 - countr_zero(~x);
 #endif
 }
 #line 5 "other/bit_width.cpp"
 
 usize bit_width(const u64 x) { return 64 - countl_zero(x); }
-#line 3 "data_structure/dual_segment_tree.cpp"
+#line 4 "data_structure/dual_segment_tree.cpp"
 
 #include <cassert>
-#line 6 "data_structure/dual_segment_tree.cpp"
+#line 7 "data_structure/dual_segment_tree.cpp"
 #include <vector>
 
 template <class M> class dual_segment_tree {
-  using size_t = std::size_t;
   using T = typename M::value_type;
 
 public:
   using value_type = T;
-  using size_type = size_t;
 
 private:
   static void add(T &x, const T y) { x = M::operation(x, y); }
 
   std::vector<T> tree;
 
-  void push(const size_t index) {
+  void push(const usize index) {
     add(tree[index * 2], tree[index]);
     add(tree[index * 2 + 1], tree[index]);
     tree[index] = M::identity;
   }
-  void propagate(const size_t index) {
+  void propagate(const usize index) {
     if (index == 0)
       return;
-    const size_t crz = countr_zero(index);
-    for (size_t h = bit_width(index) - 1; h != crz; h -= 1)
+    const usize crz = countr_zero(index);
+    for (usize h = bit_width(index) - 1; h != crz; h -= 1)
       push(index >> h);
   }
 
 public:
   dual_segment_tree() = default;
-  explicit dual_segment_tree(const size_t n) : tree(n * 2, M::identity) {}
+  explicit dual_segment_tree(const usize n) : tree(n * 2, M::identity) {}
 
-  size_t size() const noexcept { return tree.size() / 2; }
+  usize size() const noexcept { return tree.size() / 2; }
 
-  T fold(size_t index) const {
+  T fold(usize index) const {
     assert(index < size());
     index += size();
     T ret = tree[index];
@@ -240,7 +237,7 @@ public:
     return ret;
   }
 
-  void update(size_t first, size_t last, const T x) {
+  void update(usize first, usize last, const T x) {
     assert(first <= last);
     assert(last <= size());
     first += size();

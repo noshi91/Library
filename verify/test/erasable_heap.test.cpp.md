@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/erasable_heap.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-11 00:35:25+09:00
+    - Last commit date: 2020-03-11 22:42:07+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja</a>
@@ -110,16 +110,18 @@ int main() {
 
 #line 1 "data_structure/erasable_heap.cpp"
 #include <cassert>
+#include <utility>
 
 template <class Heap> class erasable_heap {
   using W = typename Heap::value_compare;
-  using T = typename W::value_type;
+  using T = typename Heap::value_type;
 
 public:
   using value_compare = W;
+  using value_type = T;
 
 private:
-  static bool equivalent(const T x, const T y) {
+  static bool equivalent(const T &x, const T &y) {
     return W::compare(x, y) && W::compare(y, x);
   }
 
@@ -139,22 +141,27 @@ public:
 
   bool empty() const { return base.empty(); }
 
-  T top() const {
+  const T &top() const {
     assert(!empty());
+
     return base.top();
   }
 
-  void push(const T x) {
-    base.push(x);
+  void push(T x) {
+    base.push(std::move(x));
     normalize();
   }
-  void pop() {
+
+  T pop() {
     assert(!empty());
-    base.pop();
+
+    T ret = base.pop();
     normalize();
+    return ret;
   }
-  void erase(const T x) {
-    erased.push(x);
+
+  void erase(T x) {
+    erased.push(std::move(x));
     normalize();
   }
 };
@@ -164,13 +171,15 @@ public:
  */
 #line 2 "data_structure/pairing_heap.cpp"
 #include <memory>
-#include <utility>
+#line 4 "data_structure/pairing_heap.cpp"
 
 template <class W> class pairing_heap {
+  using Self = pairing_heap;
   using T = typename W::value_type;
 
 public:
   using value_compare = W;
+  using value_type = T;
 
 private:
   class node_type;
@@ -181,7 +190,7 @@ private:
     node_ptr head;
     node_ptr next;
 
-    node_type(const T value) : value(value), head(), next() {}
+    node_type(T value) : value(std::move(value)), head(), next() {}
   };
 
   static node_ptr merge(node_ptr x, node_ptr y) {
@@ -195,6 +204,7 @@ private:
     x->head = std::move(y);
     return x;
   }
+
   static node_ptr merge_list(node_ptr list) {
     if (!list || !list->next)
       return list;
@@ -212,21 +222,27 @@ public:
   pairing_heap() = default;
 
   bool empty() const { return !root; }
-  T top() const {
+
+  const T &top() const {
     assert(!empty());
+
     return root->value;
   }
 
-  void push(const T x) {
-    root = merge(std::move(root), std::make_unique<node_type>(x));
-  }
-  void pop() {
-    assert(!empty());
-    root = merge_list(std::move(root->head));
+  void push(T x) {
+    root = merge(std::move(root), std::make_unique<node_type>(std::move(x)));
   }
 
-  static pairing_heap meld(pairing_heap x, pairing_heap y) {
-    return pairing_heap(merge(std::move(x.root), std::move(y.root)));
+  T pop() {
+    assert(!empty());
+
+    T ret = std::move(root->value);
+    root = merge_list(std::move(root->head));
+    return ret;
+  }
+
+  static Self meld(Self x, Self y) {
+    return Self(merge(std::move(x.root), std::move(y.root)));
   }
 };
 

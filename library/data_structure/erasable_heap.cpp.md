@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/erasable_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 14:18:18+09:00
+    - Last commit date: 2020-03-11 22:42:07+09:00
 
 
 
@@ -47,16 +47,18 @@ layout: default
 {% raw %}
 ```cpp
 #include <cassert>
+#include <utility>
 
 template <class Heap> class erasable_heap {
   using W = typename Heap::value_compare;
-  using T = typename W::value_type;
+  using T = typename Heap::value_type;
 
 public:
   using value_compare = W;
+  using value_type = T;
 
 private:
-  static bool equivalent(const T x, const T y) {
+  static bool equivalent(const T &x, const T &y) {
     return W::compare(x, y) && W::compare(y, x);
   }
 
@@ -76,22 +78,27 @@ public:
 
   bool empty() const { return base.empty(); }
 
-  T top() const {
+  const T &top() const {
     assert(!empty());
+
     return base.top();
   }
 
-  void push(const T x) {
-    base.push(x);
+  void push(T x) {
+    base.push(std::move(x));
     normalize();
   }
-  void pop() {
+
+  T pop() {
     assert(!empty());
-    base.pop();
+
+    T ret = base.pop();
     normalize();
+    return ret;
   }
-  void erase(const T x) {
-    erased.push(x);
+
+  void erase(T x) {
+    erased.push(std::move(x));
     normalize();
   }
 };
@@ -108,16 +115,18 @@ public:
 ```cpp
 #line 1 "data_structure/erasable_heap.cpp"
 #include <cassert>
+#include <utility>
 
 template <class Heap> class erasable_heap {
   using W = typename Heap::value_compare;
-  using T = typename W::value_type;
+  using T = typename Heap::value_type;
 
 public:
   using value_compare = W;
+  using value_type = T;
 
 private:
-  static bool equivalent(const T x, const T y) {
+  static bool equivalent(const T &x, const T &y) {
     return W::compare(x, y) && W::compare(y, x);
   }
 
@@ -137,22 +146,27 @@ public:
 
   bool empty() const { return base.empty(); }
 
-  T top() const {
+  const T &top() const {
     assert(!empty());
+
     return base.top();
   }
 
-  void push(const T x) {
-    base.push(x);
+  void push(T x) {
+    base.push(std::move(x));
     normalize();
   }
-  void pop() {
+
+  T pop() {
     assert(!empty());
-    base.pop();
+
+    T ret = base.pop();
     normalize();
+    return ret;
   }
-  void erase(const T x) {
-    erased.push(x);
+
+  void erase(T x) {
+    erased.push(std::move(x));
     normalize();
   }
 };

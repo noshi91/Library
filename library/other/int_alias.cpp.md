@@ -47,6 +47,8 @@ layout: default
 * :heavy_check_mark: <a href="../algorithm/zeta_transform.cpp.html">Zeta Transform <small>(algorithm/zeta_transform.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/bit_vector.cpp.html">Bit Vector <small>(data_structure/bit_vector.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/dual_segment_tree.cpp.html">Dual Segment Tree <small>(data_structure/dual_segment_tree.cpp)</small></a>
+* :heavy_check_mark: <a href="../data_structure/fenwick_tree.cpp.html">Fenwick Tree <small>(data_structure/fenwick_tree.cpp)</small></a>
+* :heavy_check_mark: <a href="../data_structure/incremental_bridge_connectivity.cpp.html">Incremental Bridge-Connectivity <small>(data_structure/incremental_bridge_connectivity.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/lazy_segment_tree.cpp.html">Lazy Segment Tree <small>(data_structure/lazy_segment_tree.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/potentialized_union_find.cpp.html">Potentialized Union Find <small>(data_structure/potentialized_union_find.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/radix_heap.cpp.html">Radix Heap <small>(data_structure/radix_heap.cpp)</small></a>
@@ -64,6 +66,8 @@ layout: default
 * :heavy_check_mark: <a href="../../verify/test/axiotis_tzamos_knapsack.test.cpp.html">test/axiotis_tzamos_knapsack.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/axiotis_tzamos_unbounded_knapsack.test.cpp.html">test/axiotis_tzamos_unbounded_knapsack.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/dual_segment_tree.test.cpp.html">test/dual_segment_tree.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/fenwick_tree.test.cpp.html">test/fenwick_tree.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/incremental_bridge_connectivity.test.cpp.html">test/incremental_bridge_connectivity.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/lazy_segment_tree.test.cpp.html">test/lazy_segment_tree.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/potentialized_union_find.test.cpp.html">test/potentialized_union_find.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/radix_heap.test.cpp.html">test/radix_heap.test.cpp</a>

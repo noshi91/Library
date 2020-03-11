@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/pairing_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 14:18:18+09:00
+    - Last commit date: 2020-03-11 22:42:07+09:00
 
 
 
@@ -52,10 +52,12 @@ layout: default
 #include <utility>
 
 template <class W> class pairing_heap {
+  using Self = pairing_heap;
   using T = typename W::value_type;
 
 public:
   using value_compare = W;
+  using value_type = T;
 
 private:
   class node_type;
@@ -66,7 +68,7 @@ private:
     node_ptr head;
     node_ptr next;
 
-    node_type(const T value) : value(value), head(), next() {}
+    node_type(T value) : value(std::move(value)), head(), next() {}
   };
 
   static node_ptr merge(node_ptr x, node_ptr y) {
@@ -80,6 +82,7 @@ private:
     x->head = std::move(y);
     return x;
   }
+
   static node_ptr merge_list(node_ptr list) {
     if (!list || !list->next)
       return list;
@@ -97,21 +100,27 @@ public:
   pairing_heap() = default;
 
   bool empty() const { return !root; }
-  T top() const {
+
+  const T &top() const {
     assert(!empty());
+
     return root->value;
   }
 
-  void push(const T x) {
-    root = merge(std::move(root), std::make_unique<node_type>(x));
-  }
-  void pop() {
-    assert(!empty());
-    root = merge_list(std::move(root->head));
+  void push(T x) {
+    root = merge(std::move(root), std::make_unique<node_type>(std::move(x)));
   }
 
-  static pairing_heap meld(pairing_heap x, pairing_heap y) {
-    return pairing_heap(merge(std::move(x.root), std::move(y.root)));
+  T pop() {
+    assert(!empty());
+
+    T ret = std::move(root->value);
+    root = merge_list(std::move(root->head));
+    return ret;
+  }
+
+  static Self meld(Self x, Self y) {
+    return Self(merge(std::move(x.root), std::move(y.root)));
   }
 };
 
@@ -131,10 +140,12 @@ public:
 #include <utility>
 
 template <class W> class pairing_heap {
+  using Self = pairing_heap;
   using T = typename W::value_type;
 
 public:
   using value_compare = W;
+  using value_type = T;
 
 private:
   class node_type;
@@ -145,7 +156,7 @@ private:
     node_ptr head;
     node_ptr next;
 
-    node_type(const T value) : value(value), head(), next() {}
+    node_type(T value) : value(std::move(value)), head(), next() {}
   };
 
   static node_ptr merge(node_ptr x, node_ptr y) {
@@ -159,6 +170,7 @@ private:
     x->head = std::move(y);
     return x;
   }
+
   static node_ptr merge_list(node_ptr list) {
     if (!list || !list->next)
       return list;
@@ -176,21 +188,27 @@ public:
   pairing_heap() = default;
 
   bool empty() const { return !root; }
-  T top() const {
+
+  const T &top() const {
     assert(!empty());
+
     return root->value;
   }
 
-  void push(const T x) {
-    root = merge(std::move(root), std::make_unique<node_type>(x));
-  }
-  void pop() {
-    assert(!empty());
-    root = merge_list(std::move(root->head));
+  void push(T x) {
+    root = merge(std::move(root), std::make_unique<node_type>(std::move(x)));
   }
 
-  static pairing_heap meld(pairing_heap x, pairing_heap y) {
-    return pairing_heap(merge(std::move(x.root), std::move(y.root)));
+  T pop() {
+    assert(!empty());
+
+    T ret = std::move(root->value);
+    root = merge_list(std::move(root->head));
+    return ret;
+  }
+
+  static Self meld(Self x, Self y) {
+    return Self(merge(std::move(x.root), std::move(y.root)));
   }
 };
 

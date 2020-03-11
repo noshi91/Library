@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#ed469618898d75b149e5c7c4b6a1c415">algorithm</a>
 * <a href="{{ site.github.repository_url }}/blob/master/algorithm/axiotis_tzamos_unbounded_knapsack.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-10 16:21:51+09:00
+    - Last commit date: 2020-03-11 22:42:07+09:00
 
 
 * see: <a href="https://arxiv.org/abs/1802.06440">https://arxiv.org/abs/1802.06440</a>
@@ -179,7 +179,7 @@ usize countl_zero(u64 x) {
   x |= x >> 8;
   x |= x >> 16;
   x |= x >> 32;
-  return 64 - countr_zero(x + 1);
+  return 64 - countr_zero(~x);
 #endif
 }
 #line 5 "other/bit_width.cpp"

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/xor_linked_list.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-11 21:06:01+09:00
+    - Last commit date: 2020-03-11 22:42:07+09:00
 
 
 * see: <a href="https://en.wikipedia.org/wiki/XOR_linked_list">https://en.wikipedia.org/wiki/XOR_linked_list</a>
@@ -163,7 +163,7 @@ public:
       delete itr;
       itr = next;
     }
-    delete (itr);
+    delete itr;
     release();
   }
 
@@ -318,7 +318,7 @@ public:
       delete itr;
       itr = next;
     }
-    delete (itr);
+    delete itr;
     release();
   }
 

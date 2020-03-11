@@ -31,10 +31,15 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/fenwick_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 14:18:18+09:00
+    - Last commit date: 2020-03-11 22:42:07+09:00
 
 
 * see: <a href="https://scrapbox.io/data-structures/Fenwick_Tree">https://scrapbox.io/data-structures/Fenwick_Tree</a>
+
+
+## Depends on
+
+* :heavy_check_mark: <a href="../other/int_alias.cpp.html">other/int_alias.cpp</a>
 
 
 ## Verified with
@@ -47,27 +52,31 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
+#include "other/int_alias.cpp"
+
 #include <cassert>
 #include <cstddef>
 #include <vector>
 
 template <class M> class fenwick_tree {
-  using size_t = std::size_t;
+  using T = typename M::value_type;
 
 public:
-  using T = typename M::value_type;
+  using value_type = T;
 
 private:
   std::vector<T> tree;
 
 public:
   fenwick_tree() = default;
-  explicit fenwick_tree(const size_t size) : tree(size + 1, M::identity) {}
+
+  explicit fenwick_tree(const usize size) : tree(size + 1, M::identity) {}
 
   bool empty() const { return size() == 0; }
-  size_t size() const { return tree.size() - 1; }
+  
+  usize size() const { return tree.size() - 1; }
 
-  T fold_prefix(size_t last) const {
+  T fold_prefix(usize last) const {
     assert(last <= size());
     T ret = M::identity;
     while (last != 0) {
@@ -77,7 +86,7 @@ public:
     return ret;
   }
 
-  void add(size_t index, const T value) {
+  void add(usize index, const T value) {
     assert(index < size());
     index += 1;
     while (index < tree.size()) {
@@ -98,28 +107,42 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "data_structure/fenwick_tree.cpp"
-#include <cassert>
+#line 2 "other/int_alias.cpp"
+
 #include <cstddef>
+#include <cstdint>
+
+using i32 = std::int32_t;
+using i64 = std::int64_t;
+using u32 = std::uint32_t;
+using u64 = std::uint64_t;
+using isize = std::ptrdiff_t;
+using usize = std::size_t;
+#line 2 "data_structure/fenwick_tree.cpp"
+
+#include <cassert>
+#line 5 "data_structure/fenwick_tree.cpp"
 #include <vector>
 
 template <class M> class fenwick_tree {
-  using size_t = std::size_t;
+  using T = typename M::value_type;
 
 public:
-  using T = typename M::value_type;
+  using value_type = T;
 
 private:
   std::vector<T> tree;
 
 public:
   fenwick_tree() = default;
-  explicit fenwick_tree(const size_t size) : tree(size + 1, M::identity) {}
+
+  explicit fenwick_tree(const usize size) : tree(size + 1, M::identity) {}
 
   bool empty() const { return size() == 0; }
-  size_t size() const { return tree.size() - 1; }
+  
+  usize size() const { return tree.size() - 1; }
 
-  T fold_prefix(size_t last) const {
+  T fold_prefix(usize last) const {
     assert(last <= size());
     T ret = M::identity;
     while (last != 0) {
@@ -129,7 +152,7 @@ public:
     return ret;
   }
 
-  void add(size_t index, const T value) {
+  void add(usize index, const T value) {
     assert(index < size());
     index += 1;
     while (index < tree.size()) {

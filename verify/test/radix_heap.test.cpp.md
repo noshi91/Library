@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/radix_heap.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-11 00:35:25+09:00
+    - Last commit date: 2020-03-11 22:42:07+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja</a>
@@ -159,7 +159,7 @@ usize countl_zero(u64 x) {
   x |= x >> 8;
   x |= x >> 16;
   x |= x >> 32;
-  return 64 - countr_zero(x + 1);
+  return 64 - countr_zero(~x);
 #endif
 }
 #line 5 "other/bit_width.cpp"

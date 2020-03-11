@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#795f3202b17cb6bc3d4b771d8c6c9eaf">other</a>
 * <a href="{{ site.github.repository_url }}/blob/master/other/countl_zero.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-10 16:21:51+09:00
+    - Last commit date: 2020-03-11 22:42:07+09:00
 
 
 
@@ -79,7 +79,7 @@ usize countl_zero(u64 x) {
   x |= x >> 8;
   x |= x >> 16;
   x |= x >> 32;
-  return 64 - countr_zero(x + 1);
+  return 64 - countr_zero(~x);
 #endif
 }
 
@@ -134,7 +134,7 @@ usize countl_zero(u64 x) {
   x |= x >> 8;
   x |= x >> 16;
   x |= x >> 32;
-  return 64 - countr_zero(x + 1);
+  return 64 - countr_zero(~x);
 #endif
 }
 
