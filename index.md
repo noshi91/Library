@@ -73,6 +73,7 @@ layout: default
 * :heavy_check_mark: <a href="library/data_structure/union_enumerate.cpp.html">Union Enumerate <small>(data_structure/union_enumerate.cpp)</small></a>
 * :heavy_check_mark: <a href="library/data_structure/union_find.cpp.html">Union Find <small>(data_structure/union_find.cpp)</small></a>
 * :heavy_check_mark: <a href="library/data_structure/wavelet_matrix.cpp.html">Wavelet Matrix <small>(data_structure/wavelet_matrix.cpp)</small></a>
+* :warning: <a href="library/data_structure/xor_linked_list.cpp.html">Xor Linked List <small>(data_structure/xor_linked_list.cpp)</small></a>
 
 
 <div id="c25e426f9a94f83968c77e7d5480c159"></div>
