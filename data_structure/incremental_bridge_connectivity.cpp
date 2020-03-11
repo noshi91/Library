@@ -1,4 +1,5 @@
 #include "data_structure/union_find.cpp"
+#include "other/int_alias.cpp"
 
 #include <cassert>
 #include <cstddef>
@@ -7,23 +8,23 @@
 #include <vector>
 
 class incremental_bridge_connectivity {
-  using size_t = std::size_t;
-
   union_find cc;
   union_find bcc;
-  std::vector<size_t> bbf;
+  std::vector<usize> bbf;
 
-  size_t size() const { return bbf.size(); }
-  size_t nil() const { return size(); }
+  usize size() const { return bbf.size(); }
 
-  size_t parent(const size_t v) {
+  usize nil() const { return size(); }
+
+  usize parent(const usize v) {
     if (bbf[v] == nil())
       return nil();
     else
       return bcc.find(bbf[v]);
   }
-  size_t lca(size_t u, size_t v) {
-    std::unordered_set<size_t> reached;
+
+  usize lca(usize u, usize v) {
+    std::unordered_set<usize> reached;
     while (true) {
       if (u != nil()) {
         if (!reached.insert(u).second)
@@ -33,18 +34,20 @@ class incremental_bridge_connectivity {
       std::swap(u, v);
     }
   }
-  void condense_path(size_t u, const size_t v) {
+
+  void condense_path(usize u, const usize v) {
     while (!bcc.same(u, v)) {
-      const size_t next = parent(u);
+      const usize next = parent(u);
       bbf[u] = bbf[v];
       bcc.unite(u, v);
       u = next;
     }
   }
-  void link(const size_t x, const size_t y) {
-    size_t v = x, prev = y;
+
+  void link(const usize x, const usize y) {
+    usize v = x, prev = y;
     while (v != nil()) {
-      const size_t next = bbf[v];
+      const usize next = bbf[v];
       bbf[v] = prev;
       prev = v;
       v = next;
@@ -53,22 +56,23 @@ class incremental_bridge_connectivity {
 
 public:
   incremental_bridge_connectivity() = default;
-  explicit incremental_bridge_connectivity(const size_t n)
+
+  explicit incremental_bridge_connectivity(const usize n)
       : cc(n), bcc(n), bbf(n, n) {}
 
-  bool bridge_connected(const size_t u, const size_t v) {
+  bool bridge_connected(const usize u, const usize v) {
     assert(u < size());
     assert(v < size());
     return bcc.same(u, v);
   }
 
-  void insert_edge(size_t u, size_t v) {
+  void insert_edge(usize u, usize v) {
     assert(u < size());
     assert(v < size());
     u = bcc.find(u);
     v = bcc.find(v);
     if (cc.same(u, v)) {
-      const size_t w = lca(u, v);
+      const usize w = lca(u, v);
       condense_path(u, w);
       condense_path(v, w);
     } else {

@@ -13,6 +13,6 @@ usize countl_zero(u64 x) {
   x |= x >> 8;
   x |= x >> 16;
   x |= x >> 32;
-  return 64 - countr_zero(x + 1);
+  return 64 - countr_zero(~x);
 #endif
 }

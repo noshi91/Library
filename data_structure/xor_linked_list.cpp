@@ -119,7 +119,7 @@ public:
       delete itr;
       itr = next;
     }
-    delete (itr);
+    delete itr;
     release();
   }
 

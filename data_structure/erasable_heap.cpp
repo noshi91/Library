@@ -1,14 +1,16 @@
 #include <cassert>
+#include <utility>
 
 template <class Heap> class erasable_heap {
   using W = typename Heap::value_compare;
-  using T = typename W::value_type;
+  using T = typename Heap::value_type;
 
 public:
   using value_compare = W;
+  using value_type = T;
 
 private:
-  static bool equivalent(const T x, const T y) {
+  static bool equivalent(const T &x, const T &y) {
     return W::compare(x, y) && W::compare(y, x);
   }
 
@@ -28,22 +30,27 @@ public:
 
   bool empty() const { return base.empty(); }
 
-  T top() const {
+  const T &top() const {
     assert(!empty());
+
     return base.top();
   }
 
-  void push(const T x) {
-    base.push(x);
+  void push(T x) {
+    base.push(std::move(x));
     normalize();
   }
-  void pop() {
+
+  T pop() {
     assert(!empty());
-    base.pop();
+
+    T ret = base.pop();
     normalize();
+    return ret;
   }
-  void erase(const T x) {
-    erased.push(x);
+
+  void erase(T x) {
+    erased.push(std::move(x));
     normalize();
   }
 };

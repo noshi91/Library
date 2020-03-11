@@ -76,5 +76,4 @@ int main() {
       break;
     solve(n, q);
   }
-  return 0;
 }
