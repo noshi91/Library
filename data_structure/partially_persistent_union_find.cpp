@@ -1,3 +1,5 @@
+#include "other/int_alias.cpp"
+
 #include <algorithm>
 #include <cassert>
 #include <cstddef>
@@ -6,61 +8,64 @@
 #include <vector>
 
 class partially_persistent_union_find {
-  using size_t = std::size_t;
-
 public:
-  using time_type = size_t;
+  using time_type = usize;
 
 private:
   class node_type {
-    friend partially_persistent_union_find;
-
+  public:
     time_type time;
-    size_t parent;
-    size_t size;
+    usize parent;
+    usize size;
 
-    node_type(const time_type time, const size_t parent, const size_t size)
+    node_type(const time_type time, const usize parent, const usize size)
         : time(time), parent(parent), size(size) {}
   };
+
   class sh_node {
-    friend partially_persistent_union_find;
-
+  public:
     time_type time;
-    size_t size;
+    usize size;
 
-    sh_node(const time_type time, const size_t size) : time(time), size(size) {}
+    sh_node(const time_type time, const usize size) : time(time), size(size) {}
   };
 
   std::vector<node_type> tree;
   std::vector<std::vector<sh_node>> size_history;
   time_type time_count;
 
-  size_t size() const { return tree.size(); }
+  usize size() const { return tree.size(); }
 
 public:
   partially_persistent_union_find() = default;
-  explicit partially_persistent_union_find(const size_t n)
+
+  explicit partially_persistent_union_find(const usize n)
       : tree(n, node_type(std::numeric_limits<time_type>::max(), 0, 1)),
         size_history(n, std::vector<sh_node>({sh_node(0, 1)})), time_count(0) {
-    for (size_t i = 0; i != n; i += 1)
+    for (usize i = 0; i != n; i += 1)
       tree[i].parent = i;
   }
 
   time_type now() const { return time_count; }
 
-  size_t find(const time_type time, size_t x) const {
+  usize find(const time_type time, usize x) const {
     assert(x < size());
+    
     while (tree[x].time <= time)
       x = tree[x].parent;
     return x;
   }
-  bool same(const time_type time, const size_t x, const size_t y) const {
+
+  bool same(const time_type time, const usize x, const usize y) const {
     assert(x < size());
     assert(y < size());
+
     return find(time, x) == find(time, y);
   }
-  size_t size(const time_type time, size_t x) const {
+
+  usize size(const time_type time, usize x) const {
     assert(x < size());
+
     x = find(time, x);
     return std::prev(std::partition_point(
                          size_history[x].cbegin(), size_history[x].cend(),
@@ -68,9 +73,10 @@ public:
         ->size;
   }
 
-  time_type unite(size_t x, size_t y) {
+  time_type unite(usize x, usize y) {
     assert(x < tree.size());
     assert(y < tree.size());
+
     x = find(now(), x);
     y = find(now(), y);
     time_count += 1;

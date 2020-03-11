@@ -1,3 +1,5 @@
+#include "other/int_alias.cpp"
+
 #include <algorithm>
 #include <cstddef>
 #include <iterator>
@@ -8,7 +10,6 @@
 #include <vector>
 
 template <class W> class ternary_treap {
-  using size_t = std::size_t;
   using T = typename W::value_type;
 
 public:
@@ -21,8 +22,8 @@ private:
   class mid_type {
     friend ternary_treap;
 
-    size_t prio_;
-    size_t key_prio;
+    usize prio_;
+    usize key_prio;
     node_ptr ptr;
 
     void fix() { prio_ = std::max(key_prio, prio(ptr)); }
@@ -38,19 +39,19 @@ private:
     mid_type mid;
     node_ptr right;
 
-    size_t prio() const { return mid.prio_; }
+    usize prio() const { return mid.prio_; }
 
   public:
     node_type(const T key) : key(key), left(), mid(), right() {}
   };
 
-  static size_t rand() {
+  static usize rand() {
     static std::default_random_engine rng(91);
-    static std::uniform_int_distribution<size_t> uid(
-        1, std::numeric_limits<size_t>::max());
+    static std::uniform_int_distribution<usize> uid(
+        1, std::numeric_limits<usize>::max());
     return uid(rng);
   }
-  static size_t prio(const node_ptr &ptr) { return ptr ? ptr->prio() : 0; }
+  static usize prio(const node_ptr &ptr) { return ptr ? ptr->prio() : 0; }
   static void rot_left(node_ptr &ptr) {
     node_ptr right = std::move(ptr->right);
     ptr->right = std::move(right->left);

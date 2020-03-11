@@ -1,9 +1,11 @@
+#include "other/int_alias.cpp"
+
 #include <cassert>
 #include <cstddef>
 #include <memory>
 #include <utility>
 
-template <class T, class Size = std::size_t>
+template <class T, class Size = usize>
 class persistent_skew_binary_random_access_list {
   using Self = persistent_skew_binary_random_access_list;
 
