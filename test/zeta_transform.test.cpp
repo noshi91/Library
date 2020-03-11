@@ -1,6 +1,7 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119"
 
-#include "algorithm/zeta_transform.cpp"
+#include "algorithm/superset_mobius_transform.cpp"
+#include "algorithm/superset_zeta_transform.cpp"
 #include "other/modint.cpp"
 #include "other/multiplies_monoid.cpp"
 #include "other/plus_group.cpp"
