@@ -1,11 +1,8 @@
-#define PROBLEM                                                                \
-  "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B&lang=jp"
+#define PROBLEM "https://judge.yosupo.jp/problem/two_edge_connected_components"
 
 #include "data_structure/incremental_bridge_connectivity.cpp"
 
-#include <algorithm>
 #include <iostream>
-#include <utility>
 #include <vector>
 
 int main() {
@@ -14,16 +11,29 @@ int main() {
   int n, m;
   std::cin >> n >> m;
   incremental_bridge_connectivity ibc(n);
-  std::vector<std::pair<int, int>> es(m);
-  for (auto &[u, v] : es) {
-    std::cin >> u >> v;
-    ibc.insert_edge(u, v);
-    if (u > v)
-      std::swap(u, v);
+  for (int i = 0; i != m; i += 1) {
+    int a, b;
+    std::cin >> a >> b;
+    ibc.insert_edge(a, b);
   }
-  std::sort(es.begin(), es.end());
-  for (const auto &[u, v] : es) {
-    if (!ibc.bridge_connected(u, v))
-      std::cout << u << " " << v << "\n";
+
+  std::vector<int> id(n, n);
+  int k = 0;
+  std::vector<std::vector<int>> ans(n);
+  for (int i = 0; i != n; i += 1) {
+    const int r = ibc.find_block(i);
+    if (id[r] == n) {
+      id[r] = k;
+      k += 1;
+    }
+    ans[id[r]].push_back(i);
+  }
+
+  std::cout << k << "\n";
+  for (int i = 0; i != k; i += 1) {
+    std::cout << ans[i].size();
+    for (const int e : ans[i])
+      std::cout << " " << e;
+    std::cout << "\n";
   }
 }

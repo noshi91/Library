@@ -47,7 +47,7 @@ class incremental_bridge_connectivity {
   void link(const usize x, const usize y) {
     usize v = x, prev = y;
     while (v != nil()) {
-      const usize next = bbf[v];
+      const usize next = parent(v);
       bbf[v] = prev;
       prev = v;
       v = next;
@@ -60,15 +60,23 @@ public:
   explicit incremental_bridge_connectivity(const usize n)
       : cc(n), bcc(n), bbf(n, n) {}
 
+  usize find_block(const usize v) {
+    assert(v < size());
+
+    return bcc.find(v);
+  }
+
   bool bridge_connected(const usize u, const usize v) {
     assert(u < size());
     assert(v < size());
+
     return bcc.same(u, v);
   }
 
   void insert_edge(usize u, usize v) {
     assert(u < size());
     assert(v < size());
+
     u = bcc.find(u);
     v = bcc.find(v);
     if (cc.same(u, v)) {
