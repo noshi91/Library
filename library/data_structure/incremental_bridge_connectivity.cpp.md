@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/incremental_bridge_connectivity.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-11 22:58:19+09:00
+    - Last commit date: 2020-03-12 15:47:16+09:00
 
 
 * see: <a href="https://scrapbox.io/data-structures/Incremental_Bridge-Connectivity">https://scrapbox.io/data-structures/Incremental_Bridge-Connectivity</a>
@@ -102,7 +102,7 @@ class incremental_bridge_connectivity {
   void link(const usize x, const usize y) {
     usize v = x, prev = y;
     while (v != nil()) {
-      const usize next = bbf[v];
+      const usize next = parent(v);
       bbf[v] = prev;
       prev = v;
       v = next;
@@ -115,15 +115,23 @@ public:
   explicit incremental_bridge_connectivity(const usize n)
       : cc(n), bcc(n), bbf(n, n) {}
 
+  usize find_block(const usize v) {
+    assert(v < size());
+
+    return bcc.find(v);
+  }
+
   bool bridge_connected(const usize u, const usize v) {
     assert(u < size());
     assert(v < size());
+
     return bcc.same(u, v);
   }
 
   void insert_edge(usize u, usize v) {
     assert(u < size());
     assert(v < size());
+
     u = bcc.find(u);
     v = bcc.find(v);
     if (cc.same(u, v)) {
@@ -271,7 +279,7 @@ class incremental_bridge_connectivity {
   void link(const usize x, const usize y) {
     usize v = x, prev = y;
     while (v != nil()) {
-      const usize next = bbf[v];
+      const usize next = parent(v);
       bbf[v] = prev;
       prev = v;
       v = next;
@@ -284,15 +292,23 @@ public:
   explicit incremental_bridge_connectivity(const usize n)
       : cc(n), bcc(n), bbf(n, n) {}
 
+  usize find_block(const usize v) {
+    assert(v < size());
+
+    return bcc.find(v);
+  }
+
   bool bridge_connected(const usize u, const usize v) {
     assert(u < size());
     assert(v < size());
+
     return bcc.same(u, v);
   }
 
   void insert_edge(usize u, usize v) {
     assert(u < size());
     assert(v < size());
+
     u = bcc.find(u);
     v = bcc.find(v);
     if (cc.same(u, v)) {

@@ -31,10 +31,10 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/incremental_bridge_connectivity.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-11 22:58:19+09:00
+    - Last commit date: 2020-03-12 15:47:16+09:00
 
 
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B&lang=jp">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B&lang=jp</a>
+* see: <a href="https://judge.yosupo.jp/problem/two_edge_connected_components">https://judge.yosupo.jp/problem/two_edge_connected_components</a>
 
 
 ## Depends on
@@ -50,14 +50,11 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM                                                                \
-  "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B&lang=jp"
+#define PROBLEM "https://judge.yosupo.jp/problem/two_edge_connected_components"
 
 #include "data_structure/incremental_bridge_connectivity.cpp"
 
-#include <algorithm>
 #include <iostream>
-#include <utility>
 #include <vector>
 
 int main() {
@@ -66,19 +63,33 @@ int main() {
   int n, m;
   std::cin >> n >> m;
   incremental_bridge_connectivity ibc(n);
-  std::vector<std::pair<int, int>> es(m);
-  for (auto &[u, v] : es) {
-    std::cin >> u >> v;
-    ibc.insert_edge(u, v);
-    if (u > v)
-      std::swap(u, v);
+  for (int i = 0; i != m; i += 1) {
+    int a, b;
+    std::cin >> a >> b;
+    ibc.insert_edge(a, b);
   }
-  std::sort(es.begin(), es.end());
-  for (const auto &[u, v] : es) {
-    if (!ibc.bridge_connected(u, v))
-      std::cout << u << " " << v << "\n";
+
+  std::vector<int> id(n, n);
+  int k = 0;
+  std::vector<std::vector<int>> ans(n);
+  for (int i = 0; i != n; i += 1) {
+    const int r = ibc.find_block(i);
+    if (id[r] == n) {
+      id[r] = k;
+      k += 1;
+    }
+    ans[id[r]].push_back(i);
+  }
+
+  std::cout << k << "\n";
+  for (int i = 0; i != k; i += 1) {
+    std::cout << ans[i].size();
+    for (const int e : ans[i])
+      std::cout << " " << e;
+    std::cout << "\n";
   }
 }
+
 ```
 {% endraw %}
 
@@ -86,8 +97,7 @@ int main() {
 {% raw %}
 ```cpp
 #line 1 "test/incremental_bridge_connectivity.test.cpp"
-#define PROBLEM                                                                \
-  "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B&lang=jp"
+#define PROBLEM "https://judge.yosupo.jp/problem/two_edge_connected_components"
 
 #line 2 "other/int_alias.cpp"
 
@@ -210,7 +220,7 @@ class incremental_bridge_connectivity {
   void link(const usize x, const usize y) {
     usize v = x, prev = y;
     while (v != nil()) {
-      const usize next = bbf[v];
+      const usize next = parent(v);
       bbf[v] = prev;
       prev = v;
       v = next;
@@ -223,15 +233,23 @@ public:
   explicit incremental_bridge_connectivity(const usize n)
       : cc(n), bcc(n), bbf(n, n) {}
 
+  usize find_block(const usize v) {
+    assert(v < size());
+
+    return bcc.find(v);
+  }
+
   bool bridge_connected(const usize u, const usize v) {
     assert(u < size());
     assert(v < size());
+
     return bcc.same(u, v);
   }
 
   void insert_edge(usize u, usize v) {
     assert(u < size());
     assert(v < size());
+
     u = bcc.find(u);
     v = bcc.find(v);
     if (cc.same(u, v)) {
@@ -251,32 +269,44 @@ public:
  * @brief Incremental Bridge-Connectivity
  * @see https://scrapbox.io/data-structures/Incremental_Bridge-Connectivity
  */
-#line 5 "test/incremental_bridge_connectivity.test.cpp"
+#line 4 "test/incremental_bridge_connectivity.test.cpp"
 
-#include <algorithm>
 #include <iostream>
-#line 10 "test/incremental_bridge_connectivity.test.cpp"
+#line 7 "test/incremental_bridge_connectivity.test.cpp"
 
 int main() {
 #line 1 "other/fast_ios.cpp"
 std::ios::sync_with_stdio(false);
 std::cin.tie(nullptr);
-#line 13 "test/incremental_bridge_connectivity.test.cpp"
+#line 10 "test/incremental_bridge_connectivity.test.cpp"
 
   int n, m;
   std::cin >> n >> m;
   incremental_bridge_connectivity ibc(n);
-  std::vector<std::pair<int, int>> es(m);
-  for (auto &[u, v] : es) {
-    std::cin >> u >> v;
-    ibc.insert_edge(u, v);
-    if (u > v)
-      std::swap(u, v);
+  for (int i = 0; i != m; i += 1) {
+    int a, b;
+    std::cin >> a >> b;
+    ibc.insert_edge(a, b);
   }
-  std::sort(es.begin(), es.end());
-  for (const auto &[u, v] : es) {
-    if (!ibc.bridge_connected(u, v))
-      std::cout << u << " " << v << "\n";
+
+  std::vector<int> id(n, n);
+  int k = 0;
+  std::vector<std::vector<int>> ans(n);
+  for (int i = 0; i != n; i += 1) {
+    const int r = ibc.find_block(i);
+    if (id[r] == n) {
+      id[r] = k;
+      k += 1;
+    }
+    ans[id[r]].push_back(i);
+  }
+
+  std::cout << k << "\n";
+  for (int i = 0; i != k; i += 1) {
+    std::cout << ans[i].size();
+    for (const int e : ans[i])
+      std::cout << " " << e;
+    std::cout << "\n";
   }
 }
 
