@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :warning: Persistent Forward List <small>(data_structure/persistent_forward_list.cpp)</small>
+# :warning: Persistent Stack <small>(data_structure/persistent_stack.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
-* <a href="{{ site.github.repository_url }}/blob/master/data_structure/persistent_forward_list.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-02-28 14:18:18+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/data_structure/persistent_stack.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-15 17:56:22+09:00
 
 
+
+
+## Required by
+
+* :warning: <a href="realtime_queue.cpp.html">data_structure/realtime_queue.cpp</a>
 
 
 ## Code
@@ -45,46 +50,49 @@ layout: default
 #include <memory>
 #include <utility>
 
-template <class T> class persistent_forward_list {
-  using Self = persistent_forward_list;
+template <class T> class persistent_stack {
+  using Self = persistent_stack<T>;
 
   class node_type;
+
   using node_ptr = std::shared_ptr<const node_type>;
+
   class node_type {
   public:
     T value;
     node_ptr next;
 
-    node_type(const T value, const node_ptr next) : value(value), next(next) {}
+    node_type(T value, node_ptr next) : value(value), next(next) {}
   };
-
-  template <class... Args> static node_ptr make_node(Args &&... args) {
-    return std::make_shared<const node_type>(std::forward<Args>(args)...);
-  }
 
   node_ptr root;
 
-  persistent_forward_list(const node_ptr root) : root(root) {}
+  persistent_stack(node_ptr root) : root(root) {}
 
 public:
-  persistent_forward_list() = default;
+  persistent_stack() = default;
 
-  bool empty() const { return !root; }
+  bool empty() const { return not root; }
 
-  T front() const {
-    assert(!empty());
+  T top() const {
+    assert(not empty());
+
     return root->value;
   }
 
-  Self push_front(const T x) const { return Self(make_node(x, root)); }
-  Self pop_front() const {
-    assert(!empty());
+  Self push(T x) const {
+    return Self(std::make_shared<const node_type>(x, root));
+  }
+
+  Self pop() const {
+    assert(not empty());
+
     return Self(root->next);
   }
 };
 
 /**
- * @brief Persistent Forward List
+ * @brief Persistent Stack
  */
 
 ```
@@ -93,51 +101,54 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "data_structure/persistent_forward_list.cpp"
+#line 1 "data_structure/persistent_stack.cpp"
 #include <cassert>
 #include <memory>
 #include <utility>
 
-template <class T> class persistent_forward_list {
-  using Self = persistent_forward_list;
+template <class T> class persistent_stack {
+  using Self = persistent_stack<T>;
 
   class node_type;
+
   using node_ptr = std::shared_ptr<const node_type>;
+
   class node_type {
   public:
     T value;
     node_ptr next;
 
-    node_type(const T value, const node_ptr next) : value(value), next(next) {}
+    node_type(T value, node_ptr next) : value(value), next(next) {}
   };
-
-  template <class... Args> static node_ptr make_node(Args &&... args) {
-    return std::make_shared<const node_type>(std::forward<Args>(args)...);
-  }
 
   node_ptr root;
 
-  persistent_forward_list(const node_ptr root) : root(root) {}
+  persistent_stack(node_ptr root) : root(root) {}
 
 public:
-  persistent_forward_list() = default;
+  persistent_stack() = default;
 
-  bool empty() const { return !root; }
+  bool empty() const { return not root; }
 
-  T front() const {
-    assert(!empty());
+  T top() const {
+    assert(not empty());
+
     return root->value;
   }
 
-  Self push_front(const T x) const { return Self(make_node(x, root)); }
-  Self pop_front() const {
-    assert(!empty());
+  Self push(T x) const {
+    return Self(std::make_shared<const node_type>(x, root));
+  }
+
+  Self pop() const {
+    assert(not empty());
+
     return Self(root->next);
   }
 };
 
 /**
- * @brief Persistent Forward List
+ * @brief Persistent Stack
  */
 
 ```
