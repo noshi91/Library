@@ -25,21 +25,23 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :warning: other/suspension.cpp
+# :warning: Suspension <small>(other/suspension.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#795f3202b17cb6bc3d4b771d8c6c9eaf">other</a>
 * <a href="{{ site.github.repository_url }}/blob/master/other/suspension.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-15 17:56:22+09:00
+    - Last commit date: 2020-03-15 18:29:46+09:00
 
 
+* see: <a href="https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf">https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf</a>
 
 
 ## Required by
 
-* :warning: <a href="../data_structure/realtime_queue.cpp.html">data_structure/realtime_queue.cpp</a>
-* :warning: <a href="../data_structure/stream.cpp.html">data_structure/stream.cpp</a>
+* :warning: <a href="../data_structure/bankers_queue.cpp.html">Banker's Queue <small>(data_structure/bankers_queue.cpp)</small></a>
+* :warning: <a href="../data_structure/realtime_queue.cpp.html">Realtime Queue <small>(data_structure/realtime_queue.cpp)</small></a>
+* :warning: <a href="../data_structure/stream.cpp.html">Stream <small>(data_structure/stream.cpp)</small></a>
 
 
 ## Code
@@ -57,9 +59,7 @@ class suspension
     : private std::shared_ptr<std::variant<T, std::function<T()>>> {
 public:
   using value_type = T;
-
   using func_type = std::function<T()>;
-
   using node_type = std::variant<T, func_type>;
 
 private:
@@ -83,6 +83,11 @@ public:
 
   T force() const { return get(**this); }
 };
+
+/**
+ * @brief Suspension
+ * @see https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf
+ */
 
 ```
 {% endraw %}
@@ -101,9 +106,7 @@ class suspension
     : private std::shared_ptr<std::variant<T, std::function<T()>>> {
 public:
   using value_type = T;
-
   using func_type = std::function<T()>;
-
   using node_type = std::variant<T, func_type>;
 
 private:
@@ -127,6 +130,11 @@ public:
 
   T force() const { return get(**this); }
 };
+
+/**
+ * @brief Suspension
+ * @see https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf
+ */
 
 ```
 {% endraw %}

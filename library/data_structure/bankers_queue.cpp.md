@@ -25,12 +25,12 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :warning: Realtime Queue <small>(data_structure/realtime_queue.cpp)</small>
+# :warning: Banker's Queue <small>(data_structure/bankers_queue.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
-* <a href="{{ site.github.repository_url }}/blob/master/data_structure/realtime_queue.cpp">View this file on GitHub</a>
+* <a href="{{ site.github.repository_url }}/blob/master/data_structure/bankers_queue.cpp">View this file on GitHub</a>
     - Last commit date: 2020-03-15 18:29:46+09:00
 
 
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :warning: <a href="persistent_stack.cpp.html">Persistent Stack <small>(data_structure/persistent_stack.cpp)</small></a>
 * :warning: <a href="stream.cpp.html">Stream <small>(data_structure/stream.cpp)</small></a>
+* :heavy_check_mark: <a href="../other/int_alias.cpp.html">other/int_alias.cpp</a>
 * :warning: <a href="../other/suspension.cpp.html">Suspension <small>(other/suspension.cpp)</small></a>
 
 
@@ -49,50 +49,35 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#include "data_structure/persistent_stack.cpp"
 #include "data_structure/stream.cpp"
+#include "other/int_alias.cpp"
 
 #include <cassert>
-#include <utility>
 
-template <class T> class realtime_queue {
-  using Self = realtime_queue<T>;
+template <class T> class bankers_queue {
+  using Self = bankers_queue<T>;
   using stream_type = stream<T>;
-  using cell_type = typename stream_type::cell_type;
-  using stack_type = persistent_stack<T>;
-
-public:
-  using value_type = T;
-
-private:
-  static stream_type rotate(stream_type f, stack_type b, stream_type t) {
-    return stream_type([f, b, t] {
-      if (f.empty())
-        return cell_type(std::in_place, b.top(), t);
-      else
-        return cell_type(std::in_place, f.top(),
-                         rotate(f.pop(), b.pop(), t.push(b.top())));
-    });
-  }
-
-  static Self make_queue(stream_type f, stack_type b, stream_type s) {
-    if (not s.empty())
-      return Self(f, b, s.pop());
-    stream_type temp = rotate(f, b, stream_type());
-    return Self(temp, stack_type(), temp);
-  }
 
   stream_type front_;
-  stack_type back_;
-  stream_type schedule;
+  usize f_size;
+  stream_type back_;
+  usize b_size;
 
-  realtime_queue(stream_type f, stack_type b, stream_type s)
-      : front_(f), back_(b), schedule(s) {}
+  bankers_queue(stream_type front_, usize f_size, stream_type back_,
+                usize b_size)
+      : front_(front_), f_size(f_size), back_(back_), b_size(b_size) {}
+
+  Self normalize() const {
+    if (f_size >= b_size)
+      return *this;
+    else
+      return Self(front_ + back_.reverse(), f_size + b_size, stream_type(), 0);
+  }
 
 public:
-  realtime_queue() = default;
+  bankers_queue() : front_(), f_size(0), back_(), b_size(0) {}
 
-  bool empty() const { return front_.empty(); }
+  bool empty() const { return f_size == 0; }
 
   T front() const {
     assert(not empty());
@@ -100,17 +85,19 @@ public:
     return front_.top();
   }
 
-  Self push(T x) const { return make_queue(front_, back_.push(x), schedule); }
+  Self push(T x) const {
+    return Self(front_, f_size, back_.push(x), b_size + 1).normalize();
+  }
 
   Self pop() const {
     assert(not empty());
 
-    return make_queue(front_.pop(), back_, schedule);
+    return Self(front_.pop(), f_size - 1, back_, b_size).normalize();
   }
 };
 
 /**
- * @brief Realtime Queue
+ * @brief Banker's Queue
  * @see https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf
  */
 
@@ -120,56 +107,10 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "data_structure/persistent_stack.cpp"
-#include <cassert>
-#include <memory>
-#include <utility>
-
-template <class T> class persistent_stack {
-  using Self = persistent_stack<T>;
-  class node_type;
-  using node_ptr = std::shared_ptr<const node_type>;
-  
-  class node_type {
-  public:
-    T value;
-    node_ptr next;
-
-    node_type(T value, node_ptr next) : value(value), next(next) {}
-  };
-
-  node_ptr root;
-
-  persistent_stack(node_ptr root) : root(root) {}
-
-public:
-  persistent_stack() = default;
-
-  bool empty() const { return not root; }
-
-  T top() const {
-    assert(not empty());
-
-    return root->value;
-  }
-
-  Self push(T x) const {
-    return Self(std::make_shared<const node_type>(x, root));
-  }
-
-  Self pop() const {
-    assert(not empty());
-
-    return Self(root->next);
-  }
-};
-
-/**
- * @brief Persistent Stack
- */
 #line 1 "other/suspension.cpp"
 #include <functional>
-#line 4 "other/suspension.cpp"
+#include <memory>
+#include <utility>
 #include <variant>
 
 template <class T>
@@ -208,7 +149,7 @@ public:
  */
 #line 2 "data_structure/stream.cpp"
 
-#line 4 "data_structure/stream.cpp"
+#include <cassert>
 #include <optional>
 #line 6 "data_structure/stream.cpp"
 
@@ -271,48 +212,45 @@ public:
  * @brief Stream
  * @see https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf
  */
-#line 3 "data_structure/realtime_queue.cpp"
+#line 2 "other/int_alias.cpp"
 
-#line 6 "data_structure/realtime_queue.cpp"
+#include <cstddef>
+#include <cstdint>
 
-template <class T> class realtime_queue {
-  using Self = realtime_queue<T>;
+using i32 = std::int32_t;
+using i64 = std::int64_t;
+using u32 = std::uint32_t;
+using u64 = std::uint64_t;
+using isize = std::ptrdiff_t;
+using usize = std::size_t;
+#line 3 "data_structure/bankers_queue.cpp"
+
+#line 5 "data_structure/bankers_queue.cpp"
+
+template <class T> class bankers_queue {
+  using Self = bankers_queue<T>;
   using stream_type = stream<T>;
-  using cell_type = typename stream_type::cell_type;
-  using stack_type = persistent_stack<T>;
-
-public:
-  using value_type = T;
-
-private:
-  static stream_type rotate(stream_type f, stack_type b, stream_type t) {
-    return stream_type([f, b, t] {
-      if (f.empty())
-        return cell_type(std::in_place, b.top(), t);
-      else
-        return cell_type(std::in_place, f.top(),
-                         rotate(f.pop(), b.pop(), t.push(b.top())));
-    });
-  }
-
-  static Self make_queue(stream_type f, stack_type b, stream_type s) {
-    if (not s.empty())
-      return Self(f, b, s.pop());
-    stream_type temp = rotate(f, b, stream_type());
-    return Self(temp, stack_type(), temp);
-  }
 
   stream_type front_;
-  stack_type back_;
-  stream_type schedule;
+  usize f_size;
+  stream_type back_;
+  usize b_size;
 
-  realtime_queue(stream_type f, stack_type b, stream_type s)
-      : front_(f), back_(b), schedule(s) {}
+  bankers_queue(stream_type front_, usize f_size, stream_type back_,
+                usize b_size)
+      : front_(front_), f_size(f_size), back_(back_), b_size(b_size) {}
+
+  Self normalize() const {
+    if (f_size >= b_size)
+      return *this;
+    else
+      return Self(front_ + back_.reverse(), f_size + b_size, stream_type(), 0);
+  }
 
 public:
-  realtime_queue() = default;
+  bankers_queue() : front_(), f_size(0), back_(), b_size(0) {}
 
-  bool empty() const { return front_.empty(); }
+  bool empty() const { return f_size == 0; }
 
   T front() const {
     assert(not empty());
@@ -320,17 +258,19 @@ public:
     return front_.top();
   }
 
-  Self push(T x) const { return make_queue(front_, back_.push(x), schedule); }
+  Self push(T x) const {
+    return Self(front_, f_size, back_.push(x), b_size + 1).normalize();
+  }
 
   Self pop() const {
     assert(not empty());
 
-    return make_queue(front_.pop(), back_, schedule);
+    return Self(front_.pop(), f_size - 1, back_, b_size).normalize();
   }
 };
 
 /**
- * @brief Realtime Queue
+ * @brief Banker's Queue
  * @see https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf
  */
 

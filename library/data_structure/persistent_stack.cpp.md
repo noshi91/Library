@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/persistent_stack.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-15 17:56:22+09:00
+    - Last commit date: 2020-03-15 18:29:46+09:00
 
 
 
 
 ## Required by
 
-* :warning: <a href="realtime_queue.cpp.html">data_structure/realtime_queue.cpp</a>
+* :warning: <a href="realtime_queue.cpp.html">Realtime Queue <small>(data_structure/realtime_queue.cpp)</small></a>
 
 
 ## Code
@@ -52,11 +52,9 @@ layout: default
 
 template <class T> class persistent_stack {
   using Self = persistent_stack<T>;
-
   class node_type;
-
   using node_ptr = std::shared_ptr<const node_type>;
-
+  
   class node_type {
   public:
     T value;
@@ -108,11 +106,9 @@ public:
 
 template <class T> class persistent_stack {
   using Self = persistent_stack<T>;
-
   class node_type;
-
   using node_ptr = std::shared_ptr<const node_type>;
-
+  
   class node_type {
   public:
     T value;

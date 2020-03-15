@@ -25,25 +25,27 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :warning: data_structure/stream.cpp
+# :warning: Stream <small>(data_structure/stream.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/stream.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-15 17:56:22+09:00
+    - Last commit date: 2020-03-15 18:29:46+09:00
 
 
+* see: <a href="https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf">https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf</a>
 
 
 ## Depends on
 
-* :warning: <a href="../other/suspension.cpp.html">other/suspension.cpp</a>
+* :warning: <a href="../other/suspension.cpp.html">Suspension <small>(other/suspension.cpp)</small></a>
 
 
 ## Required by
 
-* :warning: <a href="realtime_queue.cpp.html">data_structure/realtime_queue.cpp</a>
+* :warning: <a href="bankers_queue.cpp.html">Banker's Queue <small>(data_structure/bankers_queue.cpp)</small></a>
+* :warning: <a href="realtime_queue.cpp.html">Realtime Queue <small>(data_structure/realtime_queue.cpp)</small></a>
 
 
 ## Code
@@ -95,6 +97,13 @@ public:
     return (*force()).second;
   }
 
+  stream reverse() const {
+    if (empty())
+      return Self();
+    else
+      return pop().reverse().push(top());
+  }
+
   friend Self operator+(Self l, Self r) {
     return Self([l, r] {
       if (l.empty())
@@ -104,6 +113,11 @@ public:
     });
   }
 };
+
+/**
+ * @brief Stream
+ * @see https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf
+ */
 
 ```
 {% endraw %}
@@ -122,9 +136,7 @@ class suspension
     : private std::shared_ptr<std::variant<T, std::function<T()>>> {
 public:
   using value_type = T;
-
   using func_type = std::function<T()>;
-
   using node_type = std::variant<T, func_type>;
 
 private:
@@ -148,6 +160,11 @@ public:
 
   T force() const { return get(**this); }
 };
+
+/**
+ * @brief Suspension
+ * @see https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf
+ */
 #line 2 "data_structure/stream.cpp"
 
 #include <cassert>
@@ -192,6 +209,13 @@ public:
     return (*force()).second;
   }
 
+  stream reverse() const {
+    if (empty())
+      return Self();
+    else
+      return pop().reverse().push(top());
+  }
+
   friend Self operator+(Self l, Self r) {
     return Self([l, r] {
       if (l.empty())
@@ -201,6 +225,11 @@ public:
     });
   }
 };
+
+/**
+ * @brief Stream
+ * @see https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf
+ */
 
 ```
 {% endraw %}

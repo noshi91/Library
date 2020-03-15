@@ -58,6 +58,7 @@ layout: default
 
 ### data_structure
 
+* :warning: <a href="library/data_structure/bankers_queue.cpp.html">Banker's Queue <small>(data_structure/bankers_queue.cpp)</small></a>
 * :heavy_check_mark: <a href="library/data_structure/bit_vector.cpp.html">Bit Vector <small>(data_structure/bit_vector.cpp)</small></a>
 * :heavy_check_mark: <a href="library/data_structure/dual_segment_tree.cpp.html">Dual Segment Tree <small>(data_structure/dual_segment_tree.cpp)</small></a>
 * :heavy_check_mark: <a href="library/data_structure/erasable_heap.cpp.html">Erasable Heap <small>(data_structure/erasable_heap.cpp)</small></a>
@@ -74,10 +75,10 @@ layout: default
 * :heavy_check_mark: <a href="library/data_structure/radix_heap.cpp.html">Radix Heap <small>(data_structure/radix_heap.cpp)</small></a>
 * :heavy_check_mark: <a href="library/data_structure/randomized_queue.cpp.html">Randomized Queue <small>(data_structure/randomized_queue.cpp)</small></a>
 * :warning: <a href="library/data_structure/range_mode_query.cpp.html">Range Mode Query <small>(data_structure/range_mode_query.cpp)</small></a>
-* :warning: <a href="library/data_structure/realtime_queue.cpp.html">data_structure/realtime_queue.cpp</a>
+* :warning: <a href="library/data_structure/realtime_queue.cpp.html">Realtime Queue <small>(data_structure/realtime_queue.cpp)</small></a>
 * :heavy_check_mark: <a href="library/data_structure/segment_tree.cpp.html">Segment Tree <small>(data_structure/segment_tree.cpp)</small></a>
 * :heavy_check_mark: <a href="library/data_structure/stack_aggregation.cpp.html">Stack Aggregation <small>(data_structure/stack_aggregation.cpp)</small></a>
-* :warning: <a href="library/data_structure/stream.cpp.html">data_structure/stream.cpp</a>
+* :warning: <a href="library/data_structure/stream.cpp.html">Stream <small>(data_structure/stream.cpp)</small></a>
 * :warning: <a href="library/data_structure/ternary_treap.cpp.html">Ternary Treap <small>(data_structure/ternary_treap.cpp)</small></a>
 * :heavy_check_mark: <a href="library/data_structure/union_enumerate.cpp.html">Union Enumerate <small>(data_structure/union_enumerate.cpp)</small></a>
 * :heavy_check_mark: <a href="library/data_structure/union_find.cpp.html">Union Find <small>(data_structure/union_find.cpp)</small></a>
@@ -121,7 +122,7 @@ layout: default
 * :heavy_check_mark: <a href="library/other/select64.cpp.html">other/select64.cpp</a>
 * :heavy_check_mark: <a href="library/other/semigroup_to_monoid.cpp.html">other/semigroup_to_monoid.cpp</a>
 * :heavy_check_mark: <a href="library/other/sum_affine_action.cpp.html">other/sum_affine_action.cpp</a>
-* :warning: <a href="library/other/suspension.cpp.html">other/suspension.cpp</a>
+* :warning: <a href="library/other/suspension.cpp.html">Suspension <small>(other/suspension.cpp)</small></a>
 
 
 ## Verify Files

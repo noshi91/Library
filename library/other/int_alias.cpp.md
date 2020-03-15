@@ -52,6 +52,7 @@ layout: default
 * :heavy_check_mark: <a href="../algorithm/superset_mobius_transform.cpp.html">Superset Möbius Transform <small>(algorithm/superset_mobius_transform.cpp)</small></a>
 * :heavy_check_mark: <a href="../algorithm/superset_zeta_transform.cpp.html">Superset Zeta Transform <small>(algorithm/superset_zeta_transform.cpp)</small></a>
 * :heavy_check_mark: <a href="../algorithm/three_edge_connected_component_decomposition.cpp.html">3-Edge-Connected Component Decomposition <small>(algorithm/three_edge_connected_component_decomposition.cpp)</small></a>
+* :warning: <a href="../data_structure/bankers_queue.cpp.html">Banker's Queue <small>(data_structure/bankers_queue.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/bit_vector.cpp.html">Bit Vector <small>(data_structure/bit_vector.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/dual_segment_tree.cpp.html">Dual Segment Tree <small>(data_structure/dual_segment_tree.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/fenwick_tree.cpp.html">Fenwick Tree <small>(data_structure/fenwick_tree.cpp)</small></a>
