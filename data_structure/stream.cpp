@@ -34,19 +34,22 @@ public:
     return (*force()).first;
   }
 
-  stream push(T x) const { return stream(x, *this); }
+  Self push(T x) const { return Self(x, *this); }
 
-  stream pop() const {
+  Self pop() const {
     assert(not empty());
 
     return (*force()).second;
   }
 
-  stream reverse() const {
-    if (empty())
-      return Self();
-    else
-      return pop().reverse().push(top());
+  Self reverse() const {
+    Self x = *this;
+    Self ret;
+    while (not x.empty()) {
+      ret = ret.push(x.top());
+      x = x.pop();
+    }
+    return ret;
   }
 
   friend Self operator+(Self l, Self r) {
