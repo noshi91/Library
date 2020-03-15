@@ -8,9 +8,7 @@ class suspension
     : private std::shared_ptr<std::variant<T, std::function<T()>>> {
 public:
   using value_type = T;
-
   using func_type = std::function<T()>;
-
   using node_type = std::variant<T, func_type>;
 
 private:
@@ -34,3 +32,8 @@ public:
 
   T force() const { return get(**this); }
 };
+
+/**
+ * @brief Suspension
+ * @see https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf
+ */

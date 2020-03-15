@@ -4,11 +4,9 @@
 
 template <class T> class persistent_stack {
   using Self = persistent_stack<T>;
-
   class node_type;
-
   using node_ptr = std::shared_ptr<const node_type>;
-
+  
   class node_type {
   public:
     T value;

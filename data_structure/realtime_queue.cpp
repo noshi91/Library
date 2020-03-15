@@ -1,15 +1,13 @@
 #include "data_structure/persistent_stack.cpp"
 #include "data_structure/stream.cpp"
 
+#include <cassert>
 #include <utility>
 
 template <class T> class realtime_queue {
   using Self = realtime_queue<T>;
-
   using stream_type = stream<T>;
-
   using cell_type = typename stream_type::cell_type;
-
   using stack_type = persistent_stack<T>;
 
 public:
@@ -59,3 +57,8 @@ public:
     return make_queue(front_.pop(), back_, schedule);
   }
 };
+
+/**
+ * @brief Realtime Queue
+ * @see https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf
+ */

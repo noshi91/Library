@@ -42,6 +42,13 @@ public:
     return (*force()).second;
   }
 
+  stream reverse() const {
+    if (empty())
+      return Self();
+    else
+      return pop().reverse().push(top());
+  }
+
   friend Self operator+(Self l, Self r) {
     return Self([l, r] {
       if (l.empty())
@@ -51,3 +58,8 @@ public:
     });
   }
 };
+
+/**
+ * @brief Stream
+ * @see https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf
+ */
