@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/stream.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-15 19:24:18+09:00
+    - Last commit date: 2020-03-15 20:02:36+09:00
 
 
 * see: <a href="https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf">https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf</a>
@@ -71,6 +71,15 @@ public:
 private:
   using base_type = suspension<cell_type>;
 
+  static Self reverse_sub(Self x) {
+    Self ret;
+    while (not x.empty()) {
+      ret = ret.push(x.top());
+      x = x.pop();
+    }
+    return ret;
+  }
+
   stream(T x, Self s)
       : base_type(std::in_place, cell_type(std::in_place, x, s)) {}
 
@@ -98,13 +107,7 @@ public:
   }
 
   Self reverse() const {
-    Self x = *this;
-    Self ret;
-    while (not x.empty()) {
-      ret = ret.push(x.top());
-      x = x.pop();
-    }
-    return ret;
+    return Self([x = *this] { return reverse_sub(x).force(); });
   }
 
   friend Self operator+(Self l, Self r) {
@@ -186,6 +189,15 @@ public:
 private:
   using base_type = suspension<cell_type>;
 
+  static Self reverse_sub(Self x) {
+    Self ret;
+    while (not x.empty()) {
+      ret = ret.push(x.top());
+      x = x.pop();
+    }
+    return ret;
+  }
+
   stream(T x, Self s)
       : base_type(std::in_place, cell_type(std::in_place, x, s)) {}
 
@@ -213,13 +225,7 @@ public:
   }
 
   Self reverse() const {
-    Self x = *this;
-    Self ret;
-    while (not x.empty()) {
-      ret = ret.push(x.top());
-      x = x.pop();
-    }
-    return ret;
+    return Self([x = *this] { return reverse_sub(x).force(); });
   }
 
   friend Self operator+(Self l, Self r) {
