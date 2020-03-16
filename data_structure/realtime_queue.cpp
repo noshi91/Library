@@ -15,7 +15,7 @@ public:
 
 private:
   static stream_type rotate(stream_type f, stack_type b, stream_type t) {
-    return stream_type([f, b, t] {
+    return stream_type([f, b, t]() {
       if (f.empty())
         return cell_type(std::in_place, b.top(), t);
       else

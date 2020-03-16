@@ -10,20 +10,10 @@ class stream : private suspension<std::optional<std::pair<T, stream<T>>>> {
 
 public:
   using value_type = T;
-
   using cell_type = std::optional<std::pair<T, Self>>;
 
 private:
   using base_type = suspension<cell_type>;
-
-  static Self reverse_sub(Self x) {
-    Self ret;
-    while (not x.empty()) {
-      ret = ret.push(x.top());
-      x = x.pop();
-    }
-    return ret;
-  }
 
   stream(T x, Self s)
       : base_type(std::in_place, cell_type(std::in_place, x, s)) {}
@@ -52,11 +42,18 @@ public:
   }
 
   Self reverse() const {
-    return Self([x = *this] { return reverse_sub(x).force(); });
+    return Self([x = *this]() mutable {
+      Self ret;
+      while (not x.empty()) {
+        ret = ret.push(x.top());
+        x = x.pop();
+      }
+      return ret.force();
+    });
   }
 
   friend Self operator+(Self l, Self r) {
-    return Self([l, r] {
+    return Self([l, r]() {
       if (l.empty())
         return r.force();
       else

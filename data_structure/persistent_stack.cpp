@@ -6,7 +6,7 @@ template <class T> class persistent_stack {
   using Self = persistent_stack<T>;
   class node_type;
   using node_ptr = std::shared_ptr<const node_type>;
-  
+
   class node_type {
   public:
     T value;
@@ -38,6 +38,16 @@ public:
     assert(not empty());
 
     return Self(root->next);
+  }
+
+  Self reverse() const {
+    Self ret;
+    Self x = *this;
+    while (not x.empty()) {
+      ret = ret.push(x.top());
+      x = x.pop();
+    }
+    return ret;
   }
 };
 
