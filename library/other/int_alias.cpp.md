@@ -60,6 +60,7 @@ layout: default
 * :heavy_check_mark: <a href="../data_structure/lazy_segment_tree.cpp.html">Lazy Segment Tree <small>(data_structure/lazy_segment_tree.cpp)</small></a>
 * :warning: <a href="../data_structure/partially_persistent_union_find.cpp.html">Partially Persistent Union Find <small>(data_structure/partially_persistent_union_find.cpp)</small></a>
 * :warning: <a href="../data_structure/persistent_skew_binary_random_access_list.cpp.html">Persistent Skew Binary Random Access List <small>(data_structure/persistent_skew_binary_random_access_list.cpp)</small></a>
+* :warning: <a href="../data_structure/physicists_queue.cpp.html">Physicist's Queue <small>(data_structure/physicists_queue.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/potentialized_union_find.cpp.html">Potentialized Union Find <small>(data_structure/potentialized_union_find.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/radix_heap.cpp.html">Radix Heap <small>(data_structure/radix_heap.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/randomized_queue.cpp.html">Randomized Queue <small>(data_structure/randomized_queue.cpp)</small></a>

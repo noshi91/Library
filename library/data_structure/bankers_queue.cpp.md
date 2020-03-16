@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/bankers_queue.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-15 20:02:36+09:00
+    - Last commit date: 2020-03-16 22:45:32+09:00
 
 
 * see: <a href="https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf">https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf</a>
@@ -159,20 +159,10 @@ class stream : private suspension<std::optional<std::pair<T, stream<T>>>> {
 
 public:
   using value_type = T;
-
   using cell_type = std::optional<std::pair<T, Self>>;
 
 private:
   using base_type = suspension<cell_type>;
-
-  static Self reverse_sub(Self x) {
-    Self ret;
-    while (not x.empty()) {
-      ret = ret.push(x.top());
-      x = x.pop();
-    }
-    return ret;
-  }
 
   stream(T x, Self s)
       : base_type(std::in_place, cell_type(std::in_place, x, s)) {}
@@ -201,11 +191,18 @@ public:
   }
 
   Self reverse() const {
-    return Self([x = *this] { return reverse_sub(x).force(); });
+    return Self([x = *this]() mutable {
+      Self ret;
+      while (not x.empty()) {
+        ret = ret.push(x.top());
+        x = x.pop();
+      }
+      return ret.force();
+    });
   }
 
   friend Self operator+(Self l, Self r) {
-    return Self([l, r] {
+    return Self([l, r]() {
       if (l.empty())
         return r.force();
       else

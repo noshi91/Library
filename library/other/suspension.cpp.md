@@ -40,6 +40,7 @@ layout: default
 ## Required by
 
 * :warning: <a href="../data_structure/bankers_queue.cpp.html">Banker's Queue <small>(data_structure/bankers_queue.cpp)</small></a>
+* :warning: <a href="../data_structure/physicists_queue.cpp.html">Physicist's Queue <small>(data_structure/physicists_queue.cpp)</small></a>
 * :warning: <a href="../data_structure/realtime_queue.cpp.html">Realtime Queue <small>(data_structure/realtime_queue.cpp)</small></a>
 * :warning: <a href="../data_structure/stream.cpp.html">Stream <small>(data_structure/stream.cpp)</small></a>
 

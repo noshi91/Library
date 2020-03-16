@@ -31,13 +31,14 @@ layout: default
 
 * category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/data_structure/persistent_stack.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-15 18:29:46+09:00
+    - Last commit date: 2020-03-16 22:45:32+09:00
 
 
 
 
 ## Required by
 
+* :warning: <a href="physicists_queue.cpp.html">Physicist's Queue <small>(data_structure/physicists_queue.cpp)</small></a>
 * :warning: <a href="realtime_queue.cpp.html">Realtime Queue <small>(data_structure/realtime_queue.cpp)</small></a>
 
 
@@ -54,7 +55,7 @@ template <class T> class persistent_stack {
   using Self = persistent_stack<T>;
   class node_type;
   using node_ptr = std::shared_ptr<const node_type>;
-  
+
   class node_type {
   public:
     T value;
@@ -86,6 +87,16 @@ public:
     assert(not empty());
 
     return Self(root->next);
+  }
+
+  Self reverse() const {
+    Self ret;
+    Self x = *this;
+    while (not x.empty()) {
+      ret = ret.push(x.top());
+      x = x.pop();
+    }
+    return ret;
   }
 };
 
@@ -108,7 +119,7 @@ template <class T> class persistent_stack {
   using Self = persistent_stack<T>;
   class node_type;
   using node_ptr = std::shared_ptr<const node_type>;
-  
+
   class node_type {
   public:
     T value;
@@ -140,6 +151,16 @@ public:
     assert(not empty());
 
     return Self(root->next);
+  }
+
+  Self reverse() const {
+    Self ret;
+    Self x = *this;
+    while (not x.empty()) {
+      ret = ret.push(x.top());
+      x = x.pop();
+    }
+    return ret;
   }
 };
 

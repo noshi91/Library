@@ -70,6 +70,7 @@ layout: default
 * :warning: <a href="library/data_structure/partially_retroactive_queue.cpp.html">Partially Retroactive Queue <small>(data_structure/partially_retroactive_queue.cpp)</small></a>
 * :warning: <a href="library/data_structure/persistent_skew_binary_random_access_list.cpp.html">Persistent Skew Binary Random Access List <small>(data_structure/persistent_skew_binary_random_access_list.cpp)</small></a>
 * :warning: <a href="library/data_structure/persistent_stack.cpp.html">Persistent Stack <small>(data_structure/persistent_stack.cpp)</small></a>
+* :warning: <a href="library/data_structure/physicists_queue.cpp.html">Physicist's Queue <small>(data_structure/physicists_queue.cpp)</small></a>
 * :heavy_check_mark: <a href="library/data_structure/potentialized_union_find.cpp.html">Potentialized Union Find <small>(data_structure/potentialized_union_find.cpp)</small></a>
 * :heavy_check_mark: <a href="library/data_structure/queue_aggregation.cpp.html">Queue Aggregation <small>(data_structure/queue_aggregation.cpp)</small></a>
 * :heavy_check_mark: <a href="library/data_structure/radix_heap.cpp.html">Radix Heap <small>(data_structure/radix_heap.cpp)</small></a>
