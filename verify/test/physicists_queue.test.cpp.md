@@ -25,28 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Physicist's Queue <small>(data_structure/physicists_queue.cpp)</small>
+# :heavy_check_mark: test/physicists_queue.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
-* <a href="{{ site.github.repository_url }}/blob/master/data_structure/physicists_queue.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-16 22:45:32+09:00
+* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/physicists_queue.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-18 22:48:14+09:00
 
 
-* see: <a href="https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf">https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf</a>
+* see: <a href="https://judge.yosupo.jp/problem/persistent_queue">https://judge.yosupo.jp/problem/persistent_queue</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="persistent_stack.cpp.html">Persistent Stack <small>(data_structure/persistent_stack.cpp)</small></a>
-* :heavy_check_mark: <a href="../other/int_alias.cpp.html">other/int_alias.cpp</a>
-* :heavy_check_mark: <a href="../other/suspension.cpp.html">Suspension <small>(other/suspension.cpp)</small></a>
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../verify/test/physicists_queue.test.cpp.html">test/physicists_queue.test.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/persistent_stack.cpp.html">Persistent Stack <small>(data_structure/persistent_stack.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/data_structure/physicists_queue.cpp.html">Physicist's Queue <small>(data_structure/physicists_queue.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/suspension.cpp.html">Suspension <small>(other/suspension.cpp)</small></a>
 
 
 ## Code
@@ -54,85 +51,40 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#include "data_structure/persistent_stack.cpp"
-#include "other/int_alias.cpp"
-#include "other/suspension.cpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/persistent_queue"
 
-#include <cassert>
-#include <utility>
+#include "data_structure/physicists_queue.cpp"
 
-template <class T> class physicists_queue {
-  using Self = physicists_queue<T>;
-  using stack_type = persistent_stack<T>;
-  using susp_stack = suspension<stack_type>;
+#include <iostream>
+#include <vector>
 
-  stack_type working;
-  susp_stack front_;
-  usize f_size;
-  stack_type back_;
-  usize b_size;
+int main() {
+#include "other/fast_ios.cpp"
 
-  physicists_queue(stack_type working, susp_stack front_, usize f_size,
-                   stack_type back_, usize b_size)
-      : working(working), front_(front_), f_size(f_size), back_(back_),
-        b_size(b_size) {}
+  int q;
+  std::cin >> q;
 
-  Self check_r() const {
-    if (f_size >= b_size)
-      return *this;
-    stack_type temp = front_.force();
-    auto f = [l = temp, r = back_]() mutable {
-      r = r.reverse();
-      l = l.reverse();
-      while (not l.empty()) {
-        r = r.push(l.top());
-        l = l.pop();
-      }
-      return r;
-    };
-    return Self(temp, susp_stack(f), f_size + b_size, stack_type(), 0);
+  std::vector<physicists_queue<int>> s_(q + 1);
+  const auto s = s_.begin() + 1;
+
+  for (int i = 0; i != q; i += 1) {
+    int c;
+    std::cin >> c;
+    switch (c) {
+    case 0: {
+      int t, x;
+      std::cin >> t >> x;
+      s[i] = s[t].push(x);
+    } break;
+    case 1: {
+      int t;
+      std::cin >> t;
+      std::cout << s[t].front() << "\n";
+      s[i] = s[t].pop();
+    }
+    }
   }
-
-  Self check_w() const {
-    if (working.empty())
-      return Self(front_.force(), front_, f_size, back_, b_size);
-    else
-      return *this;
-  }
-
-  Self check() const { return check_r().check_w(); }
-
-public:
-  physicists_queue()
-      : working(), front_(std::in_place, stack_type()), f_size(0), back_(),
-        b_size(0) {}
-
-  bool empty() const { return f_size == 0; }
-
-  T front() const {
-    assert(not empty());
-
-    return working.top();
-  }
-
-  Self push(T x) const {
-    return Self(working, front_, f_size, back_.push(x), b_size + 1).check();
-  }
-
-  Self pop() const {
-    assert(not empty());
-
-    return Self(working.pop(),
-                susp_stack([f = front_]() { return f.force().pop(); }),
-                f_size - 1, back_, b_size)
-        .check();
-  }
-};
-
-/**
- * @brief Physicist's Queue
- * @see https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf
- */
+}
 
 ```
 {% endraw %}
@@ -140,6 +92,9 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 1 "test/physicists_queue.test.cpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/persistent_queue"
+
 #line 1 "data_structure/persistent_stack.cpp"
 #include <cassert>
 #include <memory>
@@ -323,6 +278,41 @@ public:
  * @brief Physicist's Queue
  * @see https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf
  */
+#line 4 "test/physicists_queue.test.cpp"
+
+#include <iostream>
+#include <vector>
+
+int main() {
+#line 1 "other/fast_ios.cpp"
+std::ios::sync_with_stdio(false);
+std::cin.tie(nullptr);
+#line 10 "test/physicists_queue.test.cpp"
+
+  int q;
+  std::cin >> q;
+
+  std::vector<physicists_queue<int>> s_(q + 1);
+  const auto s = s_.begin() + 1;
+
+  for (int i = 0; i != q; i += 1) {
+    int c;
+    std::cin >> c;
+    switch (c) {
+    case 0: {
+      int t, x;
+      std::cin >> t >> x;
+      s[i] = s[t].push(x);
+    } break;
+    case 1: {
+      int t;
+      std::cin >> t;
+      std::cout << s[t].front() << "\n";
+      s[i] = s[t].pop();
+    }
+    }
+  }
+}
 
 ```
 {% endraw %}

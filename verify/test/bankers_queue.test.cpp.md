@@ -25,28 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Banker's Queue <small>(data_structure/bankers_queue.cpp)</small>
+# :heavy_check_mark: test/bankers_queue.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
-* category: <a href="../../index.html#c8f6850ec2ec3fb32f203c1f4e3c2fd2">data_structure</a>
-* <a href="{{ site.github.repository_url }}/blob/master/data_structure/bankers_queue.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-16 22:45:32+09:00
+* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/bankers_queue.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-18 22:48:14+09:00
 
 
-* see: <a href="https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf">https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf</a>
+* see: <a href="https://judge.yosupo.jp/problem/persistent_queue">https://judge.yosupo.jp/problem/persistent_queue</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="stream.cpp.html">Stream <small>(data_structure/stream.cpp)</small></a>
-* :heavy_check_mark: <a href="../other/int_alias.cpp.html">other/int_alias.cpp</a>
-* :heavy_check_mark: <a href="../other/suspension.cpp.html">Suspension <small>(other/suspension.cpp)</small></a>
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../verify/test/bankers_queue.test.cpp.html">test/bankers_queue.test.cpp</a>
+* :heavy_check_mark: <a href="../../library/data_structure/bankers_queue.cpp.html">Banker's Queue <small>(data_structure/bankers_queue.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/data_structure/stream.cpp.html">Stream <small>(data_structure/stream.cpp)</small></a>
+* :heavy_check_mark: <a href="../../library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/int_alias.cpp.html">other/int_alias.cpp</a>
+* :heavy_check_mark: <a href="../../library/other/suspension.cpp.html">Suspension <small>(other/suspension.cpp)</small></a>
 
 
 ## Code
@@ -54,57 +51,40 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#include "data_structure/stream.cpp"
-#include "other/int_alias.cpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/persistent_queue"
 
-#include <cassert>
+#include "data_structure/bankers_queue.cpp"
 
-template <class T> class bankers_queue {
-  using Self = bankers_queue<T>;
-  using stream_type = stream<T>;
+#include <iostream>
+#include <vector>
 
-  stream_type front_;
-  usize f_size;
-  stream_type back_;
-  usize b_size;
+int main() {
+#include "other/fast_ios.cpp"
 
-  bankers_queue(stream_type front_, usize f_size, stream_type back_,
-                usize b_size)
-      : front_(front_), f_size(f_size), back_(back_), b_size(b_size) {}
+  int q;
+  std::cin >> q;
 
-  Self normalize() const {
-    if (f_size >= b_size)
-      return *this;
-    else
-      return Self(front_ + back_.reverse(), f_size + b_size, stream_type(), 0);
+  std::vector<bankers_queue<int>> s_(q + 1);
+  const auto s = s_.begin() + 1;
+
+  for (int i = 0; i != q; i += 1) {
+    int c;
+    std::cin >> c;
+    switch (c) {
+    case 0: {
+      int t, x;
+      std::cin >> t >> x;
+      s[i] = s[t].push(x);
+    } break;
+    case 1: {
+      int t;
+      std::cin >> t;
+      std::cout << s[t].front() << "\n";
+      s[i] = s[t].pop();
+    }
+    }
   }
-
-public:
-  bankers_queue() : front_(), f_size(0), back_(), b_size(0) {}
-
-  bool empty() const { return f_size == 0; }
-
-  T front() const {
-    assert(not empty());
-
-    return front_.top();
-  }
-
-  Self push(T x) const {
-    return Self(front_, f_size, back_.push(x), b_size + 1).normalize();
-  }
-
-  Self pop() const {
-    assert(not empty());
-
-    return Self(front_.pop(), f_size - 1, back_, b_size).normalize();
-  }
-};
-
-/**
- * @brief Banker's Queue
- * @see https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf
- */
+}
 
 ```
 {% endraw %}
@@ -112,6 +92,9 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 1 "test/bankers_queue.test.cpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/persistent_queue"
+
 #line 1 "other/suspension.cpp"
 #include <functional>
 #include <memory>
@@ -281,6 +264,41 @@ public:
  * @brief Banker's Queue
  * @see https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf
  */
+#line 4 "test/bankers_queue.test.cpp"
+
+#include <iostream>
+#include <vector>
+
+int main() {
+#line 1 "other/fast_ios.cpp"
+std::ios::sync_with_stdio(false);
+std::cin.tie(nullptr);
+#line 10 "test/bankers_queue.test.cpp"
+
+  int q;
+  std::cin >> q;
+
+  std::vector<bankers_queue<int>> s_(q + 1);
+  const auto s = s_.begin() + 1;
+
+  for (int i = 0; i != q; i += 1) {
+    int c;
+    std::cin >> c;
+    switch (c) {
+    case 0: {
+      int t, x;
+      std::cin >> t >> x;
+      s[i] = s[t].push(x);
+    } break;
+    case 1: {
+      int t;
+      std::cin >> t;
+      std::cout << s[t].front() << "\n";
+      s[i] = s[t].pop();
+    }
+    }
+  }
+}
 
 ```
 {% endraw %}

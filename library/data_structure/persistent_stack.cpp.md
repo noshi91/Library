@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :warning: Persistent Stack <small>(data_structure/persistent_stack.cpp)</small>
+# :heavy_check_mark: Persistent Stack <small>(data_structure/persistent_stack.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
@@ -38,8 +38,14 @@ layout: default
 
 ## Required by
 
-* :warning: <a href="physicists_queue.cpp.html">Physicist's Queue <small>(data_structure/physicists_queue.cpp)</small></a>
-* :warning: <a href="realtime_queue.cpp.html">Realtime Queue <small>(data_structure/realtime_queue.cpp)</small></a>
+* :heavy_check_mark: <a href="physicists_queue.cpp.html">Physicist's Queue <small>(data_structure/physicists_queue.cpp)</small></a>
+* :heavy_check_mark: <a href="realtime_queue.cpp.html">Realtime Queue <small>(data_structure/realtime_queue.cpp)</small></a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../verify/test/physicists_queue.test.cpp.html">test/physicists_queue.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/realtime_queue.test.cpp.html">test/realtime_queue.test.cpp</a>
 
 
 ## Code

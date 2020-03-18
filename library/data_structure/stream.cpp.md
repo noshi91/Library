@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :warning: Stream <small>(data_structure/stream.cpp)</small>
+# :heavy_check_mark: Stream <small>(data_structure/stream.cpp)</small>
 
 <a href="../../index.html">Back to top page</a>
 
@@ -39,13 +39,19 @@ layout: default
 
 ## Depends on
 
-* :warning: <a href="../other/suspension.cpp.html">Suspension <small>(other/suspension.cpp)</small></a>
+* :heavy_check_mark: <a href="../other/suspension.cpp.html">Suspension <small>(other/suspension.cpp)</small></a>
 
 
 ## Required by
 
-* :warning: <a href="bankers_queue.cpp.html">Banker's Queue <small>(data_structure/bankers_queue.cpp)</small></a>
-* :warning: <a href="realtime_queue.cpp.html">Realtime Queue <small>(data_structure/realtime_queue.cpp)</small></a>
+* :heavy_check_mark: <a href="bankers_queue.cpp.html">Banker's Queue <small>(data_structure/bankers_queue.cpp)</small></a>
+* :heavy_check_mark: <a href="realtime_queue.cpp.html">Realtime Queue <small>(data_structure/realtime_queue.cpp)</small></a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../verify/test/bankers_queue.test.cpp.html">test/bankers_queue.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/realtime_queue.test.cpp.html">test/realtime_queue.test.cpp</a>
 
 
 ## Code
