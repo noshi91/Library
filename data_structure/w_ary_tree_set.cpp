@@ -108,6 +108,10 @@ public:
     }
   }
 
+  bool contains(const usize key) const {
+    return (map & static_cast<u64>(1) << key) != 0;
+  }
+
   usize min() const { return bsf(map); }
 
   usize max() const { return bsr(map); }
