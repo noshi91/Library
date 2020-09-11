@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/w_ary_tree_set.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-11 14:24:32+09:00
+    - Last commit date: 2020-09-11 14:34:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_9_C&lang=ja">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_9_C&lang=ja</a>
@@ -247,6 +247,10 @@ public:
     } else {
       return false;
     }
+  }
+
+  bool contains(const usize key) const {
+    return (map & static_cast<u64>(1) << key) != 0;
   }
 
   usize min() const { return bsf(map); }
