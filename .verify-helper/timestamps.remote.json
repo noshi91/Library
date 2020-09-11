@@ -17,6 +17,7 @@
 "test/segment_tree.test.cpp": "2020-03-11 22:58:19 +0900",
 "test/three_edge_connected_component_decomposition.test.cpp": "2020-03-11 00:35:25 +0900",
 "test/union_find.test.cpp": "2020-03-11 22:58:19 +0900",
+"test/w_ary_tree_set.test.cpp": "2020-09-11 14:24:32 +0900",
 "test/wavelet_matrix.quantile.test.cpp": "2020-03-11 22:58:19 +0900",
 "test/wavelet_matrix.rangefreq.test.cpp": "2020-03-11 22:58:19 +0900",
 "test/wavelet_matrix.select.test.cpp": "2020-03-11 22:58:19 +0900",
