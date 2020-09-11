@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../index.html#ed469618898d75b149e5c7c4b6a1c415">algorithm</a>
 * <a href="{{ site.github.repository_url }}/blob/master/algorithm/multiple_zeta_transform.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-11 23:32:43+09:00
+    - Last commit date: 2020-09-11 14:24:32+09:00
 
 
 
 
 ## Depends on
 
-* :warning: <a href="../other/ceildiv.cpp.html">other/ceildiv.cpp</a>
+* :heavy_check_mark: <a href="../other/ceildiv.cpp.html">other/ceildiv.cpp</a>
 * :heavy_check_mark: <a href="../other/int_alias.cpp.html">other/int_alias.cpp</a>
 
 
@@ -78,7 +78,7 @@ void multiple_zeta_transform(std::vector<typename S::value_type> &a) {
 {% raw %}
 ```cpp
 #line 1 "other/ceildiv.cpp"
-template <class T> T ceildiv(const T &n, const T &d) {
+template <class T> constexpr T ceildiv(const T &n, const T &d) {
   return n / d + (n % d != 0 ? 1 : 0);
 }
 #line 2 "other/int_alias.cpp"

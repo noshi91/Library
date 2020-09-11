@@ -69,6 +69,7 @@ layout: default
 * :warning: <a href="../data_structure/ternary_treap.cpp.html">Ternary Treap <small>(data_structure/ternary_treap.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/union_enumerate.cpp.html">Union Enumerate <small>(data_structure/union_enumerate.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/union_find.cpp.html">Union Find <small>(data_structure/union_find.cpp)</small></a>
+* :heavy_check_mark: <a href="../data_structure/w_ary_tree_set.cpp.html">w-ary Tree Set <small>(data_structure/w_ary_tree_set.cpp)</small></a>
 * :heavy_check_mark: <a href="../data_structure/wavelet_matrix.cpp.html">Wavelet Matrix <small>(data_structure/wavelet_matrix.cpp)</small></a>
 * :heavy_check_mark: <a href="bit_width.cpp.html">other/bit_width.cpp</a>
 * :heavy_check_mark: <a href="countl_zero.cpp.html">other/countl_zero.cpp</a>
@@ -93,6 +94,7 @@ layout: default
 * :heavy_check_mark: <a href="../../verify/test/segment_tree.test.cpp.html">test/segment_tree.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/three_edge_connected_component_decomposition.test.cpp.html">test/three_edge_connected_component_decomposition.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/union_find.test.cpp.html">test/union_find.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/w_ary_tree_set.test.cpp.html">test/w_ary_tree_set.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/wavelet_matrix.quantile.test.cpp.html">test/wavelet_matrix.quantile.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/wavelet_matrix.rangefreq.test.cpp.html">test/wavelet_matrix.rangefreq.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/wavelet_matrix.select.test.cpp.html">test/wavelet_matrix.select.test.cpp</a>

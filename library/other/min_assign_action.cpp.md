@@ -107,7 +107,7 @@ public:
 };
 #line 4 "other/min_assign_action.cpp"
 
-#include <optional>
+#line 6 "other/min_assign_action.cpp"
 
 template <class W> class min_assign_action {
   using T = typename W::value_type;

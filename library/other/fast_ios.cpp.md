@@ -56,6 +56,7 @@ layout: default
 * :heavy_check_mark: <a href="../../verify/test/segment_tree.test.cpp.html">test/segment_tree.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/three_edge_connected_component_decomposition.test.cpp.html">test/three_edge_connected_component_decomposition.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/union_find.test.cpp.html">test/union_find.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/w_ary_tree_set.test.cpp.html">test/w_ary_tree_set.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/wavelet_matrix.quantile.test.cpp.html">test/wavelet_matrix.quantile.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/wavelet_matrix.rangefreq.test.cpp.html">test/wavelet_matrix.rangefreq.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/wavelet_matrix.select.test.cpp.html">test/wavelet_matrix.select.test.cpp</a>
