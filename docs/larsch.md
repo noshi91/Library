@@ -33,7 +33,9 @@ ${\rm dp} \lbrack i \rbrack$ への遷移とみなすことが出来る。
 
 ## その他
 -   実装例の引数 $\rm select$ について
+
     ${\rm select} ( i , j , k ) \mathrel := A _ {i , j}$ と $A _ {i , k} \  ( j \lt k )$ を比較して、前者を選ぶ場合 false、後者を選ぶ場合 true
 
 -   実装例の引数 $\rm update$ について
+
     ${\rm update} ( i , k )$ が呼ばれたとき、$\mathop {\rm arg \, min} \limits _ j A _ {i , j} = k$ である。この関数は $i$ の昇順に呼ばれる。
