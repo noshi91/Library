@@ -132,6 +132,7 @@ ${\rm dp} \lbrack i \rbrack$ への遷移とみなすことが出来る。
 
 #### totally monotone
 [SMAWK Algorithm](https://noshi91.github.io/Library/library/algorithm/smawk.cpp.html) を参照せよ。
+ただしこのページでは文献に合わせて、$\min$ による定義を採用している。
 
 ## その他
 -   実装例の引数 $\rm select$ について
