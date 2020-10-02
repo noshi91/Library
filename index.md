@@ -1,156 +1,298 @@
 ---
-layout: default
+data:
+  libraryCategories:
+  - name: algorithm
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: algorithm/axiotis_tzamos_knapsack.cpp
+      title: Axiotis-Tzamos Knapsack
+    - icon: ':heavy_check_mark:'
+      path: algorithm/axiotis_tzamos_unbounded_knapsack.cpp
+      title: Axiotis-Tzamos Unbounded Knapsack
+    - icon: ':heavy_check_mark:'
+      path: algorithm/concave_max_plus_convolution.cpp
+      title: Concave Max Plus Convolution
+    - icon: ':warning:'
+      path: algorithm/divisor_mobius_transform.cpp
+      title: "Divisor M\xF6bius Transform"
+    - icon: ':warning:'
+      path: algorithm/divisor_zeta_transform.cpp
+      title: Divisor Zeta Transform
+    - icon: ':heavy_check_mark:'
+      path: algorithm/larsch.cpp
+      title: LARSCH Algorithm
+    - icon: ':heavy_check_mark:'
+      path: algorithm/max_plus_convolution.cpp
+      title: Max Plus Convolution
+    - icon: ':warning:'
+      path: algorithm/multiple_mobius_transform.cpp
+      title: "Multiple M\xF6bius Transform"
+    - icon: ':warning:'
+      path: algorithm/multiple_zeta_transform.cpp
+      title: Multiple Zeta Transform
+    - icon: ':heavy_check_mark:'
+      path: algorithm/smawk.cpp
+      title: SMAWK Algorithm
+    - icon: ':warning:'
+      path: algorithm/subset_mobius_transform.cpp
+      title: "Subset M\xF6bius Transform"
+    - icon: ':warning:'
+      path: algorithm/subset_zeta_transform.cpp
+      title: Subset Zeta Transform
+    - icon: ':heavy_check_mark:'
+      path: algorithm/superset_mobius_transform.cpp
+      title: "Superset M\xF6bius Transform"
+    - icon: ':heavy_check_mark:'
+      path: algorithm/superset_zeta_transform.cpp
+      title: Superset Zeta Transform
+    - icon: ':heavy_check_mark:'
+      path: algorithm/three_edge_connected_component_decomposition.cpp
+      title: 3-Edge-Connected Component Decomposition
+  - name: data_structure
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: data_structure/bankers_queue.cpp
+      title: Banker's Queue
+    - icon: ':heavy_check_mark:'
+      path: data_structure/bit_vector.cpp
+      title: Bit Vector
+    - icon: ':heavy_check_mark:'
+      path: data_structure/dual_segment_tree.cpp
+      title: Dual Segment Tree
+    - icon: ':heavy_check_mark:'
+      path: data_structure/erasable_heap.cpp
+      title: Erasable Heap
+    - icon: ':heavy_check_mark:'
+      path: data_structure/fenwick_tree.cpp
+      title: Fenwick Tree
+    - icon: ':heavy_check_mark:'
+      path: data_structure/incremental_bridge_connectivity.cpp
+      title: Incremental Bridge-Connectivity
+    - icon: ':heavy_check_mark:'
+      path: data_structure/lazy_segment_tree.cpp
+      title: Lazy Segment Tree
+    - icon: ':heavy_check_mark:'
+      path: data_structure/pairing_heap.cpp
+      title: Pairing Heap
+    - icon: ':warning:'
+      path: data_structure/partially_persistent_union_find.cpp
+      title: Partially Persistent Union Find
+    - icon: ':warning:'
+      path: data_structure/partially_retroactive_queue.cpp
+      title: Partially Retroactive Queue
+    - icon: ':warning:'
+      path: data_structure/persistent_skew_binary_random_access_list.cpp
+      title: Persistent Skew Binary Random Access List
+    - icon: ':heavy_check_mark:'
+      path: data_structure/persistent_stack.cpp
+      title: Persistent Stack
+    - icon: ':heavy_check_mark:'
+      path: data_structure/physicists_queue.cpp
+      title: Physicist's Queue
+    - icon: ':heavy_check_mark:'
+      path: data_structure/potentialized_union_find.cpp
+      title: Potentialized Union Find
+    - icon: ':heavy_check_mark:'
+      path: data_structure/queue_aggregation.cpp
+      title: Queue Aggregation
+    - icon: ':heavy_check_mark:'
+      path: data_structure/radix_heap.cpp
+      title: Radix Heap
+    - icon: ':heavy_check_mark:'
+      path: data_structure/randomized_queue.cpp
+      title: Randomized Queue
+    - icon: ':warning:'
+      path: data_structure/range_mode_query.cpp
+      title: Range Mode Query
+    - icon: ':heavy_check_mark:'
+      path: data_structure/realtime_queue.cpp
+      title: Realtime Queue
+    - icon: ':heavy_check_mark:'
+      path: data_structure/segment_tree.cpp
+      title: Segment Tree
+    - icon: ':heavy_check_mark:'
+      path: data_structure/stack_aggregation.cpp
+      title: Stack Aggregation
+    - icon: ':heavy_check_mark:'
+      path: data_structure/stream.cpp
+      title: Stream
+    - icon: ':warning:'
+      path: data_structure/ternary_treap.cpp
+      title: Ternary Treap
+    - icon: ':heavy_check_mark:'
+      path: data_structure/union_enumerate.cpp
+      title: Union Enumerate
+    - icon: ':heavy_check_mark:'
+      path: data_structure/union_find.cpp
+      title: Union Find
+    - icon: ':heavy_check_mark:'
+      path: data_structure/w_ary_tree_set.cpp
+      title: w-ary Tree Set
+    - icon: ':heavy_check_mark:'
+      path: data_structure/wavelet_matrix.cpp
+      title: Wavelet Matrix
+    - icon: ':warning:'
+      path: data_structure/xor_linked_list.cpp
+      title: Xor Linked List
+  - name: gomi
+    pages:
+    - icon: ':warning:'
+      path: gomi/assign_segment_tree.cpp
+      title: gomi/assign_segment_tree.cpp
+    - icon: ':warning:'
+      path: gomi/treap.cpp
+      title: gomi/treap.cpp
+  - name: other
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: other/affine.cpp
+      title: other/affine.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/bit_width.cpp
+      title: other/bit_width.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/cartesian_product_monoid.cpp
+      title: other/cartesian_product_monoid.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/ceildiv.cpp
+      title: other/ceildiv.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/countl_zero.cpp
+      title: other/countl_zero.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/countr_zero.cpp
+      title: other/countr_zero.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/fast_ios.cpp
+      title: other/fast_ios.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/int_alias.cpp
+      title: other/int_alias.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/less_equal_ordered_set.cpp
+      title: other/less_equal_ordered_set.cpp
+    - icon: ':warning:'
+      path: other/min_assign_action.cpp
+      title: other/min_assign_action.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/min_semigroup.cpp
+      title: other/min_semigroup.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/modint.cpp
+      title: other/modint.cpp
+    - icon: ':warning:'
+      path: other/montgomery_modint.cpp
+      title: other/montgomery_modint.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/multiplies_monoid.cpp
+      title: other/multiplies_monoid.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/opposite_monoid.cpp
+      title: other/opposite_monoid.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/opposite_ordered_set.cpp
+      title: other/opposite_ordered_set.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/plus_group.cpp
+      title: other/plus_group.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/plus_monoid.cpp
+      title: other/plus_monoid.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/popcount.cpp
+      title: other/popcount.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/random_integer.cpp
+      title: other/random_integer.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/right_zero_semigroup.cpp
+      title: other/right_zero_semigroup.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/select64.cpp
+      title: other/select64.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/semigroup_to_monoid.cpp
+      title: other/semigroup_to_monoid.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/sum_affine_action.cpp
+      title: other/sum_affine_action.cpp
+    - icon: ':heavy_check_mark:'
+      path: other/suspension.cpp
+      title: Suspension
+  verificationCategories:
+  - name: test
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/axiotis_tzamos_knapsack.test.cpp
+      title: test/axiotis_tzamos_knapsack.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/axiotis_tzamos_unbounded_knapsack.test.cpp
+      title: test/axiotis_tzamos_unbounded_knapsack.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/bankers_queue.test.cpp
+      title: test/bankers_queue.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/dual_segment_tree.test.cpp
+      title: test/dual_segment_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/erasable_heap.test.cpp
+      title: test/erasable_heap.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/fenwick_tree.test.cpp
+      title: test/fenwick_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/incremental_bridge_connectivity.test.cpp
+      title: test/incremental_bridge_connectivity.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/larsch.test.cpp
+      title: test/larsch.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/lazy_segment_tree.test.cpp
+      title: test/lazy_segment_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/pairing_heap.test.cpp
+      title: test/pairing_heap.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/physicists_queue.test.cpp
+      title: test/physicists_queue.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/potentialized_union_find.test.cpp
+      title: test/potentialized_union_find.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/queue_aggregation.test.cpp
+      title: test/queue_aggregation.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/radix_heap.test.cpp
+      title: test/radix_heap.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/randomized_queue.test.cpp
+      title: test/randomized_queue.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/realtime_queue.test.cpp
+      title: test/realtime_queue.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/segment_tree.test.cpp
+      title: test/segment_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/three_edge_connected_component_decomposition.test.cpp
+      title: test/three_edge_connected_component_decomposition.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/union_find.test.cpp
+      title: test/union_find.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/w_ary_tree_set.test.cpp
+      title: test/w_ary_tree_set.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/wavelet_matrix.quantile.test.cpp
+      title: test/wavelet_matrix.quantile.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/wavelet_matrix.rangefreq.test.cpp
+      title: test/wavelet_matrix.rangefreq.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/wavelet_matrix.select.test.cpp
+      title: test/wavelet_matrix.select.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/zeta_transform.test.cpp
+      title: test/zeta_transform.test.cpp
+layout: toppage
 ---
-
-<!-- mathjax config similar to math.stackexchange -->
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    TeX: { equationNumbers: { autoNumber: "AMS" }},
-    tex2jax: {
-      inlineMath: [ ['$','$'] ],
-      processEscapes: true
-    },
-    "HTML-CSS": { matchFontHeight: false },
-    displayAlign: "left",
-    displayIndent: "2em"
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-balloon-js@1.1.2/jquery.balloon.min.js" integrity="sha256-ZEYs9VrgAeNuPvs15E39OsyOJaIkXEEt10fzxJ20+2I=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="assets/js/copy-button.js"></script>
-<link rel="stylesheet" href="assets/css/copy-button.css" />
-
-
-# {{ site.title }}
-
-[![Actions Status]({{ site.github.repository_url }}/workflows/verify/badge.svg)]({{ site.github.repository_url }}/actions)
-<a href="{{ site.github.repository_url }}"><img src="https://img.shields.io/github/last-commit/{{ site.github.owner_name }}/{{ site.github.repository_name }}" /></a>
-
-{% if site.github.project_tagline %}{{ site.github.project_tagline }}{% else %}This documentation is automatically generated by <a href="https://github.com/online-judge-tools/verification-helper">online-judge-tools/verification-helper</a>.{% endif %}
-
-## Library Files
-
-<div id="ed469618898d75b149e5c7c4b6a1c415"></div>
-
-### algorithm
-
-* :heavy_check_mark: <a href="library/algorithm/axiotis_tzamos_knapsack.cpp.html">Axiotis-Tzamos Knapsack <small>(algorithm/axiotis_tzamos_knapsack.cpp)</small></a>
-* :heavy_check_mark: <a href="library/algorithm/axiotis_tzamos_unbounded_knapsack.cpp.html">Axiotis-Tzamos Unbounded Knapsack <small>(algorithm/axiotis_tzamos_unbounded_knapsack.cpp)</small></a>
-* :heavy_check_mark: <a href="library/algorithm/concave_max_plus_convolution.cpp.html">Concave Max Plus Convolution <small>(algorithm/concave_max_plus_convolution.cpp)</small></a>
-* :warning: <a href="library/algorithm/divisor_mobius_transform.cpp.html">Divisor Möbius Transform <small>(algorithm/divisor_mobius_transform.cpp)</small></a>
-* :warning: <a href="library/algorithm/divisor_zeta_transform.cpp.html">Divisor Zeta Transform <small>(algorithm/divisor_zeta_transform.cpp)</small></a>
-* :heavy_check_mark: <a href="library/algorithm/max_plus_convolution.cpp.html">Max Plus Convolution <small>(algorithm/max_plus_convolution.cpp)</small></a>
-* :warning: <a href="library/algorithm/multiple_mobius_transform.cpp.html">Multiple Möbius Transform <small>(algorithm/multiple_mobius_transform.cpp)</small></a>
-* :warning: <a href="library/algorithm/multiple_zeta_transform.cpp.html">Multiple Zeta Transform <small>(algorithm/multiple_zeta_transform.cpp)</small></a>
-* :heavy_check_mark: <a href="library/algorithm/smawk.cpp.html">SMAWK Algorithm <small>(algorithm/smawk.cpp)</small></a>
-* :warning: <a href="library/algorithm/subset_mobius_transform.cpp.html">Subset Möbius Transform <small>(algorithm/subset_mobius_transform.cpp)</small></a>
-* :warning: <a href="library/algorithm/subset_zeta_transform.cpp.html">Subset Zeta Transform <small>(algorithm/subset_zeta_transform.cpp)</small></a>
-* :heavy_check_mark: <a href="library/algorithm/superset_mobius_transform.cpp.html">Superset Möbius Transform <small>(algorithm/superset_mobius_transform.cpp)</small></a>
-* :heavy_check_mark: <a href="library/algorithm/superset_zeta_transform.cpp.html">Superset Zeta Transform <small>(algorithm/superset_zeta_transform.cpp)</small></a>
-* :heavy_check_mark: <a href="library/algorithm/three_edge_connected_component_decomposition.cpp.html">3-Edge-Connected Component Decomposition <small>(algorithm/three_edge_connected_component_decomposition.cpp)</small></a>
-
-
-<div id="c8f6850ec2ec3fb32f203c1f4e3c2fd2"></div>
-
-### data_structure
-
-* :heavy_check_mark: <a href="library/data_structure/bankers_queue.cpp.html">Banker's Queue <small>(data_structure/bankers_queue.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/bit_vector.cpp.html">Bit Vector <small>(data_structure/bit_vector.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/dual_segment_tree.cpp.html">Dual Segment Tree <small>(data_structure/dual_segment_tree.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/erasable_heap.cpp.html">Erasable Heap <small>(data_structure/erasable_heap.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/fenwick_tree.cpp.html">Fenwick Tree <small>(data_structure/fenwick_tree.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/incremental_bridge_connectivity.cpp.html">Incremental Bridge-Connectivity <small>(data_structure/incremental_bridge_connectivity.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/lazy_segment_tree.cpp.html">Lazy Segment Tree <small>(data_structure/lazy_segment_tree.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/pairing_heap.cpp.html">Pairing Heap <small>(data_structure/pairing_heap.cpp)</small></a>
-* :warning: <a href="library/data_structure/partially_persistent_union_find.cpp.html">Partially Persistent Union Find <small>(data_structure/partially_persistent_union_find.cpp)</small></a>
-* :warning: <a href="library/data_structure/partially_retroactive_queue.cpp.html">Partially Retroactive Queue <small>(data_structure/partially_retroactive_queue.cpp)</small></a>
-* :warning: <a href="library/data_structure/persistent_skew_binary_random_access_list.cpp.html">Persistent Skew Binary Random Access List <small>(data_structure/persistent_skew_binary_random_access_list.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/persistent_stack.cpp.html">Persistent Stack <small>(data_structure/persistent_stack.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/physicists_queue.cpp.html">Physicist's Queue <small>(data_structure/physicists_queue.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/potentialized_union_find.cpp.html">Potentialized Union Find <small>(data_structure/potentialized_union_find.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/queue_aggregation.cpp.html">Queue Aggregation <small>(data_structure/queue_aggregation.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/radix_heap.cpp.html">Radix Heap <small>(data_structure/radix_heap.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/randomized_queue.cpp.html">Randomized Queue <small>(data_structure/randomized_queue.cpp)</small></a>
-* :warning: <a href="library/data_structure/range_mode_query.cpp.html">Range Mode Query <small>(data_structure/range_mode_query.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/realtime_queue.cpp.html">Realtime Queue <small>(data_structure/realtime_queue.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/segment_tree.cpp.html">Segment Tree <small>(data_structure/segment_tree.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/stack_aggregation.cpp.html">Stack Aggregation <small>(data_structure/stack_aggregation.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/stream.cpp.html">Stream <small>(data_structure/stream.cpp)</small></a>
-* :warning: <a href="library/data_structure/ternary_treap.cpp.html">Ternary Treap <small>(data_structure/ternary_treap.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/union_enumerate.cpp.html">Union Enumerate <small>(data_structure/union_enumerate.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/union_find.cpp.html">Union Find <small>(data_structure/union_find.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/w_ary_tree_set.cpp.html">w-ary Tree Set <small>(data_structure/w_ary_tree_set.cpp)</small></a>
-* :heavy_check_mark: <a href="library/data_structure/wavelet_matrix.cpp.html">Wavelet Matrix <small>(data_structure/wavelet_matrix.cpp)</small></a>
-* :warning: <a href="library/data_structure/xor_linked_list.cpp.html">Xor Linked List <small>(data_structure/xor_linked_list.cpp)</small></a>
-
-
-<div id="c25e426f9a94f83968c77e7d5480c159"></div>
-
-### gomi
-
-* :warning: <a href="library/gomi/assign_segment_tree.cpp.html">gomi/assign_segment_tree.cpp</a>
-* :warning: <a href="library/gomi/treap.cpp.html">gomi/treap.cpp</a>
-
-
-<div id="795f3202b17cb6bc3d4b771d8c6c9eaf"></div>
-
-### other
-
-* :heavy_check_mark: <a href="library/other/affine.cpp.html">other/affine.cpp</a>
-* :heavy_check_mark: <a href="library/other/bit_width.cpp.html">other/bit_width.cpp</a>
-* :heavy_check_mark: <a href="library/other/cartesian_product_monoid.cpp.html">other/cartesian_product_monoid.cpp</a>
-* :heavy_check_mark: <a href="library/other/ceildiv.cpp.html">other/ceildiv.cpp</a>
-* :heavy_check_mark: <a href="library/other/countl_zero.cpp.html">other/countl_zero.cpp</a>
-* :heavy_check_mark: <a href="library/other/countr_zero.cpp.html">other/countr_zero.cpp</a>
-* :heavy_check_mark: <a href="library/other/fast_ios.cpp.html">other/fast_ios.cpp</a>
-* :heavy_check_mark: <a href="library/other/int_alias.cpp.html">other/int_alias.cpp</a>
-* :heavy_check_mark: <a href="library/other/less_equal_ordered_set.cpp.html">other/less_equal_ordered_set.cpp</a>
-* :warning: <a href="library/other/min_assign_action.cpp.html">other/min_assign_action.cpp</a>
-* :warning: <a href="library/other/min_semigroup.cpp.html">other/min_semigroup.cpp</a>
-* :heavy_check_mark: <a href="library/other/modint.cpp.html">other/modint.cpp</a>
-* :warning: <a href="library/other/montgomery_modint.cpp.html">other/montgomery_modint.cpp</a>
-* :heavy_check_mark: <a href="library/other/multiplies_monoid.cpp.html">other/multiplies_monoid.cpp</a>
-* :heavy_check_mark: <a href="library/other/opposite_monoid.cpp.html">other/opposite_monoid.cpp</a>
-* :heavy_check_mark: <a href="library/other/opposite_ordered_set.cpp.html">other/opposite_ordered_set.cpp</a>
-* :heavy_check_mark: <a href="library/other/plus_group.cpp.html">other/plus_group.cpp</a>
-* :heavy_check_mark: <a href="library/other/plus_monoid.cpp.html">other/plus_monoid.cpp</a>
-* :heavy_check_mark: <a href="library/other/popcount.cpp.html">other/popcount.cpp</a>
-* :heavy_check_mark: <a href="library/other/random_integer.cpp.html">other/random_integer.cpp</a>
-* :heavy_check_mark: <a href="library/other/right_zero_semigroup.cpp.html">other/right_zero_semigroup.cpp</a>
-* :heavy_check_mark: <a href="library/other/select64.cpp.html">other/select64.cpp</a>
-* :heavy_check_mark: <a href="library/other/semigroup_to_monoid.cpp.html">other/semigroup_to_monoid.cpp</a>
-* :heavy_check_mark: <a href="library/other/sum_affine_action.cpp.html">other/sum_affine_action.cpp</a>
-* :heavy_check_mark: <a href="library/other/suspension.cpp.html">Suspension <small>(other/suspension.cpp)</small></a>
-
-
-## Verify Files
-
-* :heavy_check_mark: <a href="verify/test/axiotis_tzamos_knapsack.test.cpp.html">test/axiotis_tzamos_knapsack.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/axiotis_tzamos_unbounded_knapsack.test.cpp.html">test/axiotis_tzamos_unbounded_knapsack.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/bankers_queue.test.cpp.html">test/bankers_queue.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/dual_segment_tree.test.cpp.html">test/dual_segment_tree.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/erasable_heap.test.cpp.html">test/erasable_heap.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/fenwick_tree.test.cpp.html">test/fenwick_tree.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/incremental_bridge_connectivity.test.cpp.html">test/incremental_bridge_connectivity.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/lazy_segment_tree.test.cpp.html">test/lazy_segment_tree.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/pairing_heap.test.cpp.html">test/pairing_heap.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/physicists_queue.test.cpp.html">test/physicists_queue.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/potentialized_union_find.test.cpp.html">test/potentialized_union_find.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/queue_aggregation.test.cpp.html">test/queue_aggregation.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/radix_heap.test.cpp.html">test/radix_heap.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/randomized_queue.test.cpp.html">test/randomized_queue.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/realtime_queue.test.cpp.html">test/realtime_queue.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/segment_tree.test.cpp.html">test/segment_tree.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/three_edge_connected_component_decomposition.test.cpp.html">test/three_edge_connected_component_decomposition.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/union_find.test.cpp.html">test/union_find.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/w_ary_tree_set.test.cpp.html">test/w_ary_tree_set.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/wavelet_matrix.quantile.test.cpp.html">test/wavelet_matrix.quantile.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/wavelet_matrix.rangefreq.test.cpp.html">test/wavelet_matrix.rangefreq.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/wavelet_matrix.select.test.cpp.html">test/wavelet_matrix.select.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/zeta_transform.test.cpp.html">test/zeta_transform.test.cpp</a>
-
-
