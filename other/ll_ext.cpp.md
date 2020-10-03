@@ -18,54 +18,50 @@ data:
     \     return true;\r\n        }\r\n      }\r\n    } else {\r\n      if (b < 0)\
     \ {\r\n        if (a < ll_min - b) {\r\n          return true;\r\n        }\r\n\
     \      }\r\n    }\r\n    *res = a + b;\r\n    return false;\r\n  }\r\n\r\n  static\
-    \ constexpr bool add_overflow(const ll a, const ll b, ll *res) {\r\n#ifdef __has_builtin\r\
-    \n#if __has_builtin(__builtin_saddll_overflow)\r\n    return __builtin_saddll_overflow(a,\
-    \ b, res);\r\n#else\r\n    return add_overflow_base(a, b, res);\r\n#endif\r\n\
-    #else\r\n    return add_overflow_base(a, b, res);\r\n#endif\r\n  }\r\n\r\n  static\
-    \ constexpr bool sub_overflow_base(const ll a, const ll b, ll *res) {\r\n    if\
-    \ (a >= 0) {\r\n      if (b < 0) {\r\n        if (a > ll_max + b) {\r\n      \
-    \    return true;\r\n        }\r\n      }\r\n    } else {\r\n      if (b >= 0)\
-    \ {\r\n        if (a < ll_min + b) {\r\n          return true;\r\n        }\r\n\
-    \      }\r\n    }\r\n    *res = a - b;\r\n    return false;\r\n  }\r\n\r\n  static\
-    \ constexpr bool sub_overflow(const ll a, const ll b, ll *res) {\r\n#ifdef __has_builtin\r\
-    \n#if __has_builtin(__builtin_ssubll_overflow)\r\n    return __builtin_ssubll_overflow(a,\
+    \ constexpr bool add_overflow(const ll a, const ll b, ll *res) {\r\n#ifdef __GNUC__\r\
+    \n    return __builtin_saddll_overflow(a, b, res);\r\n#else\r\n    return add_overflow_base(a,\
+    \ b, res);\r\n#endif\r\n  }\r\n\r\n  static constexpr bool sub_overflow_base(const\
+    \ ll a, const ll b, ll *res) {\r\n    if (a >= 0) {\r\n      if (b < 0) {\r\n\
+    \        if (a > ll_max + b) {\r\n          return true;\r\n        }\r\n    \
+    \  }\r\n    } else {\r\n      if (b >= 0) {\r\n        if (a < ll_min + b) {\r\
+    \n          return true;\r\n        }\r\n      }\r\n    }\r\n    *res = a - b;\r\
+    \n    return false;\r\n  }\r\n\r\n  static constexpr bool sub_overflow(const ll\
+    \ a, const ll b, ll *res) {\r\n#ifdef __GNUC__\r\n    return __builtin_ssubll_overflow(a,\
     \ b, res);\r\n#else\r\n    return sub_overflow_base(a, b, res);\r\n#endif\r\n\
-    #else\r\n    return sub_overflow_base(a, b, res);\r\n#endif\r\n  }\r\n\r\n  static\
-    \ constexpr bool mul_overflow_base(const ll a, const ll b, ll *res) {\r\n    if\
-    \ (a > 0) {\r\n      if (b > 0) {\r\n        if (a > ll_max / b) {\r\n       \
-    \   return true;\r\n        }\r\n      } else if (b < 0) {\r\n        if (b <\
-    \ ll_min / a) {\r\n          return true;\r\n        }\r\n      }\r\n    } else\
-    \ if (a < 0) {\r\n      if (b > 0) {\r\n        if (a < ll_min / b) {\r\n    \
-    \      return true;\r\n        }\r\n      } else if (b < 0) {\r\n        if (a\
-    \ < ll_max / b) {\r\n          return true;\r\n        }\r\n      }\r\n    }\r\
-    \n    *res = a * b;\r\n    return false;\r\n  }\r\n\r\n  static constexpr bool\
-    \ mul_overflow(const ll a, const ll b, ll *res) {\r\n#ifdef __has_builtin\r\n\
-    #if __has_builtin(__builtin_smulll_overflow)\r\n    return __builtin_smulll_overflow(a,\
-    \ b, res);\r\n#else\r\n    return mul_overflow_base(a, b, res);\r\n#endif\r\n\
-    #else\r\n    return mul_overflow_base(a, b, res);\r\n#endif\r\n  }\r\n\r\npublic:\r\
-    \n  static constexpr ll_ext p_infinity() {\r\n    ll_ext ret;\r\n    ret.t = p_inf_tag;\r\
-    \n    return ret;\r\n  }\r\n  static constexpr ll_ext n_infinity() {\r\n    ll_ext\
-    \ ret;\r\n    ret.t = n_inf_tag;\r\n    return ret;\r\n  }\r\n\r\n  constexpr\
-    \ ll_ext() noexcept : v(0), t(finite_tag) {}\r\n  constexpr ll_ext(const ll x)\
-    \ noexcept : v(x), t(finite_tag) {}\r\n\r\n  friend constexpr ll_ext operator+(const\
-    \ ll_ext &l, const ll_ext &r) noexcept {\r\n    switch (l.t) {\r\n    case finite_tag:\
-    \ {\r\n      switch (r.t) {\r\n      case finite_tag: {\r\n        ll x = 0;\r\
-    \n        assert(!add_overflow(l.v, r.v, &x) && \"overflow: +\");\r\n        return\
-    \ x;\r\n      } break;\r\n      case p_inf_tag: {\r\n        return p_infinity();\r\
-    \n      } break;\r\n      case n_inf_tag: {\r\n        return n_infinity();\r\n\
-    \      } break;\r\n      }\r\n    } break;\r\n    case p_inf_tag: {\r\n      switch\
-    \ (r.t) {\r\n      case finite_tag: {\r\n        return p_infinity();\r\n    \
-    \  } break;\r\n      case p_inf_tag: {\r\n        return p_infinity();\r\n   \
-    \   } break;\r\n      case n_inf_tag: {\r\n        assert(false && \"p_inf + n_inf\"\
-    );\r\n        return 0;\r\n      } break;\r\n      }\r\n    } break;\r\n    case\
-    \ n_inf_tag: {\r\n      switch (r.t) {\r\n      case finite_tag: {\r\n       \
-    \ return n_infinity();\r\n      } break;\r\n      case p_inf_tag: {\r\n      \
-    \  assert(false && \"n_inf + p_inf\");\r\n        return 0;\r\n      } break;\r\
-    \n      case n_inf_tag: {\r\n        return n_infinity();\r\n      } break;\r\n\
-    \      }\r\n    }\r\n    }\r\n  }\r\n\r\n  friend constexpr ll_ext operator-(const\
-    \ ll_ext &l, const ll_ext &r) noexcept {\r\n    switch (l.t) {\r\n    case finite_tag:\
-    \ {\r\n      switch (r.t) {\r\n      case finite_tag: {\r\n        ll x = 0;\r\
-    \n        assert(!sub_overflow(l.v, r.v, &x) && \"overflow: -\");\r\n        return\
+    \  }\r\n\r\n  static constexpr bool mul_overflow_base(const ll a, const ll b,\
+    \ ll *res) {\r\n    if (a > 0) {\r\n      if (b > 0) {\r\n        if (a > ll_max\
+    \ / b) {\r\n          return true;\r\n        }\r\n      } else if (b < 0) {\r\
+    \n        if (b < ll_min / a) {\r\n          return true;\r\n        }\r\n   \
+    \   }\r\n    } else if (a < 0) {\r\n      if (b > 0) {\r\n        if (a < ll_min\
+    \ / b) {\r\n          return true;\r\n        }\r\n      } else if (b < 0) {\r\
+    \n        if (a < ll_max / b) {\r\n          return true;\r\n        }\r\n   \
+    \   }\r\n    }\r\n    *res = a * b;\r\n    return false;\r\n  }\r\n\r\n  static\
+    \ constexpr bool mul_overflow(const ll a, const ll b, ll *res) {\r\n#ifdef __GNUC__\r\
+    \n    return __builtin_smulll_overflow(a, b, res);\r\n#else\r\n    return mul_overflow_base(a,\
+    \ b, res);\r\n#endif\r\n  }\r\n\r\npublic:\r\n  static constexpr ll_ext p_infinity()\
+    \ {\r\n    ll_ext ret;\r\n    ret.t = p_inf_tag;\r\n    return ret;\r\n  }\r\n\
+    \  static constexpr ll_ext n_infinity() {\r\n    ll_ext ret;\r\n    ret.t = n_inf_tag;\r\
+    \n    return ret;\r\n  }\r\n\r\n  constexpr ll_ext() noexcept : v(0), t(finite_tag)\
+    \ {}\r\n  constexpr ll_ext(const ll x) noexcept : v(x), t(finite_tag) {}\r\n\r\
+    \n  friend constexpr ll_ext operator+(const ll_ext &l, const ll_ext &r) noexcept\
+    \ {\r\n    switch (l.t) {\r\n    case finite_tag: {\r\n      switch (r.t) {\r\n\
+    \      case finite_tag: {\r\n        ll x = 0;\r\n        assert(!add_overflow(l.v,\
+    \ r.v, &x) && \"overflow: +\");\r\n        return x;\r\n      } break;\r\n   \
+    \   case p_inf_tag: {\r\n        return p_infinity();\r\n      } break;\r\n  \
+    \    case n_inf_tag: {\r\n        return n_infinity();\r\n      } break;\r\n \
+    \     }\r\n    } break;\r\n    case p_inf_tag: {\r\n      switch (r.t) {\r\n \
+    \     case finite_tag: {\r\n        return p_infinity();\r\n      } break;\r\n\
+    \      case p_inf_tag: {\r\n        return p_infinity();\r\n      } break;\r\n\
+    \      case n_inf_tag: {\r\n        assert(false && \"p_inf + n_inf\");\r\n  \
+    \      return 0;\r\n      } break;\r\n      }\r\n    } break;\r\n    case n_inf_tag:\
+    \ {\r\n      switch (r.t) {\r\n      case finite_tag: {\r\n        return n_infinity();\r\
+    \n      } break;\r\n      case p_inf_tag: {\r\n        assert(false && \"n_inf\
+    \ + p_inf\");\r\n        return 0;\r\n      } break;\r\n      case n_inf_tag:\
+    \ {\r\n        return n_infinity();\r\n      } break;\r\n      }\r\n    }\r\n\
+    \    }\r\n  }\r\n\r\n  friend constexpr ll_ext operator-(const ll_ext &l, const\
+    \ ll_ext &r) noexcept {\r\n    switch (l.t) {\r\n    case finite_tag: {\r\n  \
+    \    switch (r.t) {\r\n      case finite_tag: {\r\n        ll x = 0;\r\n     \
+    \   assert(!sub_overflow(l.v, r.v, &x) && \"overflow: -\");\r\n        return\
     \ x;\r\n      } break;\r\n      case p_inf_tag: {\r\n        return n_infinity();\r\
     \n      } break;\r\n      case n_inf_tag: {\r\n        return p_infinity();\r\n\
     \      } break;\r\n      }\r\n    } break;\r\n    case p_inf_tag: {\r\n      switch\
@@ -190,33 +186,29 @@ data:
     \  }\r\n    } else {\r\n      if (b < 0) {\r\n        if (a < ll_min - b) {\r\n\
     \          return true;\r\n        }\r\n      }\r\n    }\r\n    *res = a + b;\r\
     \n    return false;\r\n  }\r\n\r\n  static constexpr bool add_overflow(const ll\
-    \ a, const ll b, ll *res) {\r\n#ifdef __has_builtin\r\n#if __has_builtin(__builtin_saddll_overflow)\r\
-    \n    return __builtin_saddll_overflow(a, b, res);\r\n#else\r\n    return add_overflow_base(a,\
-    \ b, res);\r\n#endif\r\n#else\r\n    return add_overflow_base(a, b, res);\r\n\
-    #endif\r\n  }\r\n\r\n  static constexpr bool sub_overflow_base(const ll a, const\
-    \ ll b, ll *res) {\r\n    if (a >= 0) {\r\n      if (b < 0) {\r\n        if (a\
-    \ > ll_max + b) {\r\n          return true;\r\n        }\r\n      }\r\n    } else\
-    \ {\r\n      if (b >= 0) {\r\n        if (a < ll_min + b) {\r\n          return\
-    \ true;\r\n        }\r\n      }\r\n    }\r\n    *res = a - b;\r\n    return false;\r\
-    \n  }\r\n\r\n  static constexpr bool sub_overflow(const ll a, const ll b, ll *res)\
-    \ {\r\n#ifdef __has_builtin\r\n#if __has_builtin(__builtin_ssubll_overflow)\r\n\
-    \    return __builtin_ssubll_overflow(a, b, res);\r\n#else\r\n    return sub_overflow_base(a,\
-    \ b, res);\r\n#endif\r\n#else\r\n    return sub_overflow_base(a, b, res);\r\n\
-    #endif\r\n  }\r\n\r\n  static constexpr bool mul_overflow_base(const ll a, const\
-    \ ll b, ll *res) {\r\n    if (a > 0) {\r\n      if (b > 0) {\r\n        if (a\
-    \ > ll_max / b) {\r\n          return true;\r\n        }\r\n      } else if (b\
-    \ < 0) {\r\n        if (b < ll_min / a) {\r\n          return true;\r\n      \
-    \  }\r\n      }\r\n    } else if (a < 0) {\r\n      if (b > 0) {\r\n        if\
-    \ (a < ll_min / b) {\r\n          return true;\r\n        }\r\n      } else if\
-    \ (b < 0) {\r\n        if (a < ll_max / b) {\r\n          return true;\r\n   \
-    \     }\r\n      }\r\n    }\r\n    *res = a * b;\r\n    return false;\r\n  }\r\
-    \n\r\n  static constexpr bool mul_overflow(const ll a, const ll b, ll *res) {\r\
-    \n#ifdef __has_builtin\r\n#if __has_builtin(__builtin_smulll_overflow)\r\n   \
-    \ return __builtin_smulll_overflow(a, b, res);\r\n#else\r\n    return mul_overflow_base(a,\
-    \ b, res);\r\n#endif\r\n#else\r\n    return mul_overflow_base(a, b, res);\r\n\
-    #endif\r\n  }\r\n\r\npublic:\r\n  static constexpr ll_ext p_infinity() {\r\n \
-    \   ll_ext ret;\r\n    ret.t = p_inf_tag;\r\n    return ret;\r\n  }\r\n  static\
-    \ constexpr ll_ext n_infinity() {\r\n    ll_ext ret;\r\n    ret.t = n_inf_tag;\r\
+    \ a, const ll b, ll *res) {\r\n#ifdef __GNUC__\r\n    return __builtin_saddll_overflow(a,\
+    \ b, res);\r\n#else\r\n    return add_overflow_base(a, b, res);\r\n#endif\r\n\
+    \  }\r\n\r\n  static constexpr bool sub_overflow_base(const ll a, const ll b,\
+    \ ll *res) {\r\n    if (a >= 0) {\r\n      if (b < 0) {\r\n        if (a > ll_max\
+    \ + b) {\r\n          return true;\r\n        }\r\n      }\r\n    } else {\r\n\
+    \      if (b >= 0) {\r\n        if (a < ll_min + b) {\r\n          return true;\r\
+    \n        }\r\n      }\r\n    }\r\n    *res = a - b;\r\n    return false;\r\n\
+    \  }\r\n\r\n  static constexpr bool sub_overflow(const ll a, const ll b, ll *res)\
+    \ {\r\n#ifdef __GNUC__\r\n    return __builtin_ssubll_overflow(a, b, res);\r\n\
+    #else\r\n    return sub_overflow_base(a, b, res);\r\n#endif\r\n  }\r\n\r\n  static\
+    \ constexpr bool mul_overflow_base(const ll a, const ll b, ll *res) {\r\n    if\
+    \ (a > 0) {\r\n      if (b > 0) {\r\n        if (a > ll_max / b) {\r\n       \
+    \   return true;\r\n        }\r\n      } else if (b < 0) {\r\n        if (b <\
+    \ ll_min / a) {\r\n          return true;\r\n        }\r\n      }\r\n    } else\
+    \ if (a < 0) {\r\n      if (b > 0) {\r\n        if (a < ll_min / b) {\r\n    \
+    \      return true;\r\n        }\r\n      } else if (b < 0) {\r\n        if (a\
+    \ < ll_max / b) {\r\n          return true;\r\n        }\r\n      }\r\n    }\r\
+    \n    *res = a * b;\r\n    return false;\r\n  }\r\n\r\n  static constexpr bool\
+    \ mul_overflow(const ll a, const ll b, ll *res) {\r\n#ifdef __GNUC__\r\n    return\
+    \ __builtin_smulll_overflow(a, b, res);\r\n#else\r\n    return mul_overflow_base(a,\
+    \ b, res);\r\n#endif\r\n  }\r\n\r\npublic:\r\n  static constexpr ll_ext p_infinity()\
+    \ {\r\n    ll_ext ret;\r\n    ret.t = p_inf_tag;\r\n    return ret;\r\n  }\r\n\
+    \  static constexpr ll_ext n_infinity() {\r\n    ll_ext ret;\r\n    ret.t = n_inf_tag;\r\
     \n    return ret;\r\n  }\r\n\r\n  constexpr ll_ext() noexcept : v(0), t(finite_tag)\
     \ {}\r\n  constexpr ll_ext(const ll x) noexcept : v(x), t(finite_tag) {}\r\n\r\
     \n  friend constexpr ll_ext operator+(const ll_ext &l, const ll_ext &r) noexcept\
@@ -355,7 +347,7 @@ data:
   isVerificationFile: false
   path: other/ll_ext.cpp
   requiredBy: []
-  timestamp: '2020-10-03 20:18:15+09:00'
+  timestamp: '2020-10-03 20:39:53+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: other/ll_ext.cpp
