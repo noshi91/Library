@@ -40,12 +40,8 @@ private:
   }
 
   static constexpr bool add_overflow(const ll a, const ll b, ll *res) {
-#ifdef __has_builtin
-#if __has_builtin(__builtin_saddll_overflow)
+#ifdef __GNUC__
     return __builtin_saddll_overflow(a, b, res);
-#else
-    return add_overflow_base(a, b, res);
-#endif
 #else
     return add_overflow_base(a, b, res);
 #endif
@@ -70,12 +66,8 @@ private:
   }
 
   static constexpr bool sub_overflow(const ll a, const ll b, ll *res) {
-#ifdef __has_builtin
-#if __has_builtin(__builtin_ssubll_overflow)
+#ifdef __GNUC__
     return __builtin_ssubll_overflow(a, b, res);
-#else
-    return sub_overflow_base(a, b, res);
-#endif
 #else
     return sub_overflow_base(a, b, res);
 #endif
@@ -108,12 +100,8 @@ private:
   }
 
   static constexpr bool mul_overflow(const ll a, const ll b, ll *res) {
-#ifdef __has_builtin
-#if __has_builtin(__builtin_smulll_overflow)
+#ifdef __GNUC__
     return __builtin_smulll_overflow(a, b, res);
-#else
-    return mul_overflow_base(a, b, res);
-#endif
 #else
     return mul_overflow_base(a, b, res);
 #endif
