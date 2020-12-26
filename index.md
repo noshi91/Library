@@ -74,6 +74,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/pairing_heap.cpp
       title: Pairing Heap
+    - icon: ':heavy_check_mark:'
+      path: data_structure/parametric_heap.hpp
+      title: Parametric Heap
     - icon: ':warning:'
       path: data_structure/partially_persistent_union_find.cpp
       title: Partially Persistent Union Find
@@ -255,6 +258,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/pairing_heap.test.cpp
       title: test/pairing_heap.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/parametric_heap.test.cpp
+      title: test/parametric_heap.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/physicists_queue.test.cpp
       title: test/physicists_queue.test.cpp

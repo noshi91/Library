@@ -82,8 +82,8 @@ data:
   timestamp: '2020-03-16 22:45:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/realtime_queue.test.cpp
   - test/bankers_queue.test.cpp
+  - test/realtime_queue.test.cpp
 documentation_of: data_structure/stream.cpp
 layout: document
 redirect_from:

@@ -27,8 +27,8 @@ data:
   timestamp: '2020-02-15 23:51:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/pairing_heap.test.cpp
   - test/larsch.test.cpp
+  - test/pairing_heap.test.cpp
 documentation_of: other/opposite_ordered_set.cpp
 layout: document
 redirect_from:

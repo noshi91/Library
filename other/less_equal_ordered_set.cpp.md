@@ -29,9 +29,9 @@ data:
   timestamp: '2020-02-14 16:53:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/pairing_heap.test.cpp
-  - test/erasable_heap.test.cpp
   - test/larsch.test.cpp
+  - test/erasable_heap.test.cpp
+  - test/pairing_heap.test.cpp
 documentation_of: other/less_equal_ordered_set.cpp
 layout: document
 redirect_from:
