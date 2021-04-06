@@ -9,6 +9,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/pairing_heap.test.cpp
     title: test/pairing_heap.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -27,8 +28,8 @@ data:
   timestamp: '2020-02-15 23:51:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/larsch.test.cpp
   - test/pairing_heap.test.cpp
+  - test/larsch.test.cpp
 documentation_of: other/opposite_ordered_set.cpp
 layout: document
 redirect_from:

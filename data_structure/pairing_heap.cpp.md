@@ -9,6 +9,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/pairing_heap.test.cpp
     title: test/pairing_heap.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -63,8 +64,8 @@ data:
   timestamp: '2020-03-11 22:42:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/erasable_heap.test.cpp
   - test/pairing_heap.test.cpp
+  - test/erasable_heap.test.cpp
 documentation_of: data_structure/pairing_heap.cpp
 layout: document
 redirect_from:

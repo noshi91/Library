@@ -12,6 +12,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/axiotis_tzamos_unbounded_knapsack.test.cpp
     title: test/axiotis_tzamos_unbounded_knapsack.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

@@ -9,6 +9,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/potentialized_union_find.test.cpp
     title: test/potentialized_union_find.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

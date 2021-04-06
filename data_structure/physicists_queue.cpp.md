@@ -15,6 +15,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/physicists_queue.test.cpp
     title: test/physicists_queue.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

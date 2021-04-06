@@ -15,6 +15,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/realtime_queue.test.cpp
     title: test/realtime_queue.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -56,8 +57,8 @@ data:
   timestamp: '2020-03-16 22:45:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/physicists_queue.test.cpp
   - test/realtime_queue.test.cpp
+  - test/physicists_queue.test.cpp
 documentation_of: data_structure/persistent_stack.cpp
 layout: document
 redirect_from:

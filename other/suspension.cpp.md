@@ -24,6 +24,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/realtime_queue.test.cpp
     title: test/realtime_queue.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -59,15 +60,15 @@ data:
   path: other/suspension.cpp
   requiredBy:
   - data_structure/realtime_queue.cpp
-  - data_structure/bankers_queue.cpp
   - data_structure/physicists_queue.cpp
+  - data_structure/bankers_queue.cpp
   - data_structure/stream.cpp
   timestamp: '2020-03-15 18:29:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/bankers_queue.test.cpp
-  - test/physicists_queue.test.cpp
   - test/realtime_queue.test.cpp
+  - test/physicists_queue.test.cpp
+  - test/bankers_queue.test.cpp
 documentation_of: other/suspension.cpp
 layout: document
 redirect_from:

@@ -9,6 +9,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/zeta_transform.test.cpp
     title: test/zeta_transform.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

@@ -12,6 +12,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/randomized_queue.test.cpp
     title: test/randomized_queue.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

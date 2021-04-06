@@ -18,6 +18,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/radix_heap.test.cpp
     title: test/radix_heap.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

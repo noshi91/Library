@@ -12,6 +12,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/larsch.test.cpp
     title: test/larsch.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -36,8 +37,8 @@ data:
   timestamp: '2020-02-09 00:25:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/dual_segment_tree.test.cpp
   - test/larsch.test.cpp
+  - test/dual_segment_tree.test.cpp
 documentation_of: other/semigroup_to_monoid.cpp
 layout: document
 redirect_from:

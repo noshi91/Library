@@ -12,6 +12,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/w_ary_tree_set.test.cpp
     title: test/w_ary_tree_set.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

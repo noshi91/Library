@@ -12,6 +12,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/wavelet_matrix.select.test.cpp
     title: test/wavelet_matrix.select.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

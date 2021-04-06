@@ -18,9 +18,6 @@ data:
     path: algorithm/divisor_zeta_transform.cpp
     title: Divisor Zeta Transform
   - icon: ':heavy_check_mark:'
-    path: algorithm/larsch.cpp
-    title: LARSCH Algorithm
-  - icon: ':heavy_check_mark:'
     path: algorithm/max_plus_convolution.cpp
     title: Max Plus Convolution
   - icon: ':warning:'
@@ -180,6 +177,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/zeta_transform.test.cpp
     title: test/zeta_transform.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -231,67 +229,66 @@ data:
   path: other/int_alias.cpp
   requiredBy:
   - data_structure/partially_persistent_union_find.cpp
-  - data_structure/wavelet_matrix.cpp
-  - data_structure/fenwick_tree.cpp
-  - data_structure/union_find.cpp
-  - data_structure/dual_segment_tree.cpp
-  - data_structure/ternary_treap.cpp
-  - data_structure/w_ary_tree_set.cpp
-  - data_structure/bankers_queue.cpp
-  - data_structure/radix_heap.cpp
-  - data_structure/persistent_skew_binary_random_access_list.cpp
-  - data_structure/segment_tree.cpp
-  - data_structure/bit_vector.cpp
-  - data_structure/randomized_queue.cpp
-  - data_structure/incremental_bridge_connectivity.cpp
   - data_structure/physicists_queue.cpp
+  - data_structure/union_find.cpp
+  - data_structure/segment_tree.cpp
+  - data_structure/incremental_bridge_connectivity.cpp
+  - data_structure/bankers_queue.cpp
+  - data_structure/w_ary_tree_set.cpp
   - data_structure/union_enumerate.cpp
-  - data_structure/lazy_segment_tree.cpp
-  - data_structure/range_mode_query.cpp
   - data_structure/potentialized_union_find.cpp
-  - algorithm/multiple_mobius_transform.cpp
-  - algorithm/superset_mobius_transform.cpp
-  - algorithm/three_edge_connected_component_decomposition.cpp
-  - algorithm/max_plus_convolution.cpp
+  - data_structure/radix_heap.cpp
+  - data_structure/fenwick_tree.cpp
+  - data_structure/randomized_queue.cpp
+  - data_structure/dual_segment_tree.cpp
+  - data_structure/persistent_skew_binary_random_access_list.cpp
+  - data_structure/wavelet_matrix.cpp
+  - data_structure/range_mode_query.cpp
+  - data_structure/lazy_segment_tree.cpp
+  - data_structure/ternary_treap.cpp
+  - data_structure/bit_vector.cpp
+  - other/countl_zero.cpp
+  - other/countr_zero.cpp
+  - other/bit_width.cpp
+  - other/select64.cpp
+  - other/popcount.cpp
+  - algorithm/subset_mobius_transform.cpp
   - algorithm/concave_max_plus_convolution.cpp
-  - algorithm/divisor_zeta_transform.cpp
   - algorithm/axiotis_tzamos_unbounded_knapsack.cpp
+  - algorithm/multiple_zeta_transform.cpp
+  - algorithm/three_edge_connected_component_decomposition.cpp
+  - algorithm/multiple_mobius_transform.cpp
+  - algorithm/subset_zeta_transform.cpp
   - algorithm/divisor_mobius_transform.cpp
   - algorithm/superset_zeta_transform.cpp
-  - algorithm/larsch.cpp
   - algorithm/smawk.cpp
-  - algorithm/multiple_zeta_transform.cpp
   - algorithm/axiotis_tzamos_knapsack.cpp
-  - algorithm/subset_zeta_transform.cpp
-  - algorithm/subset_mobius_transform.cpp
-  - other/countr_zero.cpp
-  - other/countl_zero.cpp
-  - other/popcount.cpp
-  - other/select64.cpp
-  - other/bit_width.cpp
+  - algorithm/divisor_zeta_transform.cpp
+  - algorithm/max_plus_convolution.cpp
+  - algorithm/superset_mobius_transform.cpp
   timestamp: '2020-03-02 16:21:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/zeta_transform.test.cpp
-  - test/lazy_segment_tree.test.cpp
-  - test/union_find.test.cpp
-  - test/wavelet_matrix.quantile.test.cpp
-  - test/bankers_queue.test.cpp
-  - test/dual_segment_tree.test.cpp
-  - test/physicists_queue.test.cpp
-  - test/three_edge_connected_component_decomposition.test.cpp
-  - test/radix_heap.test.cpp
-  - test/wavelet_matrix.rangefreq.test.cpp
-  - test/segment_tree.test.cpp
-  - test/larsch.test.cpp
-  - test/w_ary_tree_set.test.cpp
-  - test/potentialized_union_find.test.cpp
-  - test/axiotis_tzamos_unbounded_knapsack.test.cpp
-  - test/wavelet_matrix.select.test.cpp
-  - test/randomized_queue.test.cpp
   - test/fenwick_tree.test.cpp
-  - test/axiotis_tzamos_knapsack.test.cpp
+  - test/larsch.test.cpp
+  - test/wavelet_matrix.select.test.cpp
+  - test/wavelet_matrix.quantile.test.cpp
+  - test/potentialized_union_find.test.cpp
+  - test/lazy_segment_tree.test.cpp
+  - test/w_ary_tree_set.test.cpp
+  - test/union_find.test.cpp
+  - test/wavelet_matrix.rangefreq.test.cpp
+  - test/axiotis_tzamos_unbounded_knapsack.test.cpp
+  - test/randomized_queue.test.cpp
+  - test/physicists_queue.test.cpp
+  - test/segment_tree.test.cpp
+  - test/bankers_queue.test.cpp
+  - test/radix_heap.test.cpp
+  - test/dual_segment_tree.test.cpp
   - test/incremental_bridge_connectivity.test.cpp
+  - test/three_edge_connected_component_decomposition.test.cpp
+  - test/axiotis_tzamos_knapsack.test.cpp
+  - test/zeta_transform.test.cpp
 documentation_of: other/int_alias.cpp
 layout: document
 redirect_from:
