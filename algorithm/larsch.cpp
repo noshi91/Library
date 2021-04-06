@@ -1,102 +1,111 @@
-#include "other/int_alias.cpp"
-
+#include <functional>
+#include <memory>
 #include <vector>
 
-template <class Select, class Update>
-void larsch(const std::size_t n, Select select, Update update) {
-  using usize = std::size_t;
+template <class T> class larsch {
+  struct reduce_row;
+  struct reduce_col;
 
-  class header {
-  public:
-    usize r;
-    usize c;
-  };
+  struct reduce_row {
+    int n;
+    std::function<T(int, int)> f;
+    int cur_row;
+    int state;
+    std::unique_ptr<reduce_col> rec;
 
-  class node {
-  public:
-    std::vector<usize> cols;
-    usize prev;
+    reduce_row(int n_) : n(n_), f(), cur_row(0), state(0), rec() {
+      const int m = n / 2;
+      if (m != 0) {
+        rec = std::make_unique<reduce_col>(m);
+      }
+    }
 
-    std::vector<header> tent;
-    usize pcnt;
-    usize curc;
+    void set_f(std::function<T(int, int)> f_) {
+      f = f_;
+      if (rec) {
+        rec->set_f([&](int i, int j) -> T { return f(2 * i + 1, j); });
+      }
+    }
 
-    node(const usize n) : cols(), prev(0), tent(), pcnt(0), curc(0) {
-      cols.reserve(n);
-      tent.reserve(n / 2);
+    int get_argmin() {
+      const int cur_row_ = cur_row;
+      cur_row += 1;
+      if (cur_row_ % 2 == 0) {
+        const int prev_argmin = state;
+        const int next_argmin = [&]() {
+          if (cur_row_ + 1 == n) {
+            return n - 1;
+          } else {
+            return rec->get_argmin();
+          }
+        }();
+        state = next_argmin;
+        int ret = prev_argmin;
+        for (int j = prev_argmin + 1; j <= next_argmin; j += 1) {
+          if (f(cur_row_, ret) > f(cur_row_, j)) {
+            ret = j;
+          }
+        }
+        return ret;
+      } else {
+        if (f(cur_row_, state) <= f(cur_row_, cur_row_)) {
+          return state;
+        } else {
+          return cur_row_;
+        }
+      }
     }
   };
 
-  std::vector<node> data;
+  struct reduce_col {
+    int n;
+    std::function<T(int, int)> f;
+    int cur_row;
+    std::vector<int> cols;
+    reduce_row rec;
 
-  {
-    usize m = n;
-    while (m != 0) {
-      data.emplace_back(m);
-      m /= 2;
+    reduce_col(int n_) : n(n_), f(), cur_row(0), cols(), rec(n) {}
+
+    void set_f(std::function<T(int, int)> f_) {
+      f = f_;
+      rec.set_f([&](int i, int j) -> T { return f(i, cols[j]); });
     }
+
+    int get_argmin() {
+      const int cur_row_ = cur_row;
+      cur_row += 1;
+      const auto cs = [&]() -> std::vector<int> {
+        if (cur_row_ == 0) {
+          return {{0}};
+        } else {
+          return {{2 * cur_row_ - 1, 2 * cur_row_}};
+        }
+      }();
+      for (const int j : cs) {
+        while ([&]() {
+          const int size = cols.size();
+          return size != cur_row_ && f(size - 1, cols.back()) > f(size - 1, j);
+        }()) {
+          cols.pop_back();
+        }
+        if (cols.size() != n) {
+          cols.push_back(j);
+        }
+      }
+      return cols[rec.get_argmin()];
+    }
+  };
+
+  std::unique_ptr<reduce_row> base;
+
+public:
+  larsch(int n, std::function<T(int, int)> f)
+      : base(std::make_unique<reduce_row>(n)) {
+    base->set_f(f);
   }
 
-  const auto act = [&](const auto &act, const usize layer,
-                       const usize row) -> usize {
-    node &t = data[layer];
-
-    if ((row >> layer) % 2 == 0) {
-      usize res = t.prev;
-      usize idx = t.curc;
-      while (idx != t.cols.size()) {
-        if (select(row, t.cols[res], t.cols[idx])) {
-          res = idx;
-        }
-        idx += 1;
-      }
-      t.prev = res;
-      return t.cols[res];
-    }
-
-    const usize a = [&]() {
-      const usize step = static_cast<usize>(1) << layer;
-      if (row + step > n) {
-        return t.cols.back();
-      }
-      while (t.curc != t.cols.size()) {
-        const usize c = t.cols[t.curc];
-        while (t.tent.size() != t.pcnt &&
-               select(t.tent.back().r, t.tent.back().c, c)) {
-          t.tent.pop_back();
-        }
-        if (t.tent.size() == t.pcnt) {
-          t.tent.push_back({row + step, c});
-        } else if (t.tent.back().r + step * 2 <= n) {
-          t.tent.push_back({t.tent.back().r + step * 2, c});
-        }
-        t.curc += 1;
-      }
-      if (t.pcnt != t.tent.size()) {
-        data[layer + 1].cols.push_back(t.tent[t.pcnt].c);
-        t.pcnt += 1;
-      }
-      return act(act, layer + 1, row + step);
-    }();
-
-    usize res = t.prev;
-    usize idx = t.prev;
-    while (t.cols[idx] != a) {
-      idx += 1;
-      if (select(row, t.cols[res], t.cols[idx])) {
-        res = idx;
-      }
-    }
-    t.prev = idx;
-    return t.cols[res];
-  };
-
-  for (usize i = 0; i != n;) {
-    data[0].cols.push_back(i);
-    i += 1;
-    update(i, act(act, 0, i));
-  }
-}
+  int get_argmin() { return base->get_argmin(); }
+};
 
 /**
  * @brief LARSCH Algorithm

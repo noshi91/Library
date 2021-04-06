@@ -31,7 +31,8 @@ int main() {
   std::vector<i64> dp(n + 1);
   dp[0] = 0;
 
-  const auto get = [&](const usize to, const usize from) -> i64 {
+  const auto f = [&](const usize to_, const usize from) -> i64 {
+    const usize to = to_ + 1;
     if (to - from < l) {
       return -inf;
     } else {
@@ -39,19 +40,10 @@ int main() {
     }
   };
 
-  const auto select = [&](const usize to, const usize from0,
-                          const usize from1) -> bool {
-    if (to - from1 < l) {
-      return false;
-    }
-    return get(to, from0) < get(to, from1);
-  };
-
-  const auto update = [&](const usize i, const usize from) {
-    dp[i] = get(i, from);
-  };
-
-  larsch(n, select, update);
+  larsch<i64> larsch_(n, [&](int i, int j) { return -f(i, j); });
+  for (usize i = 0; i != n; i += 1) {
+    dp[i + 1] = f(i, larsch_.get_argmin());
+  }
 
   std::cout << dp[n] << "\n";
 
