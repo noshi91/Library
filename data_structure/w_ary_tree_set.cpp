@@ -78,6 +78,34 @@ public:
     return pos * C + child[pos].max();
   }
 
+  usize pred(const usize key) const {
+    const usize pos = key / C;
+    const usize t = child[pos].pred(key % C);
+    if (t != -1) {
+      return pos * C + t;
+    }
+    const u64 masked = map & ~(~static_cast<u64>(0) << pos);
+    if (masked == 0) {
+      return -1;
+    }
+    const usize pos2 = bsr(masked);
+    return pos2 * C + child[pos2].max();
+  }
+
+  usize succ(const usize key) const {
+    const usize pos = key / C;
+    const usize t = child[pos].succ(key % C);
+    if (t != -1) {
+      return pos * C + t;
+    }
+    const u64 masked = map & ~(~static_cast<u64>(0) >> (63 - pos));
+    if (masked == 0) {
+      return -1;
+    }
+    const usize pos2 = bsf(masked);
+    return pos2 * C + child[pos2].min();
+  }
+
   u64 _get_map() const { return map; }
 };
 
@@ -115,6 +143,22 @@ public:
   usize min() const { return bsf(map); }
 
   usize max() const { return bsr(map); }
+
+  usize pred(const usize key) const {
+    const u64 masked = map & ~(~static_cast<u64>(0) << key);
+    if (masked == 0) {
+      return -1;
+    }
+    return bsr(masked);
+  }
+
+  usize succ(const usize key) const {
+    const u64 masked = map & (~static_cast<u64>(0) << key);
+    if (masked == 0) {
+      return -1;
+    }
+    return bsf(masked);
+  }
 
   u64 _get_map() const { return map; }
 };
