@@ -75,10 +75,10 @@ data:
   timestamp: '2020-01-04 13:23:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/queue_aggregation.test.cpp
-  - test/lazy_segment_tree.test.cpp
   - test/segment_tree.test.cpp
+  - test/queue_aggregation.test.cpp
   - test/zeta_transform.test.cpp
+  - test/lazy_segment_tree.test.cpp
 documentation_of: other/modint.cpp
 layout: document
 redirect_from:

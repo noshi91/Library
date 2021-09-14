@@ -44,8 +44,8 @@ data:
   isVerificationFile: false
   path: other/popcount.cpp
   requiredBy:
-  - data_structure/wavelet_matrix.cpp
   - data_structure/bit_vector.cpp
+  - data_structure/wavelet_matrix.cpp
   timestamp: '2020-03-10 16:21:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

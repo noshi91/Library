@@ -61,8 +61,8 @@ data:
   isVerificationFile: false
   path: other/select64.cpp
   requiredBy:
-  - data_structure/wavelet_matrix.cpp
   - data_structure/bit_vector.cpp
+  - data_structure/wavelet_matrix.cpp
   timestamp: '2020-03-11 22:58:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

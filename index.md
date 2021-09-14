@@ -289,6 +289,9 @@ data:
       path: test/union_find.test.cpp
       title: test/union_find.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/w_ary_tree_set.pred.test.cpp
+      title: test/w_ary_tree_set.pred.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/w_ary_tree_set.test.cpp
       title: test/w_ary_tree_set.test.cpp
     - icon: ':heavy_check_mark:'

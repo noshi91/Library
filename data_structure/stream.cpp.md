@@ -78,8 +78,8 @@ data:
   isVerificationFile: false
   path: data_structure/stream.cpp
   requiredBy:
-  - data_structure/realtime_queue.cpp
   - data_structure/bankers_queue.cpp
+  - data_structure/realtime_queue.cpp
   timestamp: '2020-03-16 22:45:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

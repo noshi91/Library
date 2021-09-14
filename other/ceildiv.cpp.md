@@ -13,6 +13,9 @@ data:
     title: w-ary Tree Set
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/w_ary_tree_set.pred.test.cpp
+    title: test/w_ary_tree_set.pred.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/w_ary_tree_set.test.cpp
     title: test/w_ary_tree_set.test.cpp
   _isVerificationFailed: false
@@ -28,13 +31,14 @@ data:
   isVerificationFile: false
   path: other/ceildiv.cpp
   requiredBy:
-  - data_structure/w_ary_tree_set.cpp
   - algorithm/multiple_zeta_transform.cpp
   - algorithm/divisor_mobius_transform.cpp
+  - data_structure/w_ary_tree_set.cpp
   timestamp: '2020-09-11 14:24:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/w_ary_tree_set.test.cpp
+  - test/w_ary_tree_set.pred.test.cpp
 documentation_of: other/ceildiv.cpp
 layout: document
 redirect_from:

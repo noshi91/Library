@@ -98,8 +98,8 @@ data:
   timestamp: '2020-03-11 22:58:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/larsch.test.cpp
   - test/segment_tree.test.cpp
+  - test/larsch.test.cpp
 documentation_of: data_structure/segment_tree.cpp
 layout: document
 redirect_from:

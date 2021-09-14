@@ -37,8 +37,8 @@ data:
   timestamp: '2020-02-09 00:25:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/larsch.test.cpp
   - test/dual_segment_tree.test.cpp
+  - test/larsch.test.cpp
 documentation_of: other/semigroup_to_monoid.cpp
 layout: document
 redirect_from:
