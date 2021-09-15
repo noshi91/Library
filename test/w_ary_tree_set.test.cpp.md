@@ -81,25 +81,26 @@ data:
     \n      return -1;\r\n    }\r\n    return bsf(masked);\r\n  }\r\n\r\n  u64 _get_map()\
     \ const { return map; }\r\n};\r\n\r\n} // namespace w_ary_tree_set_impl\r\n\r\n\
     template <usize N>\r\nusing w_ary_tree_set = w_ary_tree_set_impl::w_ary_tree_set<N>;\r\
-    \n\r\n/**\r\n * @brief w-ary Tree Set\r\n */\r\n#line 5 \"test/w_ary_tree_set.test.cpp\"\
-    \n\r\n#line 7 \"test/w_ary_tree_set.test.cpp\"\n#include <algorithm>\r\n#include\
-    \ <iostream>\r\n#include <string>\r\n#include <vector>\r\n\r\nint main() {\r\n\
-    #line 1 \"other/fast_ios.cpp\"\nstd::ios::sync_with_stdio(false);\nstd::cin.tie(nullptr);\n\
-    #line 14 \"test/w_ary_tree_set.test.cpp\"\n\r\n  static constexpr usize max_q\
-    \ = 2000000;\r\n\r\n  struct query_t {\r\n    bool t;\r\n    u32 key;\r\n  };\r\
-    \n  std::vector<query_t> q;\r\n  q.reserve(max_q);\r\n  std::vector<u32> v;\r\n\
-    \  v.reserve(max_q);\r\n  std::string s;\r\n\r\n  while (true) {\r\n    std::cin\
-    \ >> s;\r\n    if (s[2] == 's') {\r\n      u32 x;\r\n      std::cin >> x;\r\n\
-    \      q.push_back({true, x});\r\n      v.push_back(x);\r\n    } else if (s[2]\
-    \ == 't') {\r\n      q.push_back({false, 0});\r\n    } else {\r\n      break;\r\
-    \n    }\r\n  }\r\n\r\n  std::sort(v.begin(), v.end());\r\n  v.erase(std::unique(v.begin(),\
-    \ v.end()), v.end());\r\n  std::vector<usize> count(v.size(), 0);\r\n\r\n  w_ary_tree_set<max_q>\
-    \ wats;\r\n  for (const auto &e : q) {\r\n    if (e.t) {\r\n      const usize\
-    \ i = std::lower_bound(v.begin(), v.end(), e.key) - v.begin();\r\n      if (count[i]\
-    \ == 0) {\r\n        wats.insert(i);\r\n      }\r\n      ++count[i];\r\n    }\
-    \ else {\r\n      const usize i = wats.max();\r\n      std::cout << v[i] << \"\
-    \\n\";\r\n      --count[i];\r\n      if (count[i] == 0) {\r\n        wats.erase(i);\r\
-    \n      }\r\n    }\r\n  }\r\n\r\n  return 0;\r\n}\r\n"
+    \n\r\n/**\r\n * @brief w-ary Tree Set\r\n * @docs docs/w_ary_tree_set.md\r\n */\r\
+    \n#line 5 \"test/w_ary_tree_set.test.cpp\"\n\r\n#line 7 \"test/w_ary_tree_set.test.cpp\"\
+    \n#include <algorithm>\r\n#include <iostream>\r\n#include <string>\r\n#include\
+    \ <vector>\r\n\r\nint main() {\r\n#line 1 \"other/fast_ios.cpp\"\nstd::ios::sync_with_stdio(false);\n\
+    std::cin.tie(nullptr);\n#line 14 \"test/w_ary_tree_set.test.cpp\"\n\r\n  static\
+    \ constexpr usize max_q = 2000000;\r\n\r\n  struct query_t {\r\n    bool t;\r\n\
+    \    u32 key;\r\n  };\r\n  std::vector<query_t> q;\r\n  q.reserve(max_q);\r\n\
+    \  std::vector<u32> v;\r\n  v.reserve(max_q);\r\n  std::string s;\r\n\r\n  while\
+    \ (true) {\r\n    std::cin >> s;\r\n    if (s[2] == 's') {\r\n      u32 x;\r\n\
+    \      std::cin >> x;\r\n      q.push_back({true, x});\r\n      v.push_back(x);\r\
+    \n    } else if (s[2] == 't') {\r\n      q.push_back({false, 0});\r\n    } else\
+    \ {\r\n      break;\r\n    }\r\n  }\r\n\r\n  std::sort(v.begin(), v.end());\r\n\
+    \  v.erase(std::unique(v.begin(), v.end()), v.end());\r\n  std::vector<usize>\
+    \ count(v.size(), 0);\r\n\r\n  w_ary_tree_set<max_q> wats;\r\n  for (const auto\
+    \ &e : q) {\r\n    if (e.t) {\r\n      const usize i = std::lower_bound(v.begin(),\
+    \ v.end(), e.key) - v.begin();\r\n      if (count[i] == 0) {\r\n        wats.insert(i);\r\
+    \n      }\r\n      ++count[i];\r\n    } else {\r\n      const usize i = wats.max();\r\
+    \n      std::cout << v[i] << \"\\n\";\r\n      --count[i];\r\n      if (count[i]\
+    \ == 0) {\r\n        wats.erase(i);\r\n      }\r\n    }\r\n  }\r\n\r\n  return\
+    \ 0;\r\n}\r\n"
   code: "#define PROBLEM                                                         \
     \       \\\r\n  \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_9_C&lang=ja\"\
     \r\n\r\n#include \"data_structure/w_ary_tree_set.cpp\"\r\n\r\n#include \"other/int_alias.cpp\"\
@@ -128,7 +129,7 @@ data:
   isVerificationFile: true
   path: test/w_ary_tree_set.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 01:28:19+09:00'
+  timestamp: '2021-09-16 02:20:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/w_ary_tree_set.test.cpp

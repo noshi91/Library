@@ -80,20 +80,21 @@ data:
     \n      return -1;\r\n    }\r\n    return bsf(masked);\r\n  }\r\n\r\n  u64 _get_map()\
     \ const { return map; }\r\n};\r\n\r\n} // namespace w_ary_tree_set_impl\r\n\r\n\
     template <usize N>\r\nusing w_ary_tree_set = w_ary_tree_set_impl::w_ary_tree_set<N>;\r\
-    \n\r\n/**\r\n * @brief w-ary Tree Set\r\n */\r\n#line 4 \"test/w_ary_tree_set.pred.test.cpp\"\
-    \n\r\n#line 6 \"test/w_ary_tree_set.pred.test.cpp\"\n#include <algorithm>\r\n\
-    #include <iostream>\r\n#include <string>\r\n#include <vector>\r\n\r\nint main()\
-    \ {\r\n#line 1 \"other/fast_ios.cpp\"\nstd::ios::sync_with_stdio(false);\nstd::cin.tie(nullptr);\n\
-    #line 13 \"test/w_ary_tree_set.pred.test.cpp\"\n\r\n  w_ary_tree_set<10000000>\
-    \ wats;\r\n\r\n  usize N, Q;\r\n  std::cin >> N >> Q;\r\n  std::string T;\r\n\
-    \  std::cin >> T;\r\n  for (usize i = 0; i != N; i += 1) {\r\n    if (T[i] ==\
-    \ '1') {\r\n      wats.insert(i);\r\n    }\r\n  }\r\n  for (usize i = 0; i !=\
-    \ Q; i += 1) {\r\n    u32 type;\r\n    usize k;\r\n    std::cin >> type >> k;\r\
-    \n    if (type == 0) {\r\n      wats.insert(k);\r\n    } else if (type == 1) {\r\
-    \n      wats.erase(k);\r\n    } else if (type == 2) {\r\n      std::cout << wats.contains(k)\
-    \ << \"\\n\";\r\n    } else if (type == 3) {\r\n      std::cout << static_cast<isize>(wats.succ(k))\
-    \ << \"\\n\";\r\n    } else {\r\n      std::cout << static_cast<isize>(wats.pred(k\
-    \ + 1)) << \"\\n\";\r\n    }\r\n  }\r\n\r\n  return 0;\r\n}\r\n"
+    \n\r\n/**\r\n * @brief w-ary Tree Set\r\n * @docs docs/w_ary_tree_set.md\r\n */\r\
+    \n#line 4 \"test/w_ary_tree_set.pred.test.cpp\"\n\r\n#line 6 \"test/w_ary_tree_set.pred.test.cpp\"\
+    \n#include <algorithm>\r\n#include <iostream>\r\n#include <string>\r\n#include\
+    \ <vector>\r\n\r\nint main() {\r\n#line 1 \"other/fast_ios.cpp\"\nstd::ios::sync_with_stdio(false);\n\
+    std::cin.tie(nullptr);\n#line 13 \"test/w_ary_tree_set.pred.test.cpp\"\n\r\n \
+    \ w_ary_tree_set<10000000> wats;\r\n\r\n  usize N, Q;\r\n  std::cin >> N >> Q;\r\
+    \n  std::string T;\r\n  std::cin >> T;\r\n  for (usize i = 0; i != N; i += 1)\
+    \ {\r\n    if (T[i] == '1') {\r\n      wats.insert(i);\r\n    }\r\n  }\r\n  for\
+    \ (usize i = 0; i != Q; i += 1) {\r\n    u32 type;\r\n    usize k;\r\n    std::cin\
+    \ >> type >> k;\r\n    if (type == 0) {\r\n      wats.insert(k);\r\n    } else\
+    \ if (type == 1) {\r\n      wats.erase(k);\r\n    } else if (type == 2) {\r\n\
+    \      std::cout << wats.contains(k) << \"\\n\";\r\n    } else if (type == 3)\
+    \ {\r\n      std::cout << static_cast<isize>(wats.succ(k)) << \"\\n\";\r\n   \
+    \ } else {\r\n      std::cout << static_cast<isize>(wats.pred(k + 1)) << \"\\\
+    n\";\r\n    }\r\n  }\r\n\r\n  return 0;\r\n}\r\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/predecessor_problem\"\r\
     \n\r\n#include \"data_structure/w_ary_tree_set.cpp\"\r\n\r\n#include \"other/int_alias.cpp\"\
     \r\n#include <algorithm>\r\n#include <iostream>\r\n#include <string>\r\n#include\
@@ -115,7 +116,7 @@ data:
   isVerificationFile: true
   path: test/w_ary_tree_set.pred.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 01:28:19+09:00'
+  timestamp: '2021-09-16 02:20:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/w_ary_tree_set.pred.test.cpp

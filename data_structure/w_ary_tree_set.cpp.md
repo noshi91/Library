@@ -19,6 +19,7 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    _deprecated_at_docs: docs/w_ary_tree_set.md
     document_title: w-ary Tree Set
     links: []
   bundledCode: "#line 1 \"other/ceildiv.cpp\"\ntemplate <class T> constexpr T ceildiv(const\
@@ -77,7 +78,8 @@ data:
     \n      return -1;\r\n    }\r\n    return bsf(masked);\r\n  }\r\n\r\n  u64 _get_map()\
     \ const { return map; }\r\n};\r\n\r\n} // namespace w_ary_tree_set_impl\r\n\r\n\
     template <usize N>\r\nusing w_ary_tree_set = w_ary_tree_set_impl::w_ary_tree_set<N>;\r\
-    \n\r\n/**\r\n * @brief w-ary Tree Set\r\n */\r\n"
+    \n\r\n/**\r\n * @brief w-ary Tree Set\r\n * @docs docs/w_ary_tree_set.md\r\n */\r\
+    \n"
   code: "#include \"other/ceildiv.cpp\"\r\n#include \"other/int_alias.cpp\"\r\n\r\n\
     #include <array>\r\n#include <type_traits>\r\n\r\nnamespace w_ary_tree_set_impl\
     \ {\r\nconstexpr usize calc_c(usize n) {\r\n  usize ret = 1;\r\n  while (n > 64)\
@@ -129,14 +131,15 @@ data:
     \n      return -1;\r\n    }\r\n    return bsf(masked);\r\n  }\r\n\r\n  u64 _get_map()\
     \ const { return map; }\r\n};\r\n\r\n} // namespace w_ary_tree_set_impl\r\n\r\n\
     template <usize N>\r\nusing w_ary_tree_set = w_ary_tree_set_impl::w_ary_tree_set<N>;\r\
-    \n\r\n/**\r\n * @brief w-ary Tree Set\r\n */\r\n"
+    \n\r\n/**\r\n * @brief w-ary Tree Set\r\n * @docs docs/w_ary_tree_set.md\r\n */\r\
+    \n"
   dependsOn:
   - other/ceildiv.cpp
   - other/int_alias.cpp
   isVerificationFile: false
   path: data_structure/w_ary_tree_set.cpp
   requiredBy: []
-  timestamp: '2021-09-15 01:28:19+09:00'
+  timestamp: '2021-09-16 02:20:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/w_ary_tree_set.test.cpp
@@ -148,3 +151,11 @@ redirect_from:
 - /library/data_structure/w_ary_tree_set.cpp.html
 title: w-ary Tree Set
 ---
+## 機能
+
+-   $\mathtt{pred}(k)$
+    -   $k$ より真に小さい中で最も大きいもの
+    -   無い場合 -1 (unsigned の -1 が返るので注意)
+-   $\mathtt{succ}(k)$
+    -   $k$ 以上の中で最も小さいもの
+    -   無い場合 -1 (unsigned の -1 が返るので注意)
