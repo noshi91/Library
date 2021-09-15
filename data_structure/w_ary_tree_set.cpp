@@ -170,4 +170,5 @@ using w_ary_tree_set = w_ary_tree_set_impl::w_ary_tree_set<N>;
 
 /**
  * @brief w-ary Tree Set
+ * @docs docs/w_ary_tree_set.md
  */
