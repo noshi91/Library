@@ -52,13 +52,13 @@ data:
   isVerificationFile: false
   path: data_structure/persistent_stack.cpp
   requiredBy:
-  - data_structure/physicists_queue.cpp
   - data_structure/realtime_queue.cpp
+  - data_structure/physicists_queue.cpp
   timestamp: '2020-03-16 22:45:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/physicists_queue.test.cpp
   - test/realtime_queue.test.cpp
+  - test/physicists_queue.test.cpp
 documentation_of: data_structure/persistent_stack.cpp
 layout: document
 redirect_from:

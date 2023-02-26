@@ -76,9 +76,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/segment_tree.test.cpp
-  - test/queue_aggregation.test.cpp
-  - test/zeta_transform.test.cpp
   - test/lazy_segment_tree.test.cpp
+  - test/zeta_transform.test.cpp
+  - test/queue_aggregation.test.cpp
 documentation_of: other/modint.cpp
 layout: document
 redirect_from:

@@ -142,8 +142,8 @@ data:
   timestamp: '2021-09-16 02:20:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/w_ary_tree_set.test.cpp
   - test/w_ary_tree_set.pred.test.cpp
+  - test/w_ary_tree_set.test.cpp
 documentation_of: data_structure/w_ary_tree_set.cpp
 layout: document
 redirect_from:

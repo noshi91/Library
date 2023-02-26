@@ -78,6 +78,9 @@ data:
       path: data_structure/parametric_heap.hpp
       title: Parametric Heap
     - icon: ':warning:'
+      path: data_structure/parametric_heap_i64.cpp
+      title: Parametric Heap i64
+    - icon: ':warning:'
       path: data_structure/partially_persistent_union_find.cpp
       title: Partially Persistent Union Find
     - icon: ':warning:'

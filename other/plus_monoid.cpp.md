@@ -31,8 +31,8 @@ data:
   timestamp: '2020-02-09 00:25:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/fenwick_tree.test.cpp
   - test/lazy_segment_tree.test.cpp
+  - test/fenwick_tree.test.cpp
 documentation_of: other/plus_monoid.cpp
 layout: document
 redirect_from:

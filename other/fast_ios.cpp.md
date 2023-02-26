@@ -105,32 +105,32 @@ data:
   timestamp: '2020-03-11 00:35:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/union_find.test.cpp
-  - test/dual_segment_tree.test.cpp
-  - test/w_ary_tree_set.test.cpp
-  - test/wavelet_matrix.select.test.cpp
-  - test/incremental_bridge_connectivity.test.cpp
-  - test/fenwick_tree.test.cpp
-  - test/radix_heap.test.cpp
-  - test/physicists_queue.test.cpp
-  - test/w_ary_tree_set.pred.test.cpp
-  - test/three_edge_connected_component_decomposition.test.cpp
   - test/segment_tree.test.cpp
-  - test/larsch.test.cpp
-  - test/wavelet_matrix.quantile.test.cpp
-  - test/queue_aggregation.test.cpp
-  - test/realtime_queue.test.cpp
-  - test/axiotis_tzamos_knapsack.test.cpp
   - test/pairing_heap.test.cpp
-  - test/bankers_queue.test.cpp
+  - test/realtime_queue.test.cpp
+  - test/physicists_queue.test.cpp
+  - test/wavelet_matrix.select.test.cpp
+  - test/w_ary_tree_set.pred.test.cpp
+  - test/w_ary_tree_set.test.cpp
+  - test/lazy_segment_tree.test.cpp
+  - test/zeta_transform.test.cpp
+  - test/dual_segment_tree.test.cpp
+  - test/queue_aggregation.test.cpp
+  - test/erasable_heap.test.cpp
+  - test/axiotis_tzamos_knapsack.test.cpp
+  - test/fenwick_tree.test.cpp
   - test/potentialized_union_find.test.cpp
+  - test/bankers_queue.test.cpp
+  - test/randomized_queue.test.cpp
   - test/parametric_heap.test.cpp
   - test/wavelet_matrix.rangefreq.test.cpp
-  - test/zeta_transform.test.cpp
-  - test/randomized_queue.test.cpp
-  - test/erasable_heap.test.cpp
-  - test/lazy_segment_tree.test.cpp
+  - test/wavelet_matrix.quantile.test.cpp
   - test/axiotis_tzamos_unbounded_knapsack.test.cpp
+  - test/incremental_bridge_connectivity.test.cpp
+  - test/union_find.test.cpp
+  - test/radix_heap.test.cpp
+  - test/three_edge_connected_component_decomposition.test.cpp
+  - test/larsch.test.cpp
 documentation_of: other/fast_ios.cpp
 layout: document
 redirect_from:

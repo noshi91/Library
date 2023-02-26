@@ -68,8 +68,8 @@ data:
   isVerificationFile: false
   path: algorithm/smawk.cpp
   requiredBy:
-  - algorithm/axiotis_tzamos_knapsack.cpp
   - algorithm/concave_max_plus_convolution.cpp
+  - algorithm/axiotis_tzamos_knapsack.cpp
   timestamp: '2020-03-03 23:12:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

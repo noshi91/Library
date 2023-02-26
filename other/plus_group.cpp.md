@@ -29,8 +29,8 @@ data:
   timestamp: '2020-02-09 00:38:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/potentialized_union_find.test.cpp
   - test/zeta_transform.test.cpp
+  - test/potentialized_union_find.test.cpp
 documentation_of: other/plus_group.cpp
 layout: document
 redirect_from:

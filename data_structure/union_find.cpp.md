@@ -66,8 +66,8 @@ data:
   timestamp: '2020-03-11 22:58:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/union_find.test.cpp
   - test/incremental_bridge_connectivity.test.cpp
+  - test/union_find.test.cpp
 documentation_of: data_structure/union_find.cpp
 layout: document
 redirect_from:

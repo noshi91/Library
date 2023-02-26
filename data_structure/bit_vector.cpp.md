@@ -108,8 +108,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/wavelet_matrix.select.test.cpp
-  - test/wavelet_matrix.quantile.test.cpp
   - test/wavelet_matrix.rangefreq.test.cpp
+  - test/wavelet_matrix.quantile.test.cpp
 documentation_of: data_structure/bit_vector.cpp
 layout: document
 redirect_from:
